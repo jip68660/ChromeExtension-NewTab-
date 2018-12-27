@@ -2,10 +2,9 @@ body{
   background-image: url("img/1.jpg");
 }
 
-/*Ã«ÂÂÃ¬Â¤ÂÃ¬ÂÂ div Ã¬ÂÂ¸Ã«Â¶ÂÃ­ÂÂÃ­ÂÂ´Ã¬ÂÂ Ã¬ÂÂÃ¬ÂÂÃ­ÂÂÃ«Â©Â´ Ã«ÂÂ Ã¬Â¢ÂÃ¬ÂÂÃ«ÂÂ¯. Ã¬Â½ÂÃ«ÂÂÃ¬ÂÂÃ«ÂÂ Ã¬Â¤ÂÃ¬ÂÂ¼Ã«ÂÂÃªÂ¹Â*/
 #main{
   padding: 10px;
-  margin: auto; /*div ÃªÂ°ÂÃ¬ÂÂ´Ã«ÂÂ° Ã¬Â ÂÃ«Â Â¬*/
+  margin: auto;
   text-align: center;
   font-size: 45px;
   font-family: sans-serif;
@@ -15,16 +14,47 @@ body{
   top: 370px;
 }
 
-#nameinput{
+#searchUI{
+  transition: width 0.5s;
+  border: 1px solid black;
+  width: 3em;
+  height: 3em;
+  border-radius: 0.6em;
+  display: block;
+}
+
+#searchIco {
+  float: left;
+  width: 2em;
+  height: 2em;
+  padding-top: 0.5em;
+  padding-left: 0.5em;
+  display: inline;
+}
+
+#searchBar {
+  float: left;
+  display: none;
+  width: 30em;
+  border: 0px;
+  margin-left: 0.6em;
+  outline: none;
+  position: relative;
+  top: 0.5em;
+  font-size: 22em;
+}
+
+/*#nameinput{
   padding: 5px;
   text-align: center;
   color: black;
-  border: 0px;  /*ÃªÂ¸Â°Ã«Â³Â¸Ã¬Â ÂÃ¬ÂÂ¸ textÃªÂ°Â ÃªÂ°ÂÃ¬Â§ÂÃ«ÂÂ Ã­ÂÂÃ«ÂÂÃ«Â¦Â¬ Ã¬ÂÂÃ¬ÂÂ ÃªÂ¸Â°*/
+  border: 0px;  
   border-bottom: 3px solid;
-  background: transparent; /*text Ã«Â°ÂÃ­ÂÂ Ã­ÂÂ¬Ã«ÂªÂÃ­ÂÂÃªÂ²Â Ã«Â§ÂÃ«ÂÂ¤ÃªÂ¸Â°*/
-  outline: none; /*Ã¬Â»Â¤Ã¬ÂÂ Ã¬ÂÂ¬Ã«ÂÂ¼ÃªÂ°ÂÃ¬ÂÂ ÃªÂ°ÂÃ¬Â¡Â°Ã«ÂÂ Ã«ÂÂ Ã«ÂÂ¨Ã«ÂÂ Ã­ÂÂÃ«ÂÂÃ­ÂÂÃ«ÂÂÃ«Â¦Â¬ Ã¬ÂÂÃ¬ÂÂ ÃªÂ¸Â°*/
+  background: transparent; text Ã«Â°ÂÃ­ÂÂ Ã­ÂÂ¬Ã«ÂªÂÃ­ÂÂÃªÂ²Â Ã«Â§ÂÃ«ÂÂ¤ÃªÂ¸Â°
+  outline: none; 
   font-size: 45px;
   font-family: sans-serif;
   color: white;
   font-weight: bold;
-}
+  한국말 들어가는지 확인
+}*/
