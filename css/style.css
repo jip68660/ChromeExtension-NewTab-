@@ -1,0 +1,30 @@
+body{
+  background-image: url("img/1.jpg");
+}
+
+/*Ã«ÂÂÃ¬Â¤ÂÃ¬ÂÂ div Ã¬ÂÂ¸Ã«Â¶ÂÃ­ÂÂÃ­ÂÂ´Ã¬ÂÂ Ã¬ÂÂÃ¬ÂÂÃ­ÂÂÃ«Â©Â´ Ã«ÂÂ Ã¬Â¢ÂÃ¬ÂÂÃ«ÂÂ¯. Ã¬Â½ÂÃ«ÂÂÃ¬ÂÂÃ«ÂÂ Ã¬Â¤ÂÃ¬ÂÂ¼Ã«ÂÂÃªÂ¹Â*/
+#main{
+  padding: 10px;
+  margin: auto; /*div ÃªÂ°ÂÃ¬ÂÂ´Ã«ÂÂ° Ã¬Â ÂÃ«Â Â¬*/
+  text-align: center;
+  font-size: 45px;
+  font-family: sans-serif;
+  color: white;
+  font-weight: bold;
+  position: relative;
+  top: 370px;
+}
+
+#nameinput{
+  padding: 5px;
+  text-align: center;
+  color: black;
+  border: 0px;  /*ÃªÂ¸Â°Ã«Â³Â¸Ã¬Â ÂÃ¬ÂÂ¸ textÃªÂ°Â ÃªÂ°ÂÃ¬Â§ÂÃ«ÂÂ Ã­ÂÂÃ«ÂÂÃ«Â¦Â¬ Ã¬ÂÂÃ¬ÂÂ ÃªÂ¸Â°*/
+  border-bottom: 3px solid;
+  background: transparent; /*text Ã«Â°ÂÃ­ÂÂ Ã­ÂÂ¬Ã«ÂªÂÃ­ÂÂÃªÂ²Â Ã«Â§ÂÃ«ÂÂ¤ÃªÂ¸Â°*/
+  outline: none; /*Ã¬Â»Â¤Ã¬ÂÂ Ã¬ÂÂ¬Ã«ÂÂ¼ÃªÂ°ÂÃ¬ÂÂ ÃªÂ°ÂÃ¬Â¡Â°Ã«ÂÂ Ã«ÂÂ Ã«ÂÂ¨Ã«ÂÂ Ã­ÂÂÃ«ÂÂÃ­ÂÂÃ«ÂÂÃ«Â¦Â¬ Ã¬ÂÂÃ¬ÂÂ ÃªÂ¸Â°*/
+  font-size: 45px;
+  font-family: sans-serif;
+  color: white;
+  font-weight: bold;
+}
