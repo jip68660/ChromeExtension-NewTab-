@@ -1,6 +1,7 @@
 document.getElementById("searchBar").addEventListener("keyup", onEnterPressed);
 document.getElementById("searchUI").addEventListener("mouseover", searchBarOpen);
 document.getElementById("searchUI").addEventListener("mouseleave", searchBarClose);
+document.getElementById("searchIco").addEventListener("mouseleave", searchIcoClose);
 
 var urlString="";
 
@@ -14,13 +15,17 @@ function onEnterPressed() {
   }
 }
 
+function searchIcoClose() {
+  searchIco.style.display ="none";
+}
+
 function searchBarOpen() {
-	searchUI.style.width = "30em";
+	searchUI.style.width = "10em";
 	searchBar.style.display = "inline";
 }
 
 function searchBarClose() {
-	searchUI.style.width = "3em";
+	searchUI.style.width = "2em";
 	searchBar.style.display = "none";
 	searchBar.value = "";
 }

@@ -14,34 +14,38 @@ body{
   top: 370px;
 }
 
-#searchUI{
+#searchUI{ 
   transition: width 0.5s;
-  border: 1px solid black;
-  width: 3em;
-  height: 3em;
+  width: 2em;
+  height: 2em;
   border-radius: 0.6em;
   display: block;
+  background-color: white;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #searchIco {
-  float: left;
-  width: 2em;
-  height: 2em;
+  width: 1em;
+  height: 1em;
   padding-top: 0.5em;
   padding-left: 0.5em;
   display: inline;
+
 }
 
 #searchBar {
-  float: left;
+  text-align: center;
   display: none;
-  width: 30em;
+  width: 10em;
   border: 0px;
-  margin-left: 0.6em;
-  outline: none;
+  margin-left: auto;
   position: relative;
-  top: 0.5em;
-  font-size: 22em;
+  background-color: transparent;
+  top: 0.45em;
+  outline: none;
+  font-size: 40px;
+  
 }
 
 /*#nameinput{
@@ -50,11 +54,11 @@ body{
   color: black;
   border: 0px;  
   border-bottom: 3px solid;
-  background: transparent; text Ã«Â°ÂÃ­ÂÂ Ã­ÂÂ¬Ã«ÂªÂÃ­ÂÂÃªÂ²Â Ã«Â§ÂÃ«ÂÂ¤ÃªÂ¸Â°
+  background: transparent; text ÃÂ«ÃÂ°ÃÂÃÂ­ÃÂÃÂ ÃÂ­ÃÂÃÂ¬ÃÂ«ÃÂªÃÂÃÂ­ÃÂÃÂÃÂªÃÂ²ÃÂ ÃÂ«ÃÂ§ÃÂÃÂ«ÃÂÃÂ¤ÃÂªÃÂ¸ÃÂ°
   outline: none; 
   font-size: 45px;
   font-family: sans-serif;
   color: white;
   font-weight: bold;
-  한국말 들어가는지 확인
+  íêµ­ë§ ë¤ì´ê°ëì§ íì¸
 }*/
