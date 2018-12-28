@@ -1,6 +1,0 @@
-{
-  "main": "test.html",
-  "dependencies": {
-    "vue": "latest"
-  }
-}
