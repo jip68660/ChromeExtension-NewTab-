@@ -14,7 +14,7 @@ body{
   top: 370px;
 }
 
-#searchUI{ 
+#searchUI{
   transition: width 0.5s;
   width: 2em;
   height: 2em;
@@ -45,17 +45,36 @@ body{
   top: 0.45em;
   outline: none;
   font-size: 40px;
-  
+
+}
+
+#dateDisplay {
+  width: 400px;
+  height: 1.2em;
+  font-family: sans-serif;
+  font-size: 30px;
+  font-style: italic;
+  color: white;
+  display: inline;
+}
+
+#timeDisplay {
+  width: 400px;
+  height: 1.2em;
+  font-family: sans-serif;
+  font-size: 50px;
+  color: white;
+  display: inline;
 }
 
 /*#nameinput{
   padding: 5px;
   text-align: center;
   color: black;
-  border: 0px;  
+  border: 0px;
   border-bottom: 3px solid;
   background: transparent; text ÃÂ«ÃÂ°ÃÂÃÂ­ÃÂÃÂ ÃÂ­ÃÂÃÂ¬ÃÂ«ÃÂªÃÂÃÂ­ÃÂÃÂÃÂªÃÂ²ÃÂ ÃÂ«ÃÂ§ÃÂÃÂ«ÃÂÃÂ¤ÃÂªÃÂ¸ÃÂ°
-  outline: none; 
+  outline: none;
   font-size: 45px;
   font-family: sans-serif;
   color: white;
