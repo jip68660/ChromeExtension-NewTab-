@@ -30,7 +30,7 @@ window.onload = setInterval(function() {
     }
     var timeOutString = currHour + ":" + currMinute + ":" + currSecond + " AM";
   } else {//PM
-    var timeOutString = (currHour - 12) + ":" + currMinute + ":" + currSecond + "PM";
+    var timeOutString = (currHour - 12) + ":" + currMinute + ":" + currSecond + " PM";
   }
   document.getElementById("timeDisplay").innerHTML = timeOutString;
 }, 500);
