@@ -13,7 +13,8 @@ function onEnterPressed() {
   urlString = document.getElementById("searchBar").value;
   if(event.which==13 || event.keycode==13) {
     searchBar.value = "";
-    urlString = "http://www.google.com/search?q=" + urlString;
+    urlString = "https://search.naver.com/search.naver?sm=top_hty&fbm=1&ie=utf8&query=" + urlString;
+    //urlString = "https://www.google.com/search?q=" + urlString;
     location.href = urlString;
   }
 }
@@ -40,5 +41,6 @@ function onSearchFocus() {
 }
 
 function onSearchBlur() {
-  searchBar.placeholder = "Search Google";
+  searchBar.placeholder = "네이버로 검색";
+  // searchBar.placeholder = "Search Google";
 }
