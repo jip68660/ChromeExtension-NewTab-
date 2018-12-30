@@ -1,0 +1,46 @@
+#searchUI{
+  transition: width 0.5s;
+  width: 2em;
+  height: 2em;
+  border-radius: 0.6em;
+  display: block;
+  background-color: white;
+  margin: auto;
+}
+#searchIco {
+  width: 1em;
+  height: 1em;
+  padding-top: 1em;
+  display: inline;
+}
+#searchIconImg {
+  margin-top: 0.15em;
+}
+#searchBar {
+  text-align: center;
+  display: none;
+  width: 10em;
+  border: 0px;
+  position: relative;
+  background-color: transparent;
+  top: 0.3em;
+  outline: none;
+  font-size: 40px;
+}
+#dateDisplay {
+  width: 150px;
+  height: 1.2em;
+  font-family: sans-serif;
+  font-size: 20px;
+  font-style: italic;
+  color: white;
+  display: inline;
+}
+#timeDisplay {
+  width: 150px;
+  height: 1.2em;
+  font-family: sans-serif;
+  font-size: 35px;
+  color: white;
+  display: inline;
+}
