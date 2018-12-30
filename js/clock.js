@@ -13,16 +13,16 @@ window.onload = setInterval(function() {
   currSecond = checkTime(currSecond);
 
   var weekday = new Array(7);
-  weekday[0] = "ì¼";
-  weekday[1] = "ì";
-  weekday[2] = "í";
-  weekday[3] = "ì";
-  weekday[4] = "ëª©";
-  weekday[5] = "ê¸";
-  weekday[6] = "í ";
+  weekday[0] = "일";
+  weekday[1] = "월";
+  weekday[2] = "화";
+  weekday[3] = "수";
+  weekday[4] = "목"";
+  weekday[5] = "금";
+  weekday[6] = "토";
 
-  var dateOutString = currYear + "ë " + (currMonth + 1) + "ì " + currDate
-  + "ì¼ \(" + weekday[currDay] + "\)";
+  var dateOutString = currYear + "년 " + (currMonth + 1) + "월 " + currDate
+  + "일 \(" + weekday[currDay] + "\)";
   document.getElementById("dateDisplay").innerHTML = dateOutString;
   if (currHour < 12) {//AM
     if (currHour == 0) {

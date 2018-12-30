@@ -41,6 +41,6 @@ function onSearchFocus() {
 }
 
 function onSearchBlur() {
-  searchBar.placeholder = "ë¤ì´ë²ë¡ ê²ì";
+  searchBar.placeholder = "네이버로 검색";
   // searchBar.placeholder = "Search Google";
 }
