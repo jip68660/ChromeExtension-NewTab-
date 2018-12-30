@@ -17,7 +17,7 @@ window.onload = setInterval(function() {
   weekday[1] = "월";
   weekday[2] = "화";
   weekday[3] = "수";
-  weekday[4] = "목"";
+  weekday[4] = "목";
   weekday[5] = "금";
   weekday[6] = "토";
 
