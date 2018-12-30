@@ -4,12 +4,13 @@
     <meta charset="utf-8">
     <title>New Tab</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/style_headerItem.css">
+    <link rel="stylesheet" href="css/style_headerItem.css"> 
+    <link rel="stylesheet" href="css/style_mainContainer.css">
     <link rel="manifest" href="manifest.json">
   </head>
 
   <body>
-    <img src="img/Mainback.jpg" name="backImg" id="backImg">
+    <img src="img/mainback.jpg" name="backImg" id="backImg">
     <div id="wrapper">
       <div id="header">
         <div id="headerLeft" class="columnLeft">
@@ -34,7 +35,10 @@
           <br>
         </div>
         <div id ="mainMiddle" class="columnMiddle">
-          <br>
+          <div id="nameIn" class="question">
+            당신은 누구신가요?<br>
+            <input type="text" id="nameInput" class="answer">
+          </div>
         </div>
         <div id ="mainRight" class="columnRight">
           <br>

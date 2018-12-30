@@ -3,7 +3,7 @@ html{
   width: 100%;
 }
 body{
-  text-align: center;
+  height: 98%;
 }
 #backImg{
   display: flex;
@@ -31,6 +31,7 @@ body{
   width: calc(100% - 500px);
   position: relative;
   margin: auto;
+  text-align: center;
 }
 .columnRight{
   float: right;
@@ -38,6 +39,7 @@ body{
 }
 #header{
   height: 90px;
+  /* border: 1px solid white;   */
 }
 #headerMiddle{
   margin-top: 5px;
@@ -50,8 +52,9 @@ body{
   margin-top: 10px;
 }
 #mainContainer{
-  height: 550px;
+  height: calc(100% - 180px);
 }
 #footer{
   height: 90px;
+  /* border: 1px solid white; */
 }
