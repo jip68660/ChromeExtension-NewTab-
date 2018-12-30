@@ -24,7 +24,7 @@ function searchIcoClose() {
 }
 
 function searchBarOpen() {
-	searchUI.style.width = "10em";
+	searchUI.style.width = "20em";
   searchBar.style.display = "inline";
   searchIcoClose();
 }
