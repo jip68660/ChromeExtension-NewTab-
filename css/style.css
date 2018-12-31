@@ -42,7 +42,7 @@ body{
   /* border: 1px solid white;   */
 }
 #headerMiddle{
-  margin-top: 5px;
+  margin-top: 50px;
   font-size: 40px;
   font-family: sans-serif;
   color: white;
@@ -50,6 +50,7 @@ body{
 }
 #headerRight{
   margin-top: 10px;
+  text-align: right;
 }
 #mainContainer{
   height: calc(100% - 180px);

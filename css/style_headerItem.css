@@ -8,8 +8,8 @@
   margin: auto;
 }
 #searchIco {
-  width: 1em;
-  height: 1em;
+  /* width: 1em;
+  height: 1em; */
   padding-top: 1em;
   display: inline;
 }
@@ -28,19 +28,19 @@
   font-size: 40px;
 }
 #dateDisplay {
-  width: 150px;
-  height: 1.2em;
+  /* width: 150px;
+  height: 1.2em; */
   font-family: sans-serif;
-  font-size: 20px;
+  font-size: 15px;
   font-style: italic;
   color: white;
   display: inline;
 }
 #timeDisplay {
-  width: 150px;
-  height: 1.2em;
+  /* width: 150px;
+  height: 1.2em; */
   font-family: sans-serif;
-  font-size: 35px;
+  font-size: 20px;
   color: white;
   display: inline;
 }
