@@ -28,9 +28,13 @@ window.onload = setInterval(function() {
     if (currHour == 0) {
       currHour = 12;
     }
-    var timeOutString = currHour + ":" + currMinute + ":" + currSecond + " AM";
+    var timeOutString = currHour + ":" + currMinute + " AM";
   } else {//PM
-    var timeOutString = (currHour - 12) + ":" + currMinute + ":" + currSecond + " PM";
+    if (currHour == 12) {
+      var timeOutString = currHour + ":" + currMinute + " PM";
+    } else {
+      var timeOutString = (currHour - 12) + ":" + currMinute + " PM";
+    }
   }
   document.getElementById("timeDisplay").innerHTML = timeOutString;
 }, 500);
