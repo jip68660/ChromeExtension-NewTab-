@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <html lang="ko" dir="ltr">
+  
   <head>
     <meta charset="utf-8">
     <title>New Tab</title>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src https://*; child-src 'none';">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/style_headerItem.css"> 
     <link rel="stylesheet" href="css/style_mainContainer.css">
@@ -15,6 +18,9 @@
       <div id="header">
         <div id="headerLeft" class="columnLeft">
           <br>
+          <span id="error"></span>
+          <input type="text" name="city" id="city" placeholder="City Name">
+          <button id="submitWeather">Search City</button>
         </div>
         <div id="headerMiddle" class="columnMiddle">
           <div id="searchUI">
@@ -62,5 +68,6 @@
     <script type="text/javascript" src="js/search.js"></script>
     <script type="text/javascript" src="js/clock.js"></script>
     <script type="text/javascript" src="js/ipGet.js"></script>
+    <script type="text/javascript" src="js/weather.js"></script>
   </body>
 </html>
