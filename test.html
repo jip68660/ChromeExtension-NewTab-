@@ -41,10 +41,11 @@
           <br>
         </div>
         <div id ="mainMiddle" class="columnMiddle">
-          <div id="nameIn" class="question">
-            당신은 누구신가요?<br>
-            <input type="text" id="nameInput" class="answer">
-          </div>
+          <div id="nameIn" class="question" style="display: none">
+            name<input type="text" id="nameInput" class="answer">
+          </div><br><br><br><br>
+          <div id="nameOut" style="display: none"></div><br>
+          <input type="button" value="clear storage" id="storageResetButton">
         </div>
         <div id ="mainRight" class="columnRight">
           <br>
@@ -69,5 +70,6 @@
     <script type="text/javascript" src="js/clock.js"></script>
     <script type="text/javascript" src="js/ipGet.js"></script>
     <script type="text/javascript" src="js/weather.js"></script>
+    <script type="text/javascript" src="js/mainDisplay.js"></script>
   </body>
 </html>

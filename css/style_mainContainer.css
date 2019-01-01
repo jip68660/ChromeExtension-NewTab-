@@ -18,3 +18,10 @@
     border: 0px;
     border-bottom: 1px solid white;
 }
+
+#nameOut {
+    margin-top: 50%;
+    text-align: center;
+    background: white;
+    font-size: 20px;
+}
