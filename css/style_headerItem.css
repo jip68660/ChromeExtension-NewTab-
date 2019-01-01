@@ -44,3 +44,9 @@
   color: white;
   display: inline;
 }
+
+#showWeather {
+  font-size: 15px;
+  font-family: sans-serif;
+  color: white;
+}

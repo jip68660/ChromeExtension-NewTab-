@@ -10,12 +10,22 @@ $(document).ready(function() {
                 type: "GET",
                 dataType: "jsonp",
                 success: function(data) {
-                    console.log(data);
+                    document.getElementById("city").style.display = "none";
+                    document.getElementById("submitWeather").style.display = "none";
+
+                    var widget= show(data);
+                    $("#showWeather").html(widget);
                 }
             });
         } else {
-            $('#error').html('Field cannot be empty');
+            alert("도시이름을 입력해주세요!");
         }
     });
-
 });
+
+function show(data) {
+    return "현재날씨: " + data.weather[0].main + "<br />" + 
+    "날씨설명: " + data.weather[0].description + "<br />" +
+    "현재온도: " + Math.round(data.main.temp) + " ºC" + "<br />" + 
+    "위치: " + data.name + ", " + data.sys.country;
+}
