@@ -1,5 +1,4 @@
 {
-
   "manifest_version": 2,
   "name": "New Tab Extension",
   "short_name": "New Tab",
@@ -14,5 +13,5 @@
   	"newtab" : "test.html"
   },
 
-  "content_security_policy": "script-src 'self' https://ajax.googleapis.com; child-src https://api.openweathermap.org; object-src 'self'"
+  "content_security_policy": "script-src 'self' https://ajax.googleapis.com https://api.openweathermap.org; object-src 'self'"
 }
