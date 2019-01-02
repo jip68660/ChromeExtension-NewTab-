@@ -21,8 +21,7 @@ function onWeatherEnter() {
                 type: "GET",
                 dataType: "jsonp",
                 success: function(data) {
-                    document.getElementById("cityInput").style.display = "none";
-                    document.getElementById("submitWeather").style.display = "none";
+                    document.getElementById("weatherIn").style.display = "none";
 
                     var widget= show(data);                    
                     localStorage.setItem('cityvalue', widget);
@@ -42,6 +41,6 @@ function show(data) {
 
 function displayWeather() {
     $("#showWeather").html(localStorage.getItem('cityvalue'));
-    document.getElementById("nameIn").style.display = "none";
+    document.getElementById("weatherIn").style.display = "none";
     document.getElementById("showWeather").style.display = "inline";
 }
