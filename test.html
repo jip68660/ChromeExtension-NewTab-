@@ -16,11 +16,12 @@
     <div id="wrapper">
       <div id="header">
         <div id="headerLeft" class="columnLeft">
-          <br>
           <span id="error"></span>
-          <input type="text" name="city" id="city" placeholder="Enter City Name">
-          <button id="submitWeather">Search City</button>
-          <div id="showWeather"></div>
+          <div id="weatherIn" style="display: none">
+            <input type="text" name="city" id="cityInput" placeholder="Enter City Name">
+            <button id="submitWeather">Search City</button>
+          </div>
+          <div id="showWeather" style="display: none"></div>
         </div>
         <div id="headerMiddle" class="columnMiddle">
           <div id="searchUI">
@@ -42,8 +43,8 @@
         </div>
         <div id ="mainMiddle" class="columnMiddle">
           <div id="nameIn" class="question" style="display: none">
-            name<input type="text" id="nameInput" class="answer">
-          </div><br><br><br><br>
+            반가워요, 누구신가요?<input type="text" id="nameInput" class="answer"><br>
+          </div><br>
           <div id="nameOut" style="display: none"></div><br>
           <input type="button" value="clear storage" id="storageResetButton">
         </div>
@@ -72,7 +73,7 @@
     <script type="text/javascript" src="js/search.js"></script>
     <script type="text/javascript" src="js/clock.js"></script>
     <script type="text/javascript" src="js/ipGet.js"></script>
-    <script type="text/javascript" src="js/weather.js"></script>
+    <script type="text/javascript" src="js/weather2.js"></script>
     <script type="text/javascript" src="js/mainDisplay.js"></script>
     <script type="text/javascript" src="js/fileUpload.js"></script>
   </body>

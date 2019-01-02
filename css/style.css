@@ -42,7 +42,7 @@ body{
   /* border: 1px solid white;   */
 }
 #headerMiddle{
-  margin-top: 50px;
+  margin-top: 5px;
   font-size: 40px;
   font-family: sans-serif;
   color: white;
@@ -54,6 +54,9 @@ body{
 }
 #mainContainer{
   height: calc(100% - 180px);
+}
+#mainMiddle{
+  margin-top: 15%;
 }
 #footer{
   height: 90px;
