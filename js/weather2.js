@@ -36,6 +36,7 @@ function onWeatherEnter() {
 function show(data) {
     return data.weather[0].main + "<br />" + 
     Math.round(data.main.temp) + " ºC" + "<br />" + 
+    data.main.temp_min + " ºC / " + data.main.temp_max +  "ºC <br />" +
     data.name + ", " + data.sys.country;
 }
 
