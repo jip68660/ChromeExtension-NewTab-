@@ -43,11 +43,37 @@
         </div>
         <div id ="mainMiddle" class="columnMiddle">
 
+          <!-- ask name -->
           <div id="nameIn" class="question" style="display: none">
             반가워요, 누구신가요?<input type="text" id="nameInput" class="answer"><br>
           </div><br>
-          <div id="nameOut" style="display: none"></div><br>
 
+          <!-- ask soldier or girlfriend -->
+          <div id="identityIn" class="question" style="display: none">
+            <image src="img/soldier.jpg" id="identitySoldier"></image> OR 
+            <image src="img/gf.jpg" id="identityGf"></image>
+          </div><br>
+
+          <!-- ask type of military -->
+          <div id="branchIn" class="question" style="display: none">
+            <input type="button" id="army" value="육군/의경">
+            <input type="button" id="navy" value="해군">
+            <input type="button" id="airForce" value="공군">
+            <input type="button" id="marine" value="해병대">
+            <input type="button" id="socialService" value="사회복무요원">
+            <input type="button" id="fireDept" value="소방의무">
+          </div><br>
+
+          <!-- ask date of enlistment -->
+          <div id="enlistDateIn" class="question" style="display: none">
+            입대일?<br>
+            <input type="date" id="enlistDateInput"><br>
+          </div><br>
+
+          <!-- display everything -->
+          <div id="displayAll" style="display: none" class="answer"></div><br>
+
+          <!-- clear localStorage -->
           <input type="button" value="clear storage" id="storageResetButton">
 
           <!-- <form action="http://www.google.com/search" method="get">
@@ -63,25 +89,19 @@
       <div id="footer">
         <div id ="footerLeft" class="columnLeft">
           <br>
-          <input type="button" value="getIP" id="ipButton">
-          <div id="ip"></div>
         </div>
         <div id ="footerMiddle" class="columnMiddle">
           <br>
         </div>
         <div id ="footerRight" class="columnRight">
-          <div>
-            <input type="file" id="fileUpload" accept="image/png, image/jpeg">
-            <input type="button" id="fileSubmitButton" value="Set as Background">
-          </div>
         </div>
       </div>
     </div>
     <script type="text/javascript" src="js/search.js"></script>
     <script type="text/javascript" src="js/clock.js"></script>
-    <script type="text/javascript" src="js/ipGet.js"></script>
     <script type="text/javascript" src="js/weather2.js"></script>
-    <script type="text/javascript" src="js/mainDisplay.js"></script>
-    <script type="text/javascript" src="js/fileUpload.js"></script>
+    <script type="text/javascript" src="js/nameDisplay.js"></script>
+    <script type="text/javascript" src="js/questions.js"></script>
+    <!-- questions.js should be at the bottom. i want to have this call methods in other js files declared above -->
   </body>
 </html>
