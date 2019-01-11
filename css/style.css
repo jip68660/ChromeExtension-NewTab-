@@ -62,3 +62,6 @@ body{
   height: 90px;
   /* border: 1px solid white; */
 }
+.widget{
+  visibility: hidden;
+}

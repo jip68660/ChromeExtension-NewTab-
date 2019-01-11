@@ -3,8 +3,6 @@ document.getElementById("searchBar").addEventListener("focus", onSearchFocus);
 document.getElementById("searchBar").addEventListener("blur", onSearchBlur);
 document.getElementById("searchUI").addEventListener("mouseover", searchBarOpen);
 document.getElementById("searchUI").addEventListener("mouseleave", searchBarClose);
-document.getElementById("searchIco").addEventListener("mouseover", searchBarOpen);
-document.getElementById("searchIco").addEventListener("mouseleave", searchIcoClose);
 
 var urlString="";
 
@@ -25,6 +23,7 @@ function searchIcoClose() {
 
 function searchBarOpen() {
 	searchUI.style.width = "20em";
+	searchBar.style.width = "20em";
   searchBar.style.display = "inline";
   searchIcoClose();
 }

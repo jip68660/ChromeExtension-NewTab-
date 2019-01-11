@@ -16,15 +16,17 @@
     <div id="wrapper">
       <div id="header">
         <div id="headerLeft" class="columnLeft">
-          <span id="error"></span>
-          <div id="weatherIn" style="display: none">
-            <input type="text" name="city" id="cityInput" placeholder="Enter City Name">
-            <button id="submitWeather">Search City</button>
+          <div id="weatherUI" class="widget">
+            <span id="error"></span>
+            <div id="weatherIn" style="display: none">
+              <input type="text" name="city" id="cityInput" placeholder="Enter City Name">
+              <button id="submitWeather">Search City</button>
+            </div>
+            <div id="showWeather" style="display: none"></div>
           </div>
-          <div id="showWeather" style="display: none"></div>
         </div>
         <div id="headerMiddle" class="columnMiddle">
-          <div id="searchUI">
+          <div id="searchUI" class="widget">
             <div id="searchIco">
               <img src="img/search-icon.png" id="searchIconImg" style="display: inline">
             </div>
@@ -32,8 +34,10 @@
           </div>
         </div>
         <div id ="headerRight" class="columnRight">
-          <div id="dateDisplay"></div><br>
-          <div id="timeDisplay"></div>
+          <div id="timeUI" class="widget">
+            <div id="dateDisplay"></div><br>
+            <div id="timeDisplay"></div>
+          </div>
         </div>
       </div>
 
@@ -49,19 +53,21 @@
           </div><br>
 
           <!-- ask soldier or girlfriend -->
-          <div id="identityIn" class="question" style="display: none">
+          <!-- <div id="identityIn" class="question" style="display: none">
             <image src="img/soldier.jpg" id="identitySoldier"></image> OR 
             <image src="img/gf.jpg" id="identityGf"></image>
-          </div><br>
+          </div><br> -->
 
           <!-- ask type of military -->
           <div id="branchIn" class="question" style="display: none">
-            <input type="button" id="army" value="육군/의경">
+            소속을 선택해주세요.<br>
+            <input type="text" id="branchTest" class="answer">
+            <!-- <input type="button" id="army" value="육군/의경">
             <input type="button" id="navy" value="해군">
             <input type="button" id="airForce" value="공군">
             <input type="button" id="marine" value="해병대">
             <input type="button" id="socialService" value="사회복무요원">
-            <input type="button" id="fireDept" value="소방의무">
+            <input type="button" id="fireDept" value="소방의무"> -->
           </div><br>
 
           <!-- ask date of enlistment -->
@@ -100,7 +106,7 @@
     <script type="text/javascript" src="js/search.js"></script>
     <script type="text/javascript" src="js/clock.js"></script>
     <script type="text/javascript" src="js/weather2.js"></script>
-    <script type="text/javascript" src="js/nameDisplay.js"></script>
+    <script type="text/javascript" src="js/display.js"></script>
     <script type="text/javascript" src="js/questions.js"></script>
     <!-- questions.js should be at the bottom. i want to have this call methods in other js files declared above -->
   </body>

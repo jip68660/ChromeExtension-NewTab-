@@ -14,13 +14,30 @@ function nameCheck() {
 function onNameEnter() {
     if(event.which==13 || event.keycode==13) {
         localStorage.setItem('name', document.getElementById('nameInput').value);
-        hideNameQ();
+        document.getElementById("nameIn").style.display = "none";
+        branchCheck();
     }
 }
 
-function hideNameQ() {
-    document.getElementById("nameIn").style.display = "none";
+function branchCheck() {
+    document.getElementById("branchIn").style.display = "inline";
+    document.getElementById("branchTest").addEventListener("keyup", onBranchEnter);
 }
+
+function onBranchEnter() {
+    if(event.which==13 || event.keycode==13) {
+        localStorage.setItem('branch', document.getElementById('branchTest').value);
+        document.getElementById("branchIn").style.display = "none";
+        displayWidgets();
+    }
+}
+
+function onBranchClick() {
+    localStorage.setItem('branch', document.getElementById('army').value);
+}
+
+
+
 
 // function displayName() {
 //     $("#nameOut").html(localStorage.getItem('name'));
