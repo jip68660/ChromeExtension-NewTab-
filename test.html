@@ -49,26 +49,34 @@
 
           <!-- ask name -->
           <div id="nameIn" class="question" style="display: none">
-            반가워요, 누구신가요?<input type="text" id="nameInput" class="answer"><br>
-          </div><br>
+            반가워요, 누구신가요?<input type="text" id="nameInput" class="answer" autofocus><br>
+          </div>
 
           <!-- ask soldier or girlfriend -->
+          <!-- TODO
+            1. get rid of the checkboxes
+            2. replace text with images
+          -->
           <div id="identityIn" class="question" style="display: none">
-            신분을 선택해주세요.<br>
-            <input type="text" id="identityTest" autofocus>
+            <div id="identityInput">
+              <label><input type="radio" name="identityRadio" value="soldier" checked>군화</label>
+              <label><input type="radio" name="identityRadio" value="girlfriend">곰신</label><br>
+              <button id="identitySubmit">확인</button>
+            </div>
             <!-- <image src="img/soldier.jpg" id="identitySoldier"></image> OR 
             <image src="img/gf.jpg" id="identityGf"></image> -->
-          </div><br>
+          </div>
 
           <!-- ask type of military -->
           <!-- TODO
             1. get rid of the checkboxes
             2. replace text with images? do mouseover effects like RAWS?
-            3. think of the layout once images are set -->
+            3. think of the layout once images are set
+          -->
           <div id="branchIn" class="question" style="display: none">
             소속을 선택해주세요.<br>
             <div id="branchInput">
-              <label><input type="radio" name="branchRadio" value="army">육군/의경</label>
+              <label><input type="radio" name="branchRadio" value="army" checked>육군/의경</label>
               <label><input type="radio" name="branchRadio" value="navy">해군</label>
               <label><input type="radio" name="branchRadio" value="airForce">공군</label>
               <label><input type="radio" name="branchRadio" value="marine">해병대</label>
@@ -76,25 +84,24 @@
               <label><input type="radio" name="branchRadio" value="fireDept">소방의무</label><br>
               <button id="branchSubmit">확인</button>
             </div>
-          </div><br>
+          </div>
 
           <!-- ask date of enlistment -->
           <div id="enlistDateIn" class="question" style="display: none">
             입대일?<br>
             <input type="date" id="enlistDateInput"><br>
             <input type="button" id="enlistDateButton" value="submit">
-          </div><br>
+          </div>
 
-          <!-- display everything -->
-          <div id="displayAll" style="display: none" class="answer"></div><br>
+          <!-- display welcome message -->
+          <div id="welcomeMsg" style="display: none" class="answer"></div>
+
+          <!-- display main info-->
+          <div id="displayAll" style="display: none" class="answer"></div>
 
           <!-- clear localStorage -->
-          <input type="button" value="clear storage" id="storageResetButton">
+          <br><input type="button" value="clear storage" id="storageResetButton">
 
-          <!-- <form action="http://www.google.com/search" method="get">
-              <input type="text" name="q" placeholder="Search in Google">
-              <input type="submit" value="Search">
-          </form> -->
         </div>
         <div id ="mainRight" class="columnRight">
           <br>
@@ -114,9 +121,9 @@
     </div>
     <script type="text/javascript" src="js/search.js"></script>
     <script type="text/javascript" src="js/clock.js"></script>
-    <script type="text/javascript" src="js/weather2.js"></script>
+    <script type="text/javascript" src="js/weather.js"></script>
     <script type="text/javascript" src="js/init.js"></script>
     <script type="text/javascript" src="js/mainDisplay.js"></script>
-    <!-- questions.js should be at the bottom. i want to have this call methods in other js files declared above -->
+    <!-- mainDisplay.js should be at the bottom. i want to have this call methods in other js files declared above -->
   </body>
 </html>

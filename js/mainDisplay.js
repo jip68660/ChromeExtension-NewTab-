@@ -5,6 +5,7 @@ $(storageResetButton).click(resetStorage);
 
 function resetStorage() {
     localStorage.clear();
+    location.reload();
 }
 
 function checkStorage() {
@@ -16,18 +17,26 @@ function checkStorage() {
     }
 }
 
-function displayWidgets() {
+function initDoneDisplay() {
     // this should not be displayed if any of the requried fields are empty
-    if (localStorage.getItem('name') != null) {
-        var displayStr = localStorage.getItem('name') + "ë! íìí©ëë¤.";
-        $("#displayAll").html(displayStr);
-        $("#displayAll").css("display", "inline");
-
-        var widgets = document.getElementsByClassName("widget");
-        for(var i=0; i<widgets.length; i++) {
-            widgets.item(i).style.visibility = "visible";
-        }
+    if (localStorage.name != "" && localStorage.identity != "" && localStorage.branch != "" && localStorage.enlistDate != "") {
+        var welcomeStr = "환영합니다";
+        $("#welcomeMsg").html(welcomeStr);
+        $("#welcomeMsg").css("display", "inline");
+        $("#welcomeMsg").fadeOut(3000, displayWidgets());
     } else {
-        alert("ìë ¥íì§ ìì ì ë³´ê° ììµëë¤.");
+        alert("모든 정보를 입력하지 않았습니다.");
     }
+}
+
+function displayWidgets() {
+    var widgets = document.getElementsByClassName("widget");
+    for(var i = 0; i < widgets.length; i++) {
+        widgets.item(i).style.visibility = "visible";
+    }
+    //display everything else in the main display section
+
+    var displayStr = localStorage.name;
+    $("#displayAll").html(displayStr);
+    $("#displayAll").fadeIn(3000);
 }

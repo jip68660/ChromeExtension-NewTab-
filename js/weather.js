@@ -1,7 +1,18 @@
-$(document).ready(function() {
+$(document).ready(storageCheckWeather);
 
-    $('#submitWeather').click(function() {
-        var city = $("#city").val();
+function storageCheckWeather() {
+    console.log('running');
+
+    if (localStorage.getItem('cityvalue') == null) {
+        document.getElementById("weatherIn").style.display = "inline";
+        document.getElementById("submitWeather").addEventListener("click", onWeatherEnter);
+    } else {
+        displayWeather();
+    }
+}
+
+function onWeatherEnter() {
+    var city = $("#cityInput").val();
 
         if (city!='') {
             $.ajax({
@@ -10,22 +21,27 @@ $(document).ready(function() {
                 type: "GET",
                 dataType: "jsonp",
                 success: function(data) {
-                    document.getElementById("city").style.display = "none";
-                    document.getElementById("submitWeather").style.display = "none";
+                    document.getElementById("weatherIn").style.display = "none";
 
-                    var widget= show(data);
-                    $("#showWeather").html(widget);
+                    var widget= show(data);                    
+                    localStorage.setItem('cityvalue', widget);
+                    displayWeather();
                 }
             });
         } else {
             alert("도시이름을 입력해주세요!");
         }
-    });
-});
+}
 
 function show(data) {
-    return "현재날씨: " + data.weather[0].main + "<br />" + 
-    "날씨설명: " + data.weather[0].description + "<br />" +
-    "현재온도: " + Math.round(data.main.temp) + " ºC" + "<br />" + 
-    "위치: " + data.name + ", " + data.sys.country;
+    return data.weather[0].main + "<br />" + 
+    Math.round(data.main.temp) + " ºC" + "<br />" + 
+    data.main.temp_min + " ºC / " + data.main.temp_max +  "ºC <br />" +
+    data.name + ", " + data.sys.country;
+}
+
+function displayWeather() {
+    $("#showWeather").html(localStorage.getItem('cityvalue'));
+    document.getElementById("weatherIn").style.display = "none";
+    document.getElementById("showWeather").style.display = "inline";
 }
