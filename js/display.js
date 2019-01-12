@@ -55,8 +55,7 @@ function enlistDateCheck() {
 }
 
 function onEnlistDateClick() {
-    localStorage.setItem("enlistDate", document.getElementById("enlistDateIn").value.toDateString());
-    //above item value needs to be formatted into string. lookup what date type returns
+    localStorage.setItem("enlistDate", document.getElementById("enlistDateInput").value);
     document.getElementById("enlistDateIn").style.display = "none";
     displayWidgets();
 }

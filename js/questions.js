@@ -21,7 +21,7 @@ function displayWidgets() {
     if (localStorage.getItem('name') != null) {
         var displayStr = localStorage.getItem('name') + "님! 환영합니다.";
         $("#displayAll").html(displayStr);
-        document.getElementById("displayAll").style.display = "inline";
+        $("#displayAll").css("display", "inline");
 
         var widgets = document.getElementsByClassName("widget");
         for(var i=0; i<widgets.length; i++) {
