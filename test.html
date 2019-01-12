@@ -61,15 +61,21 @@
           </div><br>
 
           <!-- ask type of military -->
+          <!-- TODO
+            1. get rid of the checkboxes
+            2. replace text with images? do mouseover effects like RAWS?
+            3. think of the layout once images are set -->
           <div id="branchIn" class="question" style="display: none">
             소속을 선택해주세요.<br>
-            <input type="text" id="branchTest" autofocus>
-            <!-- <input type="button" id="army" value="육군/의경">
-            <input type="button" id="navy" value="해군">
-            <input type="button" id="airForce" value="공군">
-            <input type="button" id="marine" value="해병대">
-            <input type="button" id="socialService" value="사회복무요원">
-            <input type="button" id="fireDept" value="소방의무"> -->
+            <div id="branchInput">
+              <label><input type="radio" name="branchRadio" value="army">육군/의경</label>
+              <label><input type="radio" name="branchRadio" value="navy">해군</label>
+              <label><input type="radio" name="branchRadio" value="airForce">공군</label>
+              <label><input type="radio" name="branchRadio" value="marine">해병대</label>
+              <label><input type="radio" name="branchRadio" value="socialService">사회복무요원</label>
+              <label><input type="radio" name="branchRadio" value="fireDept">소방의무</label><br>
+              <button id="branchSubmit">확인</button>
+            </div>
           </div><br>
 
           <!-- ask date of enlistment -->
@@ -109,8 +115,8 @@
     <script type="text/javascript" src="js/search.js"></script>
     <script type="text/javascript" src="js/clock.js"></script>
     <script type="text/javascript" src="js/weather2.js"></script>
-    <script type="text/javascript" src="js/display.js"></script>
-    <script type="text/javascript" src="js/questions.js"></script>
+    <script type="text/javascript" src="js/init.js"></script>
+    <script type="text/javascript" src="js/mainDisplay.js"></script>
     <!-- questions.js should be at the bottom. i want to have this call methods in other js files declared above -->
   </body>
 </html>

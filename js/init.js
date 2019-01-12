@@ -1,13 +1,5 @@
-// $(document).ready(nameCheck);
-
 /* NAME */
 function nameCheck() {
-    // if (localStorage.getItem("name") == null) {
-    //     document.getElementById("nameIn").style.display = "inline";
-    //     document.getElementById("nameInput").addEventListener("keyup", onNameEnter);
-    // } else {
-    //     displayName();
-    // }
     document.getElementById("nameIn").style.display = "inline";
     document.getElementById("nameInput").addEventListener("keyup", onNameEnter);
 }
@@ -37,15 +29,21 @@ function onIdentityEnter() {
 /* BRANCH */
 function branchCheck() {
     document.getElementById("branchIn").style.display = "inline";
-    document.getElementById("branchTest").addEventListener("keyup", onBranchEnter);
+    document.getElementById("branchSubmit").addEventListener("click", onBranchSelect);
 }
 
-function onBranchEnter() {
-    if(event.which==13 || event.keycode==13) {
-        localStorage.setItem("branch", document.getElementById("branchTest").value);
-        document.getElementById("branchIn").style.display = "none";
-        enlistDateCheck();
-    }
+/**
+ * branch select should store the branch type value in the localStorage upon clicking an option
+ * 
+ * or 
+ * 
+ * branch select should wait until Submit button to be pressed so the user has the option to
+ * change the branch type -> this seems easier so below is implemented as such
+ */
+function onBranchSelect() {
+    localStorage.setItem("branch", $("input[name=branchRadio]:checked").val());
+    document.getElementById("branchIn").style.display = "none";
+    enlistDateCheck();
 }
 
 /* ENLISTDATE */
@@ -59,11 +57,3 @@ function onEnlistDateClick() {
     document.getElementById("enlistDateIn").style.display = "none";
     displayWidgets();
 }
-
-
-
-// function displayName() {
-//     $("#nameOut").html(localStorage.getItem("name"));
-//     document.getElementById("nameIn").style.display = "none";
-//     document.getElementById("nameOut").style.display = "inline";
-// }
