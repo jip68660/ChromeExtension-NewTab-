@@ -39,4 +39,6 @@ function displayWidgets() {
     var displayStr = localStorage.name;
     $("#displayAll").html(displayStr);
     $("#displayAll").fadeIn(3000);
+
+    calculateEndDate();
 }
