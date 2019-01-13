@@ -3,6 +3,9 @@
 $(document).ready(checkStorage);
 $(storageResetButton).click(resetStorage);
 
+// 정보를 입력받았을 때만 환영합니다 띄우고 3초 후 보여주고, 새로고침 or 새 탭 시에는 바로 띄우게 하기 위한 변수
+var timeoutCheck;
+
 function resetStorage() {
     localStorage.clear();
     location.reload();
@@ -10,6 +13,8 @@ function resetStorage() {
 
 function checkStorage() {
     if (localStorage.length == 0) {
+        // 정보 입력을 받았을 때만 timeoutCheck를 1로 바꿔줘서 3초 딜레이
+        timeoutCheck = 1;
         // storage is empty, start question queue with the name question
         nameCheck();
     } else {
@@ -30,16 +35,24 @@ function initDoneDisplay() {
 }
 
 function displayWidgets() {
-    var widgets = document.getElementsByClassName("widget");
-    for(var i = 0; i < widgets.length; i++) {
-        widgets.item(i).style.visibility = "visible";
-    }
     //display everything else in the main display section
 
-    var displayStr = localStorage.name;
-    $("#displayAll").html(displayStr);
-    $("#displayAll").fadeIn(3000);
+    if(timeoutCheck==1) {
+        console.log(timeoutCheck);
+        var timeoutVar = setTimeout(displayAllFunc,3000);
+    }
+    else {
+        displayAllFunc();
+    }
 
     var endDateStr = calculateEndDate();
     console.log("this" + endDateStr);
+}
+
+function displayAllFunc() {
+    var displayStr = localStorage.name;
+
+    $("#displayAll").html(displayStr);
+    $("#displayAll").css("display","inline");
+    $(".widget").css("visibility","visible");
 }
