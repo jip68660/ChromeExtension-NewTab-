@@ -40,5 +40,6 @@ function displayWidgets() {
     $("#displayAll").html(displayStr);
     $("#displayAll").fadeIn(3000);
 
-    calculateEndDate();
+    var endDateStr = calculateEndDate();
+    console.log("this" + endDateStr);
 }

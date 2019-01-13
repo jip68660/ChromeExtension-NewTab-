@@ -1,8 +1,6 @@
 $(document).ready(storageCheckWeather);
 
 function storageCheckWeather() {
-    console.log('running');
-
     if (localStorage.getItem('cityvalue') == null) {
         document.getElementById("weatherIn").style.display = "inline";
         document.getElementById("submitWeather").addEventListener("click", onWeatherEnter);
