@@ -1,0 +1,75 @@
+#wrapper{
+    display: grid;
+    grid-template-rows: 1fr 4fr 1fr;
+    grid-template-columns: 250px auto 250px;
+    grid-template-areas:
+        "headerL headerM headerR"
+        "mainL   mainM   mainR"
+        "footerL footerM footerR";
+    grid-gap: .75em;
+    width: 100%;
+    height: 100%;
+}
+
+@media (max-width: 1000px){
+    #wrapper{
+        grid-template-rows:1fr 1fr 4fr 1fr;
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas: 
+        "headerM headerM"
+        "headerL headerR"
+        "mainM   mainM"
+        "footerM footerM";
+    }
+    mainLeft{
+        display: none;
+    }
+    mainRight{
+        display: none;
+    }
+    footerLeft{
+        display: none;
+    }
+    footerRight{
+        display: none;
+    }
+}
+
+headerLeft{
+    grid-area: headerL;
+    background-color: rgb(187, 247, 187);
+}
+headerMiddle{
+    grid-area: headerM;
+    background-color: rgb(11, 156, 11);
+}
+headerRight{
+    grid-area: headerR;
+    background-color: rgb(120, 148, 120);
+}
+
+mainLeft{
+    grid-area: mainL;
+    background-color: rgb(186, 205, 240);
+}
+mainMiddle{
+    grid-area: mainM;
+    background-color: rgb(11, 47, 114);
+}
+mainRight{
+    grid-area: mainR;
+    background-color: rgb(81, 95, 121);
+}
+
+footerLeft{
+    grid-area: footerL;
+    background-color: rgb(227, 247, 174);
+}
+footerMiddle{
+    grid-area: footerM;
+    background-color: rgb(168, 223, 17);
+}
+footerRight{
+    grid-area: footerR;
+    background-color: rgb(148, 165, 100);
+}
