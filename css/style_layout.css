@@ -1,0 +1,223 @@
+@import url(http://fonts.googleapis.com/earlyaccess/nanumpenscript.css);
+@import url('https://fonts.googleapis.com/css?family=Black+Han+Sans');
+@import url('https://fonts.googleapis.com/css?family=Jua');
+@import url('https://fonts.googleapis.com/css?family=Gamja+Flower');
+@import url('https://fonts.googleapis.com/css?family=Major+Mono+Display');
+
+#wrapper{
+    display: grid;
+    grid-template-rows: 90px 1fr 90px;
+    grid-template-columns: 180px 1fr 180px;
+    grid-template-areas:
+        "headerL headerM headerR"
+        "mainM   mainM   mainM"
+        "footerL footerM footerR";
+    width: 100%;
+    height: 100%;
+    position: relative;
+    /* z-index: 2; */
+}
+
+/* ! ê·¸ë¦¬ë ë ì´ìì ìê°í´ë´ì¼íë ê²ë¤!
+ * ì§ê¸ ì¸ì§ë°© ëª¨ëí° í´ìëì ë§íì ì¤ì ì´ ëì´ìëë°, ìì ëª¨ëí°(ë¸í¸ë¶) ê°ìê±¸ë¡ ë´¤ìë ì´ë»ê² ë¨ëì§ ë´ë´ì¼í¨.
+ * ê·¸ëì, ì´ê±° ëê°ì ë³¼ë, ì¡°ê·¸ë§í í´ìëì ë§ì³ì ì§ëê² ì¢ì§ììê¹? 
+ * ìµì ì°½ì¬ì´ì¦ ì í´ì ë ëª»ë´ë ¤ê°ê². (ìì ìë¬: ë¤ë¥¸íì´ì§ìì ë ì¤ì¼ì ìëë° ê·¸ìíë¡ ì°ë¦¬íì´ì¦ ë¤ì´ì¤ë©´?)
+ >>>>>>> ìµì ì°½ ì¬ì´ì¦ width / height ëë¤ íë©´ ì ì²´ì ì ë°ì¼ë¡ ê°ìë¤
+
+ * momentum (ìì)
+    - 3ê°ì§ ë ì´ìì ê°ë¥ì±ì¼ë¡ ì¤ì í´ëì;
+        1. ì ì²´íë©´
+        2. ììª½ ë°ì© ê°ëê±° (ì´ë ë°ííë©´ ì¡°ê¸ ì¤ë¤ê° ì¼ìª½ ê·¸ë¥ ë ë¦¼), + ì¢ì°ë ìµìì°½ ì¤ì í´ë¨ëë°, ë¤ë¥¸íì´ì§ìì ì¤ìë¤ê° ë¤ì ë¤ì´ê°ë©´ ì§¤ë¦¼. 
+           ë¤ì íì´ì§ ëìê°ì í¬ê¸° ì¡°ì í ë ¤ê³  íë©´ ìµìì°½ì¼ë¡ ë³µê·.
+        4. 1/4 ì ë í¬ê¸° (ì´ë ìê° ë ë¦¬ê³ , main focus listê° ë©ì¸ì¼ë¡ ë°ë)
+        5. ììëë¡ë§ ì¤ì¼ì, í°í¸ì¬ì´ì¦ ì¤ì´ë¬ ( ë° ì´ìì¼ë¡ ì¤ì´ë¤ëë§ë¤ ë§¤ ëªpxì© ê³ì ì¤ì)
+
+ * pixlr (ìì)
+    - ììëë ë°ë¡ ì¤ì  X
+    - ì¢ì°ë¡ ì¤ìì, searchBar width íë² ë³ê²½.
+    - ë¤ë¥¸ navë tab (ìì ë¨ëê±°) ì¬ë¼ì§. 
+
+ * ê³µíµ ë³ê²½ì¬í­
+    - ë°°ê²½íë©´ì´ zoom in, zoom outëëê²ì²ë¼ ì¤ì´ë¤ìë¤ê° ëì´ëê³ , ê·¸ë¦¬ê³  ì´ëì ë ì¬ì´ì¦ê° ë¬ìë ììª½ ì¬ì´ëë, ììë ì¬ì´ëë¥¼ ìë¼ë. 
+     >ì´ê±¸ ììë´ì¼í¨.
+*/  
+
+html{
+    height: 100%;
+    width: 100%;
+}
+body{
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    margin: 0;
+}
+
+headerLeft{
+    grid-area: headerL;
+    text-align: left;
+}
+headerMiddle{
+    grid-area: headerM;
+    display: inline-flex;
+}
+headerRight{
+    grid-area: headerR;
+    text-align: right;
+}
+
+mainLeft{
+    grid-area: mainL;
+}
+mainMiddle{
+    grid-area: mainM;
+}
+mainRight{
+    grid-area: mainR;
+}
+
+footerLeft{
+    grid-area: footerL;
+    display: none;
+}
+footerMiddle{
+    grid-area: footerM;
+}
+footerRight{
+    grid-area: footerR;
+}
+.nanumPenScript{
+    font-family: 'Nanum Pen Script';
+}
+.blackHanSans{
+    font-family: 'Black Han Sans';
+}
+.jua{
+    font-family: "Jua";
+}
+.gamja{
+    font-family: 'Gamja Flower';
+}
+.majorMono{
+    font-family: "Major Mono Display";
+    font-weight: 700;
+}
+
+#mainContainer{
+    width: 100%;
+}
+
+/* #backImg{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+} */
+  
+.centerAlign{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+.iconButton{
+    color:white;
+    outline: none !important;
+}
+.iconButton:hover {
+    size: 1.3em;
+    cursor: pointer;
+}
+
+.widget{
+    visibility: hidden;
+}
+
+#defaultBG {
+    /* default set to mainback2 */
+    /* background-image: url("/img/mainback2.jpg"); */
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+}
+/* @media (max-width: 1000px){
+    #wrapper{
+        
+    }
+        
+} */
+@media (max-width: 400px){
+    #wrapper{
+        grid-template-rows:1fr 1fr 1fr;
+        grid-template-columns: 1fr;
+        /* >>>>>>>>>>>>>> ìê³ ì¼ìª½ ê³µê° ëë¬´ ëì´ì ë°ê¿... widthì ë° ë´ë ¤ê°ëê¹ì§ë ì´ì ìì´ ë³´ì */
+        grid-template-areas: 
+        "headerL"
+        "headerR"
+        "footerL";          
+        position: relative;
+        /* z-index: 2; */
+        height: 100%;
+    }
+    headerMiddle, mainLeft, mainRight, mainMiddle, footerMiddle, footerRight{
+        display: none;
+    }
+    headerLeft, headerRight {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+    }
+    footerLeft{
+        display: inline-flex !important;
+        justify-content: center;
+        align-items: center;
+    }
+}
+@media (max-height: 400px){
+    #wrapper{
+        grid-template-rows:1fr;
+        grid-template-columns: 1fr 2fr 1fr;
+        /* >>>>>>>>>>>>>> ìê³ ì¼ìª½ ê³µê° ëë¬´ ëì´ì ë°ê¿... widthì ë° ë´ë ¤ê°ëê¹ì§ë ì´ì ìì´ ë³´ì */
+        grid-template-areas: 
+        "headerL footerL headerR";          
+        position: relative;
+        /* z-index: 2; */
+        height: 100%;
+    }
+    headerMiddle, mainLeft, mainRight, mainMiddle, footerMiddle, footerRight{
+        display: none;
+    }
+    headerLeft, headerRight {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+    }
+    footerLeft{
+        display: inline-flex !important;
+        justify-content: center;
+        align-items: center;
+    }
+}
+@media (max-width: 400px) and (max-height: 400px){
+    #wrapper{
+        grid-template-rows:1fr;
+        grid-template-columns: 1fr;
+        /* >>>>>>>>>>>>>> ìê³ ì¼ìª½ ê³µê° ëë¬´ ëì´ì ë°ê¿... widthì ë° ë´ë ¤ê°ëê¹ì§ë ì´ì ìì´ ë³´ì */
+        grid-template-areas: 
+        "footerL";          
+        position: relative;
+        /* z-index: 2; */
+        height: 100%;
+    }
+    headerLeft, headerMiddle, headerRight, mainLeft, mainRight, mainMiddle, footerMiddle, footerRight{
+        display: none;
+    }
+    footerLeft{
+        display: inline-flex !important;
+        justify-content: center;
+        align-items: center;
+    }
+}

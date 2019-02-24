@@ -1,0 +1,18 @@
+#betweenPic {
+    background-image:url("/img/heartFrame.png");
+    background-size: 100% 100%;
+    justify-content: center;
+    align-items: center;
+
+}
+#withGF {
+    width: 70%;
+    height: 60%;
+}
+
+#waitDaysBox, #leftDaysBox {
+    font-size: 3vw;
+}
+#dateBox, #infoBox :hover {
+    cursor: pointer;
+}

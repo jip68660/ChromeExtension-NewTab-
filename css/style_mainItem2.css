@@ -1,0 +1,29 @@
+#textTop{
+    font-size: 5vw;
+}
+/* #remainContent {
+    width: 100vw;
+} */
+#remainContentImg{
+    height: 40vh;
+}
+#textBottom{
+    font-size: 4vw;
+}
+#leftCount{
+    font-size: 8vw;
+}
+#nextRandom {
+    position: fixed;
+    right: 100px;
+    bottom: 50px;
+}
+#nextRandom:hover{
+    cursor: pointer;
+}
+.middle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}

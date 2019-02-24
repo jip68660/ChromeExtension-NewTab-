@@ -1,0 +1,189 @@
+/* Init */
+.answer{
+    font-size: 45px;
+    color: white;
+}
+.question{
+    font-size: 60px;
+    color: white;
+}
+.floatLeft{
+    float: left;
+}
+.branch, .identity {
+    border-radius: 10%;
+}
+.branch:hover, .identity:hover{
+    cursor: pointer;
+}
+.enlistInput{
+    background: transparent;
+    outline: none;
+    border: none;
+}
+.enlistInput:not(:disabled){
+    color: white;
+}
+.enlistInput:disabled {
+    color: rgba(77, 77, 77, 0.918);
+}
+.selected {
+    outline: 2px solid #007bff;
+    outline-offset: -2px;
+}
+/* load */
+#mainLoad {
+    color: white;
+    width: 100%;
+    text-align: center;
+}
+#loadMsg {
+    width: 100%;
+    font-size: 4rem;
+}
+.lds-ellipsis {
+    display: inline-block;
+    position: relative;
+    width: 64px;
+    height: 64px;
+}
+.lds-ellipsis div {
+    position: absolute;
+    top: 27px;
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: #fff;
+    animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+.lds-ellipsis div:nth-child(1) {
+    left: 6px;
+    animation: lds-ellipsis1 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(2) {
+    left: 6px;
+    animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(3) {
+    left: 26px;
+    animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(4) {
+    left: 45px;
+    animation: lds-ellipsis3 0.6s infinite;
+}
+@keyframes lds-ellipsis1 {
+    0% {
+      transform: scale(0);
+    }
+    100% {
+      transform: scale(1);
+    }
+}
+@keyframes lds-ellipsis3 {
+    0% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(0);
+    }
+}
+@keyframes lds-ellipsis2 {
+    0% {
+      transform: translate(0, 0);
+    }
+    100% {
+      transform: translate(19px, 0);
+    }
+}
+
+#mainItem1 {
+    position: relative !important;
+    margin: auto !important;
+    text-align: center !important;
+}
+/* #nameIn{
+    margin-top: 25%;
+} */
+#nameInput, #loverNameInput{
+    padding: 10px;
+    text-align: center;
+    background: transparent;   
+    outline: none;
+    border: 0px;
+    border-bottom: 1px solid white;
+}
+#nameOut {
+    margin-top: 50%;
+    text-align: center;
+    font-size: 40px;
+    background: transparent;
+    color: white;
+}
+
+#newsLink {
+    font-family: sans-serif;
+    color: white;
+    font-size: 20px;
+}
+
+#branchInput {
+    font-family: sans-serif;
+    color: white;
+    font-size: 17px;
+}
+
+#dateSlider {
+    margin: 0 30px 0 30px;
+}
+
+/* init img-selector */
+.img-selector input{
+    margin:0;padding:0;
+    -webkit-appearance:none;
+        -moz-appearance:none;
+            appearance:none;
+}
+.army_init{background-image: url("https://drive.google.com/uc?export=view&id=1h94u4UUrRJ0paa_cE__RtUnfJALcoHk4");}
+.navy_init{background-image: url("https://drive.google.com/uc?export=view&id=1ghkHyrTLgLfALjCdaMPO8JwlSX6lw5Pn");}
+.airForce_init{background-image: url("https://drive.google.com/uc?export=view&id=1oXkT8LQ1MTqm81IidTUs0x9EV2CwNgaB");}
+.marine_init{background-image: url("https://drive.google.com/uc?export=view&id=1j-goG46fgUBL_6jBdHrkCznhBsXmClXe");}
+.socialService_init{background-image: url("https://drive.google.com/uc?export=view&id=1h4sipevcN-Ku6TWOWdQ0EPw-G294CZeq");}
+.police_init{background-image: url("https://drive.google.com/uc?export=view&id=1Ihp9x9uLQ2tZzCVm9-sqiB27HhYXxCr3");}
+
+.img-selector input:active +.img-init{opacity: .9;}
+.img-selector input:checked +.img-init{
+    -webkit-filter: none;
+        -moz-filter: none;
+            filter: none;
+}
+.img-init{
+    cursor:pointer;
+    background-size:contain;
+    background-repeat:no-repeat;
+    display:inline-block;
+    width:100px;
+    height:70px;
+    -webkit-transition: all 100ms ease-in;
+        -moz-transition: all 100ms ease-in;
+            transition: all 100ms ease-in;
+    -webkit-filter: brightness(1.8) grayscale(1) opacity(.7);
+        -moz-filter: brightness(1.8) grayscale(1) opacity(.7);
+            filter: brightness(1.8) grayscale(1) opacity(.7);
+}
+.img-init:hover{
+    -webkit-filter: brightness(1.2) grayscale(.5) opacity(.9);
+        -moz-filter: brightness(1.2) grayscale(.5) opacity(.9);
+            filter: brightness(1.2) grayscale(.5) opacity(.9);
+}
+
+.loveSetting:disabled {
+    cursor: not-allowed;
+    background-color:rgb(221, 220, 220) ;
+    color: rgb(84, 84, 84);
+}
+
+.loveSetting:not(:disabled) {
+    background-color: white;
+    color: black;
+}

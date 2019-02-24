@@ -1,0 +1,38 @@
+#progress {
+    margin: auto;
+    width: 80%;
+    border: 2px solid white;
+}
+#progressBar {
+    width: 0%;
+    border-radius: .25rem;
+}
+#topBox {
+    font-size: 5vw;
+}
+#leftBox {
+    font-size: 3vw;
+    margin: auto;
+}
+#rightBox {
+    font-size: 3vw;
+    margin: auto;
+}
+#rightBox ul {
+    margin: auto;
+}
+#toRankSettingsButton {
+    width: 15vw;
+}
+#profPicUser {
+    width: 15vw;
+}
+#percentageDiv{
+    font-size: 4vw;
+}
+#progress {
+    height: 5vh;
+}
+.rankSettings {
+    cursor: pointer;
+}
