@@ -12,11 +12,11 @@ function calculateEndDate() {
     var enterDateObj = new Date(enlistDateStr.slice(0,4), enlistDateStr.slice(5,7) - 1, enlistDateStr.slice(8));
 
     /**
-     * í¹ìì¼ì´ì¤
-     * ì¡êµ°(18) - 17/08/01, 19/01/01
-     * í´êµ°(20) - 17/06/01, 18/11/01
-     * ì¬íë³µë¬´(21) - x
-     * ê³µêµ°(22) - x (60ì¼ë§ ë¨ì¶)
+     * 특수케이스
+     * 육군(18) - 17/08/01, 19/01/01
+     * 해군(20) - 17/06/01, 18/11/01
+     * 사회복무(21) - x
+     * 공군(22) - x (60일만 단축)
      */
 
     //do the math
@@ -32,9 +32,9 @@ function calculateEndDate() {
     } else {
         endDateObj = new Date(suppposedEndYear, supposedEndMonth, suppposedEndDate);
     }
-    var realEndDate = new Date(endDateObj);//ë¨ì¶ ì  ê¸°ì¡´ ì ì­ì¼
+    var realEndDate = new Date(endDateObj);//단축 전 기존 전역일
 
-    //ìëì¼ ê¸°ì¤ì¼ë¡ ì ì­ì¼ ê³ì°, ìì¸ì¼ì´ì¤ ì½ì
+    //입대일 기준으로 전역일 계산, 예외케이스 삽입
     if (branchVal == "army" || branchVal == "marine" || branchVal == "police") {
         standardDate = new Date(2017, 0, 3);
         exceptionDate1 = new Date(2017, 7, 1);
@@ -53,14 +53,14 @@ function calculateEndDate() {
     }
 
     if (daysReduced > 0) {
-        //ë³µë¬´ë¨ì¶ ê³ì°
+        //복무단축 계산
         endDateObj.setDate(endDateObj.getDate() - daysReduced);
 
-        //maxReducedêµ¬íëê±° ê¸°ì¡´ ì ì­ì¼ êµ¬íëê±°ì²ë¼ ë°ê¿
+        //maxReduced구하는거 기존 전역일 구하는거처럼 바꿈
         var suppposedEndDateM = enterDateObj.getDate() - 1;
         var supposedEndMonthM = (enterDateObj.getMonth() + (12 - (24 - (dutyLength - 3)))) % 12;
         var suppposedEndYearM = enterDateObj.getFullYear() + Math.floor((enterDateObj.getMonth() + dutyLength - 3) / 12);
-        if (branchVal == "airForce") {//ê³µêµ°ë§ 2ê°ì ë¨ì¶
+        if (branchVal == "airForce") {//공군만 2개월 단축
             supposedEndMonthM = (enterDateObj.getMonth() + (12 - (24 - (dutyLength - 2)))) % 12;
             suppposedEndYearM = enterDateObj.getFullYear() + Math.floor((enterDateObj.getMonth() + dutyLength - 2) / 12);
         }
@@ -71,7 +71,7 @@ function calculateEndDate() {
             maxReduced = new Date(suppposedEndYearM, supposedEndMonthM, suppposedEndDateM);
         }
 
-        // ìµê³  ë¨ì¶ì¼ë³´ë¤ ë§ì´ ì¤ì ìì
+        // 최고 단축일보다 많이 줄수 없음
         if (endDateObj - maxReduced < 0) {
             localStorage.setItem("wholeDays",(maxReduced - enterDateObj) / (1000 * 60 * 60 * 24));
             localStorage.setItem("todoDays",(maxReduced - todayObj) / (1000 * 60 * 60 * 24));
@@ -83,7 +83,7 @@ function calculateEndDate() {
             return maxReduced;
         }
         localStorage.setItem("reducedDays", daysReduced);
-    } else {//ê¸°ì¡´ì ì­ì¼ 18ë 10ì 2ì¼ ì ì ë³µë¬´ë¨ì¶ ìì
+    } else {//기존전역일 18년 10월 2일 전은 복무단축 없음
         localStorage.setItem("reducedDays", 0);
     }
 

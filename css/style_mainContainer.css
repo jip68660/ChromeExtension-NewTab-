@@ -10,10 +10,11 @@
 .floatLeft{
     float: left;
 }
-.branch, .identity {
+.branch, .identity, .girlfriend {
     border-radius: 10%;
+    background-color: white;
 }
-.branch:hover, .identity:hover{
+.branch:hover, .identity, .girlfriend :hover{
     cursor: pointer;
 }
 .enlistInput{
@@ -28,9 +29,60 @@
     color: rgba(77, 77, 77, 0.918);
 }
 .selected {
-    outline: 2px solid #007bff;
-    outline-offset: -2px;
+    /* outline: 2px solid #007bff;
+    outline-offset: -2px; */
+
+    /* border: 2px solid #007bff; */
+
+    /* border: transparent 1px;
+    border-radius: 10%;
+    margin: 15px;
+    box-shadow: 0px 0px 0px 2px #007bff inset; */
+
+    outline: none;
+    box-shadow: inset 0px 0px 0px 3px #007bff;
 }
+
+/* Init Content Box */
+.initBox {
+    display: inline-flex;
+    width: 100%;
+}
+.initLeft, .initRight {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20%;
+    color: white;
+    font-size: 5vw;
+}
+.initRight :hover {
+    cursor: pointer;
+}
+.initCenter {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+}
+/* #girlfriendInput {
+    display: inline-flex;
+} */
+
+@keyframes fadeOutLeftInit {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+        transform: translateX(-40%);
+    }
+}
+.fadeOutLeftInit {
+    animation-name: fadeOutLeftInit;
+}
+
 /* load */
 #mainLoad {
     color: white;
@@ -131,6 +183,9 @@
     font-family: sans-serif;
     color: white;
     font-size: 17px;
+}
+.branch {
+    margin: 5px;
 }
 
 #dateSlider {

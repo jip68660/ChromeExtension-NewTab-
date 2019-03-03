@@ -12,56 +12,89 @@
         <link rel="stylesheet" href="css/style_mainContainer.css">
         <link rel="stylesheet" href="css/style_mainItem3.css">
 
+        <!-- <link rel="stylesheet" href="css/style_footerItem.css">     -->
+
         <link rel="manifest" href="manifest.json">
 
     </head>
 
     <body style="background-color: rgb(255, 255, 255, 0)" class="gamja">
-        
-        <div id = "instruction" class= "answer gamja" style="color: black; display: none">ì¤ì ìì 'ì°ë¦¬ì¬ì´'ì ì ë³´ë¥¼ ìë ¥í´ì£¼ìê¸° ë°ëëë¤</div>
 
-        <div id="pageContent" style="display: flex; flex-direction: column; width: 100%; height: 100%">
-            <div id="topBox" style="display: inline-flex; width: 100%; height: 60%;">
-                <div id="betweenPic" style="display: inline-flex; width: 50%; height: 100%">
-                    <img id ="withGF" src="/img/withGF.png">
-                </div>
-                <div id="relationshipInfo" style="display: flex; flex-direction: column; width: 50%; height: 100%">
-                    <div style="height: 10%"></div>
-                    <div id="nameBox" style="display: inline-flex; justify-content: center; align-items: center; width: 100%; height: 30%">
-                        <div id="userName" style="font-size: 5vw"></div>
-                        <image src="/img/heart.png" style="height:50%">
-                        <div id="loverName" style="font-size: 5vw"></div>
+        <div id = "instruction" class= "answer gamja" style="color: black; display: none">설정에서 '우리사이'의 정보를 입력해주시기 바랍니다</div>
+
+        <div id="pageContent" class="flexColumn">
+            <div id="topBox" class="flexRow">
+                <div id="betweenPic" class="flexColumn">
+                    <div style="width:70%; height:70%">
+                        <img id ="withGF" data-toggle="modal" data-target="#settingsModal" style="cursor: pointer">
+                        <button id="settingButton" data-toggle="modal" data-target="#settingsModal" style="margin:0;">
+                            이미지 업로드
+                        </button>
+
                     </div>
-                    <div id="dateBox" style="display: flex; justify-content: center; align-items: center; width: 100%; height: 45%; font-size: 16vw;">
+
+                    <!-- <input type="file" id="imgUpload" capture>
+                    <button id="imgSubmit">변경</button> -->
+                </div>
+                <div id="relationshipInfo" class="flexColumn">
+                    <div style="height: 10%"></div>
+                    <div id="nameBox" class="flexRow centerH centerV">
+                        <div id="userName"></div>
+                        <image src="/img/heart.png" style="height:50%">
+                        <div id="loverName"></div>
+                    </div>
+                    <div id="dateBox" class="flexRow centerH centerV">
                         D+<span id="daysInRel"></span>
                     </div>
-                    <div id="infoBox" style="display: flex; justify-content: center; align-items: center; width: 100%; height: 45%;">
-                        <div id="waitDaysBox" style="display: flex; width: 100%; height: 50%; align-items: center">
-                            êµ°ì¸ëê³  ê¸°ë¤ë ¤ì¤ ì¼ì: <span id="waitDaysCount"></span>ì¼
+                    <div id="infoBox" class="flexColumn centerH centerV">
+                        <div id="waitDaysBox" class="flexRow centerV">
+                            군화 & 곰신 신은지&nbsp<span id="waitDaysCount"></span>일
                         </div>
-                        <div id="leftDaysBox" style="display: flex; width: 100%; height: 50%; align-items: center">
-                            êµ°í&ê³°ì  ì»¤í ì²­ì°ê¹ì§: <span id="leftDaysCount"></span>ì¼
+                        <div id="leftDaysBox" class="flexRow centerV">
+                            꽃신까지&nbsp<span id="leftDaysCount"></span>일
                         </div>
                     </div>
                     <div style="height: 15%"></div>
                 </div>
             </div>
-
-            <div id="middleBox" style="display: inline-flex; width: 100%; height: 40%;">
-                <div id="lastAnniversary" style="display: inline-flex; width: 25%; height: 100%">
-
+            <div style="height: 10%"></div>
+            <div id="middleBox" class="flexRow centerH centerV">
+                <div id="lastAnniversary" class="flexRow">
+                    <img id="lastAnniversaryImg">
                 </div>
-                <div id="progressAnniversary" style="display: inline-flex; width: 50%; height: 100%">
-
+                <div id="progressAnniversary" class="flexRow">
+                    <!-- <img id="testImage">  -->
+                    <img id="couplePicDisplay"> 
                 </div>
-                <div id="nextAnniversary" style="display: inline-flex; width: 25%; height: 100%">
-
+                <div id="nextAnniversary" class="flexRow">
+                    <img id="nextAnniversaryImg">
                 </div>
             </div>
+            <div id="anniversaryDate" class="centerH centerV" style="display: none">
+                <img id="anniversaryImg">
+            </div>
 
-            <!-- <div id="bottomBox" style="display: flex; flex-direction: column; width: 100%; height: 20%; background-color: rgb(0, 128, 0, 0.3); font-size: 30px">
-                
-            </div> -->
+            <div id="mainModal"">
+                <div class="modal fade bd-example-modal-sm" id="settingsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="height: 100%">
+                    <div class="modal-dialog modal-dialog-centered" role="document" style="height: 90%">
+                        <div id="modalContent" class="modal-content" style="height: 80%">
+                            <div class="modal-header">
+                                <h3>이미지 설정</h3>
+                            </div>
+    
+                            <div id="modalBody" class="modal-body">
+                                <input type="file" id="imgUpload" capture>
+                                <button id="imgSubmit" class="imgSetting">변경</button>
+                            </div>
+                        
+                            <div class="modal-footer">
+                                <button id="imgCloseSettings" class="imgSetting">취소</button>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+            </div>
+    
         </div>
 
         <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>

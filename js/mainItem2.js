@@ -1,7 +1,7 @@
 var remainContentArr = ["img/knowingBros.jpg", "img/baekRestaurant.jpg", "img/food.jpg", "img/musicBank.jpg"];
 var randomInd = Math.floor(Math.random() * remainContentArr.length);
-var leftCountStr = "ë²";
-//ì ì­ì¼ ì¤ì  9ìë¥¼ ê¸°ì¤ì¼ë¡ ì¡ì
+var leftCountStr = "번";
+//전역일 오전 9시를 기준으로 잡음
 var endDate = new Date(localStorage.endDateYear, localStorage.endDateMonth - 1, localStorage.endDateDate, 9, 0, 0, 0);
 
 // $("#re").mouseenter(function(){
@@ -25,23 +25,23 @@ $(document).ready(function() {
 function getNextWeeklyTime(curr) {
     // GETDAY() -> [SUN, MON, TUE, WED, THURS, FRI, SAT]
     if (randomInd == 0) {
-        //ìëíë, í ìì¼ 21:40
+        //아는형님, 토요일 21:40
         var targetTime = new Date(curr.getTime());
         targetTime.setDate(curr.getDate() + (7 + 6 - curr.getDay()) % 7);
         targetTime.setHours(21, 40, 0, 0);
     } else if (randomInd == 1) {
-        //ê³¨ëª©ìë¹, ììì¼ 23:10
+        //골목식당, 수요일 23:10
         var targetTime = new Date(curr.getTime());
         targetTime.setDate(curr.getDate() + (7 + 3 - curr.getDay()) % 7);
         targetTime.setHours(23, 10, 0, 0);
     } else if (randomInd == 3) {
-        //ë®¤ì§ë±í¬, ê¸ìì¼ 17:40
+        //뮤직뱅크, 금요일 17:40
         var targetTime = new Date(curr.getTime());
         targetTime.setDate(curr.getDate() + (7 + 5 - curr.getDay()) % 7);
         targetTime.setHours(17, 40, 0, 0);
     } 
 
-    //ì´ë¯¸ íê²ìê° ì§ë¬ìê²½ì° ì¼ì£¼ì¼ ë¤ë¡
+    //이미 타겟시간 지났을경우 일주일 뒤로
     if (curr > targetTime) {
         targetTime.setDate(curr.getDate() + 7);
     }
@@ -67,19 +67,19 @@ function currTimeCheck(nextTime, remainCount) {
 }
 
 function leftCountCal(randomIndex) {
-    if (randomIndex == 2) {// íë£¨ì ëªë² íëê±´ ë°ë¡ ê³ì°
-        leftCountStr = "ë¼ë";
-        // ì§¬ë°¥, ìì¹¨(08:00), ì ì¬(12:00), ì ë(17:30)
-        var nextTime1 = getNextDailyTime(new Date(), 8, 0);//ìì¹¨
-        var nextTime2 = getNextDailyTime(new Date(), 12, 0);//ì ì¬
-        var nextTime3 = getNextDailyTime(new Date(), 17, 30);//ì ë
+    if (randomIndex == 2) {// 하루에 몇번 하는건 따로 계산
+        leftCountStr = "끼니";
+        // 짬밥, 아침(08:00), 점심(12:00), 저녁(17:30)
+        var nextTime1 = getNextDailyTime(new Date(), 8, 0);//아침
+        var nextTime2 = getNextDailyTime(new Date(), 12, 0);//점심
+        var nextTime3 = getNextDailyTime(new Date(), 17, 30);//저녁
 
         var remainCount = 0;
         remainCount = currTimeCheck(nextTime1, remainCount);
         remainCount = currTimeCheck(nextTime2, remainCount);
         remainCount = currTimeCheck(nextTime3, remainCount);
-    } else {//ì¼ì£¼ì¼ì íë²
-        leftCountStr = "ë²"
+    } else {//일주일에 한번
+        leftCountStr = "번"
         var nextTime = getNextWeeklyTime(new Date());
         var remainCount = 0;
         while ((nextTime) < endDate) {

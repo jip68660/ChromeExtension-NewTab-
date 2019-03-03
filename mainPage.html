@@ -14,19 +14,19 @@
     <link rel="stylesheet" href="css/animation.css">
     <link rel="stylesheet" href="css/style_settings.css">
     <link rel="manifest" href="manifest.json">
-    <title>ì í­</title>
+    <title>새 탭</title>
 
   </head>
 
   <body id="defaultBG" style="overflow: hidden">
-    <!-- style.css ìì backgroundì¸íë² ì¤ì í´ë¨ëë°, ë°ê¾¸ë©´ íë©´ background ìë¤ì´ê° -->
+    <!-- style.css 에서 background세팅법 설정해놨는데, 바꾸면 화면 background 안들어감 -->
     <!-- <img src="img/mainback2.jpg" name="backImg" id="backImg"> -->
 
     <div id="wrapper">
 
       <!-- HEADER -->
       <headerLeft>
-        <!-- ìê³ -->
+        <!-- 시계 -->
         <div id="timeUI" class="widget">
             <div id="dateDisplay" class="jua"></div><br>
             <span id="amOrPm" class = "jua" style= "color: white; font-size: 10px"></span>
@@ -54,7 +54,7 @@
         <div id="weatherUI" class="widget jua">
 
           <div id="toWeatherSettings" style="display: none">
-            <button id="toWeatherSettingsButton" class="btn btn-primary">ì¤ì ìì ë ì¨ íì±í</button>
+            <button id="toWeatherSettingsButton" class="btn btn-primary">설정에서 날씨 활성화</button>
           </div>
 
           <div id="weatherInfoArea" style="display: none">
@@ -79,7 +79,7 @@
               <div id="weatherDesc"></div>
             </div>
             <div id="weatherStatsArea">
-              <div id="currTempArea"><span id="currTemp"></span><span id="currTempUnit"> ÂºC</span></div>
+              <div id="currTempArea"><span id="currTemp"></span><span id="currTempUnit"> ºC</span></div>
               <div id="tempMinMaxArea">
                 <!-- <div id="tempMin"></div>
                 <div id="tempMax"></div> -->
@@ -108,65 +108,123 @@
           </div>
 
           <div id="mainInit" style="width: 100%" class="gamja">
+
             <!-- ask name -->
             <div id="nameIn" class="question" style="display: none">
-              <div id="nameIn1" class="animated zoomIn">ë°ê°ìì!</div>
-              <div id="nameIn2" style="display: none">
-                ì±í¨ì ìë ¤ì£¼ì¸ì<br>
-                <input type="text" id="nameInput" class="answer" autofocus><br>
+              <div class="initBox">
+                <div class="initLeft">
+                </div>
+                <div class="initCenter">
+                  <div id="nameIn1" class="animated zoomIn">반가워요!</div>
+
+                  <div id="nameIn2" style="display: none">
+                    <div id="nameInst" class="question animated zoomIn">성함을 알려주세요<br></div>
+                    <div id="nameInputField" style="visibility: hidden">
+                      <input type="text" id="nameInput" class="answer"><br>
+                    </div>
+                  </div>
+                </div>
+                <div class="initRight">
+                  <i id="nameInRight" class="fa fa-arrow-right 3x animated fadeInLeft" aria-hidden="true" style="display: none"></i>
+                </div>
               </div>
+
             </div>
 
             <!-- ask soldier or girlfriend -->
             <div id="identityIn" style="display: none">
-              <div id="identityInst" class="question animated zoomIn">ë³¸ì¸ì ì±ë³ì ì íí´ì£¼ì¸ì<br></div>
-              <div id="identityInput" style="visibility: hidden" width="100%">
-                <input type="image" class="identity" id="identitySoldierImg" src="/img/soldier.png" value="soldier" width="20%">
-                <input type="image" class="identity" id="identityGirlfriendImg" src="/img/GF.png" value="girlfriend" width="20%"><br>
-                <button id="identitySubmit" class="btn btn-primary">íì¸</button>
+              <div class="initBox">
+                <div class="initLeft">
+                </div>
+                <div class="initCenter">
+                  <div id="identityInst" class="question animated zoomIn">본인의 성별을 선택해주세요<br></div>
+                  <div id="identityInput" style="visibility: hidden" width="100%">
+                    <input type="image" class="identity" id="identitySoldierImg" src="/img/soldier.png" value="soldier" width="20%">
+                    <input type="image" class="identity" id="identityGirlfriendImg" src="/img/GF.png" value="girlfriend" width="20%"><br>
+                  </div>
+                </div>
+                <div class="initRight">
+                  <i id="identityInRight" class="fa fa-arrow-right 3x animated fadeInLeft" aria-hidden="true" style="display: none"></i>
+                </div>
               </div>
             </div>
 
             <!-- ask if one has a girlfriend or not, if user-identity is soldier -->
             <div id="girlfriendIn" style="display: none">
-              <div id="girlfriendInst" class="question animated zoomIn">ì»¤íì´ì ê°ì?<br></div>
-              <div id="girlfriendInput" class="answer" style="visibility: hidden">
-                <label><input type="radio" name="girlfriendRadio" value="yes">ìì´ì(ê·¸ë¦¼)</label>
-                <label><input type="radio" name="girlfriendRadio" value="no">ìì´ì(ê·¸ë¦¼)</label><br>
-                <button id="girlfriendSubmit" class="btn btn-primary">íì¸</button>
+              <div class="initBox">
+                <div class="initLeft">
+                </div>
+                <div class="initCenter">
+                  <div id="girlfriendInst" class="question animated zoomIn">커플이신가요?<br></div>
+                  <div id="girlfriendInput" style="visibility: hidden" width="100%">
+                    <input type="image" class="girlfriend" id="coupleImg" src="/img/withGF.png" value="yes" width="30%">
+                    <input type="image" class="girlfriend" id="singleImg" src="/img/withoutGF.png" value="no" width="30%"><br>
+                  </div>
+                </div>
+                <div class="initRight">
+                  <i id="girlfriendInRight" class="fa fa-arrow-right 3x animated fadeInLeft" aria-hidden="true" style="display: none"></i>
+                </div>
               </div>
             </div>
 
             <!-- ask for the lover's name -->
             <div id="loverNameIn" class="question" style="display: none">
-              <div class= "fitQuestion"></div>ì´ë¦ì ìë ¤ì£¼ì¸ì<br>
-              <input type="text" id="loverNameInput" class="answer" autofocus><br>
+              <div class="initBox">
+                <div class="initLeft">
+                </div>
+                <div class="initCenter">
+                  <div id="loverNameInst" class="question animated zoomIn"><div class= "fitQuestion"></div>이름을 알려주세요<br></div>
+                  <div id="loverNameInputField" style="visibility: hidden">
+                    <input type="text" id="loverNameInput" class="answer"><br>
+                  </div>
+                </div>
+                <div class="initRight">
+                  <i id="loverNameInRight" class="fa fa-arrow-right 3x animated fadeInLeft" aria-hidden="true" style="display: none"></i>
+                </div>
+              </div>
             </div>
 
             <!-- ask for the date the relationship began, if girlfriend exists / if identityIn is girlfriend -->
             <div id="relStartDateIn" style="display: none">
-              <div id="relStartDateInst" class="question animated zoomIn">
-                <div class= "fitQuestion"></div>ì¸ì ë¶í° ì¬ê·ì¨ëì?<br>
-              </div>
-              <div id="relStartDateInput" class="answer" style="visibility: hidden">
-                <input type="date" id="relStartDate"><br>
-                <button id="relStartDateSubmit" class="btn btn-primary">íì¸</button>
+              <div class="initBox">
+                <div class="initLeft">
+                </div>
+                <div class="initCenter">
+                  <div id="relStartDateInst" class="question animated zoomIn">
+                    <div class= "fitQuestion"></div>언제부터 사귀셨나요?<br>
+                  </div>
+                  <div id="relStartDateInput" class="answer" style="visibility: hidden">
+                    <input type="date" id="relStartDate"><br>
+                  </div>
+                </div>
+                <div class="initRight">
+                  <i id="relStartDateInRight" class="fa fa-arrow-right 3x animated fadeInLeft" aria-hidden="true" style="display: none"></i>
+                </div>
               </div>
             </div>
 
             <!-- ask type of military -->
             <div id="branchIn" style="display: none" width="100%">
-              <div id="branchInst" class="question animated zoomIn">
-                <div class= "fitQuestion"></div>ììì ì íí´ì£¼ì¸ì<br>
-              </div>
-              <div id="branchInput" width="100%" style="visibility: hidden">
-                <input type="image" class="branch" id="army" alt="ì¡êµ°" src="https://drive.google.com/uc?export=view&id=1h94u4UUrRJ0paa_cE__RtUnfJALcoHk4">             
-                <input type="image" class="branch" id="navy" alt="í´êµ°" src="https://drive.google.com/uc?export=view&id=1ghkHyrTLgLfALjCdaMPO8JwlSX6lw5Pn">              
-                <input type="image" class="branch" id="airForce" alt="ê³µêµ°" src="https://drive.google.com/uc?export=view&id=1oXkT8LQ1MTqm81IidTUs0x9EV2CwNgaB"><br>
-                <input type="image" class="branch" id="marine" alt="í´ë³ë" src="https://drive.google.com/uc?export=view&id=1j-goG46fgUBL_6jBdHrkCznhBsXmClXe">
-                <input type="image" class="branch" id="socialService" alt="ì¬íë³µë¬´ìì" src="https://drive.google.com/uc?export=view&id=1h4sipevcN-Ku6TWOWdQ0EPw-G294CZeq">
-                <input type="image" class="branch" id="police" alt="ìê²½" src="https://drive.google.com/uc?export=view&id=1Ihp9x9uLQ2tZzCVm9-sqiB27HhYXxCr3"><br>
-                <button id="branchSubmit" class="btn btn-primary">íì¸</button>
+
+              <div class="initBox">
+                <div class="initLeft">
+                </div>
+                <div class="initCenter">
+                  <div id="branchInst" class="question animated zoomIn">
+                    <div class= "fitQuestion"></div>소속을 선택해주세요<br>
+                  </div>
+                  <div id="branchInput" style="visibility: hidden; width:100%">
+                    <input type="image" class="branch" id="army" alt="육군" width="15%" src="https://drive.google.com/uc?export=view&id=1h94u4UUrRJ0paa_cE__RtUnfJALcoHk4">
+                    <input type="image" class="branch" id="navy" alt="해군" width="15%" src="https://drive.google.com/uc?export=view&id=1ghkHyrTLgLfALjCdaMPO8JwlSX6lw5Pn">
+                    <input type="image" class="branch" id="airForce" alt="공군" width="15%" src="https://drive.google.com/uc?export=view&id=1oXkT8LQ1MTqm81IidTUs0x9EV2CwNgaB"><br>
+                    <input type="image" class="branch" id="marine" alt="해병대" width="15%" src="https://drive.google.com/uc?export=view&id=1j-goG46fgUBL_6jBdHrkCznhBsXmClXe">
+                    <input type="image" class="branch" id="socialService" alt="사회복무요원" width="15%" src="https://drive.google.com/uc?export=view&id=1h4sipevcN-Ku6TWOWdQ0EPw-G294CZeq">
+                    <input type="image" class="branch" id="police" alt="의경" width="15%" src="https://drive.google.com/uc?export=view&id=1Ihp9x9uLQ2tZzCVm9-sqiB27HhYXxCr3"><br>
+                  </div>
+                </div>
+                <div class="initRight">
+                  <i id="branchInRight" class="fa fa-arrow-right 3x animated fadeInLeft" aria-hidden="true" style="display: none"></i>
+                </div>
               </div>
 
               <!-- <form>
@@ -184,54 +242,59 @@
                   <input id="police_init" type="radio" name="branchSettings" value="img/mainback5.jpg" />
                   <label class="img-init police_init" for="police_init"></label>
                 </div>
-                <button id="branchSubmit" class="btn btn-primary">íì¸</button>
+                <button id="branchSubmit" class="btn btn-primary">확인</button>
               </form> -->
-
             </div>
 
             <!-- ask date of enlistment -->
             <div id="enlistDateIn" style="display: none; width: 100%; height: 100%">
-              <div id="enlistDateInst" class="question animated zoomIn">
-                <div class= "fitQuestion"></div>ìëì¼ì ì íí´ì£¼ì¸ì<br>
-              </div>
-  
-              <div id="enlistDateInput" style="visibility: hidden; width: 100%; height: 100%">
-                <div id="enlistY" class="floatLeft" style="text-align: center; width: 33%;">
-                  <div id="upPointer1" class="enlistInput">
-                    <button id="upPointerBtn1" style="background-color: transparent; border: none; padding: 0; outline: none" class="enlistInput"><i class="fa fa-chevron-up fa-3x"></i></button>
-                  </div><br>
-                  <input type = "text" class="enlistInput answer" id="enlistYInput" style="text-align: center; width: 20%"><span id = "year" class= "enlistInput answer">ë</span>
-                  <!-- <div id="enlistYInput" class="answer"></div><br> -->             
-                  <div id="downPointer1" class="enlistInput">
-                    <button id="downPointerBtn1" style="background-color: transparent; border: none; padding: 0; outline: none" class="enlistInput"><i class="fa fa-chevron-down fa-3x"></i></button>
-                  </div>
-                </div>
-
-                <div id="enlistM" class="floatLeft" style="text-align: center; width: 33%">
-                  <div id="upPointer2" class="enlistInput">
-                    <button id="upPointerBtn2" style="background-color: transparent; border: none; padding: 0; outline: none" class="enlistInput"><i class="fa fa-chevron-up fa-3x"></i></button>
-                  </div><br>
-                  <input type = "text" class="enlistInput answer" id="enlistMInput" style="text-align: center; width: 10%"><span id = "month" class= "enlistInput answer">ì</span>
-                  <div id="downPointer2" class="enlistInput">
-                    <button id="downPointerBtn2" style="background-color: transparent; border: none; padding: 0; outline: none" class="enlistInput"><i class="fa fa-chevron-down fa-3x"></i></button>
-                  </div>
-                </div>
-
-                <div id="enlistD" class="floatLeft" style="text-align: center; width: 33%">
-                  <div id="upPointer3" class="enlistInput">
-                    <button id="upPointerBtn3" style="background-color: transparent; border: none; padding: 0; outline: none" class="enlistInput"><i class="fa fa-chevron-up fa-3x"></i></button>
-                  </div><br>
-                  <input type = "text" class="enlistInput answer" id="enlistDInput" style="text-align: center; width: 10%"><span id = "day" class= "enlistInput answer">ì¼</span>
-                  <div id="downPointer3" class="enlistInput">
-                    <button id="downPointerBtn3" style="background-color: transparent; border: none; padding: 0; outline: none" class="enlistInput"><i class="fa fa-chevron-down fa-3x"></i></button>
-                  </div>
-                </div>
-
-                <br>
-                <input type="button" id="enlistDateButton" value="íì¸" class="btn btn-primary">
-    
-              </div> 
               
+              <div class="initBox">
+                <div class="initLeft">
+                </div>
+                <div class="initCenter">
+                  <div id="enlistDateInst" class="question animated zoomIn">
+                    <div class= "fitQuestion"></div>입대일을 선택해주세요<br>
+                  </div>
+      
+                  <div id="enlistDateInput" style="visibility: hidden; width: 100%; height: 100%">
+                    <div id="enlistY" class="floatLeft" style="text-align: center; width: 33%;">
+                      <div id="upPointer1" class="enlistInput">
+                        <button id="upPointerBtn1" style="background-color: transparent; border: none; padding: 0; outline: none" class="enlistInput"><i class="fa fa-chevron-up fa-3x"></i></button>
+                      </div><br>
+                      <input type = "text" class="enlistInput answer" id="enlistYInput" style="text-align: center; width: 90px" autofocus><span id = "year" class= "enlistInput answer">년</span>
+                      <!-- <div id="enlistYInput" class="answer"></div><br> -->             
+                      <div id="downPointer1" class="enlistInput">
+                        <button id="downPointerBtn1" style="background-color: transparent; border: none; padding: 0; outline: none" class="enlistInput"><i class="fa fa-chevron-down fa-3x"></i></button>
+                      </div>
+                    </div>
+    
+                    <div id="enlistM" class="floatLeft" style="text-align: center; width: 33%">
+                      <div id="upPointer2" class="enlistInput">
+                        <button id="upPointerBtn2" style="background-color: transparent; border: none; padding: 0; outline: none" class="enlistInput"><i class="fa fa-chevron-up fa-3x"></i></button>
+                      </div><br>
+                      <input type = "text" class="enlistInput answer" id="enlistMInput" style="text-align: center; width: 45px"><span id = "month" class= "enlistInput answer">월</span>
+                      <div id="downPointer2" class="enlistInput">
+                        <button id="downPointerBtn2" style="background-color: transparent; border: none; padding: 0; outline: none" class="enlistInput"><i class="fa fa-chevron-down fa-3x"></i></button>
+                      </div>
+                    </div>
+    
+                    <div id="enlistD" class="floatLeft" style="text-align: center; width: 33%">
+                      <div id="upPointer3" class="enlistInput">
+                        <button id="upPointerBtn3" style="background-color: transparent; border: none; padding: 0; outline: none" class="enlistInput"><i class="fa fa-chevron-up fa-3x"></i></button>
+                      </div><br>
+                      <input type = "text" class="enlistInput answer" id="enlistDInput" style="text-align: center; width: 45px"><span id = "day" class= "enlistInput answer">일</span>
+                      <div id="downPointer3" class="enlistInput">
+                        <button id="downPointerBtn3" style="background-color: transparent; border: none; padding: 0; outline: none" class="enlistInput"><i class="fa fa-chevron-down fa-3x"></i></button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="initRight">
+                  <i id="enlistDateInRight" class="fa fa-arrow-right 3x animated fadeInLeft" aria-hidden="true" style="display: none"></i>
+                </div>
+              </div>
+                           
             </div>
               
             <!-- display welcome message -->
@@ -247,7 +310,7 @@
                 <button style="background-color: transparent; border: none; padding: 0" class="iconButton"><i class="fa fa-chevron-left fa-3x"></i></button>
               </div>
 
-              <!-- ë©ì¸ì°½ -->
+              <!-- 메인창 -->
               <div id="dateSlider" class="centerAlign">
                 <iframe id="iframe" src="mainItem1.html" frameborder="0" style="border-radius: 10px; background-color: rgb(255, 255, 255, 0); width: 100%; height: 100%"></iframe>
               </div>
@@ -259,21 +322,21 @@
             </div>
           </div>
 
-          <!-- ì¤ì ì°½ -->
+          <!-- 설정창 -->
           <div id="mainModal" style="height: 100%;">
             <div class="modal fade bd-example-modal-sm" id="settingsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="height: 100%">
                 <div class="modal-dialog modal-dialog-centered" role="document" style="height: 90%">
                   <div id="modalContent" class="modal-content" style="height: 80%">
                     <div class="modal-header">
-                      <!-- <h5 class="modal-title" id="exampleModalLabel">ì¤ì </h5> -->
+                      <!-- <h5 class="modal-title" id="exampleModalLabel">설정</h5> -->
 
-                      <!-- html í­ -->
+                      <!-- html 탭 -->
                       <ul class="nav nav-tabs">
-                        <li class="nav-item" id="aboutTab"><a class="nav-link" href="#settingsAbout" id="aboutTabLink">ì ë³´</a></li> 
-                        <li class="nav-item"><a class="nav-link" href="#settings">ì¤ì </a></li>
-                        <li class="nav-item"><a class="nav-link" href="#settingsInfo">ì¬ì©ì ì ë³´ë³ê²½</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#settingsBG">ë°°ê²½íë©´</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#settingsLove" id="settingsRelTab">ì°ë¦¬ì¬ì´</a></li>
+                        <li class="nav-item" id="aboutTab"><a class="nav-link" href="#settingsAbout" id="aboutTabLink">정보</a></li> 
+                        <li class="nav-item"><a class="nav-link" href="#settings">설정</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#settingsInfo">사용자 정보변경</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#settingsBG">배경화면</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#settingsLove" id="settingsRelTab">우리사이</a></li>
                       </ul>
 
                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -285,43 +348,43 @@
                     <div id="modalBody" class="modal-body">
                       <div id="modalContainerTabs" class="container--tabs">
                         <section class="row">
-                          <!-- html í­ -->
+                          <!-- html 탭 -->
                           <!-- <ul class="nav nav-tabs">
-                            <li class="nav-item" id="aboutTab"><a class="nav-link" href="#settingsAbout" id="aboutTabLink">ì ë³´</a></li> 
-                            <li class="nav-item"><a class="nav-link" href="#settings">ì¤ì </a></li>
-                            <li class="nav-item"><a class="nav-link" href="#settingsInfo">ì¬ì©ì ì ë³´ë³ê²½</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#settingsBG">ë°°ê²½íë©´</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#settingsLove" id="settingsRelTab">ì°ë¦¬ì¬ì´</a></li>
+                            <li class="nav-item" id="aboutTab"><a class="nav-link" href="#settingsAbout" id="aboutTabLink">정보</a></li> 
+                            <li class="nav-item"><a class="nav-link" href="#settings">설정</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#settingsInfo">사용자 정보변경</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#settingsBG">배경화면</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#settingsLove" id="settingsRelTab">우리사이</a></li>
                           </ul> -->
 
                           <!-- tab content -->
                           <div id="tabContent" class="tab-content">
 
-                            <!-- defaul tab - ì°ë¦¬ ì ë³´-->
+                            <!-- defaul tab - 우리 정보-->
                             <div id="settingsAbout" class="tab-pane">
-                                <h3>Credit to ë¬í½ì´ê´ + ì°ì  + ì¤ì</h3>
+                                <h3>Credit to 달팽이관 + 산적 + 준영</h3>
                               </span>
                             </div>
 
-                            <!-- first tab ê¸°ë³¸ì¤ì  -->
+                            <!-- first tab 기본설정 -->
                             <div id="settings" class="tab-pane">
                               <span class="col-md-10">
                                 <form class="form">
-                                  <!-- ìê° -->
+                                  <!-- 시간 -->
                                   <div class="switch-field settingsBox">
-                                    <div class="switch-title settingsTitle">ìê°</div>
+                                    <div class="switch-title settingsTitle">시간</div>
                                     <hr>
                                     <div class="settingsContent">
                                       <input type="radio" id="12hrButton" name="timeRadioSettings" value="12hr"/>
-                                      <label for="12hrButton">12ìê°</label>
+                                      <label for="12hrButton">12시간</label>
                                       <input type="radio" id="24hrButton" name="timeRadioSettings" value="24hr" />
-                                      <label for="24hrButton">24ìê°</label>
+                                      <label for="24hrButton">24시간</label>
                                     </div>
                                   </div><br>
                                   
-                                  <!-- ê²ì -->
+                                  <!-- 검색 -->
                                   <div class="settingsBox">
-                                    <div class="switch-title settingsTitle">ê²ììì§</div>
+                                    <div class="switch-title settingsTitle">검색엔진</div>
                                     <hr>
                                     <div class="settingsContent">
                                       <form>
@@ -344,82 +407,82 @@
                                         </div>
                                       </form>
                                     </div>
-                                    <div class="switch-title settingsTitle" style="visibility: hidden">ê²ììì§</div>
+                                    <div class="switch-title settingsTitle" style="visibility: hidden">검색엔진</div>
                                   </div><br>
 
-                                  <!-- ë ì¨ -->
+                                  <!-- 날씨 -->
                                   <div id="weatherInit" class="settingsBox">
-                                    <div class="switch-title settingsTitle">ë ì¨</div>
+                                    <div class="switch-title settingsTitle">날씨</div>
                                     <hr>
                                     <div class="settingsContent">
-                                      <button id="weatherInitButton" class="btn btn-primary">ë ì¨ íì±í</button>
-                                      <button id="weatherChangeLocButton" class="btn btn-primary">íì¬ìì¹ ìµì í</button>
+                                      <button id="weatherInitButton" class="btn btn-primary">날씨 활성화</button>
+                                      <button id="weatherChangeLocButton" class="btn btn-primary">현재위치 최신화</button>
                                     </div>
-                                    <div class="switch-title" class="settingsTitle" style="visibility: hidden">ë ì¨</div>
+                                    <div class="switch-title" class="settingsTitle" style="visibility: hidden">날씨</div>
                                   </div>
                                   
-                                  <!-- ì´ê¸°í -->
+                                  <!-- 초기화 -->
                                   <div>
                                       <br><br>
-                                      <input type="button" value="ì´ê¸°í" id="storageResetButton" class="btn btn-danger" style="width: 100%">
+                                      <input type="button" value="초기화" id="storageResetButton" class="btn btn-danger" style="width: 100%">
                                     </div>
                                 </form>
                             </div>
 
-                            <!-- second tab - ì ë³´ë³ê²½ -->
+                            <!-- second tab - 정보변경 -->
                             <div id="settingsInfo" class="tab-pane" style="text-align: left"> 
                               <span class="glyphicon glyphicon-leaf glyphicon--home--feature two columns text-center"></span>
                               <span class="col-md-10">
                                 <form>
-                                  <!-- ì´ë¦ ì¤ì  -->
+                                  <!-- 이름 설정 -->
                                   <div class="form-group" style="width: 100%;">
                                     <div>
-                                      <label for="user-name" class="col-form-label"style="width: 100%">ì´ë¦:</label>
+                                      <label for="user-name" class="col-form-label"style="width: 100%">이름:</label>
                                     </div>
                                     <div>
                                       <input type="text" id="user-name" class="form-control">
                                     </div>
                                   </div>
                               
-                                  <!-- ì ë¶ ì¤ì  -->
+                                  <!-- 신분 설정 -->
                                   <div class="form-group">
 
                                       <form class="form">
                                         <div class="switch-field">
-                                          <div class="switch-title">ì ë¶:</div>
+                                          <div class="switch-title">신분:</div>
                                           <div>
                                             <input type="radio" id="soldierButton" name="identityRadioSettings" value="soldier">
-                                            <label for="soldierButton">êµ°ì¸</label>
+                                            <label for="soldierButton">군인</label>
                                             <input type="radio" id="gfButton" name="identityRadioSettings" value="girlfriend" />
-                                            <label for="gfButton">ê³°ì </label>
+                                            <label for="gfButton">곰신</label>
                                           </div>
                                         </div>
                                       </form>
                                     
                                   </div>
                               
-                                  <!-- ìì ì¤ì  -->
+                                  <!-- 소속 설정 -->
                                   <div class="form-group" style="width: 100%;">
                                     <div>
-                                      <label for="user-branch" class="col-form-label"style="width: 100%"><span class = "fitQuestion"></span>ìì:</label>
+                                      <label for="user-branch" class="col-form-label"style="width: 100%"><span class = "fitQuestion"></span>소속:</label>
                                     </div>
 
                                     <div class="input-group mb-3">
                                       <select class="custom-select" id="user-branch">
-                                        <option value="army">ì¡êµ°</option>
-                                        <option value="navy">í´êµ°</option>
-                                        <option value="airForce">ê³µêµ°</option>
-                                        <option value="marine">í´ë³ë</option>
-                                        <option value="socialService">ì¬íë³µë¬´</option>
-                                        <option value="police">ìê²½</option>
+                                        <option value="army">육군</option>
+                                        <option value="navy">해군</option>
+                                        <option value="airForce">공군</option>
+                                        <option value="marine">해병대</option>
+                                        <option value="socialService">사회복무</option>
+                                        <option value="police">의경</option>
                                       </select>
                                     </div>
                                   </div>
 
-                                  <!-- ê³ê¸ ì¤ì  -->
+                                  <!-- 계급 설정 -->
                                   <div class="form-group" style="width: 100%;">
                                     <div>
-                                      <label for="user-rank" class="col-form-label"style="width: 100%"><span class = "fitQuestion"></span>ê³ê¸:</label>
+                                      <label for="user-rank" class="col-form-label"style="width: 100%"><span class = "fitQuestion"></span>계급:</label>
                                     </div>
                                     <!-- <div>
                                       <input type="text" id="user-rank" class="form-control">
@@ -427,19 +490,19 @@
 
                                     <div class="input-group mb-3">
                                       <select class="custom-select" id="user-rank">
-                                        <option value="rankQ">í ê³ê¸ì ì ííì¸ì</option>
-                                        <option value="ì´ë³">ì´ë³</option>
-                                        <option value="ì¼ë³">ì¼ë³</option>
-                                        <option value="ìë³">ìë³</option>
-                                        <option value="ë³ì¥">ë³ì¥</option>
+                                        <option value="rankQ">현 계급을 선택하세요</option>
+                                        <option value="이병">이병</option>
+                                        <option value="일병">일병</option>
+                                        <option value="상병">상병</option>
+                                        <option value="병장">병장</option>
                                       </select>
                                     </div>
 
                                   </div>
                               
-                                  <!-- ìëì¼ ì¤ì  -->
+                                  <!-- 입대일 설정 -->
                                   <div class="form-group">
-                                    <label for="user-enlistDate" class="col-form-label"><span class = "fitQuestion"></span>ìëì¼:</label>
+                                    <label for="user-enlistDate" class="col-form-label"><span class = "fitQuestion"></span>입대일:</label>
                                     <span style="display: flex; justify-content: center">
                                         <input type="date" id="user-enlistDate" class="form-control">
                                     </span>
@@ -449,7 +512,7 @@
                               </span>
                             </div>                             
 
-                            <!-- third tab - ë°°ê²½íë©´ ë°ê¾¸ê¸°-->
+                            <!-- third tab - 배경화면 바꾸기-->
                             <div id="settingsBG" class="tab-pane">
                               <span class="glyphicon glyphicon-tint glyphicon--home--feature two columns text-center"></span>
                               <span class="col-md-10">
@@ -470,12 +533,12 @@
                               </span>
                             </div>
 
-                            <!-- fourth tab - main3 ë´ì©ë¬¼ -->
+                            <!-- fourth tab - main3 내용물 -->
                             <div id="settingsLove" class="tab-pane">
                               <span class="glyphicon glyphicon-tint glyphicon--home--feature two columns text-center"></span>
                               <span class="col-md-10">
                                 <div class="row">
-                                  'ì°ë¦¬ì¬ì´' íì±í
+                                  '우리사이' 활성화
                                   <div class="col-sm-10">
                                     <button id = "onOffToggle" type="button" class="btn btn-sm btn-toggle" data-toggle="button" aria-pressed="false" autocomplete="off" style="float: right">
                                       <div class="handle"></div>
@@ -484,36 +547,36 @@
                                 </div>
                                 <br>
 
-                                <!-- ì¬ê¸°ë¤ê° ì´ë ê² ì ë³´ë£ê² íê³ , toggleì´ë²¤í¸ë¡ ë³´ìë¤ ìë³´ìë¤ íë©´ ë ë¯ -->
+                                <!-- 여기다가 이렇게 정보넣게 하고, toggle이벤트로 보였다 안보였다 하면 될듯 -->
                                 <div id = "loveInfo" style="text-align: left">
                                   <form>
-                                    <!-- ì ì¸ ì´ë¦ ì¤ì  -->
+                                    <!-- 애인 이름 설정 -->
                                     <div class="form-group">
-                                      <label for="lover-name" class="col-form-label">ì ì¸ ì´ë¦: </label>
+                                      <label for="lover-name" class="col-form-label">애인 이름: </label>
                                       <div style="display: flex; justify-content: center">
                                       <input type="text" id="lover-name" class="loveSetting form-control">
                                       </div>
                                     </div>
                                       
-                                    <!-- ì ì¸ ìì¼ ì¤ì  -->
+                                    <!-- 애인 생일 설정 -->
                                     <div class="form-group">
-                                      <label for="lover-birthday" class="col-form-label">ì ì¸ ìì¼:</label>
+                                      <label for="lover-birthday" class="col-form-label">애인 생일:</label>
                                       <span style="display: flex; justify-content: center">
                                           <input type="date" id="lover-birthday" class="loveSetting form-control">
                                       </span>
                                     </div>
 
-                                    <!-- ë³¸ì¸ ìì¼ ì¤ì  -->
+                                    <!-- 본인 생일 설정 -->
                                     <div class="form-group">
-                                      <label for="user-birthday" class="col-form-label">ë³¸ì¸ ìì¼:</label>
+                                      <label for="user-birthday" class="col-form-label">본인 생일:</label>
                                       <span style="display: flex; justify-content: center">
                                         <input type="date" id="user-birthday" class="loveSetting form-control">
                                       </span>
                                     </div>
 
-                                    <!-- ì¬ê· ë ì§ ì¤ì  -->
+                                    <!-- 사귄 날짜 설정 -->
                                     <div class="form-group">
-                                      <label for="first-date" class="col-form-label">ì¬ê· ë ì§: </label>
+                                      <label for="first-date" class="col-form-label">사귄 날짜: </label>
                                       <span style="display: flex; justify-content: center">
                                         <input type="date" id="first-date" class="loveSetting form-control">
                                       </span>
@@ -530,8 +593,8 @@
 
                       </div>
                     <div class="modal-footer">
-                      <!-- <button id="closeSettings" type="button" class="btn btn-secondary" data-dismiss="modal">ë«ê¸°</button> -->
-                      <button id="saveSettings" type="button" class="btn btn-primary" data-dismiss="modal">ì ì¥</button>
+                      <!-- <button id="closeSettings" type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button> -->
+                      <button id="saveSettings" type="button" class="btn btn-primary" data-dismiss="modal">저장</button>
                     </div>
                   </div>
                 </div>

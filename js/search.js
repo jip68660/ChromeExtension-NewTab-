@@ -14,9 +14,9 @@ var engineArray = [];//ex) ["naver", "google", "daum", "youtube"]
 var currEngine;//ex)"naver"
 
 var urlString;
-var targetUrlNaver = "https://search.naver.com/search.naver?ie=UTF-8&query=";
+var targetUrlNaver = "https://search.naver.com/search.naver?query=";
 var targetUrlGoogle = "https://www.google.com/search?q=";
-var targetUrlDaum = "https://search.daum.net/search?w=tot&DA=YZR&t__nil_searchbox=btn&sug=&sugo=&q=";
+var targetUrlDaum = "https://search.daum.net/search?q=";
 var targetUrlYoutube = "https://www.youtube.com/results?search_query=";
 var targetUrlYahoo = "https://search.yahoo.com/search?p=";
 var targetUrlBaidu = "https://www.baidu.com/s?wd=";
@@ -27,7 +27,7 @@ document.getElementById("searchBar").addEventListener("keyup", onEnterPressed);
 $(window).click(searchUIClose);
 $(".search").click(searchUIOpen);
 $("#engineLogo").click(searchEngineChange);
-// $("#engineLogo").dblclick(searchEngineHome);//ì§ê¸ì í´ë¦­ì´ë ì¶©ëëì ì ë¨¹ì´ì
+// $("#engineLogo").dblclick(searchEngineHome);//지금은 클릭이랑 충돌나서 안 먹어요
 
 // $(document).ready(function() {
 //     localStorage.setItem("currEngine", "naver");
@@ -53,13 +53,13 @@ function searchIcoClose() {
 
 function searchUIOpen() {
 
-    if (!localStorage.currEngine) {//ì²ìì ì´ììë, ê¸°ë³¸ì¼ë¡ ë¤ì´ë² ì¤ì , ê¸°ë³¸ì¼ë¡ ì´ê±° 4ê° ë£ì´ì¤
+    if (!localStorage.currEngine) {//처음에 열었을때, 기본으로 네이버 설정, 기본으로 이거 4개 넣어줌
         engineArray = ["naver", "google", "daum", "youtube"];
         localStorage.setItem("currEngine", "naver");
         localStorage.setItem("targetUrl", targetUrlNaver);
         localStorage.setItem("engineArray", JSON.stringify(engineArray));
     } else {
-        currEngine = localStorage.currEngine;//ë¡ì»¬ìì íì¬ ìì§ ê°ì ¸ì´
+        currEngine = localStorage.currEngine;//로컬에서 현재 엔진 가져옴
 
         if (currEngine == "naver") {//naver
             localStorage.setItem("targetUrl", targetUrlNaver);
@@ -113,7 +113,7 @@ function searchUIOpen() {
         }, 500);
         isSearchClosed = false;
 
-        // ë­ê°ë¥¼ ì ììëë§ ê²ìëê². ì´ì ì searchUI ì¼°ë¤ê° ë«ê³  ë¤ì í¬ë, searchIconImg ëë¬ì§ë©´ ë°ë¡ ê²ìëê°ì§ê³ , ì´ë ê² ë°ê¿.
+        // 뭔가를 적었을때만 검색되게. 이전에 searchUI 켰다가 닫고 다시 킬때, searchIconImg 눌러지면 바로 검색되가지고, 이렇게 바꿈.
         $("#searchIconImg").click(function() {
           if(searchBar.value != ""){
               urlString = document.getElementById("searchBar").value;

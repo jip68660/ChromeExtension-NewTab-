@@ -8,7 +8,7 @@
     border-radius: .25rem;
 }
 #topBox {
-    font-size: 5vw;
+    font-size: 4vw;
 }
 #leftBox {
     font-size: 3vw;
@@ -25,7 +25,7 @@
     width: 15vw;
 }
 #profPicUser {
-    width: 15vw;
+    width: 40vh;
 }
 #percentageDiv{
     font-size: 4vw;

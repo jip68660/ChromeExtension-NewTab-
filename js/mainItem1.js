@@ -6,23 +6,23 @@ $(document).ready(function() {
 
     var rankImage = ["img/soldier_PV2.png", "img/soldier_PFC.png", "img/soldier_CPL.png", "img/soldier_SGT.png"];
     var soldierName = localStorage.name;
-    var endDateStr = localStorage.endDateYear + "ë " + localStorage.endDateMonth + "ì " + localStorage.endDateDate + "ì¼ê¹ì§"
-    var dDayCount = "D-" + localStorage.todoDays + "ì¼!";
+    var endDateStr = localStorage.endDateYear + "년 " + localStorage.endDateMonth + "월 " + localStorage.endDateDate + "일까지"
+    var dDayCount = "D-" + localStorage.todoDays + "일!";
     var progressBarWidth = Math.floor((1 - localStorage.getItem("todoDays") / localStorage.getItem("wholeDays")) * 1000) / 10;
     if(!isNaN(progressBarWidth)){
         localStorage.setItem("progressBar", progressBarWidth);
     }
 
-    if (localStorage.rank == "ì´ë³"){
+    if (localStorage.rank == "이병"){
         $("#toRankSettingsButton").hide();
         $("#profPicUser").attr("src", rankImage[0]);
-    } else if (localStorage.rank == "ì¼ë³"){
+    } else if (localStorage.rank == "일병"){
         $("#toRankSettingsButton").hide();
         $("#profPicUser").attr("src", rankImage[1]);
-    } else if (localStorage.rank == "ìë³"){
+    } else if (localStorage.rank == "상병"){
         $("#toRankSettingsButton").hide();
         $("#profPicUser").attr("src", rankImage[2]);
-    } else if (localStorage.rank == "ë³ì¥"){
+    } else if (localStorage.rank == "병장"){
         $("#toRankSettingsButton").hide();
         $("#profPicUser").attr("src", rankImage[3]);
     } else {
@@ -31,20 +31,20 @@ $(document).ready(function() {
 
     if(localStorage.identity == "girlfriend"){
         soldierName = localStorage.loverName;
-        $("#nameDisplay").html("ë¨ìì¹êµ¬, " + soldierName + "ëì ì ì­ì¼");
+        $("#nameDisplay").html("남자친구, " + soldierName + "님의 전역일");
     } else{
-        $("#nameDisplay").html(soldierName + "ëì ì ì­ì¼");
+        $("#nameDisplay").html(soldierName + "님의 전역일");
     }
 
     if (progressBarWidth < 0){        
         $("#progressBar").css("width", "0%");
-        $("#dDayDisplay").html("ìí´... ëì²´ ìì ì¸ì í´ì, ëì²´?");
+        $("#dDayDisplay").html("에휴... 대체 시작 언제해요, 대체?");
         $("#percentageDiv").html("0%");
         $("#toRankSettingsButton").hide();
         $("#profPicUser").attr("src", rankImage[0]);
     } else if (progressBarWidth > 100){
         $("#progressBar").css("width", "100%");
-        $("#dDayDisplay").html("ì ìì§ë ê³ì¸ì? ì¼ë¥¸ ê°ì¸ì");
+        $("#dDayDisplay").html("왜 아직도 계세요? 얼른 가세요");
         $("#percentageDiv").html("100%");
         $("#toRankSettingsButton").hide();
         $("#profPicUser").attr("src", rankImage[3]);
@@ -70,28 +70,28 @@ $(document).ready(function() {
         $("#li_doneDays").html(localStorage.wholeDays - localStorage.todoDays);
         $("#li_todoDays").html(localStorage.todoDays);
 
-        // ì¤ìê° ìë°ì´í¸ í¼ì¼í¸
-        var endDateTime = new Date(localStorage.endDateYear, (localStorage.endDateMonth - 1), localStorage.endDateDate, 8);// ì ì­ì¼ ì¤ì  8ì
-        var startDateTime = new Date(localStorage.enlistDate);//ìëì¼ ì¤ì  9ì
+        // 실시간 업데이트 퍼센트
+        var endDateTime = new Date(localStorage.endDateYear, (localStorage.endDateMonth - 1), localStorage.endDateDate, 8);// 전역일 오전 8시
+        var startDateTime = new Date(localStorage.enlistDate);//입대일 오전 9시
         var serviceTimeMS = endDateTime - startDateTime;
         var percentage = (serviceTimeMS - (endDateTime - new Date())) / serviceTimeMS * 100;
         $("#percentageDiv").html(percentage.toFixed(7) + "%");
         window.onload = setInterval(function() {
             var percentage = (serviceTimeMS - (endDateTime - new Date())) / serviceTimeMS * 100;
             $("#percentageDiv").html(percentage.toFixed(7) + "%");
-        }, 70);//í¼ì¼í¸ 0.07ì´ë§ë¤ ìë°ì´í¸
+        }, 70);//퍼센트 0.07초마다 업데이트
         // $("#progressBar").html(progressBarWidth);
 
-        //ì¼ë¨ ì´ ì ë³´ ë°ì¼ë¡ ë¹¼ëì, comment ìí´.
-        // $('[data-toggle="popover"]').popover({
-        //     trigger: "hover",
-        //     title: "ì ë³´",
-        //     content: 
-        //     '<ul style="list-style: none; padding-left: 0"><li>ì ì²´ ë³µë¬´ì¼: ' + localStorage.getItem("wholeDays") 
-        //     + 'ì¼</li><li>íì¬ ë³µë¬´ì¼: ' + (localStorage.getItem("wholeDays") - localStorage.getItem("todoDays")) 
-        //     + 'ì¼</li><li>ë¨ì ë³µë¬´ì¼: ' + localStorage.getItem("todoDays") 
-        //     + 'ì¼</li><li>ë¨ì¶ ë³µë¬´ì¼: ' + localStorage.getItem("reducedDays") + 'ì¼</li></ul>',
-        //     html: true
-        // });
+        //일단 이 정보 밖으로 빼놔서, comment 시킴.
+        $('[data-toggle="popover"]').popover({
+            trigger: "hover",
+            title: "정보",
+            content: 
+            '<ul style="list-style: none; padding-left: 0"><li>전체 복무일: ' + localStorage.getItem("wholeDays") 
+            + '일</li><li>현재 복무일: ' + (localStorage.getItem("wholeDays") - localStorage.getItem("todoDays")) 
+            + '일</li><li>남은 복무일: ' + localStorage.getItem("todoDays") 
+            + '일</li><li>단축 복무일: ' + localStorage.getItem("reducedDays") + '일</li></ul>',
+            html: true
+        });
     }
 });

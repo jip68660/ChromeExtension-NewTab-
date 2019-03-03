@@ -4,8 +4,9 @@ var currM = currDate.getMonth() + 1;
 var currD = currDate.getDate();
 var branchSelected;
 var identitySelected;
+var girlfriendSelected;
 
-/* ENTERë¡ ë¤ì ì§ë¬¸ ëì´ê°ê¸° */
+/* ENTER로 다음 질문 넘어가기 */
 // function onEnterPressed() {
 //     urlString = document.getElementById("searchBar").value;
 //     if(event.which==13 || event.keycode==13) {
@@ -18,31 +19,39 @@ $("#enlistD").mousedown(enlistDActive);
 
 /* NAME */
 function nameCheck() {
-    $("#nameIn2").addClass("animated fadeInUp");
     $("#nameIn").show();
-
     setTimeout(function() {
         $("#nameIn1").fadeOut(1000, function() {
             $("#nameIn2").show();
+            setTimeout(function() {
+                $("#nameInputField").css("visibility", "visible");
+                $("#nameInputField").addClass("animated fadeInUp");
+                $("#nameInput").focus();
+            }, 700);
         });
     }, 1200);
     document.getElementById("nameInput").addEventListener("keyup", onNameEnter);
 }
 function onNameEnter() {
+    $("#nameInRight").show();
+    $("#nameInRight").click(onNameInEnd);
+    
     if(event.which==13 || event.keycode==13) {
-        if ($("#nameInput").val() == ""){
-            alert("ì´ë¦ì ì ì´ì£¼ì¸ì");
-        }
-        else{
-            localStorage.setItem("name", document.getElementById("nameInput").value);
-            
-            $("#nameIn2").removeClass("fadeInUp");
-            $("#nameIn2").addClass("fadeOutUp");
-            setTimeout(function() {
-                $("#nameIn").hide();
-                identityCheck();
-            }, 1000);
-        }
+        onNameInEnd();
+    }
+}
+function onNameInEnd() {
+    if ($("#nameInput").val() == ""){
+        alert("이름을 적어주세요");
+    }
+    else{
+        localStorage.setItem("name", document.getElementById("nameInput").value);
+        
+        $("#nameIn").addClass("animated fadeOutLeftInit");
+        setTimeout(function() {
+            $("#nameIn").hide();
+            identityCheck();
+        }, 1000);
     }
 }
 
@@ -55,16 +64,18 @@ function identityCheck() {
     }, 700);
 
     $("#identitySoldierImg").mousedown(function() {
+        $("#identityInRight").show();
         $(".identity").removeClass("selected");
         $("#identitySoldierImg").addClass("selected");
         identitySelected = $("#identitySoldierImg").val();
     });
     $("#identityGirlfriendImg").mousedown(function() {
+        $("#identityInRight").show();
         $(".identity").removeClass("selected");
         $("#identityGirlfriendImg").addClass("selected");
         identitySelected = $("#identityGirlfriendImg").val();
     });
-    $("#identitySubmit").click(onIdentitySelect);
+    $("#identityInRight").click(onIdentitySelect);
     document.getElementById("identityInput").addEventListener("keyup", onIdentitySelectKey);
 }
 function onIdentitySelect() {
@@ -72,20 +83,20 @@ function onIdentitySelect() {
         localStorage.setItem("identity", identitySelected);
     }
     if (!localStorage.identity || localStorage.identity == "") {
-        alert("ì ë¶ì ì íí´ì£¼ì¸ì");
+        alert("신분을 선택해주세요");
     } else {
         onIdentityInEnd();
     }
 }
-function onIdentitySelectKey() {//enter ëë ìë ì¤ì  ê°ë¥, ìë¬´ê²ë ì ëë¦°ìíììë enterê° ìì ì ë¨¹ì -> alert íì ìì
+function onIdentitySelectKey() {//enter 눌렀을때 설정 가능, 아무것도 안 눌린상태에서는 enter가 아예 안 먹음 -> alert 필요 없음
     if(event.which==13 || event.keycode==13) {
         onIdentityInEnd();
     }
 }
-function onIdentityInEnd() {//ëë ë í¨ê³¼ + ë¡ì»¬ì ì ì¥
+function onIdentityInEnd() {//끝날때 효과 + 로컬에 저장
     localStorage.setItem("identity", identitySelected);
 
-    $("#identityIn").addClass("animated fadeOutUp");
+    $("#identityIn").addClass("animated fadeOutLeftInit");
     setTimeout(function() {
         $("#identityIn").hide();
         if (localStorage.identity == "soldier"){
@@ -104,12 +115,27 @@ function girlfriendCheck() {
         $("#girlfriendInput").addClass("animated fadeInUp");
     }, 700);
 
-    $("#girlfriendSubmit").click(onGirlfriendSelect);
+    $("#coupleImg").mousedown(function() {
+        $("#girlfriendInRight").show();
+        $(".girlfriend").removeClass("selected");
+        $("#coupleImg").addClass("selected");
+        girlfriendSelected = $("#coupleImg").val();
+    });
+    $("#singleImg").mousedown(function() {
+        $("#girlfriendInRight").show();
+        $(".girlfriend").removeClass("selected");
+        $("#singleImg").addClass("selected");
+        girlfriendSelected = $("#singleImg").val();
+    });
+    $("#girlfriendInRight").click(onGirlfriendSelect);
     document.getElementById("girlfriendInput").addEventListener("keyup", onGirlfriendSelectKey);
 }
 function onGirlfriendSelect() {
-    if (!($("input[name=girlfriendRadio]:checked").val())) {
-        alert("í­ëª©ì ì íí´ì£¼ì¸ì");
+    if (girlfriendSelected!=undefined) {
+        localStorage.setItem("girlfriendYN", girlfriendSelected);
+    }
+    if (!localStorage.girlfriendYN || localStorage.girlfriendYN == "") {
+        alert("항목을 선택해주세요");
     } else {
         onGirlfriendInEnd();
     }
@@ -120,9 +146,9 @@ function onGirlfriendSelectKey() {//enter press
     }
 }
 function onGirlfriendInEnd() {
-    localStorage.setItem("girlfriendYN", $("input[name=girlfriendRadio]:checked").val());
+    localStorage.setItem("girlfriendYN", girlfriendSelected);
 
-    $("#girlfriendIn").addClass("animated fadeOutUp");
+    $("#girlfriendIn").addClass("animated fadeOutLeftInit");
     setTimeout(function() {
         $("#girlfriendIn").hide();
         if (localStorage.girlfriendYN == "yes") {
@@ -135,40 +161,46 @@ function onGirlfriendInEnd() {
 
 /* GET LOVER NAME, IF IDENTITY=SOLDIER & GF=YES OR IDENTITY=GF*/
 function loverNameCheck() {
-    $("#loverNameIn").addClass("animated fadeInUp");
     $("#loverNameIn").show();
+    setTimeout(function() {
+        $("#loverNameInputField").css("visibility", "visible");
+        $("#loverNameInputField").addClass("animated fadeInUp");
+        $("#loverNameInput").focus();
+    }, 700);
     
-    document.getElementById("loverNameInput").addEventListener("keyup", onLoverNameEnter);
     if (localStorage.identity == "girlfriend"){
-        $(".fitQuestion").html("ë¨ìì¹êµ¬ì ");
+        $(".fitQuestion").html("남자친구의 ");
     }
     else{
-        $(".fitQuestion").html("ì¬ìì¹êµ¬ì ");
+        $(".fitQuestion").html("여자친구의 ");
     }
+    document.getElementById("loverNameInput").addEventListener("keyup", onLoverNameEnter);
 }
 function onLoverNameEnter() {
+    $("#loverNameInRight").show();
+    $("#loverNameInRight").click(onLoverNameInEnd);
+
     if(event.which==13 || event.keycode==13) {
-        if ($("#loverNameInput").val() == ""){
-            alert("ì´ë¦ì ì ì´ì£¼ì¸ì");
-        } else {
-            onLoverNameInEnd();
-        }
+        onLoverNameInEnd();
     }
 }
 function onLoverNameInEnd() {
-    localStorage.setItem("loverName", document.getElementById("loverNameInput").value);
+    if ($("#loverNameInput").val() == "") {
+        alert("이름을 적어주세요");
+    } else {
+        localStorage.setItem("loverName", document.getElementById("loverNameInput").value);
 
-    $("#loverNameIn").removeClass("fadeInUp");
-    $("#loverNameIn").addClass("fadeOutUp");
-    setTimeout(function() {
-        $("#loverNameIn").hide();
-        relStartDateCheck();
-    }, 1000);
+        $("#loverNameIn").addClass("animated fadeOutLeftInit");
+        setTimeout(function() {
+            $("#loverNameIn").hide();
+            relStartDateCheck();
+        }, 1000);
+    }
 }
 
 /* GET THE START DATE OF THE RELATIONSHIP, FOR GF AND SOLDIER W/ GF */
 /** TODO
- * ìëì¼ ë°ëê±°ì²ë¼ ë°ê¿ì£¼ê¸°
+ * 입대일 받는거처럼 바꿔주기
  * */
 function relStartDateCheck() {
     $("#relStartDateIn").show();
@@ -177,17 +209,20 @@ function relStartDateCheck() {
         $("#relStartDateInput").addClass("animated fadeInUp");
     }, 700);
 
-    $("#relStartDateSubmit").click(onRelStartDateClick);
     if (localStorage.identity == "girlfriend"){
-        $(".fitQuestion").html("ë¨ìì¹êµ¬ì ");
+        $(".fitQuestion").html("남자친구와 ");
     }
     else{
-        $(".fitQuestion").html("ì¬ìì¹êµ¬ì ");
+        $(".fitQuestion").html("여자친구와 ");
     }
+    $("#relStartDate").click(function() {
+        $("#relStartDateInRight").show();
+        $("#relStartDateInRight").click(onRelStartDateClick);
+    });
 }
 function onRelStartDateClick() {
     if ($("#relStartDate").val()=="") {
-        alert("ë ì§ë¥¼ ìë ¥í´ì£¼ì¸ì");
+        alert("날짜를 입력해주세요");
     }
     else {
         onRelStartDateInEnd();
@@ -195,9 +230,9 @@ function onRelStartDateClick() {
 }
 function onRelStartDateInEnd() {
     localStorage.setItem("relStartDate", $("#relStartDate").val());
-    localStorage.setItem("switchOnOff", "on");//ì°ì¸ì¼ ê²½ì° ì°ë¦¬ì¬ì´ íì±í
+    localStorage.setItem("switchOnOff", "on");//연인일 경우 우리사이 활성화
     
-    $("#relStartDateIn").addClass("animated fadeOutUp");
+    $("#relStartDateIn").addClass("animated fadeOutLeftInit");
     setTimeout(function() {
         $("#relStartDateIn").hide();
         branchCheck();
@@ -213,44 +248,50 @@ function branchCheck() {
     }, 700);
 
     if (localStorage.identity == "girlfriend"){
-        $(".fitQuestion").html("ë¨ìì¹êµ¬ì ");
+        $(".fitQuestion").html("남자친구의 ");
     }
     else{
         $(".fitQuestion").html("");
     }
     $("#army").mousedown(function() {
+        $("#branchInRight").show();
         $(".branch").removeClass("selected");
         $("#army").addClass("selected");
         branchSelected = $("#army").attr("id");
     });
     $("#navy").mousedown(function() {
+        $("#branchInRight").show();
         $(".branch").removeClass("selected");
         $("#navy").addClass("selected");
         branchSelected = $("#navy").attr("id");
     });
     $("#airForce").mousedown(function() {
+        $("#branchInRight").show();
         $(".branch").removeClass("selected");
         $("#airForce").addClass("selected");
         branchSelected = $("#airForce").attr("id");
     });
     $("#marine").mousedown(function() {
+        $("#branchInRight").show();
         $(".branch").removeClass("selected");
         $("#marine").addClass("selected");
         branchSelected = $("#marine").attr("id");
     });
     $("#socialService").mousedown(function() {
+        $("#branchInRight").show();
         $(".branch").removeClass("selected");
         $("#socialService").addClass("selected");
         branchSelected = $("#socialService").attr("id");
     });
     $("#police").mousedown(function() {
+        $("#branchInRight").show();
         $(".branch").removeClass("selected");
         $("#police").addClass("selected");
         branchSelected = $("#police").attr("id");
     });
 
-    $("#branchSubmit").click(onBranchSelect);
-    document.getElementById("branchInput").addEventListener("keyup", onBranchSelectKey);//ì´ê² ì ë¨¹ì...
+    $("#branchInRight").click(onBranchSelect);
+    document.getElementById("branchInput").addEventListener("keyup", onBranchSelectKey);//이게 안 먹음...
 }
 function onBranchSelect() {
     // localStorage.setItem("branch", $("input[name=branchRadio]:checked").val());
@@ -260,7 +301,7 @@ function onBranchSelect() {
         localStorage.setItem("branch", branchSelected);
     }
     if (!localStorage.branch || localStorage.branch == "") {
-        alert("ììì ì íí´ì£¼ì¸ì");
+        alert("소속을 선택해주세요");
     } else {
         onBranchInEnd();
     }
@@ -271,7 +312,7 @@ function onBranchSelectKey() {
     }
     if  (event.which==13 || event.keycode==13) {
         if (!localStorage.branch || localStorage.branch == "") {
-            alert("ììì ì íí´ì£¼ì¸ì");
+            alert("소속을 선택해주세요");
         } else {
             onBranchInEnd();
         }
@@ -280,7 +321,7 @@ function onBranchSelectKey() {
 function onBranchInEnd() {
     localStorage.setItem("branch", branchSelected);
     
-    $("#branchIn").addClass("animated fadeOutUp");
+    $("#branchIn").addClass("animated fadeOutLeftInit");
     setTimeout(function() {
         $("#branchIn").hide();
         enlistDateCheck();
@@ -289,7 +330,7 @@ function onBranchInEnd() {
 
 var mouseLocation, mouseDown;
 
-// ëë ì í
+// 년도 선택
 function currYPlus() {
     mouseDown = true;
     $("#upPointer1").mouseup(function () {
@@ -355,7 +396,7 @@ function currYMinusAuto() {
     }
 }
 
-// ì ì í
+// 월 선택
 function currMPlus() {
     mouseDown = true;
     $("#upPointer2").mouseup(function () {
@@ -427,7 +468,7 @@ function currMMinusAuto() {
     }
 }
 
-// ì¼ ì í
+// 일 선택
 function currDPlus() {
     mouseDown = true;
     $("#upPointer3").mouseup(function () {
@@ -506,14 +547,15 @@ function enlistDateCheck() {
         $("#enlistDateInput").css("visibility", "visible");
         $("#enlistDateInput").addClass("animated fadeInUp");
     }, 700);
-    document.getElementById("enlistDateButton").addEventListener("click", onEnlistDateClick);
 
     //default
+    $("#enlistYInput").focus();
     enlistYActive();
 
     // year update
     $("#enlistYInput").val(currY);
     $("#enlistYInput").select();
+    $("#enlistYInput").focus();
     $("#upPointer1").mousedown(function(){
         $("#enlistYInput").val(++currY);
         currYPlus();
@@ -639,6 +681,9 @@ function enlistYActive(){
     $("#day").css("color", "rgba(77, 77, 77, 0.918)");
     $("#enlistYInput").focus();
     // $("#enlistYInput").select();
+
+    $("#enlistDateInRight").show();
+    $("#enlistDateInRight").click(onEnlistDateClick);
 }
 
 function enlistMActive(){
@@ -653,6 +698,9 @@ function enlistMActive(){
     $("#day").css("color", "rgba(77, 77, 77, 0.918)");   
     $("#enlistMInput").focus();    
     // $("#enlistMInput").select();
+
+    $("#enlistDateInRight").show();
+    $("#enlistDateInRight").click(onEnlistDateClick);
 }
 
 function enlistDActive(){
@@ -667,15 +715,18 @@ function enlistDActive(){
     $("#day").css("color", "white");   
     $("#enlistDInput").focus();
     // $("#enlistDInput").select();
+
+    $("#enlistDateInRight").show();
+    $("#enlistDateInRight").click(onEnlistDateClick);
 }
 
 function onEnlistDateClick() {
-    //currM ìì -1 í´ì¤ ì´ì ë, month ììì´ 0ë¶í° ë¼ê³  í¨. ( 1ìì´ 0, 2ìì´ 1...)
+    //currM 에서 -1 해준 이유는, month 시작이 0부터 라고 함. ( 1월이 0, 2월이 1...)
     currY = enlistYInput.value;
     currM = enlistMInput.value;
     currD = enlistDInput.value;
     if (!isValidDate(currY, currM - 1, currD)){
-        alert("ê°ë¥í ë ì§ê° ìëëë¤. ë¤ì ì ì´ì£¼ì¸ì");
+        alert("가능한 날짜가 아닙니다. 다시 적어주세요");
     }
     else{                
         if (currM < 10) {
@@ -701,14 +752,14 @@ function onEnlistDateClick() {
 function onEnlistDateInEnd(enlistDateStr) {
     localStorage.setItem("enlistDate", enlistDateStr);
     
-    $("#enlistDateIn").addClass("animated fadeOutUp");
+    $("#enlistDateIn").addClass("animated fadeOutLeftInit");
     setTimeout(function() {
         $("#enlistDateIn").hide();
         initDoneDisplay();
     }, 1000);
 }
 
-//ì¸í°ë·ìì ê¸ì´ì¨ê±°ë¼ ë³ê²½ìë§
+//인터넷에서 긁어온거라 변경요망
 function isValidDate(year, month, day) {
     var d = new Date(year, month, day);
     if (d.getFullYear() == year && d.getMonth() == month && d.getDate() == day) {

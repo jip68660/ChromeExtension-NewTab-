@@ -27,7 +27,7 @@ function storageCheckLocation() {
             getWeather();
         }
     } else {
-        alert("íì¬ìì¹ì ë³´ ì¬ì©ì íì©í´ì£¼ì¸ì");
+        alert("현재위치정보 사용을 허용해주세요");
     }
 }
 
@@ -44,45 +44,45 @@ function onSuccess(pos) {
 }
 
 function onError(err) {
-    alert("íì¬ ìì¹ë¥¼ ê°ì ¸ì¬ì ììµëë¤.");
+    alert("현재 위치를 가져올수 없습니다.");
 }
 
 function displayWeatherInfo(data) {
 
-    console.log(data);
+    // console.log(data);
     
     $("#weatherInfoArea").show();
     $(".weatherIconImg").hide();
     $("#currTemp").html(Math.round(data.main.temp));
-    $("#tempMinMaxArea").html(data.main.temp_min + " ÂºC / " + data.main.temp_max + " ÂºC");
-    // $("#tempMin").html("ìµì : " + data.main.temp_min + " ÂºC");
-    // $("#tempMax").html("ìµë: " + data.main.temp_max + " ÂºC");
+    $("#tempMinMaxArea").html(data.main.temp_min + " ºC / " + data.main.temp_max + " ºC");
+    // $("#tempMin").html("최저: " + data.main.temp_min + " ºC");
+    // $("#tempMax").html("최대: " + data.main.temp_max + " ºC");
 
     var desc = data.weather[0].description;
 
     var weatherDesc;
     if (desc == "clear sky") {
-        weatherDesc = "ë§ì";
+        weatherDesc = "맑음";
         //check time
         $("#weatherSun").show();
     } else if (desc == "few clouds" || desc == "scattered clouds" || desc == "broken clouds") {
-        weatherDesc = "íë¦¼";
+        weatherDesc = "흐림";
         //check time
         $("#weatherClouds").show();
     } else if (desc == "shower rain") {
-        weatherDesc = "ì´ì¬ë¹";
+        weatherDesc = "이슬비";
         $("#weatherShower").show();
     } else if (desc == "rain") {
-        weatherDesc = "ë¹";
+        weatherDesc = "비";
         $("#weatherRain").show();
     } else if (desc == "thunderstorm") {
-        weatherDesc = "í­í";
+        weatherDesc = "폭풍";
         $("#weatherStorm").show();
     } else if (desc == "snow") {
-        weatherDesc = "ë";
+        weatherDesc = "눈";
         $("#weatherSnow").show();
     } else if (desc == "mist" || desc == "haze" || desc == "fog") {
-        weatherDesc = "ìê°";
+        weatherDesc = "안개";
         $("#weatherMist").show();
     }
     $("#weatherDesc").html(weatherDesc);

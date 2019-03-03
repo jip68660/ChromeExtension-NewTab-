@@ -14,9 +14,11 @@
   position: relative;
   width: 50px;
   height: 50px;
+  transition: transform 0.3s;
 }
 #searchEngine:hover {
   cursor: pointer;
+  transform: scale(1.2);
 }
 #searchIco {
   position: relative;

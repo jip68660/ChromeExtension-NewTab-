@@ -16,7 +16,7 @@
     margin-right: 2px;
     /* margin-bottom: -1px; */
 }
-/* ì¤ì  í­ ê¸°ë³¸ ì¤ì  */
+/* 설정 탭 기본 설정 */
 .modal-header .nav-tabs > li > a {
     float: left;
     line-height: 1.42857143;
@@ -26,7 +26,7 @@
     border-top-left-radius: 0.25rem;
     border-top-right-radius: 0.25rem;
 }
-/* ì¤ì í­ì ë§ì°ì¤ hoveríìë */
+/* 설정탭에 마우스 hover했을때 */
 .modal-header .nav-tabs > li > a:hover {
     /* border-color: #eee #eee #ddd; */
     color: #007bff;
@@ -36,21 +36,21 @@
 .nav-tabs .nav-link {
     border: transparent;
 }
-/* ì¤ì í­ì í´ë¦­íìë */
+/* 설정탭에 클릭했을때 */
 .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
     color: #007bff;
     background-color: white;
     /* background-color: rgba(255, 255, 255, 0.8); */
     border-color: transparent;
 }
-/* ì¤ì í­ì í´ë¦­íìë a css */
+/* 설정탭에 클릭했을때 a css */
 .modal-header .nav-tabs > li > a.active > a {
     color: white;
     cursor: default;
     background-color: #007bff;
     border-bottom-color: transparent;
 }
-/* ì¤ì í­ì í´ë¦­í ë¤ì ê°ì ê³³ì hoveríìë */
+/* 설정탭에 클릭후 다시 같은 곳에 hover했을때 */
 .modal-header .nav-tabs > li > a.active > a:hover {
     color: #007bff;
     background-color: white;
@@ -58,7 +58,7 @@
     cursor: default;
     border-bottom-color: transparent;
 }
-/* ì¤ì í­ì í´ë¦­í ë¤ì ê°ì ê³³ì í´ë¦­íìë */
+/* 설정탭에 클릭후 다시 같은 곳에 클릭했을때 */
 .modal-header .nav-tabs > li > a.active > a:focus {
     color: #007bff;
     background-color: white;
@@ -88,7 +88,7 @@
     padding: 2.5% 3.5%;
     /* background-color:rgba(255, 255, 255, 0.1); */
     background-color: white;
-    /* ì¤ì  ë°°ê²½ ìê¹ */
+    /* 설정 배경 색깔 */
 }
 .container--tabs .tab-content > .active {
     display: block;
