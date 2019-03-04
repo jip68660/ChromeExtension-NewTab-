@@ -26,15 +26,11 @@
             <div id="topBox" class="flexRow">
                 <div id="betweenPic" class="flexColumn">
                     <div style="width:70%; height:70%">
-                        <img id ="withGF" data-toggle="modal" data-target="#settingsModal" style="cursor: pointer">
-                        <button id="settingButton" data-toggle="modal" data-target="#settingsModal" style="margin:0;">
+                        <img id ="withGF" data-toggle="modal" data-target="#picModal" data-backdrop="false" data-keyboard="true" style="cursor: pointer" title="클릭해서 사진 변경">
+                        <!-- <button id="settingButton" data-toggle="modal" data-target="#settingsModal" style="margin:0;">
                             이미지 업로드
-                        </button>
-
+                        </button> -->
                     </div>
-
-                    <!-- <input type="file" id="imgUpload" capture>
-                    <button id="imgSubmit">변경</button> -->
                 </div>
                 <div id="relationshipInfo" class="flexColumn">
                     <div style="height: 10%"></div>
@@ -74,22 +70,30 @@
                 <img id="anniversaryImg">
             </div>
 
-            <div id="mainModal"">
-                <div class="modal fade bd-example-modal-sm" id="settingsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="height: 100%">
+            <div id="mainModal">
+                <div class="modal fade bd-example-modal-sm" id="picModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="height: 100%">
                     <div class="modal-dialog modal-dialog-centered" role="document" style="height: 90%">
                         <div id="modalContent" class="modal-content" style="height: 80%">
                             <div class="modal-header">
                                 <h3>이미지 설정</h3>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
                             </div>
     
                             <div id="modalBody" class="modal-body">
-                                <input type="file" id="imgUpload" capture>
-                                <button id="imgSubmit" class="imgSetting">변경</button>
+                                <label id="fileUploadButton" class="btn btn-primary">파일 업로드
+                                    <input type="file" id="imgUpload" capture>
+                                </label>
+                                <br>
+                                <label id="fileName"></label>
+                                <br>
+                                <button id="imgSubmit" class="imgSetting btn btn-primary">변경</button>
+                                <button id="imgRevert" class="imgSetting btn btn-secondary">복구</button>
                             </div>
                         
-                            <div class="modal-footer">
-                                <button id="imgCloseSettings" class="imgSetting">취소</button>
-                            </div>
+                            <!-- <div class="modal-footer">
+                            </div> -->
                         </div>
                     </div>
                     </div>

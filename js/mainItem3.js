@@ -1,5 +1,12 @@
 $('#dateBox').click(toggle);
 $("#infoBox").click(toggle2);
+$(".imgSetting").click(function() {
+    $("#picModal").modal("hide");
+});
+$("#imgUpload").change(doFile);
+$("#imgSubmit").click(doImageTest);
+$("#imgRevert").click(revertImg);
+
 // var anniversaryDate = ["img/heart.png", "img/100.png", "img/200.png", "img/300.png", "img/1year.png", "img/400.png", "img/500.png", "img/600.png", "img/700.png", "img/2year.png", "img/800.png", "img/900.png", "img/1000.png", "img/3year.png", "img/4year.png", "img/BD_lover.png", "img/BD_user.png"];
 
 var loverBD = new Date(localStorage.loverBD);
@@ -13,17 +20,28 @@ var year, month, day;
 var lastAnniversaryDate;
 var nextAnniversaryDate;
 // var dateFormat = new Date();
+let db;
+let dbVersion = 1;
+let dbReady = false;
 
 $(document).ready(function() {
 
     $("body").css({
         "text-align": "center"
     });
-    
     $("#anniversayDate").hide();
+
     checking();
     checkAnniversary();
 });
+
+$("#betweenPic").ready(function() {
+        // check if there is a picture in objectstore
+        // 1. if there is a picture, preset to the picture
+        // 2. if there isn't a
+    console.log('dom content loaded');
+    initDb();
+})
 
 function checking() {
     if (!localStorage.loverName || !localStorage.relStartDate){//활성화는 됐는데 init에서 이거 두개 밖에 안 받아서... 이거라도 있으면 display
@@ -36,12 +54,13 @@ function checking() {
         $("#userName").html(localStorage.name);
         $("#loverName").html(localStorage.loverName);
         $("#daysInRel").html(Math.floor((new Date(today.getFullYear(), today.getMonth(), today.getDate()) - new Date(relDate.getFullYear(), relDate.getMonth(), relDate.getDate())) / (1000 * 3600 * 24)) + 1);
-        $("#infoBox").hide();  
+        $("#infoBox").hide();
 
-        console.log('dom content loaded');
-        $("#imgUpload").change(doFile);
-        $("#imgSubmit").click(doImageTest);
-        initDb();
+        if (!localStorage.couplePicFileName) {
+            $("#fileName").text("default image");
+        } else {
+            $("#fileName").text(localStorage.couplePicFileName);
+        }
     }    
 }
 
@@ -136,9 +155,6 @@ function toggle2(){
 /**
  * Image Upload / Change Couple Pic
  */
-let db;
-let dbVersion = 1;
-let dbReady = false;
 
 // $(document).ready(function() {
 //     console.log('dom content loaded');
@@ -157,6 +173,10 @@ function initDb() {
     request.onsuccess = function(e) {
         db = e.target.result;
         console.log("데이터베이스를 열었습니다.");
+        console.log(db);
+        
+        //preset couple picture on load
+        doImageTest();
     }
     request.onupgradeneeded = function(e) {
         let db = e.target.result;
@@ -175,6 +195,11 @@ function doFile(e) {
             created: new Date(),
             data:bits
         }
+        console.log("assigned obj");
+
+        $("#fileName").text(file.name);
+        localStorage.setItem("couplePicFileName", file.name);
+
         let trans = db.transaction(["couplePicOS"], "readwrite");
         let addReq = trans.objectStore("couplePicOS").put(obj, 0);
         addReq.onerror = function(e) {
@@ -188,23 +213,41 @@ function doFile(e) {
 }
 
 function doImageTest() {
+
+    // console.log("doFile pt.2 - saving in the db")
+    // let trans = db.transaction(["couplePicOS"], "readwrite");
+    // let addReq = trans.objectStore("couplePicOS").put(obj, 0);
+    // addReq.onerror = function(e) {
+    //     console.log("데이터 저장 오류");
+    //     console.error(e);
+    // }
+    // trans.oncomplete = function(e) {
+    //     console.log("데이터 저장 성공");
+    // }
+
     console.log("doImageTest");
-    let recordToLoad = 0;
     let trans = db.transaction(["couplePicOS"], "readonly");
 
-    let req = trans.objectStore("couplePicOS").get(recordToLoad);
+    let req = trans.objectStore("couplePicOS").get(0);
     req.onsuccess = function(e) {
         let record = e.target.result;
         console.log("성공", record);
-        var imgSrcStr = "data:image/jpeg;base64," + btoa(record.data)
-        $("#withGF").attr("src", imgSrcStr);
+
+        if (record == null) {
+            $("#withGF").attr("src", "img/withGF.png");
+        } else {
+            var imgSrcStr = "data:image/jpeg;base64," + btoa(record.data)
+            $("#withGF").attr("src", imgSrcStr);
+        }
     }
 } 
 
-$(".imgSetting").click(function() {
-    $("#settingsModal").modal("hide");
-});
-
-$("#imgSubmit").click(function() {
-    settingButton.style.display = "none";
-});
+function revertImg() {//그냥 objectstore 비우면 됨
+    console.log("revertImg");
+    let trans = db.transaction(["couplePicOS"], "readwrite");
+    let req = trans.objectStore("couplePicOS").delete(0);
+    req.onsuccess = function(e) {
+        console.log("deleted objectstore to revert to default img");
+        $("#withGF").attr("src", "img/withGF.png");
+    }
+}
