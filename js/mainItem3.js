@@ -5,9 +5,14 @@ $("#infoBox").click(toggle2);
 var loverBD = new Date(localStorage.loverBD);
 var userBD = new Date(localStorage.userBD);
 var today = new Date();
-var dateFormat = new Date();
+var timeZoneOffSet= new Date().getTimezoneOffset() * 60000;
+var todayOff = new Date(today - timeZoneOffSet);
+var todayISO = todayOff.toISOString().slice(0,10).replace(/-/g, "");
 var relDate = new Date(localStorage.relStartDate);
 var year, month, day;
+var lastAnniversaryDate;
+var nextAnniversaryDate;
+// var dateFormat = new Date();
 
 $(document).ready(function() {
 
@@ -40,27 +45,28 @@ function checking() {
     }    
 }
 
-function checkAnniversary() {
-    
+function checkAnniversary() {    
     var anniversaryDateArray = [];
+    //100일, 200일, 300일, .... 추가
     for (var i = 1; i<11; i++){
         var relCal = relDate;
         relCal.setDate(relDate.getDate() + i*100 - 1);
         anniversaryDateArray.push(relCal);
         relDate = new Date(localStorage.relStartDate);
     }
+    //1주년, 2주년...4주년까지 추가 -> 4주년 이후로는 그냥 안해도 될꺼같음, 아니면 그 위로는 글귀띄워도 재미있을듯. ex)"결혼하셔야죠 이제"
     for (var i = 1; i<5; i++){
-        relCal365 = new Date(relDate.getFullYear() + i, relDate.getMonth(), relDate.getDate() + 1);
+        relCal365 = new Date(relDate.getFullYear() + i, relDate.getMonth(), relDate.getDate());
         anniversaryDateArray.push(relCal365);
     }    
 
     if (localStorage.loverBD && localStorage.userBD){
         var lastYearLoverBD = new Date(today.getFullYear() - 1, loverBD.getMonth(), loverBD.getDate());
-        var thisYearLoverBD = new Date(today.getFullYear(), loverBD.getMonth(), loverBD.getDate()+1);
-        var nextYearLoverBD = new Date(today.getFullYear() + 1, loverBD.getMonth(), loverBD.getDate()+1);
+        var thisYearLoverBD = new Date(today.getFullYear(), loverBD.getMonth(), loverBD.getDate());
+        var nextYearLoverBD = new Date(today.getFullYear() + 1, loverBD.getMonth(), loverBD.getDate());
         var lastYearUserBD = new Date(today.getFullYear() - 1, userBD.getMonth(), userBD.getDate());
         var thisYearUserBD = new Date(today.getFullYear(), userBD.getMonth(), userBD.getDate());
-        var nextYearUserBD = new Date(today.getFullYear() + 1, userBD.getMonth(), userBD.getDate()+1);
+        var nextYearUserBD = new Date(today.getFullYear() + 1, userBD.getMonth(), userBD.getDate());
         anniversaryDateArray.push(lastYearLoverBD);
         anniversaryDateArray.push(thisYearLoverBD);
         anniversaryDateArray.push(nextYearLoverBD);
@@ -68,23 +74,40 @@ function checkAnniversary() {
         anniversaryDateArray.push(thisYearUserBD);
         anniversaryDateArray.push(nextYearUserBD);
     }
-    console.log(relDate);
+    console.log(anniversaryDateArray);
 
     for (var i = 0; i < anniversaryDateArray.length; i++){
         if(isValidDate(anniversaryDateArray[i].getFullYear(), anniversaryDateArray[i].getMonth(), anniversaryDateArray[i].getDate())){    
-            // console.log(i);        
-            // console.log(anniversaryDateArray[i]);
-            // console.log(anniversaryDateArray[i].toISOString());
-            anniversaryDateArray[i] = anniversaryDateArray[i].toISOString().slice(0,10).replace(/-/g, "");
+            //toISOString()하면 무조건 UTC기준으로 간다고 해서 local timezoneOffSet 확인해줘야함
+            var convertUTCtoKST = new Date(anniversaryDateArray[i] - timeZoneOffSet);
+            anniversaryDateArray[i] = convertUTCtoKST.toISOString().slice(0,10).replace(/-/g, "");
         }
     }
+    //현재시간 추가
+    anniversaryDateArray.push(todayISO);
     anniversaryDateArray.sort();
     console.log(anniversaryDateArray);
+
+    for (var i = 0; i < anniversaryDateArray.length; i++) {
+        var dateCheck = anniversaryDateArray[i];
+        if (dateCheck == todayISO){
+            
+        }
+
+    }
 }
 
-function changeToString(dateFormat) {
-    dateFormat = dateFormat.toISOString().slice(0,10).replace(/-/g,"");
-    return dateFormat;
+// function changeToString(dateFormat) {
+//     dateFormat = dateFormat.toISOString().slice(0,10).replace(/-/g,"");
+//     return dateFormat;
+// }
+
+function isValidDate(year, month, day) {
+    var d = new Date(year, month, day);
+    if (d.getFullYear() == year && d.getMonth() == month && d.getDate() == day) {
+        return true;
+    }
+    return false;
 }
 
 function toggle() {
@@ -176,15 +199,7 @@ function doImageTest() {
         var imgSrcStr = "data:image/jpeg;base64," + btoa(record.data)
         $("#withGF").attr("src", imgSrcStr);
     }
-}
-
-function isValidDate(year, month, day) {
-    var d = new Date(year, month, day);
-    if (d.getFullYear() == year && d.getMonth() == month && d.getDate() == day) {
-        return true;
-    }
-    return false;
-}
+} 
 
 $(".imgSetting").click(function() {
     $("#settingsModal").modal("hide");
