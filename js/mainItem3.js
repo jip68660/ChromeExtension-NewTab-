@@ -56,7 +56,7 @@ function checking() {
         $("#daysInRel").html(Math.floor((new Date(today.getFullYear(), today.getMonth(), today.getDate()) - new Date(relDate.getFullYear(), relDate.getMonth(), relDate.getDate())) / (1000 * 3600 * 24)) + 1);
         $("#infoBox").hide();
 
-        if (!localStorage.couplePicFileName) {
+        if (!localStorage.couplePicFileName || localStorage.couplePicFileName == "") {
             $("#fileName").text("default image");
         } else {
             $("#fileName").text(localStorage.couplePicFileName);
@@ -197,9 +197,11 @@ function doFile(e) {
         }
         console.log("assigned obj");
 
+        // 파일 이름 display 및 local에 저장
         $("#fileName").text(file.name);
         localStorage.setItem("couplePicFileName", file.name);
 
+        // db에 파일 저장
         let trans = db.transaction(["couplePicOS"], "readwrite");
         let addReq = trans.objectStore("couplePicOS").put(obj, 0);
         addReq.onerror = function(e) {
@@ -244,6 +246,7 @@ function doImageTest() {
 
 function revertImg() {//그냥 objectstore 비우면 됨
     console.log("revertImg");
+    localStorage.couplePicFileName = "";
     let trans = db.transaction(["couplePicOS"], "readwrite");
     let req = trans.objectStore("couplePicOS").delete(0);
     req.onsuccess = function(e) {
