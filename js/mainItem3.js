@@ -70,15 +70,19 @@ function checkAnniversary() {
     for (var i = 1; i<11; i++){
         var relCal = relDate;
         relCal.setDate(relDate.getDate() + i*100 - 1);
+        //array사용하고 나서 그 해당 기념일의 이미지를 어떻게 받을까 고민하다 [기념일날, 기념일이미지이름] 이런식으로 설정함
+        var relCal = [relCal, i*100];
         anniversaryDateArray.push(relCal);
         relDate = new Date(localStorage.relStartDate);
     }
-    //1주년, 2주년...4주년까지 추가 -> 4주년 이후로는 그냥 안해도 될꺼같음, 아니면 그 위로는 글귀띄워도 재미있을듯. ex)"결혼하셔야죠 이제"
+    //1주년,2주년...4주년까지 추가 -> 4주년 이후로는 그냥 안해도 될꺼같음, 아니면 그 위로는 글귀띄워도 재미있을듯. ex)"결혼하셔야죠 이제"
     for (var i = 1; i<5; i++){
         relCal365 = new Date(relDate.getFullYear() + i, relDate.getMonth(), relDate.getDate());
+        relCal365 = [relCal365, i + "year"];
         anniversaryDateArray.push(relCal365);
     }    
 
+    //유저가 생일을 다 입력했을떄만 나옴, 아니면 없음
     if (localStorage.loverBD && localStorage.userBD){
         var lastYearLoverBD = new Date(today.getFullYear() - 1, loverBD.getMonth(), loverBD.getDate());
         var thisYearLoverBD = new Date(today.getFullYear(), loverBD.getMonth(), loverBD.getDate());
@@ -86,33 +90,73 @@ function checkAnniversary() {
         var lastYearUserBD = new Date(today.getFullYear() - 1, userBD.getMonth(), userBD.getDate());
         var thisYearUserBD = new Date(today.getFullYear(), userBD.getMonth(), userBD.getDate());
         var nextYearUserBD = new Date(today.getFullYear() + 1, userBD.getMonth(), userBD.getDate());
-        anniversaryDateArray.push(lastYearLoverBD);
-        anniversaryDateArray.push(thisYearLoverBD);
-        anniversaryDateArray.push(nextYearLoverBD);
-        anniversaryDateArray.push(lastYearUserBD);
-        anniversaryDateArray.push(thisYearUserBD);
-        anniversaryDateArray.push(nextYearUserBD);
-    }
-    console.log(anniversaryDateArray);
+        lastYearLoverBD = [lastYearLoverBD, "BD"];
+        thisYearLoverBD = [thisYearLoverBD, "BD"];
+        nextYearLoverBD = [nextYearLoverBD, "BD"];
+        lastYearUserBD = [lastYearUserBD, "BD"];
+        thisYearUserBD = [thisYearUserBD, "BD"];
+        nextYearUserBD = [nextYearUserBD, "BD"];
 
-    for (var i = 0; i < anniversaryDateArray.length; i++){
-        if(isValidDate(anniversaryDateArray[i].getFullYear(), anniversaryDateArray[i].getMonth(), anniversaryDateArray[i].getDate())){    
-            //toISOString()하면 무조건 UTC기준으로 간다고 해서 local timezoneOffSet 확인해줘야함
-            var convertUTCtoKST = new Date(anniversaryDateArray[i] - timeZoneOffSet);
-            anniversaryDateArray[i] = convertUTCtoKST.toISOString().slice(0,10).replace(/-/g, "");
+        //사귄날이 2019년도인데 2018년도 생일 기념일은 말이 안된다, 그거 계산;
+        if (relDate > thisYearLoverBD[0] || relDate > thisYearUserBD[0]){
+            //기본적으로 다음년도 생일 추가
+            anniversaryDateArray.push(nextYearLoverBD);
+            anniversaryDateArray.push(nextYearUserBD);
+            //이번년도 생일이 사귄날짜 이후면 추가
+            if(relDate < thisYearLoverBD[0]){
+                anniversaryDateArray.push(thisYearLoverBD);
+            }            
+            if (relDate < thisYearUserBD[0]){
+                anniversaryDateArray.push(thisYearUserBD);
+            }
+        }
+        else{ 
+            anniversaryDateArray.push(lastYearLoverBD);
+            anniversaryDateArray.push(thisYearLoverBD);
+            anniversaryDateArray.push(nextYearLoverBD);
+            anniversaryDateArray.push(lastYearUserBD);
+            anniversaryDateArray.push(thisYearUserBD);
+            anniversaryDateArray.push(nextYearUserBD);
         }
     }
-    //현재시간 추가
-    anniversaryDateArray.push(todayISO);
+    //기념일날 전부 string으로 변환
+    for (var i = 0; i < anniversaryDateArray.length; i++){
+        var dateFormat = anniversaryDateArray[i][0];
+        if(isValidDate(dateFormat.getFullYear(), dateFormat.getMonth(), dateFormat.getDate())){    
+            //toISOString()하면 무조건 UTC기준으로 간다고 해서 local timezoneOffSet 확인해줘야함
+            var convertUTCtoKST = new Date(dateFormat - timeZoneOffSet);
+            anniversaryDateArray[i][0] = convertUTCtoKST.toISOString().slice(0,10).replace(/-/g, "");
+        }
+    }
+    //기념일날 기준으로 sort
     anniversaryDateArray.sort();
     console.log(anniversaryDateArray);
 
+    //오늘기준으로 기념일인지, 전 기념일은 뭔지, 다음 기념일은 뭔지 계산 및 보여주기
     for (var i = 0; i < anniversaryDateArray.length; i++) {
         var dateCheck = anniversaryDateArray[i];
-        if (dateCheck == todayISO){
-            
+        
+        //오늘이 기념일
+        if (dateCheck[0] == todayISO){
+            $("#middleBox").hide();
+            $("#anniversaryDate").show();
+            $("#anniversaryImg").attr("src", "/img/" + dateCheck[1] + ".png");
+            break;
         }
-
+        //전기념일 계산
+        else if (dateCheck[0] < todayISO){
+            lastAnniversaryDate = dateCheck[1];            
+        }
+        //다음기념일 계산하고나면, 마지막 전기념일이 전기념일
+        else if (dateCheck[0] > todayISO){
+            nextAnniversaryDate = dateCheck[1];    
+            if (lastAnniversaryDate == undefined){
+                lastAnniversaryDate = "heart";
+            }  
+            $("#lastAnniversaryImg").attr("src", "/img/" + lastAnniversaryDate + ".png");
+            $("#nextAnniversaryImg").attr("src", "/img/" + nextAnniversaryDate + ".png");
+            break;
+        }
     }
 }
 
