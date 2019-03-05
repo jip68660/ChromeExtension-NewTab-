@@ -124,7 +124,7 @@ function setBackgroundImage() {
 
 function resetStorage() {
     localStorage.clear();
-    
+    //커플사진만 지우기 (revertImg랑 같음)
     let request = indexedDB.open("couplePic", 1);
     request.onsuccess = function(e) {
         db = e.target.result;

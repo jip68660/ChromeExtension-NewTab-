@@ -1,3 +1,12 @@
+$("#profPicUser").click(function() {
+    $("#profPicUser").hide();
+    $("#moreInfo").show();
+});
+$("#moreInfo").click(function() {
+    $("#profPicUser").show();
+    $("#moreInfo").hide();
+});
+
 $(document).ready(function() {
 
     $("body").css({
@@ -65,10 +74,10 @@ $(document).ready(function() {
         progressBarWidth = progressBarWidth + "%";
 
         $("#progressBar").css("width", progressBarWidth);
-        $("#li_wholeDays").html(localStorage.wholeDays);
-        $("#li_reducedDays").html(localStorage.reducedDays);
-        $("#li_doneDays").html(localStorage.wholeDays - localStorage.todoDays);
-        $("#li_todoDays").html(localStorage.todoDays);
+        $("#li_wholeDays").html(localStorage.wholeDays + "일");
+        $("#li_reducedDays").html(localStorage.reducedDays + "일");
+        $("#li_doneDays").html((localStorage.wholeDays - localStorage.todoDays) + "일");
+        $("#li_todoDays").html(localStorage.todoDays + "일");
 
         // 실시간 업데이트 퍼센트
         var endDateTime = new Date(localStorage.endDateYear, (localStorage.endDateMonth - 1), localStorage.endDateDate, 8);// 전역일 오전 8시
@@ -83,15 +92,15 @@ $(document).ready(function() {
         // $("#progressBar").html(progressBarWidth);
 
         //일단 이 정보 밖으로 빼놔서, comment 시킴.
-        $('[data-toggle="popover"]').popover({
-            trigger: "hover",
-            title: "정보",
-            content: 
-            '<ul style="list-style: none; padding-left: 0"><li>전체 복무일: ' + localStorage.getItem("wholeDays") 
-            + '일</li><li>현재 복무일: ' + (localStorage.getItem("wholeDays") - localStorage.getItem("todoDays")) 
-            + '일</li><li>남은 복무일: ' + localStorage.getItem("todoDays") 
-            + '일</li><li>단축 복무일: ' + localStorage.getItem("reducedDays") + '일</li></ul>',
-            html: true
-        });
+        // $('[data-toggle="popover"]').popover({
+        //     trigger: "hover",
+        //     title: "정보",
+        //     content: 
+        //     '<ul style="list-style: none; padding-left: 0"><li>전체 복무일: ' + localStorage.getItem("wholeDays") 
+        //     + '일</li><li>현재 복무일: ' + (localStorage.getItem("wholeDays") - localStorage.getItem("todoDays")) 
+        //     + '일</li><li>남은 복무일: ' + localStorage.getItem("todoDays") 
+        //     + '일</li><li>단축 복무일: ' + localStorage.getItem("reducedDays") + '일</li></ul>',
+        //     html: true
+        // });
     }
 });

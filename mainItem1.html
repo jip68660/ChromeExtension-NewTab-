@@ -13,7 +13,6 @@
         <link rel="stylesheet" href="css/style_mainItem1.css">
 
         <link rel="manifest" href="manifest.json">
-
     </head>
 
     <body style="background-color: rgba(80, 24, 24, 0)" class="gamja">
@@ -49,17 +48,37 @@
             <div id="percentageDiv" class="majorMono"></div>
         </div> -->
 
-        <br><br>
-        <div id="middleBox" style="display: inline-flex; width: 100%; height: 60%">
+        <div id="topBox">
+            <br><br>
+        </div>
+        <div id="middleBox" class="flexRow centerH centerV" style="width: 100%; height: 60%">
             <div style="width: 10%"></div>
-            <div id="leftBox" style="width: 40%; display:flex; align-items: center; justify-content: center;"> 
+            <div id="leftBox" class="flexCol centerH centerV" style="width: 40%;"> 
                 <button id="toRankSettingsButton" class="btn btn-primary rankSettings" style="display: none;">계급 설정</button>
                 <img id ="profPicUser">
+                <div id="moreInfo" class="flexCol" style="display: none">
+                    <div class="flexRow centerV spaceAround">
+                        <span>전체 복무일:</span>
+                        <span id="li_wholeDays"></span>
+                    </div>
+                    <div class="flexRow centerV spaceAround">
+                        <span>단축 복무일:</span>
+                        <span id="li_reducedDays"></span>
+                    </div>
+                    <div class="flexRow centerV spaceAround">
+                        <span>현재 복무일:</span>
+                        <span id="li_doneDays"></span>
+                    </div>
+                    <div class="flexRow centerV spaceAround">
+                        <span>남은 복무일:</span>
+                        <span id="li_todoDays"></span>
+                    </div>
+                </div>
             </div>
-            <div id="topBox" style="width: 40%; justify-content: center; align-self: center">
+            <div id="rightBox" class="flexCol centerH centeV" style="width: 40%">
                 <div id="nameDisplay"></div>
                 <div id="endDateDisplay"></div>
-                <div id="dDayDisplay"></div>
+                <div id="dDayDisplay" class="jua"></div>
             </div>
             <div style="width: 10%"></div>
         </div>

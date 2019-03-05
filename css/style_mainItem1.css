@@ -1,3 +1,6 @@
+body {
+    color: black;
+}
 #progress {
     margin: auto;
     width: 80%;
@@ -7,25 +10,37 @@
     width: 0%;
     border-radius: .25rem;
 }
-#topBox {
+/* #topBox {
     font-size: 4vw;
-}
+} */
 #leftBox {
     font-size: 3vw;
-    margin: auto;
+    padding-left: 10%;
+    padding-right: 8%;
+}
+
+#profPicUser, #moreInfo {
+    transition: transform 0.3s;
+    /* text-align: left; */
+}
+#profPicUser:hover, #moreInfo:hover {
+    transform: scale(1.01);
 }
 #rightBox {
-    font-size: 3vw;
-    margin: auto;
+    font-size: 4.25vw;
+    padding-right: 10%;
 }
 #rightBox ul {
     margin: auto;
+}
+#dDayDisplay {
+    font-size: 6vw;
 }
 #toRankSettingsButton {
     width: 15vw;
 }
 #profPicUser {
-    width: 40vh;
+    width: 35vh;
 }
 #percentageDiv{
     font-size: 4vw;
@@ -33,6 +48,25 @@
 #progress {
     height: 5vh;
 }
-.rankSettings {
+.rankSettings, #profPicUser, #moreInfo {
     cursor: pointer;
+}
+
+/* layout */
+.flexColumn {
+    display: flex;
+    flex-direction: column;
+}
+.flexRow {
+    display: flex;
+    flex-direction: row;
+}
+.centerV {
+    align-items: center;
+}
+.centerH {
+    justify-content: center;
+}
+.spaceAround {
+    justify-content: space-around;
 }
