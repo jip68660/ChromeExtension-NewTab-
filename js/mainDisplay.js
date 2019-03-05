@@ -124,6 +124,17 @@ function setBackgroundImage() {
 
 function resetStorage() {
     localStorage.clear();
+    
+    let request = indexedDB.open("couplePic", 1);
+    request.onsuccess = function(e) {
+        db = e.target.result;
+        let trans = db.transaction(["couplePicOS"], "readwrite");
+        let req = trans.objectStore("couplePicOS").delete(0);
+        req.onsuccess = function(e) {
+            $("#withGF").attr("src", "img/withGF.png");
+        }
+    }
+
     location.reload();
 }
 
@@ -194,6 +205,7 @@ function checkStorage() {
 function initDoneDisplay() {
     localStorage.setItem("currLocAllowed", false);//처음에는 날씨 위치정보 허용 안 된 상태
     localStorage.setItem("setUpComplete", true);
+    localStorage.couplePicFileName = "";//처음에는 커플사진 아무것도 설정 안 되어 있는 상태
 
     if (localStorage.name != "" && localStorage.identity != "" && !(localStorage.branch == "undefined") && localStorage.enlistDate != "") {
         console.log("enterinitdisplay");
