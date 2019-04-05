@@ -252,3 +252,83 @@
 #leftPointer:hover, #rightPointer:hover, #settingButton:hover, #settingButtonSub:hover {
     transform: scale(1.2);
 }
+
+/* BOOTBOX */
+.bootbox-body {
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    font-family: "Poor Story";
+}
+
+/* 1. Alert */
+.bootbox-alert > .modal-dialog {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Poor Story";
+}
+
+.bootbox-alert > .modal-dialog > .modal-content {
+    background-color: beige;
+    width: 70%;
+}
+
+.bootbox-alert > .modal-dialog > .modal-content > .modal-body {
+    height: 100px;
+    border-bottom: 1px solid #c7c7c7;
+}
+
+.bootbox-alert > .modal-dialog > .modal-content > .modal-footer {
+    padding: 0.25rem;
+}
+
+.bootbox-alert > .modal-dialog > .modal-content > .modal-footer > .btn-primary {
+    visibility: hidden;
+}
+.bootbox-alert > .modal-dialog > .modal-content > .modal-footer > .btn-primary:after {
+    visibility: visible;
+    content: "확인";
+    color: #007bff;
+}
+
+/* 2. Confirm */
+.bootbox-confirm > .modal-dialog {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Poor Story";
+}
+
+.bootbox-confirm > .modal-dialog > .modal-content {
+    background-color: beige;
+    width: 70%;
+}
+
+.bootbox-confirm > .modal-dialog > .modal-content > .modal-body {
+    height: 100px;
+    border-bottom: 1px solid #c7c7c7;
+}
+
+.bootbox-confirm > .modal-dialog > .modal-content > .modal-footer {
+    padding: 0.25rem;
+}
+
+.bootbox-confirm > .modal-dialog > .modal-content > .modal-footer > .btn-default {
+    visibility: hidden;
+}
+.bootbox-confirm > .modal-dialog > .modal-content > .modal-footer > .btn-default:after {
+    visibility: visible;
+    content: "취소";
+}
+
+.bootbox-confirm > .modal-dialog > .modal-content > .modal-footer > .btn-primary {
+    visibility: hidden;
+}
+.bootbox-confirm > .modal-dialog > .modal-content > .modal-footer > .btn-primary:after {
+    visibility: visible;
+    content: "확인";
+    color: #007bff;
+}
+

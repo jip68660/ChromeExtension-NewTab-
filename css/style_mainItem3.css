@@ -48,6 +48,9 @@
 .centerV {
     justify-content: center;
 }
+.spaceAround {
+    justify-content: space-around;
+}
 
 #pageContent {
     width: 100%;

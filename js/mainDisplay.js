@@ -15,7 +15,10 @@ $(document).ready(setBackgroundImage);
 
 //actions from mainPage
 $("#storageResetButton").click(function() {
-    bootbox.confirm("설정을 초기화하시겠습니까?", function(result) {
+
+    $("#settingsModal").modal("hide");
+
+    bootbox.confirm("설정을 초기화하시겠습니까? </br> 최초 설정으로 이동합니다.", function(result) {
         /* your callback code */ 
         if (result) {
             resetStorage();
@@ -91,7 +94,10 @@ $("#saveSettings").click(function() {
     }
     if (engineArray.length == 0) {
 
-        bootbox.alert("최소한 1개의 검색엔진을 선택해주세요");
+        bootbox.alert({
+            message: "최소한 1개의 검색엔진을 선택해주세요!",
+            callback: function(){ /* your callback code */ }
+        })
 
     } else {
         onSaveSettings(engineArray);
@@ -215,9 +221,6 @@ function setBackgroundImage() {
 // 정보를 입력받았을 때만 환영합니다 띄우고 3초 후 보여주고, 새로고침 or 새 탭 시에는 바로 띄우게 하기 위한 변수
 
 function resetStorage() {
-
-    // alert("설정을 초기화하시겠습니까? 처음 페이지로 이동합니다.");
-
     localStorage.clear();
     // indexedDB자체를 다 지움
     var req = indexedDB.deleteDatabase("couplePic");
@@ -262,7 +265,10 @@ function checkStorage() {
         loadPage();
     } else {
         if (!localStorage.name || !localStorage.identity|| !localStorage.branch || !localStorage.enlistDate) {
+            
+            // bootbox.alert("최초설정이 완료되지 않았습니다.");
             alert("최초설정이 완료되지 않았습니다.");
+
             //하드코딩하면 가능.
             timeoutCheck = 1;
             localStorage.clear();            

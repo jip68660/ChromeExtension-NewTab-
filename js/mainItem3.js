@@ -4,7 +4,7 @@ $(".imgSetting").click(function() {
     $("#picModal").modal("hide");
 });
 $("#imgUpload").change(doFile);
-$("#imgSubmit").click(doImageTest);
+$("#closeImgUpload").click(doImageTest);
 $("#imgRevert").click(revertImg);
 
 // var anniversaryDate = ["img/heart.png", "img/100.png", "img/200.png", "img/300.png", "img/1year.png", "img/400.png", "img/500.png", "img/600.png", "img/700.png", "img/2year.png", "img/800.png", "img/900.png", "img/1000.png", "img/3year.png", "img/4year.png", "img/BD_lover.png", "img/BD_user.png"];
@@ -180,11 +180,11 @@ function toggle() {
     var waitDays = Math.floor((new Date(today.getFullYear(), today.getMonth(), today.getDate()) - new Date(relDate.getFullYear(), relDate.getMonth(), relDate.getDate())) / (1000 * 3600 * 24)) + 1;
     var doneDays = localStorage.wholeDays - localStorage.todoDays;
     if (waitDays > doneDays){
-        $("#waitDaysCount").html(doneDays);
+        $("#waitDaysCount").html(doneDays + "일");
     }
     else
     {
-        $('#waitDaysCount').html(waitDays);
+        $('#waitDaysCount').html(waitDays + "일");
     }
     // $("#waitDaysCount").html(Math.floor((new Date() - new Date(localStorage.relStartDate)) / (1000 * 3600 * 24))+1);
     $("#leftDaysCount").html(localStorage.todoDays);

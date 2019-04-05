@@ -49,7 +49,8 @@ function onNameEnter() {
 }
 function onNameInEnd() {
     if ($("#nameInput").val() == ""){
-        alert("이름을 적어주세요");
+        bootbox.alert("이름을 적어주세요");
+        // alert("이름을 적어주세요");
     }
     else{
         localStorage.setItem("name", document.getElementById("nameInput").value);
