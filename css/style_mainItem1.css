@@ -1,10 +1,11 @@
 body {
-    color: black;
+    overflow: hidden;
 }
 #progress {
     margin: auto;
     width: 80%;
     border: 2px solid white;
+    border-radius: .5rem;
 }
 #progressBar {
     width: 0%;
@@ -15,7 +16,7 @@ body {
 } */
 #leftBox {
     font-size: 3vw;
-    padding-left: 10%;
+    padding-left: 5%;
     padding-right: 8%;
 }
 
@@ -27,7 +28,7 @@ body {
     transform: scale(1.01);
 }
 #rightBox {
-    font-size: 4.25vw;
+    font-size: 3vw;
     padding-right: 10%;
 }
 #rightBox ul {
@@ -39,8 +40,11 @@ body {
 #toRankSettingsButton {
     width: 15vw;
 }
-#profPicUser {
+.rankImg {
     width: 35vh;
+}
+#bottomBox {
+    font-size: 3vw;
 }
 #percentageDiv{
     font-size: 4vw;
@@ -48,7 +52,7 @@ body {
 #progress {
     height: 5vh;
 }
-.rankSettings, #profPicUser, #moreInfo {
+.rankSettings, .rankImg, #moreInfo {
     cursor: pointer;
 }
 
@@ -69,4 +73,58 @@ body {
 }
 .spaceAround {
     justify-content: space-around;
+}
+
+/* 반응형 */
+/* @media (max-width: 560px) and (min-height: 400px) { */
+@media (min-height: 300px) and (max-width: 272px) {
+    body{
+        height: 100%;
+        margin: 0px;
+    }
+    #middleBox{
+        flex-direction: column;
+        height: 75% !important;
+        justify-content: space-evenly;
+    }
+    #rightBox{
+        order: -1;
+        font-size: 8.5vw;
+        width: 100% !important;
+        padding-right: 0px;
+        justify-self: center;
+    }
+    #leftBox{
+        width: 100% !important;   
+        flex-direction: column;
+        padding-left: 0;
+        padding-right: 0;  
+    }    
+    #dDayDisplay {
+        font-size: 12vw;
+    }
+    #toRankSettingsButton {
+        width: auto;
+    }
+    .rankImg{
+        width: 53vw !important; 
+    }    
+    .SGT{
+        width: 75vw !important;
+        height: 27vh;
+    }
+    
+    #moreInfo{
+        height: auto;
+        font-size: 7.5vw;
+    }
+    #percentageDiv{
+        font-size: 7vw;
+    }
+    #progress{
+        width: 90%;
+    }
+    .space{
+        display:none;
+    }
 }

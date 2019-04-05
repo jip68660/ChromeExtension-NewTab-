@@ -18,22 +18,20 @@
 
     </head>
 
-    <body style="background-color: rgb(255, 255, 255, 0)" class="gamja">
+    <body style="background-color: rgb(255, 255, 255, 0); display: flex; justify-content: center; align-items: center" class="gamja font-color">
 
-        <div id = "instruction" class= "answer gamja" style="color: black; display: none">설정에서 '우리사이'의 정보를 입력해주시기 바랍니다</div>
+        <div id = "instruction" class= "answer gamja" style="display: none">설정에서 '우리사이'의 정보를 입력해주시기 바랍니다</div>
 
-        <div id="pageContent" class="flexColumn">
+        <div id="pageContent" class="flexColumn" style="width: 85%; height: 100%">
+            <div class= "space" style="height: 20%"></div>
             <div id="topBox" class="flexRow">
                 <div id="betweenPic" class="flexColumn">
-                    <div style="width:70%; height:70%">
+                    <div class="flexColumn centerV centerH" style="width:70%; height:70%">
                         <img id ="withGF" data-toggle="modal" data-target="#picModal" data-backdrop="false" data-keyboard="true" style="cursor: pointer" title="클릭해서 사진 변경">
-                        <!-- <button id="settingButton" data-toggle="modal" data-target="#settingsModal" style="margin:0;">
-                            이미지 업로드
-                        </button> -->
                     </div>
                 </div>
                 <div id="relationshipInfo" class="flexColumn">
-                    <div style="height: 10%"></div>
+                    <div class="space" style="height: 10%"></div>
                     <div id="nameBox" class="flexRow centerH centerV">
                         <div id="userName"></div>
                         <image src="/img/heart.png" style="height:50%">
@@ -43,24 +41,22 @@
                         D+<span id="daysInRel"></span>
                     </div>
                     <div id="infoBox" class="flexColumn centerH centerV">
-                        <div id="waitDaysBox" class="flexRow centerV">
+                        <div id="waitDaysBox" class="flexRow centerV" style="padding-top:5%">
                             군화 & 곰신 신은지&nbsp<span id="waitDaysCount"></span>일
                         </div>
-                        <div id="leftDaysBox" class="flexRow centerV">
-                            꽃신까지&nbsp<span id="leftDaysCount"></span>일
+                        <div id="leftDaysBox" class="flexRow centerV" style="padding-bottom:5%">
+                            꽃신 까지&nbsp<span id="leftDaysCount"></span>일
                         </div>
                     </div>
-                    <div style="height: 15%"></div>
+                    <div class = "space" style="height: 15%"></div>
                 </div>
             </div>
-            <div style="height: 10%"></div>
+            <div class = "space" style="height: 5%"></div>
             <div id="middleBox" class="flexRow centerH centerV">
                 <div id="lastAnniversary" class="flexRow">
                     <img id="lastAnniversaryImg">
                 </div>
-                <div id="progressAnniversary" class="flexRow">
-                    <!-- <img id="testImage">  -->
-                    <img id="couplePicDisplay"> 
+                <div id="progressAnniversary" class="flexRow">                    
                 </div>
                 <div id="nextAnniversary" class="flexRow">
                     <img id="nextAnniversaryImg">
@@ -69,14 +65,14 @@
             <div id="anniversaryDate" class="centerH centerV" style="display: none">
                 <img id="anniversaryImg">
             </div>
-
+            <div class = "space" style="height: 5%"></div>
             <div id="mainModal">
                 <div class="modal fade bd-example-modal-sm" id="picModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="height: 100%">
                     <div class="modal-dialog modal-dialog-centered" role="document" style="height: 90%">
                         <div id="modalContent" class="modal-content" style="height: 80%">
                             <div class="modal-header">
                                 <h3>이미지 설정</h3>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <button id="closeImgUpload" type="button" class="close" data-dismiss="modal" aria-label="Close" style="outline: none">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
@@ -86,9 +82,9 @@
                                     <input type="file" id="imgUpload" capture>
                                 </label>
                                 <br>
-                                <label id="fileName"></label>
+                                <label id="fileName" style="color: black"></label>
                                 <br>
-                                <button id="imgSubmit" class="imgSetting btn btn-primary">변경</button>
+                                <!-- <button id="imgSubmit" class="imgSetting btn btn-primary">변경</button> -->
                                 <button id="imgRevert" class="imgSetting btn btn-secondary">복구</button>
                             </div>
                         
@@ -96,7 +92,7 @@
                             </div> -->
                         </div>
                     </div>
-                    </div>
+                </div>
             </div>
     
         </div>

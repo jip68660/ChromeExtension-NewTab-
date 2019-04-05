@@ -44,6 +44,9 @@
   width: 35px;
   height: 35px;
 }
+#searchIconImg:hover {
+  transform: scale(1.1);
+}
 /* .searchCenter{
   margin-top: 90px - 22.5px;
 } */
@@ -54,19 +57,16 @@
   /* width: 150px;
   height: 1.2em; */
   font-size: 15px;
-  color: white;
   display: inline;
 }
 #timeDisplay1, #timeDisplay2, #timeColon {
   /* width: 150px;
   height: 1.2em; */
-  font-size: 40px;
-  color: white;
+  font-size: 45px;
   display: inline;
 }
 #weatherUI {
   padding: 10px 10px 0px 0px;
-  color: white;
   display: inline-flex;
   text-align: center;
   width: 100%;
@@ -88,7 +88,7 @@
 }
 .weatherIconImg {
   display: none;
-  color: white;
+  /* color: white; */
   height: 100%;
   display: inline;
 }

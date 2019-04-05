@@ -7,21 +7,30 @@ var timeoutCheck;
 var firstEntrance = true;
 var possibleSearchEngine = ["naver", "google", "daum", "youtube", "yahoo", "baidu", "bing"];//여기에 체크할수 있는 모든 engine 다 추가 시켜줌
 var settingsEnterCount = 0;
+var settingsEnterCountSub = 0;
 
 // starting point
 $(document).ready(checkStorage);
 $(document).ready(setBackgroundImage);
 
 //actions from mainPage
-$("#storageResetButton").click(resetStorage);
+$("#storageResetButton").click(function() {
+    bootbox.confirm("설정을 초기화하시겠습니까?", function(result) {
+        /* your callback code */ 
+        if (result) {
+            resetStorage();
+        }
+    })
+});
 $("#leftPointer").click(clickLeft);
 $("#rightPointer").click(clickRight);
 
 //설정 바로가기 action
 $("#toWeatherSettingsButton").click(function() {
     presetSettings();
+    $("#weatherArrow").show();
     $("#settingsModal").modal("show");
-    setDefaultSettingsTab(1);
+    setDefaultSettingsTab(1, "main");
 });
 $("#iframe").on("load",function() {
     var iframeContent = $("#iframe").contents();
@@ -29,24 +38,32 @@ $("#iframe").on("load",function() {
     iframeContent.find(".rankSettings").click(function() {
         presetSettings();
         $("#settingsModal").modal("show");
-        setDefaultSettingsTab(2);
+        setDefaultSettingsTab(2 , "main");
     });
 });
 
 
 // 우리사이 onOff 설정 내에서 활성화 / 비활성화 시켰을 때
-$("#onOffToggle").click(function() {
-    if ($("#onOffToggle").hasClass("active")) {
-        $("#loveInfo").find(".loveSetting").prop("disabled", true);
-    }
-    else {
-        $("#loveInfo").find(".loveSetting").prop("disabled", false);
-    }
+// $("#onOffToggle").click(function() {
+//     if ($("#onOffToggle").hasClass("active")) {
+//         $("#loveInfo").find(".loveSetting").prop("disabled", true);
+//     }
+//     else {
+//         $("#loveInfo").find(".loveSetting").prop("disabled", false);
+//     }
+// });
+$("#onButton").click(function(){
+    $("#loveInfo").find(".loveSetting").prop("disabled", false);
 });
+$("#offButton").click(function(){
+    $("#loveInfo").find(".loveSetting").prop("disabled", true);
+});
+
 
 //actions within settings
 $("#weatherInitButton").click(function() {
     $("#toWeatherSettings").hide();
+    $("#weatherArrow").hide();
     localStorage.setItem("currLocAllowed", true);
     storageCheckLocation();
 });
@@ -61,19 +78,95 @@ $("#lover-name").keypress(function(event) {
         event.preventDefault();
     }
 });
-$("#saveSettings").click(onSaveSettings);
+$("#user-rank").click(function() {
+    $("#rankArrow").hide();
+});
+$("#saveSettings").click(function() {
+
+    var engineArray = [];//engineArray 비워두고 시작
+    for (var i = 0; i < possibleSearchEngine.length; i++) {
+        if ($("#" + possibleSearchEngine[i] + "CB_id").is(":checked")) {//체크되어 있는거만 추가
+            engineArray.push(possibleSearchEngine[i]);
+        }
+    }
+    if (engineArray.length == 0) {
+
+        bootbox.alert("최소한 1개의 검색엔진을 선택해주세요");
+
+    } else {
+        onSaveSettings(engineArray);
+    }
+});
 $("#settingButton").click(function() {
+
+    // 계급설정, 날씨활성화 눌렀다가 두개 안하고 그냥 설정 창 닫으면 다시 설정 들어갈때 유지돼서, 그냥 여기서 없애는게 제일 좋을듯
+    $("#weatherArrow").hide();
+    $("#rankArrow").hide();
+
     presetSettings();//설정 버튼 누를때 presetSettings 실행
     if (settingsEnterCount == 0) {//처음으로 설정 들어갈때만 크레딧 페이지 띄우기
         $("#settingsModal").modal("show");
-        setDefaultSettingsTab(0);
+        setDefaultSettingsTab(0, "main");
     }
     settingsEnterCount++;
 });
+$("#settingButtonSub").click(function() {
+    presetSettingsSub();
+
+    if (settingsEnterCountSub == 0) {//처음으로 설정 들어갈때만 크레딧 페이지 띄우기
+        $("#settingsSubModal").modal("show");
+        setDefaultSettingsTab(0, "sub");
+    }
+    settingsEnterCountSub++;
+});
+$("#sal2019").click(function() {
+    $("#sal2019Card").show();
+    $("#sal2020Card").hide();
+});
+$("#sal2020").click(function() {
+    $("#sal2020Card").show();
+    $("#sal2019Card").hide();
+});
+// $("#accordion").click(function() {
+//     $("#headingMovies").click(function() {
+//         uncheckHeadings();
+//         $("#headingMovies").css("background-color", "#007bff");
+//         $("#headingMovies").css("color", "white");
+//     });
+// });
+// function uncheckHeadings() {
+//     console.log("entered");
+//     var headingsArr = ["Movies", "AmusementPark", "Foods", "Languages", "Transportation", "Sports"];
+//     for (var i = 0; i < headingsArr.length; i++) {
+//         $("#heading" + headingsArr[i]).css("background-color", "rgba(0,0,0,.03)");
+//         $("#heading" + headingsArr[i]).css("color", "inherit");
+//     }
+// }
+$(".hideSave").click(function() {
+    $("#saveSettings").hide();
+});
+$(".showSave").click(function() {
+    $("#saveSettings").show();
+});
+
 
 // 방향키로 iframe 왔다갔다 하기. 아직까지는 에러 모르겠음
 // iframe 클릭한상태로 키보드 누르면 안 먹힘... 큰문제 아닌듯?  
-$("body").keydown(function(e){
+// $("body").keydown(function(e){
+//     if (isSearchClosed && ((localStorage.progressBar >= 0) && (localStorage.progressBar <= 100))) {
+//         if (e.keyCode == 37){
+//             $("iframe").removeClass("animated fadeIn");
+//             clickLeft();
+//         }
+//         else if (e.keyCode == 39){
+//             $("iframe").removeClass("animated fadeIn");
+//             clickRight();
+//         }
+//     }
+// });
+$("body").keydown(pressLeftRight);
+
+function pressLeftRight(e) {
     if (isSearchClosed && ((localStorage.progressBar >= 0) && (localStorage.progressBar <= 100))) {
         if (e.keyCode == 37){
             $("iframe").removeClass("animated fadeIn");
@@ -84,13 +177,12 @@ $("body").keydown(function(e){
             clickRight();
         }
     }
-});
-
+}
 /**
  * iframe 넘기기
  */
 function clickRight() {
-    if (localStorage.setUpComplete == "true" && $(".modal-content").is(":hidden")) {
+    if (localStorage.setUpComplete == "true" && $("#modalContent").is(":hidden")) {
         $("iframe").addClass("animated fadeIn");
         $("#rightPointer").mousedown(function() {
             $("iframe").removeClass("animated fadeIn");
@@ -102,7 +194,7 @@ function clickRight() {
 }
 
 function clickLeft() {
-    if (localStorage.setUpComplete == "true" && $(".modal-content").is(":hidden")) {
+    if (localStorage.setUpComplete == "true" && $("#modalContent").is(":hidden")) {
         $("iframe").addClass("animated fadeIn");
         $("#leftPointer").mousedown(function() {
             $("iframe").removeClass("animated fadeIn");
@@ -123,17 +215,20 @@ function setBackgroundImage() {
 // 정보를 입력받았을 때만 환영합니다 띄우고 3초 후 보여주고, 새로고침 or 새 탭 시에는 바로 띄우게 하기 위한 변수
 
 function resetStorage() {
+
+    // alert("설정을 초기화하시겠습니까? 처음 페이지로 이동합니다.");
+
     localStorage.clear();
-    //커플사진만 지우기 (revertImg랑 같음)
-    let request = indexedDB.open("couplePic", 1);
-    request.onsuccess = function(e) {
-        db = e.target.result;
-        let trans = db.transaction(["couplePicOS"], "readwrite");
-        let req = trans.objectStore("couplePicOS").delete(0);
-        req.onsuccess = function(e) {
-            $("#withGF").attr("src", "img/withGF.png");
-        }
-    }
+    // indexedDB자체를 다 지움
+    var req = indexedDB.deleteDatabase("couplePic");
+    req.onsuccess = function () {
+    };
+    req.onerror = function () {
+        alert("데이터베이스를 지우는데 오류가 발생했습니다.");
+    };
+    req.onblocked = function () {
+        alert("데이터베이스를 지우는데 오류가 발생했습니다.");
+    };
 
     location.reload();
 }
@@ -141,7 +236,7 @@ function resetStorage() {
 function loadPage() {
     if (firstEntrance) {
         $("#mainInit").hide();
-        $("#loadLogo").attr("src", "/img/heart.png");
+        $("#loadLogo").attr("src", "/img/logo.png");
         $("#mainLoad").css("display", "inline");
         firstEntrance = false;
         setTimeout(function() {
@@ -157,7 +252,8 @@ function loadPage() {
 }
 
 function checkStorage() {
-    $("#timeColon").css("color", "transparent");
+    // $("#timeColon").css("color", "transparent");
+    $("#timeColon").hide();
 
     if (localStorage.length == 0) {
         // 정보 입력을 받았을 때만 timeoutCheck를 1로 바꿔줘서 3초 딜레이
@@ -208,7 +304,7 @@ function initDoneDisplay() {
     localStorage.couplePicFileName = "";//처음에는 커플사진 아무것도 설정 안 되어 있는 상태
 
     if (localStorage.name != "" && localStorage.identity != "" && !(localStorage.branch == "undefined") && localStorage.enlistDate != "") {
-        console.log("enterinitdisplay");
+        // console.log("enterinitdisplay");    
         var welcomeStr = localStorage.name + "님!</br>환영합니다";
         $("#welcomeMsg").html(welcomeStr);
         $("#welcomeMsg").css("display", "inline");
@@ -243,8 +339,9 @@ function displayAllFunc() {
         iframeArr = ["mainItem1.html"];
         $("#leftPointer").hide();
         $("#rightPointer").hide();
-    } else if (localStorage.switchOnOff == "off" || !localStorage.switchOnOff) {
+    } else if (localStorage.switchOnOff == "off" || !localStorage.switchOnOff || localStorage.switchOnOff == "undefined") {
         iframeArr = ["mainItem1.html", "mainItem2.html"];
+        localStorage.switchOnOff = "off";
     } else if (localStorage.switchOnOff == "on") {
         iframeArr = ["mainItem1.html", "mainItem2.html", "mainItem3.html"];
     }
@@ -260,11 +357,15 @@ function displayAllFunc() {
 
     if (!localStorage.background) {
         // 기본 2번째 이미지로 html에서 정해져 있으니까 이렇게 함
-        localStorage.setItem("background", "img/mainback4.jpg");
+        localStorage.setItem("background", "img/mainback3.jpg");
     }
 
     if (!localStorage.timeOpt) {
         localStorage.setItem("timeOpt", "12hr");
+    }
+
+    if (!localStorage.salYear) {
+        localStorage.setItem("salYear", "sal" + new Date().getFullYear());
     }
 
     // 날씨 보여주기
@@ -294,10 +395,17 @@ function displayAllFunc() {
     $("#mainInit").css("display","none");
     $("#mainItem").css("display","inline");
     $(".widget").css("visibility","visible");
-    $("#timeColon").css("color", "white");
+    // $("#timeColon").css("color", "white");
+    $("#timeColon").show();
     // $("#backImg").attr("src", localStorage.background);
+   
     var imgUrl = "url(" + localStorage.background + ")";
+    if (localStorage.background == "img/mainback1.jpg") {
+        $(".font-color").css("color", "#303030");
+        $("#searchUI").css("box-shadow", "0px 0px 5px #505050");
+    }    
     $("#defaultBG").css("background-image", imgUrl);
+    
     var dDayCount = "D-" + localStorage.todoDays + "일!";
     $("#dDayDisplaySm").html(dDayCount);
     resizeBrowser();
@@ -308,7 +416,7 @@ function displayAllFunc() {
         backdrop: true,
         focus: true,
         show: false
-    });
+    });    
     // presetSettings();
 }
 
@@ -408,14 +516,22 @@ function presetSettings() {//설정창 들어갔을때 local에 있는 내용으
     
     // class "loveSetting"만들어서 그 하위 div (lover-name, lover-birthday, user-birthday, first-date)에다가 줌
     $("#loveInfo").find(".loveSetting").prop("disabled", true); //맨 처음엔 witchOnOff가 localStorage에 안들어가서 default로 줌
+    // if (localStorage.switchOnOff == "on") {
+    //     $("#onOffToggle").addClass("active");
+    //     $("#loveInfo").find(".loveSetting").prop("disabled", false);        
+    // }
+    // else if (localStorage.switchOnOff == "off") {
+    //     $("#onOffToggle").removeClass("active");
+    //     $("#loveInfo").find(".loveSetting").prop("disabled", true);
+    // }
     if (localStorage.switchOnOff == "on") {
-        $("#onOffToggle").addClass("active");
+        $("input[name=loveRadioSettings][value='on']").prop("checked",true);
         $("#loveInfo").find(".loveSetting").prop("disabled", false);        
-    }
-    else if (localStorage.switchOnOff == "off") {
-        $("#onOffToggle").removeClass("active");
+    } else if (localStorage.switchOnOff == "off") {
+        $("input[name=loveRadioSettings][value='off']").prop("checked",true);
         $("#loveInfo").find(".loveSetting").prop("disabled", true);
     }
+
     //select text field on click
     $("#user-name").click(function() {
         this.select();
@@ -425,25 +541,75 @@ function presetSettings() {//설정창 들어갔을때 local에 있는 내용으
     });
 }
 
-function onSaveSettings() {
+function presetSettingsSub() {
+    if (localStorage.salYear == "sal2019") {
+        $("input[name=salSwitch][value='2019년']").prop("checked",true);
+        $("#sal2019Card").show();
+        $("#sal2020Card").hide();
+    } else if (localStorage.salYear == "sal2020") {
+        $("input[name=salSwitch][value='2020년']").prop("checked",true);
+        $("#sal2019Card").hide();
+        $("#sal2020Card").show();
+    }
+}
+
+function onSaveSettings(engineArray) {
+    /**
+     * 입력된 날짜 유효한지 체크 - 입대일, 본인 생일, 연인 생일, 사귄 날짜
+     * 
+     * 이거 input date에서 알아서 하는데... 
+     * */
+    // let checkEnlistDate = isValidDate($("#user-enlistDate").val().getFullYear(), $("#user-enlistDate").val().getMonth() - 1, $("#user-enlistDate").val().getDate());
+    // let checkUserBDay = isValidDate($("#user-birthday").val().getFullYear(), $("#user-birthday").val().getMonth() - 1, $("#user-birthday").val().getDate());
+    // let checkLoverBDay = isValidDate($("#lover-birthday").val().getFullYear(), $("#lover-birthday").val().getMonth() - 1, $("#lover-birthday").val().getDate());
+    // let checkFirstDate = isValidDate($("#first-date").val().getFullYear(), $("#first-date").val().getMonth() - 1, $("#first-date").val().getDate());
+    // if (localStorage.switchOnOff == "on") {//4개 다 체크
+    //     if (!checkUserBDay) {
+    //         alert("본인 생일을 다시 입력해주세요.");
+    //     }
+    //     if (!checkLoverBDay) {
+    //         alert("연인 생일을 다시 입력해주세요.");
+    //     }
+    //     if (!checkFirstDate) {
+    //         alert("사귄 날짜를 다시 입력해주세요.");
+    //     }
+    // }
+    // if (!checkEnlistDate) {
+    //     alert("입대일을 다시 입력해주세요.");
+    // }
+
     //settings-시간
     localStorage.setItem("timeOpt", $("input[name=timeRadioSettings]:checked").val());
     //settings-검색엔진 
-    engineArray = [];//engineArray 비워두고 시작
-    for (var i = 0; i < possibleSearchEngine.length; i++) {
-        if ($("#" + possibleSearchEngine[i] + "CB_id").is(":checked")) {//체크되어 있는거만 추가
-            engineArray.push(possibleSearchEngine[i]);
-        }
+    localStorage.setItem("engineArray", JSON.stringify(engineArray));//engineArray 업데이트
+    if (!($("#" + localStorage.currEngine + "CB_id").is(":checked"))) {
+        localStorage.setItem("currEngine", engineArray[0]);
+        //현재 engine을 없애면 그냥 남아있는거 중 처음으로, 현재 engine 안 없애고 앞의 index의 engine을 추가시키면 안 돌아가게
     }
-    if (engineArray.length == 0) {
-        alert("최소한 1개의 검색엔진을 선택해주세요");//아무것도 체크 안 되어 있으면 검색 못하니까
-    } else {
-        localStorage.setItem("engineArray", JSON.stringify(engineArray));//engineArray 업데이트
-        if (!($("#" + localStorage.currEngine + "CB_id").is(":checked"))) {
-            localStorage.setItem("currEngine", engineArray[0]);
-            //현재 engine을 없애면 그냥 남아있는거 중 처음으로, 현재 engine 안 없애고 앞의 index의 engine을 추가시키면 안 돌아가게
-        }
-    }
+    // engineArray = [];//engineArray 비워두고 시작
+    // for (var i = 0; i < possibleSearchEngine.length; i++) {
+    //     if ($("#" + possibleSearchEngine[i] + "CB_id").is(":checked")) {//체크되어 있는거만 추가
+    //         engineArray.push(possibleSearchEngine[i]);
+    //     }
+    // }
+    // if (engineArray.length == 0) {
+
+    //     // bootbox.alert("Alert!");
+    //     // bootbox.alert({
+    //     //     size: "small",
+    //     //     title: "Dialog Title",
+    //     //     message: "Your message here…",
+    //     //     callback: function(){alert("problem");}
+    //     // });
+
+    //     alert("최소한 1개의 검색엔진을 선택해주세요");//아무것도 체크 안 되어 있으면 검색 못하니까
+    // } else {
+    //     localStorage.setItem("engineArray", JSON.stringify(engineArray));//engineArray 업데이트
+    //     if (!($("#" + localStorage.currEngine + "CB_id").is(":checked"))) {
+    //         localStorage.setItem("currEngine", engineArray[0]);
+    //         //현재 engine을 없애면 그냥 남아있는거 중 처음으로, 현재 engine 안 없애고 앞의 index의 engine을 추가시키면 안 돌아가게
+    //     }
+    // }
 
     // settingsInfo
     localStorage.setItem("name", document.getElementById("user-name").value);
@@ -460,25 +626,33 @@ function onSaveSettings() {
     localStorage.setItem("loverBD", document.getElementById("lover-birthday").value);
     localStorage.setItem("userBD", document.getElementById("user-birthday").value);    
     localStorage.setItem("relStartDate", document.getElementById("first-date").value);
-    if ($("#onOffToggle").hasClass("active")) {
-        localStorage.setItem("switchOnOff", "on");
-    } else {
-        localStorage.setItem("switchOnOff", "off");
-    }
+    // if ($("#onOffToggle").hasClass("active")) {
+    //     localStorage.setItem("switchOnOff", "on");
+    // } else {
+    //     localStorage.setItem("switchOnOff", "off");
+    // }
+    localStorage.setItem("switchOnOff", $("input[name=loveRadioSettings]:checked").val());
+
     location.reload();
 }
 
-function setDefaultSettingsTab(index) {
-    var settingsTabs = document.querySelectorAll("ul.nav-tabs > li > a");
-    var settingsPanes = document.querySelectorAll(".tab-pane");
+function setDefaultSettingsTab(index, mainOrSub) {
+    var settingsTabs;
+    var settingsPanes;
 
-    var myTabs = document.querySelectorAll("ul.nav-tabs > li > a");
-    var myPanes = document.querySelectorAll(".tab-pane");
-    for (var i = 0; i < myTabs.length; i++) {
-        myTabs[i].classList.remove("active");
-        myPanes[i].classList.remove("active");
+    if (mainOrSub == "main") {
+        settingsTabs = $(".settingsMain");
+        settingsPanes = $(".settingsPaneMain");
+        $("#saveSettings").hide();
+    } else {
+        settingsTabs = $(".settingsSub");
+        settingsPanes = $(".settingsPaneSub")
     }
 
+    for (var i = 0; i < settingsTabs.length; i++) {
+        settingsTabs[i].classList.remove("active");
+        settingsPanes[i].classList.remove("active");
+    }
     settingsTabs[index].classList.add("active");
     settingsPanes[index].classList.add("active");
 }

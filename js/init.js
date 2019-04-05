@@ -1,7 +1,10 @@
 var currDate = new Date();
-var currY = currDate.getFullYear();
-var currM = currDate.getMonth() + 1;
-var currD = currDate.getDate();
+var currRelStartY = currDate.getFullYear();
+var currRelStartM = currDate.getMonth() + 1;
+var currRelStartD = currDate.getDate();
+var currEnlistY = currDate.getFullYear();
+var currEnlistM = currDate.getMonth() + 1;
+var currEnlistD = currDate.getDate();
 var branchSelected;
 var identitySelected;
 var girlfriendSelected;
@@ -13,9 +16,13 @@ var girlfriendSelected;
 //         search();
 //     }
 // }
+$("#relStartY").mousedown(relStartYActive);
+$("#relStartM").mousedown(relStartMActive);
+$("#relStartD").mousedown(relStartDActive);
 $("#enlistY").mousedown(enlistYActive);
 $("#enlistM").mousedown(enlistMActive);
 $("#enlistD").mousedown(enlistDActive);
+
 
 /* NAME */
 function nameCheck() {
@@ -198,10 +205,247 @@ function onLoverNameInEnd() {
     }
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* GET THE START DATE OF THE RELATIONSHIP, FOR GF AND SOLDIER W/ GF */
 /** TODO
  * 입대일 받는거처럼 바꿔주기
  * */
+
+
+
+
+
+
+
+
+
+
+var mouseLocation, mouseDown;
+
+// 년도 선택
+function currRelStartYPlus() {
+    mouseDown = true;
+    $("#upPointerRelStart1").mouseup(function () {
+        mouseDown = false;
+        return false;
+    });
+    if (mouseDown) {
+        mouseLocation = true;
+        $(document).mousemove(function (event) {
+            if (event.target != upPointerRelStartBtn1)
+                mouseLocation = false;
+        });
+        setTimeout(function () {
+            setTimeout(currRelStartYPlusAuto, 100);
+        }, 1000);
+    }
+
+    return false;
+}
+function currRelStartYPlusAuto() {
+    $("#upPointerRelStart1").mouseup(function () {
+        mouseDown = false;
+    });
+    $(document).mousemove(function (event) {
+        if (event.target != upPointerRelStartBtn1)
+            mouseLocation = false;
+    });
+    if (mouseLocation && mouseDown) {
+        $("#relStartYInput").val(++currRelStartY);
+        setTimeout(currRelStartYPlusAuto, 100);
+    }
+}
+function currRelStartYMinus() {
+    mouseDown = true;
+    $("#downPointerRelStart1").mouseup(function () {
+        mouseDown = false;
+        return false;
+    });
+    if (mouseDown) {
+        mouseLocation = true;
+        $(document).mousemove(function (event) {
+            if (event.target != downPointerRelStartBtn1)
+                mouseLocation = false;
+        });
+        setTimeout(function () {
+            setTimeout(currRelStartYMinusAuto, 100);
+        }, 1000);
+    }
+
+    return false;
+}
+function currRelStartYMinusAuto() {
+    $("#downPointerRelStart1").mouseup(function () {
+        mouseDown = false;
+    });
+    $(document).mousemove(function (event) {
+        if (event.target != downPointerRelStartBtn1)
+            mouseLocation = false;
+    });
+    if (mouseLocation && mouseDown) {
+        $("#relStartYInput").val(--currRelStartY);
+        setTimeout(currRelStartYMinusAuto, 100);
+    }
+}
+
+// 월 선택
+function currRelStartMPlus() {
+    mouseDown = true;
+    $("#upPointerRelStart2").mouseup(function () {
+        mouseDown = false;
+        return false;
+    });
+    if (mouseDown) {
+        mouseLocation = true;
+        $(document).mousemove(function (event) {
+            if (event.target != upPointerRelStartBtn2)
+                mouseLocation = false;
+        });
+        setTimeout(function () {
+            setTimeout(currRelStartMPlusAuto, 100);
+        }, 1000);
+    }
+
+    return false;
+}
+function currRelStartMPlusAuto() {
+    $("#upPointerRelStart2").mouseup(function () {
+        mouseDown = false;
+    });
+    $(document).mousemove(function (event) {
+        if (event.target != upPointerRelStartBtn2)
+            mouseLocation = false;
+    });
+    if (mouseLocation && mouseDown) {
+        if (currRelStartM == 12) {
+            currRelStartM = 0;
+        }
+        $("#relStartMInput").val(++currRelStartM);
+        setTimeout(currRelStartMPlusAuto, 100);
+    }
+}
+function currRelStartMMinus() {
+    mouseDown = true;
+    $("#downPointerRelStart2").mouseup(function () {
+        mouseDown = false;
+        return false;
+    });
+    if (mouseDown) {
+        mouseLocation = true;
+        $(document).mousemove(function (event) {
+            if (event.target != downPointerRelStartBtn2)
+                mouseLocation = false;
+        });
+        setTimeout(function () {
+            setTimeout(currRelStartMMinusAuto, 100);
+        }, 1000);
+    }
+
+    return false;
+}
+function currRelStartMMinusAuto() {
+    $("#downPointerRelStart2").mouseup(function () {
+        mouseDown = false;
+    });
+    $(document).mousemove(function (event) {
+        if (event.target != downPointerRelStartBtn2)
+            mouseLocation = false;
+    });
+    if (mouseLocation && mouseDown) {
+        if (currRelStartM == 1) {
+            currRelStartM = 13;
+        }
+        $("#relStartMInput").val(--currRelStartM);
+        setTimeout(currRelStartMMinusAuto, 100);
+    }
+}
+
+// 일 선택
+function currRelStartDPlus() {
+    mouseDown = true;
+    $("#upPointerRelStart3").mouseup(function () {
+        mouseDown = false;
+        return false;
+    });
+    if (mouseDown) {
+        mouseLocation = true;
+        $(document).mousemove(function (event) {
+            if (event.target != upPointerRelStartBtn3)
+                mouseLocation = false;
+        });
+        setTimeout(function () {
+            setTimeout(currRelStartDPlusAuto, 100);
+        }, 1000);
+    }
+
+    return false;
+}
+function currRelStartDPlusAuto() {
+    $("#upPointerRelStart3").mouseup(function () {
+        mouseDown = false;
+    });
+    $(document).mousemove(function (event) {
+        if (event.target != upPointerRelStartBtn3)
+            mouseLocation = false;
+    });
+    if (mouseLocation && mouseDown) {
+        if (currRelStartD == 31) {
+            currRelStartD = 0;
+        }
+        $("#relStartDInput").val(++currRelStartD);
+        setTimeout(currRelStartDPlusAuto, 100);
+    }
+}
+function currRelStartDMinus() {
+    mouseDown = true;
+    $("#downPointerRelStart3").mouseup(function () {
+        mouseDown = false;
+        return false;
+    });
+    if (mouseDown) {
+        mouseLocation = true;
+        $(document).mousemove(function (event) {
+            if (event.target != downPointerRelStartBtn3)
+                mouseLocation = false;
+        });
+        setTimeout(function () {
+            setTimeout(currRelStartDMinusAuto, 100);
+        }, 1000);
+    }
+
+    return false;
+}
+function currRelStartDMinusAuto() {
+    $("#downPointerRelStart3").mouseup(function () {
+        mouseDown = false;
+    });
+    $(document).mousemove(function (event) {
+        if (event.target != downPointerRelStartBtn3)
+            mouseLocation = false;
+    });
+    if (mouseLocation && mouseDown) {
+        if (currRelStartD == 1) {
+            currRelStartD = 31;
+        }
+        $("#relStartDInput").val(--currRelStartD);
+        setTimeout(currRelStartDMinusAuto, 100);
+    }
+}
+
+/* relStartDATE */
 function relStartDateCheck() {
     $("#relStartDateIn").show();
     setTimeout(function() {
@@ -215,21 +459,216 @@ function relStartDateCheck() {
     else{
         $(".fitQuestion").html("여자친구와 ");
     }
-    $("#relStartDate").click(function() {
-        $("#relStartDateInRight").show();
-        $("#relStartDateInRight").click(onRelStartDateClick);
+
+    $("#relStartDateInRight").show();
+    $("#relStartDateInRight").click(onRelStartDateClick);
+
+    //default
+    relStartYActive();
+
+    // year update
+    $("#relStartYInput").val(currRelStartY);
+    $("#relStartYInput").select();
+    setTimeout(function() { $('#relStartYInput').focus() }, 1000);
+
+    $("#upPointerRelStart1").mousedown(function(){
+        $("#relStartYInput").val(++currRelStartY);
+        currRelStartYPlus();
+    });
+    $("#downPointerRelStart1").mousedown(function(){
+        $("#relStartYInput").val(--currRelStartY);
+        currRelStartYMinus();
+    });       
+    $("#relStartY").keydown(function(){
+        if (event.which == 38 || event.keycode == 38) {
+            $("#relStartYInput").val(++currRelStartY);
+        }
+        else if (event.which == 40 || event.keycode == 40){            
+            $("#relStartYInput").val(--currRelStartY);
+        }
+        else if (event.which==13 || event.keycode==13 || event.which==39 || event.keycode==39) {
+            currRelStartY = $("#relStartYInput").val();
+            relStartMActive();
+            $("#relStartMInput").select();
+        }
+    });
+
+    // month update
+    $("#relStartMInput").val(currRelStartM);
+    $("#relStartMInput").select();
+    $("#upPointerRelStart2").mousedown(function(){
+        $("#relStartMInput").val(++currRelStartM);
+        if (currRelStartM > 12){
+            currRelStartM = 0;
+            $("#relStartMInput").val(++currRelStartM);
+        }
+        currRelStartMPlus();
+    });
+    $("#downPointerRelStart2").mousedown(function(){
+        $("#relStartMInput").val(--currRelStartM );
+        if (currRelStartM <= 0){
+            currRelStartM = 13;
+            $("#relStartMInput").val(--currRelStartM);
+        }
+        currRelStartMMinus();
+    });
+    $("#relStartM").keydown(function(){
+        if (event.which == 38 || event.keycode == 38){
+            $("#relStartMInput").val(++currRelStartM);
+            if (currRelStartM > 12){
+                currRelStartM = 0;
+                $("#relStartMInput").val(++currRelStartM);
+            }   
+        }
+        else if (event.which == 40 || event.keycode == 40){            
+            $("#relStartMInput").val(--currRelStartM);
+            if (currRelStartM <= 0){
+                currRelStartM = 13;
+                $("#relStartMInput").val(--currRelStartM);
+            }
+        }
+        else if  (event.which==13 || event.keycode==13 || event.which==39 || event.keycode==39) {             
+            currRelStartM = $("#relStartMInput").val();
+            relStartDActive();
+            $("#relStartDInput").select();
+        }
+        else if(event.which==37 || event.keycode==37) {
+            relStartYActive();
+            $("#relStartYInput").select();
+        }
+    });
+
+    // date update
+    $("#relStartDInput").val(currRelStartD);
+    $("#relStartDInput").select();
+    $("#upPointerRelStart3").mousedown(function(){
+        $("#relStartDInput").val(++currRelStartD);
+        if (currRelStartD > 31){
+            currRelStartD = 0;
+            $("#relStartDInput").val(++currRelStartD);
+            // $("#relStartDInput").val("  " + ++currRelStartD);
+        }
+        currRelStartDPlus();
+    });
+    $("#downPointerRelStart3").mousedown(function(){
+        $("#relStartDInput").val(--currRelStartD);
+        if (currRelStartD <= 0){
+            currRelStartD = 32;
+            $("#relStartDInput").val(--currRelStartD);
+            // $("#relStartDInput").val("  " + --currRelStartD);
+        }
+        currRelStartDMinus();
+    });
+    $("#relStartD").keydown(function(){
+        if (event.which == 38 || event.keycode == 38){
+            $("#relStartDInput").val(++currRelStartD);
+            if (currRelStartD > 31){
+                currRelStartD = 0;
+                $("#relStartDInput").val(++currRelStartD);
+                // $("#relStartDInput").val("  " + ++currRelStartD);
+            }
+        }
+        else if (event.which == 40 || event.keycode == 40){            
+            $("#relStartDInput").val(--currRelStartD);
+            if (currRelStartD <= 0){
+                currRelStartD = 32;
+                $("#relStartDInput").val(--currRelStartD);
+                // $("#relStartDInput").val("  " + --currRelStartD);
+            }
+        }  
+        else if  (event.which==13 || event.keycode==13) {                           
+            currRelStartD = $("#relStartDInput").val()           
+            onRelStartDateClick();
+        }
+        else if(event.which==37 || event.keycode==37) {
+            relStartMActive();
+            $("#relStartMInput").select();
+        }
     });
 }
+
+function relStartYActive(){
+    $("#relStartY").children().prop('disabled', false);    
+    $("#relStartY").children().children().prop('disabled', false); 
+    $("#relStartM").children().prop('disabled', true);    
+    $("#relStartM").children().children().prop('disabled', true);  
+    $("#relStartD").children().prop('disabled', true);    
+    $("#relStartD").children().children().prop('disabled', true);   
+    $("#yearRelStart").css("color", "white");
+    $("#monthRelStart").css("color", "rgba(77, 77, 77, 0.918)");
+    $("#dayRelStart").css("color", "rgba(77, 77, 77, 0.918)");
+    $("#relStartYInput").focus();
+    // $("#relStartYInput").select();
+
+    $("#relStartDateInRight").show();
+    $("#relStartDateInRight").click(onRelStartDateClick);
+}
+
+function relStartMActive(){
+    $("#relStartM").children().prop('disabled', false);    
+    $("#relStartM").children().children().prop('disabled', false); 
+    $("#relStartY").children().prop('disabled', true);    
+    $("#relStartY").children().children().prop('disabled', true);  
+    $("#relStartD").children().prop('disabled', true);    
+    $("#relStartD").children().children().prop('disabled', true);      
+    $("#yearRelStart").css("color", "rgba(77, 77, 77, 0.918)");
+    $("#monthRelStart").css("color", "white");
+    $("#dayRelStart").css("color", "rgba(77, 77, 77, 0.918)");   
+    $("#relStartMInput").focus();    
+    // $("#relStartMInput").select();
+
+    $("#relStartDateInRight").show();
+    $("#relStartDateInRight").click(onRelStartDateClick);
+}
+
+function relStartDActive(){
+    $("#relStartD").children().prop('disabled', false);    
+    $("#relStartD").children().children().prop('disabled', false); 
+    $("#relStartY").children().prop('disabled', true);    
+    $("#relStartY").children().children().prop('disabled', true);  
+    $("#relStartM").children().prop('disabled', true);    
+    $("#relStartM").children().children().prop('disabled', true);     
+    $("#yearRelStart").css("color", "rgba(77, 77, 77, 0.918)");
+    $("#monthRelStart").css("color", "rgba(77, 77, 77, 0.918)"); 
+    $("#dayRelStart").css("color", "white");   
+    $("#relStartDInput").focus();
+    // $("#relStartDInput").select();
+
+    $("#relStartDateInRight").show();
+    $("#relStartDateInRight").click(onRelStartDateClick);
+}
+
 function onRelStartDateClick() {
-    if ($("#relStartDate").val()=="") {
-        alert("날짜를 입력해주세요");
+    //currRelStartM 에서 -1 해준 이유는, month 시작이 0부터 라고 함. ( 1월이 0, 2월이 1...)
+    currRelStartY = relStartYInput.value;
+    currRelStartM = relStartMInput.value;
+    currRelStartD = relStartDInput.value;
+    if (!isValidDate(currRelStartY, currRelStartM - 1, currRelStartD)){
+        alert("가능한 날짜가 아닙니다. 다시 적어주세요");
     }
-    else {
-        onRelStartDateInEnd();
+    else{                
+        if (currRelStartM < 10) {
+            if (currRelStartM.length == 2){
+                currRelStartM = currRelStartM;
+            }
+            else{
+                currRelStartM = "0" + currRelStartM;
+            }
+        }
+        if (currRelStartD < 10) {
+            if (currRelStartD.length == 2){
+                currRelStartD = currRelStartD;
+            }
+            else{
+                currRelStartD = "0" + currRelStartD;
+            }
+        }
+        var relStartDateStr = currRelStartY + "-" + currRelStartM + "-" + currRelStartD;
+        onRelStartDateInEnd(relStartDateStr);
     }
 }
-function onRelStartDateInEnd() {
-    localStorage.setItem("relStartDate", $("#relStartDate").val());
+function onRelStartDateInEnd(relStartDateStr) {
+    localStorage.setItem("relStartDate", relStartDateStr);
     localStorage.setItem("switchOnOff", "on");//연인일 경우 우리사이 활성화
     
     $("#relStartDateIn").addClass("animated fadeOutLeftInit");
@@ -238,6 +677,19 @@ function onRelStartDateInEnd() {
         branchCheck();
     }, 1000);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* BRANCH */
 function branchCheck() {
@@ -331,212 +783,212 @@ function onBranchInEnd() {
 var mouseLocation, mouseDown;
 
 // 년도 선택
-function currYPlus() {
+function currEnlistYPlus() {
     mouseDown = true;
-    $("#upPointer1").mouseup(function () {
+    $("#upPointerEnlist1").mouseup(function () {
         mouseDown = false;
         return false;
     });
     if (mouseDown) {
         mouseLocation = true;
         $(document).mousemove(function (event) {
-            if (event.target != upPointerBtn1)
+            if (event.target != upPointerEnlistBtn1)
                 mouseLocation = false;
         });
         setTimeout(function () {
-            setTimeout(currYPlusAuto, 100);
+            setTimeout(currEnlistYPlusAuto, 100);
         }, 1000);
     }
 
     return false;
 }
-function currYPlusAuto() {
-    $("#upPointer1").mouseup(function () {
+function currEnlistYPlusAuto() {
+    $("#upPointerEnlist1").mouseup(function () {
         mouseDown = false;
     });
     $(document).mousemove(function (event) {
-        if (event.target != upPointerBtn1)
+        if (event.target != upPointerEnlistBtn1)
             mouseLocation = false;
     });
     if (mouseLocation && mouseDown) {
-        $("#enlistYInput").val(++currY);
-        setTimeout(currYPlusAuto, 100);
+        $("#enlistYInput").val(++currEnlistY);
+        setTimeout(currEnlistYPlusAuto, 100);
     }
 }
-function currYMinus() {
+function currEnlistYMinus() {
     mouseDown = true;
-    $("#downPointer1").mouseup(function () {
+    $("#downPointerEnlist1").mouseup(function () {
         mouseDown = false;
         return false;
     });
     if (mouseDown) {
         mouseLocation = true;
         $(document).mousemove(function (event) {
-            if (event.target != downPointerBtn1)
+            if (event.target != downPointerEnlistBtn1)
                 mouseLocation = false;
         });
         setTimeout(function () {
-            setTimeout(currYMinusAuto, 100);
+            setTimeout(currEnlistYMinusAuto, 100);
         }, 1000);
     }
 
     return false;
 }
-function currYMinusAuto() {
-    $("#downPointer1").mouseup(function () {
+function currEnlistYMinusAuto() {
+    $("#downPointerEnlist1").mouseup(function () {
         mouseDown = false;
     });
     $(document).mousemove(function (event) {
-        if (event.target != downPointerBtn1)
+        if (event.target != downPointerEnlistBtn1)
             mouseLocation = false;
     });
     if (mouseLocation && mouseDown) {
-        $("#enlistYInput").val(--currY);
-        setTimeout(currYMinusAuto, 100);
+        $("#enlistYInput").val(--currEnlistY);
+        setTimeout(currEnlistYMinusAuto, 100);
     }
 }
 
 // 월 선택
-function currMPlus() {
+function currEnlistMPlus() {
     mouseDown = true;
-    $("#upPointer2").mouseup(function () {
+    $("#upPointerEnlist2").mouseup(function () {
         mouseDown = false;
         return false;
     });
     if (mouseDown) {
         mouseLocation = true;
         $(document).mousemove(function (event) {
-            if (event.target != upPointerBtn2)
+            if (event.target != upPointerEnlistBtn2)
                 mouseLocation = false;
         });
         setTimeout(function () {
-            setTimeout(currMPlusAuto, 100);
+            setTimeout(currEnlistMPlusAuto, 100);
         }, 1000);
     }
 
     return false;
 }
-function currMPlusAuto() {
-    $("#upPointer2").mouseup(function () {
+function currEnlistMPlusAuto() {
+    $("#upPointerEnlist2").mouseup(function () {
         mouseDown = false;
     });
     $(document).mousemove(function (event) {
-        if (event.target != upPointerBtn2)
+        if (event.target != upPointerEnlistBtn2)
             mouseLocation = false;
     });
     if (mouseLocation && mouseDown) {
-        if (currM == 12) {
-            currM = 0;
+        if (currEnlistM == 12) {
+            currEnlistM = 0;
         }
-        $("#enlistMInput").val(++currM);
-        setTimeout(currMPlusAuto, 100);
+        $("#enlistMInput").val(++currEnlistM);
+        setTimeout(currEnlistMPlusAuto, 100);
     }
 }
-function currMMinus() {
+function currEnlistMMinus() {
     mouseDown = true;
-    $("#downPointer2").mouseup(function () {
+    $("#downPointerEnlist2").mouseup(function () {
         mouseDown = false;
         return false;
     });
     if (mouseDown) {
         mouseLocation = true;
         $(document).mousemove(function (event) {
-            if (event.target != downPointerBtn2)
+            if (event.target != downPointerEnlistBtn2)
                 mouseLocation = false;
         });
         setTimeout(function () {
-            setTimeout(currMMinusAuto, 100);
+            setTimeout(currEnlistMMinusAuto, 100);
         }, 1000);
     }
 
     return false;
 }
-function currMMinusAuto() {
-    $("#downPointer2").mouseup(function () {
+function currEnlistMMinusAuto() {
+    $("#downPointerEnlist2").mouseup(function () {
         mouseDown = false;
     });
     $(document).mousemove(function (event) {
-        if (event.target != downPointerBtn2)
+        if (event.target != downPointerEnlistBtn2)
             mouseLocation = false;
     });
     if (mouseLocation && mouseDown) {
-        if (currM == 1) {
-            currM = 13;
+        if (currEnlistM == 1) {
+            currEnlistM = 13;
         }
-        $("#enlistMInput").val(--currM);
-        setTimeout(currMMinusAuto, 100);
+        $("#enlistMInput").val(--currEnlistM);
+        setTimeout(currEnlistMMinusAuto, 100);
     }
 }
 
 // 일 선택
-function currDPlus() {
+function currEnlistDPlus() {
     mouseDown = true;
-    $("#upPointer3").mouseup(function () {
+    $("#upPointerEnlist3").mouseup(function () {
         mouseDown = false;
         return false;
     });
     if (mouseDown) {
         mouseLocation = true;
         $(document).mousemove(function (event) {
-            if (event.target != upPointerBtn3)
+            if (event.target != upPointerEnlistBtn3)
                 mouseLocation = false;
         });
         setTimeout(function () {
-            setTimeout(currDPlusAuto, 100);
+            setTimeout(currEnlistDPlusAuto, 100);
         }, 1000);
     }
 
     return false;
 }
-function currDPlusAuto() {
-    $("#upPointer3").mouseup(function () {
+function currEnlistDPlusAuto() {
+    $("#upPointerEnlist3").mouseup(function () {
         mouseDown = false;
     });
     $(document).mousemove(function (event) {
-        if (event.target != upPointerBtn3)
+        if (event.target != upPointerEnlistBtn3)
             mouseLocation = false;
     });
     if (mouseLocation && mouseDown) {
-        if (currD == 31) {
-            currD = 0;
+        if (currEnlistD == 31) {
+            currEnlistD = 0;
         }
-        $("#enlistDInput").val(++currD);
-        setTimeout(currDPlusAuto, 100);
+        $("#enlistDInput").val(++currEnlistD);
+        setTimeout(currEnlistDPlusAuto, 100);
     }
 }
-function currDMinus() {
+function currEnlistDMinus() {
     mouseDown = true;
-    $("#downPointer3").mouseup(function () {
+    $("#downPointerEnlist3").mouseup(function () {
         mouseDown = false;
         return false;
     });
     if (mouseDown) {
         mouseLocation = true;
         $(document).mousemove(function (event) {
-            if (event.target != downPointerBtn3)
+            if (event.target != downPointerEnlistBtn3)
                 mouseLocation = false;
         });
         setTimeout(function () {
-            setTimeout(currDMinusAuto, 100);
+            setTimeout(currEnlistDMinusAuto, 100);
         }, 1000);
     }
 
     return false;
 }
-function currDMinusAuto() {
-    $("#downPointer3").mouseup(function () {
+function currEnlistDMinusAuto() {
+    $("#downPointerEnlist3").mouseup(function () {
         mouseDown = false;
     });
     $(document).mousemove(function (event) {
-        if (event.target != downPointerBtn3)
+        if (event.target != downPointerEnlistBtn3)
             mouseLocation = false;
     });
     if (mouseLocation && mouseDown) {
-        if (currD == 1) {
-            currD = 31;
+        if (currEnlistD == 1) {
+            currEnlistD = 31;
         }
-        $("#enlistDInput").val(--currD);
-        setTimeout(currDMinusAuto, 100);
+        $("#enlistDInput").val(--currEnlistD);
+        setTimeout(currEnlistDMinusAuto, 100);
     }
 }
 
@@ -549,72 +1001,71 @@ function enlistDateCheck() {
     }, 700);
 
     //default
-    $("#enlistYInput").focus();
     enlistYActive();
 
     // year update
-    $("#enlistYInput").val(currY);
+    $("#enlistYInput").val(currEnlistY);
     $("#enlistYInput").select();
-    $("#enlistYInput").focus();
-    $("#upPointer1").mousedown(function(){
-        $("#enlistYInput").val(++currY);
-        currYPlus();
-    });
+    setTimeout(function() { $('#enlistYInput').focus() }, 1000);
 
-    $("#downPointer1").mousedown(function(){
-        $("#enlistYInput").val(--currY);
-        currYMinus();
+    $("#upPointerEnlist1").mousedown(function(){
+        $("#enlistYInput").val(++currEnlistY);
+        currEnlistYPlus();
+    });
+    $("#downPointerEnlist1").mousedown(function(){
+        $("#enlistYInput").val(--currEnlistY);
+        currEnlistYMinus();
     });       
     $("#enlistY").keydown(function(){
         if (event.which == 38 || event.keycode == 38) {
-            $("#enlistYInput").val(++currY);
+            $("#enlistYInput").val(++currEnlistY);
         }
         else if (event.which == 40 || event.keycode == 40){            
-            $("#enlistYInput").val(--currY);
+            $("#enlistYInput").val(--currEnlistY);
         }
         else if (event.which==13 || event.keycode==13 || event.which==39 || event.keycode==39) {
-            currY = $("#enlistYInput").val();
+            currEnlistY = $("#enlistYInput").val();
             enlistMActive();
             $("#enlistMInput").select();
         }
     });
 
     // month update
-    $("#enlistMInput").val(currM);
+    $("#enlistMInput").val(currEnlistM);
     $("#enlistMInput").select();
-    $("#upPointer2").mousedown(function(){
-        $("#enlistMInput").val(++currM);
-        if (currM > 12){
-            currM = 0;
-            $("#enlistMInput").val(++currM);
+    $("#upPointerEnlist2").mousedown(function(){
+        $("#enlistMInput").val(++currEnlistM);
+        if (currEnlistM > 12){
+            currEnlistM = 0;
+            $("#enlistMInput").val(++currEnlistM);
         }
-        currMPlus();
+        currEnlistMPlus();
     });
-    $("#downPointer2").mousedown(function(){
-        $("#enlistMInput").val(--currM );
-        if (currM <= 0){
-            currM = 13;
-            $("#enlistMInput").val(--currM);
+    $("#downPointerEnlist2").mousedown(function(){
+        $("#enlistMInput").val(--currEnlistM );
+        if (currEnlistM <= 0){
+            currEnlistM = 13;
+            $("#enlistMInput").val(--currEnlistM);
         }
-        currMMinus();
+        currEnlistMMinus();
     });
     $("#enlistM").keydown(function(){
         if (event.which == 38 || event.keycode == 38){
-            $("#enlistMInput").val(++currM);
-            if (currM > 12){
-                currM = 0;
-                $("#enlistMInput").val(++currM);
+            $("#enlistMInput").val(++currEnlistM);
+            if (currEnlistM > 12){
+                currEnlistM = 0;
+                $("#enlistMInput").val(++currEnlistM);
             }   
         }
         else if (event.which == 40 || event.keycode == 40){            
-            $("#enlistMInput").val(--currM);
-            if (currM <= 0){
-                currM = 13;
-                $("#enlistMInput").val(--currM);
+            $("#enlistMInput").val(--currEnlistM);
+            if (currEnlistM <= 0){
+                currEnlistM = 13;
+                $("#enlistMInput").val(--currEnlistM);
             }
         }
         else if  (event.which==13 || event.keycode==13 || event.which==39 || event.keycode==39) {             
-            currM = $("#enlistMInput").val();
+            currEnlistM = $("#enlistMInput").val();
             enlistDActive();
             $("#enlistDInput").select();
         }
@@ -625,41 +1076,45 @@ function enlistDateCheck() {
     });
 
     // date update
-    $("#enlistDInput").val(currD);
+    $("#enlistDInput").val(currEnlistD);
     $("#enlistDInput").select();
-    $("#upPointer3").mousedown(function(){
-        $("#enlistDInput").val(++currD);
-        if (currD > 31){
-            currD = 0;
-            $("#enlistDInput").val("  " + ++currD);
+    $("#upPointerEnlist3").mousedown(function(){
+        $("#enlistDInput").val(++currEnlistD);
+        if (currEnlistD > 31){
+            currEnlistD = 0;
+            $("#enlistDInput").val(++currEnlistD);
+            // $("#enlistDInput").val("  " + ++currEnlistD);
         }
-        currDPlus();
+        currEnlistDPlus();
     });
-    $("#downPointer3").mousedown(function(){
-        $("#enlistDInput").val(--currD);
-        if (currD <= 0){
-            currD = 32;
-            $("#enlistDInput").val("  " + --currD);
+    $("#downPointerEnlist3").mousedown(function(){
+        $("#enlistDInput").val(--currEnlistD);
+        if (currEnlistD <= 0){
+            currEnlistD = 32;
+            $("#enlistDInput").val(--currEnlistD);
+            // $("#enlistDInput").val("  " + --currEnlistD);
         }
-        currDMinus();
+        currEnlistDMinus();
     });
     $("#enlistD").keydown(function(){
         if (event.which == 38 || event.keycode == 38){
-            $("#enlistDInput").val(++currD);
-            if (currD > 31){
-                currD = 0;
-                $("#enlistDInput").val("  " + ++currD);
+            $("#enlistDInput").val(++currEnlistD);
+            if (currEnlistD > 31){
+                currEnlistD = 0;
+                $("#enlistDInput").val(++currEnlistD);
+                // $("#enlistDInput").val("  " + ++currEnlistD);
             }
         }
         else if (event.which == 40 || event.keycode == 40){            
-            $("#enlistDInput").val(--currD);
-            if (currD <= 0){
-                currD = 32;
-                $("#enlistDInput").val("  " + --currD);
+            $("#enlistDInput").val(--currEnlistD);
+            if (currEnlistD <= 0){
+                currEnlistD = 32;
+                $("#enlistDInput").val(--currEnlistD);
+                // $("#enlistDInput").val("  " + --currEnlistD);
             }
         }  
         else if  (event.which==13 || event.keycode==13) {                           
-            currD = $("#enlistDInput").val()           
+            currEnlistD = $("#enlistDInput").val()           
             onEnlistDateClick();
         }
         else if(event.which==37 || event.keycode==37) {
@@ -676,9 +1131,9 @@ function enlistYActive(){
     $("#enlistM").children().children().prop('disabled', true);  
     $("#enlistD").children().prop('disabled', true);    
     $("#enlistD").children().children().prop('disabled', true);   
-    $("#year").css("color", "white");
-    $("#month").css("color", "rgba(77, 77, 77, 0.918)");
-    $("#day").css("color", "rgba(77, 77, 77, 0.918)");
+    $("#yearEnlist").css("color", "white");
+    $("#monthEnlist").css("color", "rgba(77, 77, 77, 0.918)");
+    $("#dayEnlist").css("color", "rgba(77, 77, 77, 0.918)");
     $("#enlistYInput").focus();
     // $("#enlistYInput").select();
 
@@ -693,9 +1148,9 @@ function enlistMActive(){
     $("#enlistY").children().children().prop('disabled', true);  
     $("#enlistD").children().prop('disabled', true);    
     $("#enlistD").children().children().prop('disabled', true);      
-    $("#year").css("color", "rgba(77, 77, 77, 0.918)");
-    $("#month").css("color", "white");
-    $("#day").css("color", "rgba(77, 77, 77, 0.918)");   
+    $("#yearEnlist").css("color", "rgba(77, 77, 77, 0.918)");
+    $("#monthEnlist").css("color", "white");
+    $("#dayEnlist").css("color", "rgba(77, 77, 77, 0.918)");   
     $("#enlistMInput").focus();    
     // $("#enlistMInput").select();
 
@@ -710,9 +1165,9 @@ function enlistDActive(){
     $("#enlistY").children().children().prop('disabled', true);  
     $("#enlistM").children().prop('disabled', true);    
     $("#enlistM").children().children().prop('disabled', true);     
-    $("#year").css("color", "rgba(77, 77, 77, 0.918)");
-    $("#month").css("color", "rgba(77, 77, 77, 0.918)"); 
-    $("#day").css("color", "white");   
+    $("#yearEnlist").css("color", "rgba(77, 77, 77, 0.918)");
+    $("#monthEnlist").css("color", "rgba(77, 77, 77, 0.918)"); 
+    $("#dayEnlist").css("color", "white");   
     $("#enlistDInput").focus();
     // $("#enlistDInput").select();
 
@@ -721,31 +1176,31 @@ function enlistDActive(){
 }
 
 function onEnlistDateClick() {
-    //currM 에서 -1 해준 이유는, month 시작이 0부터 라고 함. ( 1월이 0, 2월이 1...)
-    currY = enlistYInput.value;
-    currM = enlistMInput.value;
-    currD = enlistDInput.value;
-    if (!isValidDate(currY, currM - 1, currD)){
+    //currEnlistM 에서 -1 해준 이유는, month 시작이 0부터 라고 함. ( 1월이 0, 2월이 1...)
+    currEnlistY = enlistYInput.value;
+    currEnlistM = enlistMInput.value;
+    currEnlistD = enlistDInput.value;
+    if (!isValidDate(currEnlistY, currEnlistM - 1, currEnlistD)){
         alert("가능한 날짜가 아닙니다. 다시 적어주세요");
     }
     else{                
-        if (currM < 10) {
-            if (currM.length == 2){
-                currM = currM;
+        if (currEnlistM < 10) {
+            if (currEnlistM.length == 2){
+                currEnlistM = currEnlistM;
             }
             else{
-                currM = "0" + currM;
+                currEnlistM = "0" + currEnlistM;
             }
         }
-        if (currD < 10) {
-            if (currD.length == 2){
-                currD = currD;
+        if (currEnlistD < 10) {
+            if (currEnlistD.length == 2){
+                currEnlistD = currEnlistD;
             }
             else{
-                currD = "0" + currD;
+                currEnlistD = "0" + currEnlistD;
             }
         }
-        var enlistDateStr = currY + "-" + currM + "-" + currD;
+        var enlistDateStr = currEnlistY + "-" + currEnlistM + "-" + currEnlistD;
         onEnlistDateInEnd(enlistDateStr);
     }
 }

@@ -27,9 +27,9 @@
       <!-- HEADER -->
       <headerLeft>
         <!-- 시계 -->
-        <div id="timeUI" class="widget">
-            <div id="dateDisplay" class="jua"></div><br>
-            <span id="amOrPm" class = "jua" style= "color: white; font-size: 10px"></span>
+        <div id="timeUI" class="widget font-color">
+            <div id="dateDisplay" class="jua "></div><br>
+            <span id="amOrPm" class = "jua" style= "font-size: 10px"></span>
             <span id="timeDisplay1" class="jua"></span><span id="timeColon" class="jua">:</span><span id="timeDisplay2" class="jua"></span>
         </div>
       </headerLeft>
@@ -43,7 +43,7 @@
                 <img id="engineLogo" class="search" height="55%" style="display: inline-flex">
             </div>
             <input type=text id="searchBar" size="9" maxlength="250" class="search gamja" style="display: inline-flex">
-            <div id="searchIco" style="color: gray; display: inline-flex; justify-content: center; align-items: center" class="search">
+            <div id="searchIco" style="display: inline-flex; justify-content: center; align-items: center" class="search">
                 <img src="img/search-icon.png" id="searchIconImg" class="search" style="display: inline-flex">
             </div>
           </div>
@@ -51,7 +51,7 @@
       </headerMiddle>
 
       <headerRight>
-        <div id="weatherUI" class="widget jua">
+        <div id="weatherUI" class="widget jua font-color">
 
           <div id="toWeatherSettings" style="display: none">
             <button id="toWeatherSettingsButton" class="btn btn-primary">설정에서 날씨 활성화</button>
@@ -96,10 +96,10 @@
       </mainLeft>
 
       <mainMiddle style="height: 100%">
-        <mainMiddleContent style="display: flex; align-items: center; justify-items: center; height: 100%">
+        <mainMiddleContent class= "font-color" style="display: flex; align-items: center; justify-items: center; height: 100%">
 
           <div id="mainLoad" style="display: none; width: 100%" class="gamja">
-            <image id="loadLogo" class="animated pulse" style="width: 70px; animation-iteration-count: 3"><br>
+            <image id="loadLogo" class="animated pulse" style="width: 200px; animation-iteration-count: 3"><br>
             <!-- <div id="loadSpinner">
               <i class="fa fa-spinner fa-spin fa-5x fa-fw margin-bottom"></i>
               <span class="sr-only">Loading...</span>
@@ -120,7 +120,7 @@
                   <div id="nameIn2" style="display: none">
                     <div id="nameInst" class="question animated zoomIn">성함을 알려주세요<br></div>
                     <div id="nameInputField" style="visibility: hidden">
-                      <input type="text" id="nameInput" class="answer"><br>
+                      <input type="text" id="nameInput" class="answer font-color"><br>
                     </div>
                   </div>
                 </div>
@@ -157,8 +157,10 @@
                 <div class="initCenter">
                   <div id="girlfriendInst" class="question animated zoomIn">커플이신가요?<br></div>
                   <div id="girlfriendInput" style="visibility: hidden" width="100%">
-                    <input type="image" class="girlfriend" id="coupleImg" src="/img/withGF.png" value="yes" width="30%">
-                    <input type="image" class="girlfriend" id="singleImg" src="/img/withoutGF.png" value="no" width="30%"><br>
+                    <button class="btn btn-success" id="coupleImg" value="yes" width="30%">네</button>
+                    <button class="btn btn-danger" id="singleImg" value="no" width="30%">아니요</button>
+                    <!-- <input type="image" class="girlfriend" id="coupleImg" src="/img/withGF.png" value="yes" width="30%">
+                    <input type="image" class="girlfriend" id="singleImg" src="/img/withoutGF.png" value="no" width="30%"><br> -->
                   </div>
                 </div>
                 <div class="initRight">
@@ -175,7 +177,7 @@
                 <div class="initCenter">
                   <div id="loverNameInst" class="question animated zoomIn"><div class= "fitQuestion"></div>이름을 알려주세요<br></div>
                   <div id="loverNameInputField" style="visibility: hidden">
-                    <input type="text" id="loverNameInput" class="answer"><br>
+                    <input type="text" id="loverNameInput" class="answer font-color"><br>
                   </div>
                 </div>
                 <div class="initRight">
@@ -193,9 +195,40 @@
                   <div id="relStartDateInst" class="question animated zoomIn">
                     <div class= "fitQuestion"></div>언제부터 사귀셨나요?<br>
                   </div>
-                  <div id="relStartDateInput" class="answer" style="visibility: hidden">
-                    <input type="date" id="relStartDate"><br>
+
+                  <div id="relStartDateInput" style="visibility: hidden; width: 100%; height: 100%">
+                    <div id="relStartY" class="floatLeft" style="text-align: center; width: 33%;">
+                      <div id="upPointerRelStart1" class="relStartInput">
+                        <button id="upPointerRelStartBtn1" style="background-color: transparent; border: none; padding: 0; outline: none" class="relStartInput"><i class="fa fa-chevron-up fa-3x"></i></button>
+                      </div><br>
+                      <input type = "text" class="relStartInput answer" id="relStartYInput" style="text-align: center; width: 90px" autofocus><span id = "yearRelStart" class= "relStartInput answer">년</span>
+                      <!-- <div id="relStartYInput" class="answer"></div><br> -->             
+                      <div id="downPointerRelStart1" class="relStartInput">
+                        <button id="downPointerRelStartBtn1" style="background-color: transparent; border: none; padding: 0; outline: none" class="relStartInput"><i class="fa fa-chevron-down fa-3x"></i></button>
+                      </div>
+                    </div>
+    
+                    <div id="relStartM" class="floatLeft" style="text-align: center; width: 33%">
+                      <div id="upPointerRelStart2" class="relStartInput">
+                        <button id="upPointerRelStartBtn2" style="background-color: transparent; border: none; padding: 0; outline: none" class="relStartInput"><i class="fa fa-chevron-up fa-3x"></i></button>
+                      </div><br>
+                      <input type = "text" class="relStartInput answer" id="relStartMInput" style="text-align: center; width: 45px"><span id = "monthRelStart" class= "relStartInput answer">월</span>
+                      <div id="downPointerRelStart2" class="relStartInput">
+                        <button id="downPointerRelStartBtn2" style="background-color: transparent; border: none; padding: 0; outline: none" class="relStartInput"><i class="fa fa-chevron-down fa-3x"></i></button>
+                      </div>
+                    </div>
+    
+                    <div id="relStartD" class="floatLeft" style="text-align: center; width: 33%">
+                      <div id="upPointerRelStart3" class="relStartInput">
+                        <button id="upPointerRelStartBtn3" style="background-color: transparent; border: none; padding: 0; outline: none" class="relStartInput"><i class="fa fa-chevron-up fa-3x"></i></button>
+                      </div><br>
+                      <input type = "text" class="relStartInput answer" id="relStartDInput" style="text-align: center; width: 45px"><span id = "dayRelStart" class= "relStartInput answer">일</span>
+                      <div id="downPointerRelStart3" class="relStartInput">
+                        <button id="downPointerRelStartBtn3" style="background-color: transparent; border: none; padding: 0; outline: none" class="relStartInput"><i class="fa fa-chevron-down fa-3x"></i></button>
+                      </div>
+                    </div>
                   </div>
+
                 </div>
                 <div class="initRight">
                   <i id="relStartDateInRight" class="fa fa-arrow-right 3x animated fadeInLeft" aria-hidden="true" style="display: none"></i>
@@ -214,12 +247,20 @@
                     <div class= "fitQuestion"></div>소속을 선택해주세요<br>
                   </div>
                   <div id="branchInput" style="visibility: hidden; width:100%">
-                    <input type="image" class="branch" id="army" alt="육군" width="15%" src="https://drive.google.com/uc?export=view&id=1h94u4UUrRJ0paa_cE__RtUnfJALcoHk4">
+                    <!-- <input type="image" class="branch" id="army" alt="육군" width="15%" src="https://drive.google.com/uc?export=view&id=1h94u4UUrRJ0paa_cE__RtUnfJALcoHk4">
                     <input type="image" class="branch" id="navy" alt="해군" width="15%" src="https://drive.google.com/uc?export=view&id=1ghkHyrTLgLfALjCdaMPO8JwlSX6lw5Pn">
                     <input type="image" class="branch" id="airForce" alt="공군" width="15%" src="https://drive.google.com/uc?export=view&id=1oXkT8LQ1MTqm81IidTUs0x9EV2CwNgaB"><br>
                     <input type="image" class="branch" id="marine" alt="해병대" width="15%" src="https://drive.google.com/uc?export=view&id=1j-goG46fgUBL_6jBdHrkCznhBsXmClXe">
                     <input type="image" class="branch" id="socialService" alt="사회복무요원" width="15%" src="https://drive.google.com/uc?export=view&id=1h4sipevcN-Ku6TWOWdQ0EPw-G294CZeq">
-                    <input type="image" class="branch" id="police" alt="의경" width="15%" src="https://drive.google.com/uc?export=view&id=1Ihp9x9uLQ2tZzCVm9-sqiB27HhYXxCr3"><br>
+                    <input type="image" class="branch" id="police" alt="의경" width="15%" src="https://drive.google.com/uc?export=view&id=1Ihp9x9uLQ2tZzCVm9-sqiB27HhYXxCr3"><br> -->
+                    
+                    <input type="image" class="branch" id="army" alt="육군" width="15%" src="/img/army.png">
+                    <input type="image" class="branch" id="navy" alt="해군" width="15%" src="/img/navy.png">
+                    <input type="image" class="branch" id="airForce" alt="공군" width="15%" src="/img/airForce.png"><br>
+                    <input type="image" class="branch" id="marine" alt="해병대" width="15%" src="/img/marine.png">
+                    <input type="image" class="branch" id="socialService" alt="사회복무요원" width="15%" src="/img/socialService.png">
+                    <input type="image" class="branch" id="police" alt="의경" width="15%" src="/img/police.png"><br>
+                  
                   </div>
                 </div>
                 <div class="initRight">
@@ -259,33 +300,33 @@
       
                   <div id="enlistDateInput" style="visibility: hidden; width: 100%; height: 100%">
                     <div id="enlistY" class="floatLeft" style="text-align: center; width: 33%;">
-                      <div id="upPointer1" class="enlistInput">
-                        <button id="upPointerBtn1" style="background-color: transparent; border: none; padding: 0; outline: none" class="enlistInput"><i class="fa fa-chevron-up fa-3x"></i></button>
+                      <div id="upPointerEnlist1" class="enlistInput">
+                        <button id="upPointerEnlistBtn1" style="background-color: transparent; border: none; padding: 0; outline: none" class="enlistInput"><i class="fa fa-chevron-up fa-3x"></i></button>
                       </div><br>
-                      <input type = "text" class="enlistInput answer" id="enlistYInput" style="text-align: center; width: 90px" autofocus><span id = "year" class= "enlistInput answer">년</span>
+                      <input type = "text" class="enlistInput answer" id="enlistYInput" style="text-align: center; width: 90px" autofocus><span id = "yearEnlist" class= "enlistInput answer">년</span>
                       <!-- <div id="enlistYInput" class="answer"></div><br> -->             
-                      <div id="downPointer1" class="enlistInput">
-                        <button id="downPointerBtn1" style="background-color: transparent; border: none; padding: 0; outline: none" class="enlistInput"><i class="fa fa-chevron-down fa-3x"></i></button>
+                      <div id="downPointerEnlist1" class="enlistInput">
+                        <button id="downPointerEnlistBtn1" style="background-color: transparent; border: none; padding: 0; outline: none" class="enlistInput"><i class="fa fa-chevron-down fa-3x"></i></button>
                       </div>
                     </div>
     
                     <div id="enlistM" class="floatLeft" style="text-align: center; width: 33%">
-                      <div id="upPointer2" class="enlistInput">
-                        <button id="upPointerBtn2" style="background-color: transparent; border: none; padding: 0; outline: none" class="enlistInput"><i class="fa fa-chevron-up fa-3x"></i></button>
+                      <div id="upPointerEnlist2" class="enlistInput">
+                        <button id="upPointerEnlistBtn2" style="background-color: transparent; border: none; padding: 0; outline: none" class="enlistInput"><i class="fa fa-chevron-up fa-3x"></i></button>
                       </div><br>
-                      <input type = "text" class="enlistInput answer" id="enlistMInput" style="text-align: center; width: 45px"><span id = "month" class= "enlistInput answer">월</span>
-                      <div id="downPointer2" class="enlistInput">
-                        <button id="downPointerBtn2" style="background-color: transparent; border: none; padding: 0; outline: none" class="enlistInput"><i class="fa fa-chevron-down fa-3x"></i></button>
+                      <input type = "text" class="enlistInput answer" id="enlistMInput" style="text-align: center; width: 45px"><span id = "monthEnlist" class= "enlistInput answer">월</span>
+                      <div id="downPointerEnlist2" class="enlistInput">
+                        <button id="downPointerEnlistBtn2" style="background-color: transparent; border: none; padding: 0; outline: none" class="enlistInput"><i class="fa fa-chevron-down fa-3x"></i></button>
                       </div>
                     </div>
     
                     <div id="enlistD" class="floatLeft" style="text-align: center; width: 33%">
-                      <div id="upPointer3" class="enlistInput">
-                        <button id="upPointerBtn3" style="background-color: transparent; border: none; padding: 0; outline: none" class="enlistInput"><i class="fa fa-chevron-up fa-3x"></i></button>
+                      <div id="upPointerEnlist3" class="enlistInput">
+                        <button id="upPointerEnlistBtn3" style="background-color: transparent; border: none; padding: 0; outline: none" class="enlistInput"><i class="fa fa-chevron-up fa-3x"></i></button>
                       </div><br>
-                      <input type = "text" class="enlistInput answer" id="enlistDInput" style="text-align: center; width: 45px"><span id = "day" class= "enlistInput answer">일</span>
-                      <div id="downPointer3" class="enlistInput">
-                        <button id="downPointerBtn3" style="background-color: transparent; border: none; padding: 0; outline: none" class="enlistInput"><i class="fa fa-chevron-down fa-3x"></i></button>
+                      <input type = "text" class="enlistInput answer" id="enlistDInput" style="text-align: center; width: 45px"><span id = "dayEnlist" class= "enlistInput answer">일</span>
+                      <div id="downPointerEnlist3" class="enlistInput">
+                        <button id="downPointerEnlistBtn3" style="background-color: transparent; border: none; padding: 0; outline: none" class="enlistInput"><i class="fa fa-chevron-down fa-3x"></i></button>
                       </div>
                     </div>
                   </div>
@@ -307,7 +348,7 @@
             <div id="mainItemInner" style="display: flex; align-items: center; justify-content: center; width: 100%; height: 100%">
               <!-- left pointer -->
               <div id="leftPointer" >
-                <button style="background-color: transparent; border: none; padding: 0" class="iconButton"><i class="fa fa-chevron-left fa-3x"></i></button>
+                <button style="background-color: transparent; border: none; padding: 0" class="iconButton"><i class="fa fa-chevron-left fa-3x font-color"></i></button>
               </div>
 
               <!-- 메인창 -->
@@ -317,35 +358,35 @@
 
               <!-- right pointer -->
               <div id="rightPointer">
-                <button style="background-color: transparent; border: none; padding: 0" class="iconButton"><i class="fa fa-chevron-right fa-3x"></i></button>
+                <button style="background-color: transparent; border: none; padding: 0" class="iconButton"><i class="fa fa-chevron-right fa-3x font-color"></i></button>
               </div>
             </div>
           </div>
 
           <!-- 설정창 -->
           <div id="mainModal" style="height: 100%;">
-            <div class="modal fade bd-example-modal-sm" id="settingsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="height: 100%">
+            <div class="modal fade bd-example-modal-sm" id="settingsModal" tabindex="-1" role="dialog" aria-hidden="true" style="height: 100%">
                 <div class="modal-dialog modal-dialog-centered" role="document" style="height: 90%">
                   <div id="modalContent" class="modal-content" style="height: 80%">
-                    <div class="modal-header">
+                    <div class="modal-header poor main">
                       <!-- <h5 class="modal-title" id="exampleModalLabel">설정</h5> -->
 
                       <!-- html 탭 -->
                       <ul class="nav nav-tabs">
-                        <li class="nav-item" id="aboutTab"><a class="nav-link" href="#settingsAbout" id="aboutTabLink">정보</a></li> 
-                        <li class="nav-item"><a class="nav-link" href="#settings">설정</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#settingsInfo">사용자 정보변경</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#settingsBG">배경화면</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#settingsLove" id="settingsRelTab">우리사이</a></li>
+                        <li class="nav-item hideSave" id="aboutTab"><a class="nav-link settingsMain" href="#settingsAbout" id="aboutTabLink">정보</a></li> 
+                        <li class="nav-item showSave"><a class="nav-link settingsMain" href="#settings">설정</a></li>
+                        <li class="nav-item showSave"><a class="nav-link settingsMain" href="#settingsInfo">사용자 정보변경</a></li>
+                        <li class="nav-item showSave"><a class="nav-link settingsMain" href="#settingsBG">배경화면</a></li>
+                        <li class="nav-item showSave"><a class="nav-link settingsMain" href="#settingsLove" id="settingsRelTab">우리사이</a></li>
                       </ul>
 
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="outline: none">
                         <span aria-hidden="true">&times;</span>
                       </button>
 
                     </div>
 
-                    <div id="modalBody" class="modal-body">
+                    <div id="modalBody" class="modal-body poor">
                       <div id="modalContainerTabs" class="container--tabs">
                         <section class="row">
                           <!-- html 탭 -->
@@ -361,13 +402,68 @@
                           <div id="tabContent" class="tab-content">
 
                             <!-- defaul tab - 우리 정보-->
-                            <div id="settingsAbout" class="tab-pane">
-                                <h3>Credit to 달팽이관 + 산적 + 준영</h3>
-                              </span>
+                            <div id="settingsAbout" class="tab-pane flexCol centerH centerV settingsPaneMain">
+                              <div id="aboutTop" class="flexRow centerH centerV" style="width: 100%;">
+                                <div id="aboutTopLeft" class="flexCol centerH centerV" style="width: 50%">
+                                  <img id="logoPic" src="/img/logo.png">
+                                </div>
+                                <div id="aboutTopRight" class="flexCol centerH centerV" style="width: 50%">
+                                  <br><h4>짭탭 by 털난 달팽이</h4><br>
+                                  <!-- <h6>v.2019.03.31<br>ⓒ2019.털난 달팽이.All rights reserved.</h6> -->
+                                  <h6>v.2019.03.31</h6>
+                                </div>
+                              </div>
+                              <div id="aboutBottom" class="flexCol centerV">
+                                <!-- 
+                                  1. 우리 코드 저작물 보호 (한줄 설명)
+                                  2. 다른 코드/이미지 등 크레딧 주고 + 혹시나 안 이상하면 연락ㄱㄱ
+                                  3. Contact / Names
+                                 -->
+                                <hr><br>
+                                <h6 style="line-height: 1.8">[짭탭]은 군복무 중 말년의 허황세월을 보내던 병장 4명 사이에서 탄생했습니다. 
+                                  이 익스텐션은 대한민국 저작권법에 의해 보호를 받는 저작물이므로 무단전재와 무단 복제를 엄금합니다.
+                                </h6>
+                                <br><hr><br>
+
+                                <div class="flexCol justifyLeft centerV" style="color: gray">
+                                  [폰트지원]<br> &nbsp;&nbsp;&nbsp;&nbsp; Google Fonts
+                                  <br>
+
+                                  [날씨지원]<br> &nbsp;&nbsp;&nbsp;&nbsp; OpenWeatherMap(http://openweathermap.org/)
+                                  <br>
+
+                                  [에니메이션]<br> &nbsp;&nbsp;&nbsp;&nbsp; https://daneden.github.io/animate.css/
+                                  <br>
+
+                                  [아이콘지원]<br> &nbsp;&nbsp;&nbsp;&nbsp; Font Awesome
+                                  <br>
+
+                                </div>
+                                <br><hr><br>
+
+                                <div class="flexCol justifyLeft centerV" style="color: gray">
+                                  <h6 style="line-height: 1.8">[짭탭]의 저작물 무단도용을 발견하셨다면 아래 연락처로 연락주시기 바랍니다. 빠른 시일내로 조치하겠습니다.</h6>
+                                  <br>
+
+                                  [개발]<br>
+                                  &nbsp;&nbsp;&nbsp;&nbsp; 신지훈 &nbsp;&nbsp; jip68660@gmail.com <br>
+                                  &nbsp;&nbsp;&nbsp;&nbsp; 이선규 &nbsp;&nbsp; seongyoolee@gmail.com <br>
+                                  &nbsp;&nbsp;&nbsp;&nbsp; 이윤수 &nbsp;&nbsp; starlee9711@gmail.com <br>
+
+                                  [그림]<br>
+                                  &nbsp;&nbsp;&nbsp;&nbsp; 박준영 &nbsp;&nbsp; seeismin2073@gmail.com
+
+                                </div>
+                                <br><hr><br>
+
+                                <div class="flexCol centerH centerV" style="color: gray">
+                                  <h6>ⓒ2019.털난 달팽이.All rights reserved.</h6>
+                                </div>
+                              </div>
                             </div>
 
                             <!-- first tab 기본설정 -->
-                            <div id="settings" class="tab-pane">
+                            <div id="settings" class="tab-pane settingsPaneMain">
                               <span class="col-md-10">
                                 <form class="form">
                                   <!-- 시간 -->
@@ -376,9 +472,9 @@
                                     <hr>
                                     <div class="settingsContent">
                                       <input type="radio" id="12hrButton" name="timeRadioSettings" value="12hr"/>
-                                      <label for="12hrButton">12시간</label>
+                                      <label id="label12hrButton" for="12hrButton">12시간</label>
                                       <input type="radio" id="24hrButton" name="timeRadioSettings" value="24hr" />
-                                      <label for="24hrButton">24시간</label>
+                                      <label id="label24hrButton" for="24hrButton">24시간</label>
                                     </div>
                                   </div><br>
                                   
@@ -412,44 +508,60 @@
 
                                   <!-- 날씨 -->
                                   <div id="weatherInit" class="settingsBox">
-                                    <div class="switch-title settingsTitle">날씨</div>
+                                    <div class="switch-title settingsTitle centerV" style="justify-content: space-between">날씨
+                                      <span class="centerV" style="font-size: 0.7rem">날씨를 사용하려면 위치권한사용을 허용해주세요.</span>
+                                    </div>
                                     <hr>
                                     <div class="settingsContent">
-                                      <button id="weatherInitButton" class="btn btn-primary">날씨 활성화</button>
+                                      <button id="weatherInitButton" class="btn btn-info">날씨 활성화</button>
+                                      <i id="weatherArrow" class="fa fa-arrow-left" style="color: red; display: none; margin-left: 10px"></i>
                                       <button id="weatherChangeLocButton" class="btn btn-primary">현재위치 최신화</button>
                                     </div>
                                     <div class="switch-title" class="settingsTitle" style="visibility: hidden">날씨</div>
                                   </div>
                                   
                                   <!-- 초기화 -->
-                                  <div>
-                                      <br><br>
+                                  <div class="settingsBox">
+                                    <div class="switch-title settingsTitle">설정 초기화</div>
+                                    <hr>
+                                    <div class="settingsContent">
                                       <input type="button" value="초기화" id="storageResetButton" class="btn btn-danger" style="width: 100%">
                                     </div>
+                                  </div>
                                 </form>
                             </div>
 
                             <!-- second tab - 정보변경 -->
-                            <div id="settingsInfo" class="tab-pane" style="text-align: left"> 
-                              <span class="glyphicon glyphicon-leaf glyphicon--home--feature two columns text-center"></span>
+                            <div id="settingsInfo" class="tab-pane settingsPaneMain" style="text-align: left"> 
                               <span class="col-md-10">
                                 <form>
                                   <!-- 이름 설정 -->
-                                  <div class="form-group" style="width: 100%;">
-                                    <div>
-                                      <label for="user-name" class="col-form-label"style="width: 100%">이름:</label>
+                                  <!-- <div class="form-group" style="width: 100%;"> -->
+                                  <div class="settingsBox" style="width: 100%">
+                                    <div class="settingsTitle">이름
                                     </div>
-                                    <div>
+                                    <hr>
+                                    <div style="width: 100%;">
                                       <input type="text" id="user-name" class="form-control">
-                                    </div>
+                                    </div><br>
                                   </div>
+                                  <!-- </div> -->
                               
                                   <!-- 신분 설정 -->
-                                  <div class="form-group">
-
+                                  <div class="settingsBox switch-field">
+                                    <div class="settingsTitle">신분</div>
+                                    <hr>
+                                    <div>
+                                      <input type="radio" id="soldierButton" name="identityRadioSettings" value="soldier">
+                                      <label id="labelSoldierButton" for="soldierButton">군인</label>
+                                      <input type="radio" id="gfButton" name="identityRadioSettings" value="girlfriend">
+                                      <label id="labelGfButton" for="gfButton">곰신</label>
+                                    </div>
+                                  </div><br>
+                                  <!-- <div class="form-group">
                                       <form class="form">
                                         <div class="switch-field">
-                                          <div class="switch-title">신분:</div>
+                                          <div class="switch-title">신분</div>
                                           <div>
                                             <input type="radio" id="soldierButton" name="identityRadioSettings" value="soldier">
                                             <label for="soldierButton">군인</label>
@@ -458,13 +570,26 @@
                                           </div>
                                         </div>
                                       </form>
-                                    
-                                  </div>
+                                  </div> -->
                               
                                   <!-- 소속 설정 -->
-                                  <div class="form-group" style="width: 100%;">
+                                  <div class="settingsBox">
+                                    <div class="settingsTitle"><span class = "fitQuestion"></span>소속</div>
+                                    <hr>
+                                    <div style="width: 100%;">
+                                      <select class="form-control flexCol centerH" id="user-branch">
+                                        <option value="army">육군</option>
+                                        <option value="navy">해군</option>
+                                        <option value="airForce">공군</option>
+                                        <option value="marine">해병대</option>
+                                        <option value="socialService">사회복무</option>
+                                        <option value="police">의경</option>
+                                      </select>
+                                    </div>
+                                  </div><br>
+                                  <!-- <div class="form-group" style="width: 100%;">
                                     <div>
-                                      <label for="user-branch" class="col-form-label"style="width: 100%"><span class = "fitQuestion"></span>소속:</label>
+                                      <label for="user-branch" class="col-form-label"style="width: 100%"><span class = "fitQuestion"></span>소속</label>
                                     </div>
 
                                     <div class="input-group mb-3">
@@ -477,17 +602,28 @@
                                         <option value="police">의경</option>
                                       </select>
                                     </div>
-                                  </div>
+                                  </div> -->
 
                                   <!-- 계급 설정 -->
-                                  <div class="form-group" style="width: 100%;">
-                                    <div>
-                                      <label for="user-rank" class="col-form-label"style="width: 100%"><span class = "fitQuestion"></span>계급:</label>
+                                  <div class="settingsBox">
+                                    <div class="settingsTitle centerV"><span class = "fitQuestion"></span>계급
+                                      <i id="rankArrow" class="fa fa-arrow-left" style="color: red; display: none; margin-left: 10px"></i>
                                     </div>
-                                    <!-- <div>
-                                      <input type="text" id="user-rank" class="form-control">
-                                    </div> -->
-
+                                    <hr>
+                                    <div style="width: 100%">
+                                      <select class="form-control flexCol centerH" id="user-rank">
+                                        <option value="rankQ">현 계급을 선택하세요</option>
+                                        <option value="이병">이병</option>
+                                        <option value="일병">일병</option>
+                                        <option value="상병">상병</option>
+                                        <option value="병장">병장</option>
+                                      </select>
+                                    </div>
+                                  </div><br>
+                                  <!-- <div class="form-group" style="width: 100%;">
+                                    <div>
+                                      <label for="user-rank" class="col-form-label"style="width: 100%"><span class = "fitQuestion"></span>계급</label>
+                                    </div>
                                     <div class="input-group mb-3">
                                       <select class="custom-select" id="user-rank">
                                         <option value="rankQ">현 계급을 선택하세요</option>
@@ -497,27 +633,32 @@
                                         <option value="병장">병장</option>
                                       </select>
                                     </div>
-
-                                  </div>
+                                  </div> -->
                               
                                   <!-- 입대일 설정 -->
-                                  <div class="form-group">
-                                    <label for="user-enlistDate" class="col-form-label"><span class = "fitQuestion"></span>입대일:</label>
+                                  <div class="settingsBox">
+                                    <div class="settingsTitle"><span class = "fitQuestion"></span>입대일</div>
+                                    <hr>
+                                    <div style="width: 100%">
+                                      <input type="date" id="user-enlistDate" class="form-control">
+                                    </div>
+                                  </div>
+                                  <!-- <div class="form-group">
+                                    <label for="user-enlistDate" class="col-form-label"><span class = "fitQuestion"></span>입대일</label>
                                     <span style="display: flex; justify-content: center">
                                         <input type="date" id="user-enlistDate" class="form-control">
                                     </span>
-                                  </div>
+                                  </div> -->
                                 
                                 </form>
                               </span>
                             </div>                             
 
                             <!-- third tab - 배경화면 바꾸기-->
-                            <div id="settingsBG" class="tab-pane">
-                              <span class="glyphicon glyphicon-tint glyphicon--home--feature two columns text-center"></span>
-                              <span class="col-md-10">
-                                <form>
-                                  <div class="img-selector">
+                            <div id="settingsBG" class="tab-pane settingsPaneMain flexCol centerH">
+                              <span class="col-md-10 flexCol">
+                                <form class="flexCol" style="width: 100%">
+                                  <div class="img-selector flexCol" style="width: 100%; height: 100%">
                                     <input id="img1" type="radio" name="bgImgRadioSettings" value="img/mainback1.jpg" />
                                     <label class="img-sel img1" for="img1"></label>
                                     <input id="img2" type="radio" name="bgImgRadioSettings" value="img/mainback2.jpg" />
@@ -533,11 +674,27 @@
                               </span>
                             </div>
 
-                            <!-- fourth tab - main3 내용물 -->
-                            <div id="settingsLove" class="tab-pane">
-                              <span class="glyphicon glyphicon-tint glyphicon--home--feature two columns text-center"></span>
+                            <!-- fourth tab - 우리사이 -->
+                            <div id="settingsLove" class="tab-pane settingsPaneMain">
                               <span class="col-md-10">
-                                <div class="row">
+
+                                <div class="switch-field settingsBox">
+                                  <div class="settingsTitle">'우리사이' 활성화</div>
+                                  <hr>
+                                  <!-- <div>
+                                    <button id = "onOffToggle" type="button" class="btn btn-sm btn-toggle" data-toggle="button" aria-pressed="false" autocomplete="off" style="float: right">
+                                      <div class="handle"></div>
+                                    </button>
+                                  </div> -->
+                                  <div class="settingsContent">
+                                    <input type="radio" id="onButton" name="loveRadioSettings" value="on">
+                                    <label id="labelOnButton" for="onButton">켜기</label>
+                                    <input type="radio" id="offButton" name="loveRadioSettings" value="off">
+                                    <label id="labelOffButton" for="offButton">끄기</label>
+                                  </div>
+                                </div>
+                                <br>
+                                <!-- <div class="row">
                                   '우리사이' 활성화
                                   <div class="col-sm-10">
                                     <button id = "onOffToggle" type="button" class="btn btn-sm btn-toggle" data-toggle="button" aria-pressed="false" autocomplete="off" style="float: right">
@@ -545,42 +702,70 @@
                                     </button>
                                   </div>
                                 </div>
-                                <br>
+                                <br> -->
 
                                 <!-- 여기다가 이렇게 정보넣게 하고, toggle이벤트로 보였다 안보였다 하면 될듯 -->
-                                <div id = "loveInfo" style="text-align: left">
+                                <div id="loveInfo" style="text-align: left">
                                   <form>
                                     <!-- 애인 이름 설정 -->
-                                    <div class="form-group">
+                                    <div class="settingsBox">
+                                      <div class="settingsTitle">애인 이름</div>
+                                      <hr>
+                                      <div style="width: 100%">
+                                        <input type="text" id="lover-name" class="loveSetting form-control">
+                                      </div>
+                                    </div><br>
+                                    <!-- <div class="form-group">
                                       <label for="lover-name" class="col-form-label">애인 이름: </label>
                                       <div style="display: flex; justify-content: center">
                                       <input type="text" id="lover-name" class="loveSetting form-control">
                                       </div>
-                                    </div>
+                                    </div> -->
                                       
                                     <!-- 애인 생일 설정 -->
-                                    <div class="form-group">
+                                    <div class="settingsBox">
+                                      <div class="settingsTitle">애인 생일</div>
+                                      <hr>
+                                      <div style="width: 100%">
+                                        <input type="date" id="lover-birthday" class="loveSetting form-control">
+                                      </div>
+                                    </div><br>
+                                    <!-- <div class="form-group">
                                       <label for="lover-birthday" class="col-form-label">애인 생일:</label>
                                       <span style="display: flex; justify-content: center">
                                           <input type="date" id="lover-birthday" class="loveSetting form-control">
                                       </span>
-                                    </div>
+                                    </div> -->
 
                                     <!-- 본인 생일 설정 -->
-                                    <div class="form-group">
+                                    <div class="settingsBox">
+                                      <div class="settingsTitle">본인 생일</div>
+                                      <hr>
+                                      <div style="width: 100%">
+                                        <input type="date" id="user-birthday" class="loveSetting form-control">
+                                      </div>
+                                    </div><br>
+                                    <!-- <div class="form-group">
                                       <label for="user-birthday" class="col-form-label">본인 생일:</label>
                                       <span style="display: flex; justify-content: center">
                                         <input type="date" id="user-birthday" class="loveSetting form-control">
                                       </span>
-                                    </div>
+                                    </div> -->
 
                                     <!-- 사귄 날짜 설정 -->
-                                    <div class="form-group">
+                                    <div class="settingsBox">
+                                      <div class="settingsTitle">사귄 날짜</div>
+                                      <hr>
+                                      <div style="width: 100%">
+                                        <input type="date" id="first-date" class="loveSetting form-control">
+                                      </div>
+                                    </div><br>
+                                    <!-- <div class="form-group">
                                       <label for="first-date" class="col-form-label">사귄 날짜: </label>
                                       <span style="display: flex; justify-content: center">
                                         <input type="date" id="first-date" class="loveSetting form-control">
                                       </span>
-                                    </div>
+                                    </div> -->
                                 
                                   </form>
                                 </div>
@@ -592,14 +777,791 @@
                         </div>
 
                       </div>
-                    <div class="modal-footer">
+                    <div class="modal-footer poor">
                       <!-- <button id="closeSettings" type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button> -->
                       <button id="saveSettings" type="button" class="btn btn-primary" data-dismiss="modal">저장</button>
                     </div>
                   </div>
                 </div>
-              </div>
+            </div>
           </div>
+
+          <!-- 정보창 -->
+          <div id="subModal" style="height: 100%;">
+            <div class="modal fade bd-example-modal-sm" id="settingsSubModal" tabindex="-1" role="dialog" aria-hidden="true" style="height: 100%">
+              <div class="modal-dialog modal-dialog-centered" role="document" style="height: 90%">
+                <div id="subModalContent" class="modal-content" style="height: 80%">
+                  <div class="modal-header poor sub">
+                    <!-- <h5 class="modal-title" id="exampleModalLabel">설정</h5> -->
+
+                    <!-- html 탭 -->
+                    <ul class="nav nav-tabs">
+                      <li class="nav-item" id="aboutSubTab"><a class="nav-link settingsSub" href="#settingsAboutSub" id="aboutSubTabLink">군 관련 사이트</a></li> 
+                      <li class="nav-item"><a class="nav-link settingsSub" href="#benefitInfo">군인 혜택</a></li>
+                      <li class="nav-item"><a class="nav-link settingsSub" href="#rankInfo">진급 정보</a></li>
+                      <li class="nav-item"><a class="nav-link settingsSub" href="#salInfo">월급 정보</a></li>
+                    </ul>
+
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="outline: none">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+
+                  </div>
+
+                  <div id="subModalBody" class="modal-body poor">
+                    <div id="subModalContainerTabs" class="container--tabs">
+                      <section class="row">  
+                        <!-- tab content -->
+                        <div id="subTabContent" class="tab-content">
+
+                          <!-- defaul tab - 군 관련 사이트-->
+                          <div id="settingsAboutSub" class="tab-pane settingsPaneSub flexCol centerH centerV">                            
+                            <br>
+                            <div class="flexRow centerV" style="justify-content: space-around">
+                              <a href="http://www.mnd.go.kr" target="blank"><img src="/img/mnd.jpg"></a>
+                              <a href="https://www.mma.go.kr/index.do" target="blank"><img src="/img/maa.jpg"></a>                              
+                            </div><br>
+
+                            <div class="flexRow centerV" style="justify-content: space-around">
+                              <a href="http://www.army.mil.kr/webapp/user/indexMain.do?siteId=army" target="blank"><img src="/img/army.jpg"></a>
+                              <a href="http://www.navy.mil.kr/mbshome/mbs/navy/index.do" target="blank"><img src="/img/navy.jpg"></a>                              
+                            </div><br>
+                            <div class="flexRow centerV" style="justify-content: space-around">
+                              <a href="http://rokaf.airforce.mil.kr/airforce/index.do" target="blank"><img src="/img/airForce.jpg"></a>
+                              <a href="http://www.rokmc.mil.kr/index.do" target="blank"><img src="/img/marine.jpg"></a>                              
+                            </div><br>
+                            <div class="flexRow centerV" style="justify-content: space-around">
+                              <a href="https://sbm.mma.go.kr/caisSHBS/" target="blank"><img src="/img/socialService.jpg"></a>
+                              <a href="https://ap.police.go.kr/main.html" target="blank"><img src="/img/police.jpg"></a>                              
+                            </div><br>
+                            
+                            <div class="flexRow centerV" style="justify-content: space-around">
+                              <a href="http://cafe.naver.com/komusincafe" target="blank"><img src="/img/gomshinCafe.jpg"></a>
+                              <a href="http://www.mmaa.or.kr/main.action" target="blank"><img src="/img/mmaa.jpg"></a>
+                            </div><br>
+                            <div class="flexRow centerV" style="justify-content: space-around">
+                              <a href="http://kookbang.dema.mil.kr/newsWeb/main.do" target="blank"><img src="/img/kbNews.jpg"></a>
+                              <a href="http://www.army.mil.kr/unitarng/searchRST.do;unitarng=Q0Ylh99HhxLF2d0CmrpLpKrHLRbRwFKS84h4GZg5x9nvddQKy8Yp!-1134494398" target="blank"><img src="/img/bootCamp.jpg"></a>
+                            </div><br>
+                            <div class="flexRow centerV" style="justify-content: space-around">
+                              <a href="https://www.thecamp.or.kr/pcws/main/viewList.do;jsessionid=33AD032010B202503F4984D8D6CC8F42.pcws02" target="blank"><img src="/img/theCamp.jpg"></a>
+                              <a href="https://www.yebigun1.mil.kr/" target="blank"><img src="/img/yebigun.png"></a>
+                            </div><br>
+                          </div>
+
+                          <!-- first tab 군인혜택 -->
+                          <div id="benefitInfo" class="tab-pane settingsPaneSub centerH">                                
+                            <!-- <div class="flexCol justifyLeft centerV" style="color: rgb(88, 88, 88)">
+                              <br>
+                              <h6>
+                              [영화관] <br>
+                              CGV <br>
+                              - 나라사랑카드 사용시(기업,신한) 본인 및 동반 1인 각 1500원 할인<br>
+                              - 2D 7,000원 / 3D 8,000원 [군인 본인 및 동반 3인] 군인 본인 오징어 
+                              <br>&nbsp;&nbsp;콤보 5천원 할인<br>
+                              <br>
+                              롯데시네마 <br>
+                              - 2D 7,000원 / 3D 8,000원 [동반 3인]<br>
+                              - 매점콤보 2,000원 할인<br>
+                              <br><hr><br>
+
+                              [놀이공원]<br>
+                              에버랜드 <br>
+                              - 본인(군인) 무료 입장<br><br>
+                              서울랜드 <br>
+                              - 본인(군인) + 동반 1일 35% 할인<br><br>
+                              롯데월드<br>
+                              - 본인(군인) + 동반 1인 50% 할인<br>
+                              <br><hr><br>
+
+                              [외식]<br>
+                              VIPS<br>
+                              - 군인할인 15% + 제휴신용카드 중복 할인<br>
+                              - 국인할인 25%(제휴신용카드 중복 미사용 시<br><br>
+                              아웃백<br>
+                              - 군인 동반 테이블 20% 현장 할인(월 1회, 최대 4만원 할인)<br>
+                              <br><hr><br>
+
+                              [어학]<br>
+                              토익<br>
+                              - 응시료 50% 할인<br><br>
+                              오픽<br>
+                              - 응시료 30% 할인<br><br>
+                              TEPS<br>
+                              - 응시료 50% 할인 <br>
+                              <br><hr><br>
+
+                              [교통]<br>
+                              KTX<br>
+                              - 열차 운임 10% 할인(병장 이하만)<br><br>
+                              TMO<br>
+                              - 무료 <br>
+                              <br><hr><br>
+
+                              [스포츠]<br>
+                              K리그<br>
+                              - 본인(군인) 포함 동반 1인 무료(일반석 한정) <br><br>
+                              프로야구<br>
+                              - 본인(군인) 일반석 50% 할인 <br><br>
+                              프로농구<br>
+                              - 본인(군인) 일반석 무료 <br>
+                              <br><hr><br>
+                              </h6>
+                              <div style="text-align: center;">
+                                <h6>위 내용을 포함하여 다양하고 신기한 군인혜택들이 많습니다. <br>
+                                    유용하게 쓰시길 바랍니다.<br><br></h6>
+                              </div>                              
+                            </div> -->
+                            <br>
+                            <div id="accordion">
+                              <!-- 영화관 -->
+                              <div class="card">
+                                <div class="card-header" id="headingMovies" class="collapsed" data-toggle="collapse" data-target="#collapseMovies" aria-expanded="false" aria-controls="collapseMovies">
+                                  <h5 class="mb-0">
+                                    영화관
+                                  </h5>
+                                </div>
+                                <div id="collapseMovies" class="collapse" aria-labelledby="headingMovies" data-parent="#accordion">
+                                  <div class="card-body centerV centerH">
+
+                                    <div class="card cardIn" style="background-color: #e50000;">
+                                      <div class="card-body cardWrap">
+                                        <div class="logoArea">
+                                          <img src="/img/cgv.jpg" style="width: 100%;">
+                                        </div>
+                                        <div class="infoArea" style="color: white">
+                                          <div class="infoTitle">
+                                            CGV 
+                                          </div>
+                                          <div class="infoContent" style="font-size: 0.85rem;">
+                                            - 나라사랑카드 사용시 본인, 동반 1인 각 1500원 할인<br>
+                                            - 2D 7,000원 / 3D 8,000원 [동반 3인]<br>
+                                            - 콤보 5천원 할인
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+
+                                    <div class="card cardIn" style="background-color: #00b3b3;">
+                                      <div class="card-body cardWrap">
+                                        <div class="logoArea">
+                                          <img class="centerV" src="/img/megabox.png" style="width: 100%">
+                                        </div>
+                                        <div class="infoArea" style="color: white">
+                                          <div class="infoTitle">
+                                            메가박스
+                                          </div>
+                                          <div class="infoContent">
+                                            - 영화 6,000원 [동반 3인]<br>
+                                            - 매점 더블콤보 6,000원 할인<br>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+
+                                    <div class="card cardIn" style="background-color: #eeeeee;">
+                                      <div class="card-body cardWrap">
+                                        <div class="logoArea">
+                                          <img class="centerV" src="/img/lotteCinema.png" style="width: 100%">
+                                        </div>
+                                        <div class="infoArea" style="color: #303030">
+                                          <div class="infoTitle">
+                                            롯데시네마
+                                          </div>
+                                          <div class="infoContent">
+                                            - 2D 7,000원 / 3D 8,000원 [동반 3인]<br>
+                                            - 매점콤보 2,000원 할인<br>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+
+                                  </div>
+                                </div>
+                              </div>
+
+                              <!-- 놀이공원 -->
+                              <div class="card">
+                                <div class="card-header collapsed" id="headingAmusementPark" data-toggle="collapse" data-target="#collaspeAmusementPark" aria-expanded="false" aria-controls="collaspeAmusementPark">
+                                  <h5 class="mb-0">
+                                    놀이공원
+                                  </h5>
+                                </div>
+                                <div id="collaspeAmusementPark" class="collapse" aria-labelledby="headingAmusementPark" data-parent="#accordion">
+                                  <div class="card-body">
+                                    
+                                    <div class="card cardIn" style="background-color:#340034;">
+                                      <div class="card-body cardWrap">
+                                        <div class="logoArea">
+                                          <img class="centerV" src="/img/everland.png" style="width: 100%">
+                                        </div>
+                                        <div class="infoArea" style="color: white">
+                                          <div class="infoTitle">
+                                            에버랜드
+                                          </div>
+                                          <div class="infoContent">
+                                            - 휴가증/외박증 휴대시 본인(군인) 무료 입장<br>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+
+                                    <div class="card cardIn" style="background-color:#eeeeee;">
+                                      <div class="card-body cardWrap">
+                                        <div class="logoArea">
+                                          <img class="centerV" src="/img/seoulLand.jpg" style="width: 100%">
+                                        </div>
+                                        <div class="infoArea" style="color: #303030">
+                                          <div class="infoTitle">
+                                            서울랜드
+                                          </div>
+                                          <div class="infoContent">
+                                            - 본인 + 동반 1인 35% 할인<br>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+
+                                    <div class="card cardIn" style="background-color:#e50000;">
+                                      <div class="card-body cardWrap">
+                                        <div class="logoArea">
+                                          <img class="centerV" src="/img/lotteWorld.jpg" style="width: 100%">
+                                        </div>
+                                        <div class="infoArea" style="color: white">
+                                          <div class="infoTitle">
+                                            롯데월드
+                                          </div>
+                                          <div class="infoContent">
+                                            - 본인 + 동반 1인 50% 할인<br>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+
+                                  </div>
+                                </div>
+                              </div>
+
+                              <!-- 외식 -->
+                              <div class="card">
+                                <div class="card-header collapsed" id="headingFoods" data-toggle="collapse" data-target="#collapseFoods" aria-expanded="false" aria-controls="collapseFoods">
+                                  <h5 class="mb-0">
+                                    외식
+                                  </h5>
+                                </div>
+                                <div id="collapseFoods" class="collapse" aria-labelledby="headingFoods" data-parent="#accordion">
+                                  <div class="card-body">
+
+                                    <div class="card cardIn" style="background-color:#006734;">
+                                      <div class="card-body cardWrap">
+                                        <div class="logoArea">
+                                          <img class="centerV" src="/img/vips.png" style="width: 100%">
+                                        </div>
+                                        <div class="infoArea" style="color: white">
+                                          <div class="infoTitle">
+                                            VIPS
+                                          </div>
+                                          <div class="infoContent">
+                                            - 군인할인 15% + 제휴신용카드 중복 할인<br>
+                                            - 군인할인 25% (제휴신용카드 중복 미사용)<br>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+
+                                    <div class="card cardIn" style="background-color:#990000;">
+                                      <div class="card-body cardWrap">
+                                        <div class="logoArea">
+                                          <img class="centerV" src="/img/outback.jfif" style="width: 100%">
+                                        </div>
+                                        <div class="infoArea" style="color: white">
+                                          <div class="infoTitle">
+                                            아웃백
+                                          </div>
+                                          <div class="infoContent">
+                                            - 군인 동반 테이블 20% 현장 할인(월 1회, 최대 4만원 할인)<br>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+
+                                  </div>
+                                </div>
+                              </div>
+
+                              <!-- 어학 -->
+                              <div class="card">
+                                <div class="card-header collapsed" id="headingLanguages" data-toggle="collapse" data-target="#collapseLanguages" aria-expanded="false" aria-controls="collapseLanguages">
+                                  <h5 class="mb-0">
+                                    어학
+                                  </h5>
+                                </div>
+                                <div id="collapseLanguages" class="collapse" aria-labelledby="headingLanguages" data-parent="#accordion">
+                                  <div class="card-body">
+
+                                    <div class="card cardIn" style="background-color:#000067;">
+                                      <div class="card-body cardWrap">
+                                        <div class="logoArea">
+                                          <img class="centerV" src="/img/toeic.jpg" style="width: 100%">
+                                        </div>
+                                        <div class="infoArea" style="color: white">
+                                          <div class="infoTitle">
+                                            TOEIC
+                                          </div>
+                                          <div class="infoContent">
+                                            - 응시료 50% 할인<br>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+
+                                    <div class="card cardIn" style="background-color:#0892d0;">
+                                      <div class="card-body cardWrap">
+                                        <div class="logoArea">
+                                          <img class="centerV" src="/img/opic.png" style="width: 100%">
+                                        </div>
+                                        <div class="infoArea" style="color: white">
+                                          <div class="infoTitle">
+                                            OPIC
+                                          </div>
+                                          <div class="infoContent">
+                                            - 응시료 30% 할인<br>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+
+                                    <div class="card cardIn" style="background-color:#000067;">
+                                      <div class="card-body cardWrap">
+                                        <div class="logoArea">
+                                          <img class="centerV" src="/img/teps.PNG" style="width: 100%">
+                                        </div>
+                                        <div class="infoArea" style="color: white">
+                                          <div class="infoTitle">
+                                            TEPS
+                                          </div>
+                                          <div class="infoContent">
+                                            - 응시료 50% 할인<br>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    
+                                  </div>
+                                </div>
+                              </div>
+
+                              <!-- 교통 -->
+                              <div class="card">
+                                <div class="card-header collapsed" id="headingTransportation" data-toggle="collapse" data-target="#collapseTransportation" aria-expanded="false" aria-controls="collapseTransportation">
+                                  <h5 class="mb-0">
+                                    교통
+                                  </h5>
+                                </div>
+                                <div id="collapseTransportation" class="collapse" aria-labelledby="headingTransportation" data-parent="#accordion">
+                                  <div class="card-body">
+
+                                    <div class="card cardIn" style="background-color:#155193;">
+                                      <div class="card-body cardWrap">
+                                        <div class="logoArea">
+                                          <img class="centerV" src="/img/korail.PNG" style="width: 100%">
+                                        </div>
+                                        <div class="infoArea" style="color: white">
+                                          <div class="infoTitle">
+                                            코레일
+                                          </div>
+                                          <div class="infoContent">
+                                            - 열차 운임 10% 할인<br>
+                                            - TMO 이용시 기차표 무료(단 정기휴가 제외)<br>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+
+                                  </div>
+                                </div>
+                              </div>
+
+                              <!-- 스포츠 -->
+                              <div class="card">
+                                <div class="card-header collapsed" id="headingSports" data-toggle="collapse" data-target="#collapseSports" aria-expanded="false" aria-controls="collapseSports">
+                                  <h5 class="mb-0">
+                                    스포츠
+                                  </h5>
+                                </div>
+                                <div id="collapseSports" class="collapse" aria-labelledby="headingSports" data-parent="#accordion">
+                                  <div class="card-body">
+
+                                    <div class="card cardIn" style="background-color:#eeeeee;">
+                                      <div class="card-body cardWrap">
+                                        <div class="logoArea">
+                                          <img class="centerV" src="/img/kLeague.png" style="width: 100%">
+                                        </div>
+                                        <div class="infoArea" style="color: #303030">
+                                          <div class="infoTitle">
+                                            K리그
+                                          </div>
+                                          <div class="infoContent">
+                                            - 본인, 동반 1인 무료(일반석 한정)<br>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+
+                                    <div class="card cardIn" style="background-color:#000067;">
+                                      <div class="card-body cardWrap">
+                                        <div class="logoArea">
+                                          <img class="centerV" src="/img/kbl.jpg" style="width: 100%">
+                                        </div>
+                                        <div class="infoArea" style="color: white">
+                                          <div class="infoTitle">
+                                            프로농구
+                                          </div>
+                                          <div class="infoContent">
+                                            - 본인(군인) 일반석 무료 <br>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+
+                                    <div class="card cardIn" style="background-color:#eeeeee;">
+                                      <div class="card-body cardWrap">
+                                        <div class="logoArea">
+                                          <img class="centerV" src="/img/kbo.png" style="width: 100%">
+                                        </div>
+                                        <div class="infoArea" style="color: #303030">
+                                          <div class="infoTitle">
+                                            프로야구
+                                          </div>
+                                          <div class="infoContent">
+                                            - 본인(군인) 일반석 50% 할인 <br>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+
+                                  </div>
+                                </div>
+                              </div>
+
+                            </div>
+                          </div>
+
+                          <!-- second tab - 진급 정보 -->
+                          <div id="rankInfo" class="tab-pane settingsPaneSub">                                 
+                            <div class="flexCol justifyLeft centerV" style="color: rgb(88, 88, 88)">
+                              <br>
+                              <h6 style="text-align: center">
+                                ※아래의 내용은 진급누락이나 조기진급은 포함하지 않고 있습니다.
+                              </h6><br>
+
+                              <!-- 육군, 의경, 해병대 -->
+                              <div class="card" style="background-color: #eeeeee; border: transparent">
+                                <div class="card-body">
+                                  <div class="branchTitleArea">
+                                    육군, 의경, 해병대
+                                  </div>
+                                  <div class="progressBarArea" class="progess" data-toggle="popover">
+                                    <div class="progressBarAreaInner">
+                                      <div id="progressBarArmy" class="progress">
+                                        <div class="progress-bar" role="progressbar" style="width: 14.29%; background-color: #152d09" aria-valuenow="14.29" aria-valuemin="0" aria-valuemax="100">이병 [3]</div>
+                                        <div class="progress-bar" role="progressbar" style="width: 33.33%; background-color: #263e22" aria-valuenow="33.33" aria-valuemin="0" aria-valuemax="100">일병 [7]</div>
+                                        <div class="progress-bar" role="progressbar" style="width: 33.33%; background-color: #3a4b3a" aria-valuenow="33.33" aria-valuemin="0" aria-valuemax="100">상병 [7]</div>
+                                        <div class="progress-bar" role="progressbar" style="width: 19.05%; background-color: #435e4b" aria-valuenow="19.05" aria-valuemin="0" aria-valuemax="100">병장 [4]</div>
+                                      </div>
+                                    </div>
+                                    <div class="durationArea">
+                                      21개월
+                                    </div>
+                                  </div>
+                                  
+                                  <div class="flexRow centerH centerV">
+                                    <i class="fa fa-arrow-down" style="margin-top: 5px; margin-bottom: 5px"></i>
+                                  </div>
+
+                                  <div class="progressBarArea" class="progess" data-toggle="popover">
+                                    <div class="progressBarAreaInner">
+                                      <div id="progressBarArmy2" class="progress">
+                                        <div class="progress-bar" role="progressbar" style="width: 100%; background-color: #19472c" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">2020년 6월 2일 입대부터</div>
+                                      </div>
+                                    </div>
+                                    <div class="durationArea">
+                                      18개월
+                                    </div>
+                                  </div>
+                                </div>
+                              </div><br>
+
+                              <!-- 해군 -->
+                              <div class="card" style="background-color: #eeeeee; border: transparent">
+                                <div class="card-body">
+                                  <div class="branchTitleArea">
+                                    해군
+                                  </div>
+                                  <div class="progressBarArea" class="progess" data-toggle="popover">
+                                    <div class="progressBarAreaInner">
+                                      <div id="progressBarNavy" class="progress">
+                                        <div class="progress-bar" role="progressbar" style="width: 26.09%; background-color: #1483c7" aria-valuenow="26.09" aria-valuemin="0" aria-valuemax="100">이병 [6]</div>
+                                        <div class="progress-bar" role="progressbar" style="width: 26.09%; background-color: #4d9fdd" aria-valuenow="26.09" aria-valuemin="0" aria-valuemax="100">일병 [6]</div>
+                                        <div class="progress-bar" role="progressbar" style="width: 30.43%; background-color: #6cb3c3fb" aria-valuenow="30.43" aria-valuemin="0" aria-valuemax="100">상병 [7]</div>
+                                        <div class="progress-bar" role="progressbar" style="width: 17.39%; background-color: #58c3c0" aria-valuenow="17.39" aria-valuemin="0" aria-valuemax="100">병장 [4]</div>
+                                      </div>
+                                    </div>
+                                    <div class="durationArea">
+                                      23개월
+                                    </div>
+                                  </div>
+                                  
+                                  <div class="flexRow centerH centerV">
+                                    <i class="fa fa-arrow-down" style="margin-top: 5px; margin-bottom: 5px"></i>
+                                  </div>
+
+                                  <div class="progressBarArea" class="progess" data-toggle="popover">
+                                    <div class="progressBarAreaInner">
+                                      <div id="progressBarNavy2" class="progress">
+                                        <div class="progress-bar" role="progressbar" style="width: 100%; background-color: #135998" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">2020년 4월 2일 입대부터</div>
+                                      </div>
+                                    </div>
+                                    <div class="durationArea">
+                                      20개월
+                                    </div>
+                                  </div>
+                                </div>
+                              </div><br>
+
+                              <!-- 공군 -->
+                              <div class="card" style="background-color: #eeeeee; border: transparent">
+                                <div class="card-body">
+                                  <div class="branchTitleArea">
+                                    공군
+                                  </div>
+                                  <div class="progressBarArea" class="progess" data-toggle="popover">
+                                    <div class="progressBarAreaInner">
+                                      <div id="progressBarAirForce" class="progress">
+                                        <div class="progress-bar" role="progressbar" style="width: 12.5%; background-color: #59627f" aria-valuenow="12.5" aria-valuemin="0" aria-valuemax="100">이병 [3]</div>
+                                        <div class="progress-bar" role="progressbar" style="width: 29.17%; background-color: #475171" aria-valuenow="29.17" aria-valuemin="0" aria-valuemax="100">일병 [7]</div>
+                                        <div class="progress-bar" role="progressbar" style="width: 29.17%; background-color: #333e62" aria-valuenow="29.17" aria-valuemin="0" aria-valuemax="100">상병 [7]</div>
+                                        <div class="progress-bar" role="progressbar" style="width: 29.16%; background-color: #1d2951" aria-valuenow="29.16" aria-valuemin="0" aria-valuemax="100">병장 [7]</div>
+                                      </div>
+                                    </div>
+                                    <div class="durationArea">
+                                      24개월
+                                    </div>
+                                  </div>
+                                  
+                                  <div class="flexRow centerH centerV">
+                                    <i class="fa fa-arrow-down" style="margin-top: 5px; margin-bottom: 5px"></i>
+                                  </div>
+
+                                  <div class="progressBarArea" class="progess" data-toggle="popover">
+                                    <div class="progressBarAreaInner">
+                                      <div id="progressBarAirForce2" class="progress">
+                                        <div class="progress-bar" role="progressbar" style="width: 100%; background-color: #0e1428" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">2019년 1월 7일 입대부터</div>
+                                      </div>
+                                    </div>
+                                    <div class="durationArea">
+                                      22개월
+                                    </div>
+                                  </div>
+                                </div>
+                              </div><br>
+
+                              <!-- 사회복무요원 -->
+                              <div class="card" style="background-color: #eeeeee; border: transparent">
+                                <div class="card-body">
+                                  <div class="branchTitleArea">
+                                    사회복무요원
+                                  </div>
+                                  <div class="progressBarArea" class="progess" data-toggle="popover">
+                                    <div class="progressBarAreaInner">
+                                      <div id="progressBarSocialService" class="progress">
+                                        <div class="progress-bar" role="progressbar" style="width: 100%; background-color: #c9a021" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">계급 없음</div>
+                                      </div>
+                                    </div>
+                                    <div class="durationArea">
+                                      24개월
+                                    </div>
+                                  </div>
+                                  
+                                  <div class="flexRow centerH centerV">
+                                    <i class="fa fa-arrow-down" style="margin-top: 5px; margin-bottom: 5px"></i>
+                                  </div>
+
+                                  <div class="progressBarArea" class="progess" data-toggle="popover">
+                                    <div class="progressBarAreaInner">
+                                      <div id="progressBarSocialService2" class="progress">
+                                        <div class="progress-bar" role="progressbar" style="width: 100%; background-color: #e1b80a" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">2020년 3월 2일 입대부터</div>
+                                      </div>
+                                    </div>
+                                    <div class="durationArea">
+                                      21개월
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <br>
+                            </div>                              
+                          </div> 
+
+                          <!-- third tab - 월급 정보 -->
+                          <div id="salInfo" class="tab-pane settingsPaneSub">
+                            <div class="flexCol justifyLeft centerV" style="color: rgb(88, 88, 88)">
+                              <br>
+                              <div class="flexCol centerH centerV">
+                                <div class="flexRow centerH centerV switch-field">
+                                  <!-- button group for 2019, 2020 -->
+                                  <input type="radio" id="sal2019" name="salSwitch" value="2019년"/>
+                                  <label id="labelSal2019" for="sal2019">2019년</label>
+                                  <input type="radio" id="sal2020" name="salSwitch" value="2020년" />
+                                  <label id="labelSal2020" for="sal2020">2020년</label>
+                                </div><br>
+                                <div>
+                                  <!-- graph in card / content -->
+                                  <div id="sal2019Card" class="card" style="background-color: #eeeeee; border: transparent">
+                                    <div class="card-body">
+                                      <div class="branchTitleArea">
+                                        계급별 봉급
+                                      </div>
+                                      <div class="progressBarArea" class="progess" data-toggle="popover">
+                                        <div class="rankArea">
+                                          이병
+                                        </div>
+                                        <div class="progressBarAreaInner">
+                                          <div id="progressBar2019_1" class="progress">
+                                            <div class="progress-bar" role="progressbar" style="width: 100%; background-color: #55d6c6" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">₩306,100</div>
+                                          </div>
+                                        </div>
+                                      </div>
+
+                                      <div class="progressBarArea" class="progress" data-toggle="popover">
+                                        <div class="rankArea">
+                                          일병
+                                        </div>
+                                        <div class="progressBarAreaInner">
+                                          <div id="progressBar2019_2" class="progress">
+                                            <div class="progress-bar" role="progressbar" style="width: 100%; background-color: #46abc1" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">₩331,300</div>
+                                          </div>
+                                        </div>
+                                      </div>
+
+                                      <div class="progressBarArea" class="progress" data-toggle="popover">
+                                        <div class="rankArea">
+                                          상병
+                                        </div>
+                                        <div class="progressBarAreaInner">
+                                          <div id="progressBar2019_3" class="progress">
+                                            <div class="progress-bar" role="progressbar" style="width: 100%; background-color: #4f7dbd" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">₩366,200</div>
+                                          </div>
+                                        </div>
+                                      </div>
+
+                                      <div class="progressBarArea" class="progress" data-toggle="popover">
+                                        <div class="rankArea">
+                                          병장
+                                        </div>
+                                        <div class="progressBarAreaInner">
+                                          <div id="progressBar2019_4" class="progress">
+                                            <div class="progress-bar" role="progressbar" style="width: 100%; background-color: #434bba" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">₩405,700</div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      
+                                    </div>
+                                  </div>
+
+                                  <div id="sal2020Card" class="card" style="background-color: #eeeeee; border: transparent">
+                                    <div class="card-body">
+                                      <div class="branchTitleArea">
+                                        계급별 봉급
+                                      </div>
+                                      <div class="progressBarArea" class="progess" data-toggle="popover">
+                                        <div class="rankArea">
+                                          이병
+                                        </div>
+                                        <div class="progressBarAreaInner">
+                                          <div id="progressBar2020_1" class="progress">
+                                            <div class="progress-bar" role="progressbar" style="width: 100%; background-color: #ffa898" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">₩408,000</div>
+                                          </div>
+                                        </div>
+                                      </div>
+
+                                      <div class="progressBarArea" class="progress" data-toggle="popover">
+                                        <div class="rankArea">
+                                          일병
+                                        </div>
+                                        <div class="progressBarAreaInner">
+                                          <div id="progressBar2020_2" class="progress">
+                                            <div class="progress-bar" role="progressbar" style="width: 100%; background-color: #ffa1a1" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">₩441,600</div>
+                                          </div>
+                                        </div>
+                                      </div>
+
+                                      <div class="progressBarArea" class="progress" data-toggle="popover">
+                                        <div class="rankArea">
+                                          상병
+                                        </div>
+                                        <div class="progressBarAreaInner">
+                                          <div id="progressBar2020_3" class="progress">
+                                            <div class="progress-bar" role="progressbar" style="width: 100%; background-color: #ff98a8" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">₩488,100</div>
+                                          </div>
+                                        </div>
+                                      </div>
+
+                                      <div class="progressBarArea" class="progress" data-toggle="popover">
+                                        <div class="rankArea">
+                                          병장
+                                        </div>
+                                        <div class="progressBarAreaInner">
+                                          <div id="progressBar2020_4" class="progress">
+                                            <div class="progress-bar" role="progressbar" style="width: 100%; background-color: #ff91b1" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">₩540,800</div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                        </div>
+                      </section>
+                    </div>
+
+                  </div>
+                  
+                  <div class="modal-footer"></div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 알림창 -->
+
+          <!-- <div id="alertModalDiv" style="height: 100%;">
+            <div class="modal fade bd-example-modal-sm" id="alertModal" tabindex="-1" role="dialog" aria-hidden="true" style="height: 100%">
+              <div class="modal-dialog modal-dialog-centered" role="document" style="height: 90%">
+                <div id="alertModalContent" class="modal-content" style="height: 80%">
+                  <div class="modal-header poor">
+                  </div>
+
+                  <div id="alertModalBody" class="modal-body poor">
+                    <h6> something here </h6>
+                  </div>
+
+                  <div class="modal-footer">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div> -->
+          
+          <!-- <div class="alert alert-primary" role="alert" tabindex="-1" aria-hidden="true" style="display: none">
+            This is a primary alert—check it out!
+          </div> -->
       
         </mainMiddleContent>
       </mainMiddle>
@@ -619,7 +1581,10 @@
 
       <footerRight>
         <button id="settingButton" data-toggle="modal" data-target="#settingsModal" style="background-color: transparent; padding: 0; border: none" class="widget iconButton">
-            <span style="color:white;"><i class="fa fa-cog fa-2x"></i></span>
+            <span class="font-color"><i class="fa fa-cog fa-2x"></i></span>
+        </button>
+        <button id="settingButtonSub" data-toggle="modal" data-target="#settingsSubModal" style="background-color: transparent; padding: 0; border: none" class="widget iconButton">
+            <span class="font-color"><i class="fa fa-info-circle fa-2x"></i></span>
         </button>
       </footerRight>
       
@@ -628,6 +1593,7 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script> -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.js"></script>
     <script type="text/javascript" src="js/resize.js"></script>
     <script type="text/javascript" src="js/search.js"></script>
     <script type="text/javascript" src="js/clock.js"></script>
@@ -636,7 +1602,7 @@
     <script type="text/javascript" src="js/init.js"></script>
     <script type="text/javascript" src="js/settings.js"></script>
     <script type="text/javascript" src="js/mainDisplay.js"></script>
-    <script src="js/gotoSettings.js"></script>
+    <script src="js/overIframe.js"></script>
     <!-- mainDisplay.js should be at the bottom. i want to have this call methods in other js files declared above -->
   </body>
 </html>

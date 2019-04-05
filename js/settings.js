@@ -6,13 +6,16 @@
  */
 
 window.addEventListener("load", function() {
-
+	
 	// store tabs variable
-	var myTabs = document.querySelectorAll("ul.nav-tabs > li > a");
-
+	var myTabs = document.querySelectorAll("div.main > ul.nav-tabs > li > a");
+	var mySubTabs = document.querySelectorAll("div.sub > ul.nav-tabs > li > a");
 	for (i = 0; i < myTabs.length; i++) {
 		myTabs[i].addEventListener("click", myTabClicks);
-    }
+	}
+	for (i = 0; i < mySubTabs.length; i++) {
+		mySubTabs[i].addEventListener("click", mySubTabClicks);
+	}
 
     function myTabClicks(tabClickEvent) {
 		for (var i = 0; i < myTabs.length; i++) {
@@ -21,7 +24,24 @@ window.addEventListener("load", function() {
 		var clickedTab = tabClickEvent.currentTarget;
 		clickedTab.classList.add("active");
 		tabClickEvent.preventDefault();
-		var myContentPanes = document.querySelectorAll(".tab-pane");
+		var myContentPanes = document.querySelectorAll("div#tabContent > .tab-pane");
+		for (i = 0; i < myContentPanes.length; i++) {
+			myContentPanes[i].classList.remove("active");
+		}
+		var anchorReference = tabClickEvent.target;
+		var activePaneId = anchorReference.getAttribute("href");
+		var activePane = document.querySelector(activePaneId);
+		activePane.classList.add("active");
+	}
+
+	function mySubTabClicks(tabClickEvent) {
+		for (var i = 0; i < mySubTabs.length; i++) {
+			mySubTabs[i].classList.remove("active");
+		}
+		var clickedTab = tabClickEvent.currentTarget;
+		clickedTab.classList.add("active");
+		tabClickEvent.preventDefault();
+		var myContentPanes = document.querySelectorAll("div#subTabContent > .tab-pane");
 		for (i = 0; i < myContentPanes.length; i++) {
 			myContentPanes[i].classList.remove("active");
 		}

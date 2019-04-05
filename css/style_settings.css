@@ -93,18 +93,17 @@
 
 /* Radio Buttons for Identity and Branch Select */
 .switch-field {
-  font-family: "Lucida Grande", Tahoma, Verdana, sans-serif;
-	overflow: hidden;
+  overflow: hidden;
 }
 
 .switch-field input {
-    /* position: absolute !important; */
-    position: relative;
-    clip: rect(0, 0, 0, 0);
-    height: 0px;
-    width: 0px;
-    border: 0;
-    overflow: hidden;
+  /* position: absolute !important; */
+  position: relative;
+  clip: rect(0, 0, 0, 0);
+  height: 0px;
+  width: 0px;
+  border: 0;
+  overflow: hidden;
 }
 
 .switch-field label {
@@ -115,7 +114,9 @@
   display: inline-block;
   /* width: 49.25%; */
   background-color: white;
-  color: rgba(0, 0, 0, 0.6);
+  color: #8e8e8e;
+  border-top: 1px solid #ced4da;
+  border-bottom: 1px solid #ced4da;
   font-size: 14px;
   font-weight: normal;
   text-align: center;
@@ -132,9 +133,17 @@
   transition:         all 0.1s ease-in-out;
 }
 
-#branchSwitchField label {
-  width: 16%;
+#label12hrButton, #labelSoldierButton, #labelOnButton, #labelSal2019 {
+  border-left: 1px solid #ced4da;
 }
+
+#label24hrButton, #labelGfButton, #labelOffButton, #labelSal2020  {
+  border-right: 1px solid #ced4da;
+}
+
+/* #branchSwitchField label {
+  width: 16%;
+} */
 
 .switch-field label:hover {
 	cursor: pointer;
@@ -155,8 +164,13 @@
   border-radius: 0 4px 4px 0;
 }
 
-/* Radio Input with Images */
+/* form-control */
+.form-control {
+  line-height: 1.5;
+  padding: .5rem .75rem;
+}
 
+/* Radio Input with Images */
 .img-selector input{
   margin:0;padding:0;
   -webkit-appearance:none;
@@ -185,11 +199,13 @@
 }
 .img-sel{
   cursor:pointer;
-  background-size:contain;
+  background-size: cover;
   background-repeat:no-repeat;
   display:inline-block;
-  width:200px;
-  height:140px;
+  /* width:200px;
+  height:140px; */
+  width: 400px;
+  height: 200px;
   -webkit-transition: all 100ms ease-in;
      -moz-transition: all 100ms ease-in;
           transition: all 100ms ease-in;
@@ -210,4 +226,239 @@
   -webkit-filter: brightness(1.2) grayscale(.5) opacity(.9);
      -moz-filter: brightness(1.2) grayscale(.5) opacity(.9);
           filter: brightness(1.2) grayscale(.5) opacity(.9);
+}
+
+/* Settings 전체 설정 */
+#mainModal, #subModal {
+  color: #5e5e5e;
+}
+
+/* SettingsAbout */
+#settingsAbout {
+  padding-left: 2vw;
+  padding-right: 2vw;
+}
+#aboutTop {
+  padding-top: 5%;
+  margin-bottom: 5%;
+}
+#logoPic {
+  width: 100%;
+  margin-top: -2vw;
+  margin-bottom: -2vw;
+  margin-right: -2vw;
+}
+
+/* SettingsInfo */
+#user-name, #user-branch, #user-rank, #user-enlistDate, #lover-name, #lover-birthday, #user-birthday, #first-date {
+  width: 100%;
+  height: 2.7rem;
+  /* text-align: center; */
+  color: #8e8e8e;
+  border: 1px solid #ced4da;
+}
+
+/* layout */
+.flexColumn {
+  display: flex;
+  flex-direction: column;
+}
+.flexRow {
+  display: flex;
+  flex-direction: row;
+}
+.centerV {
+  align-items: center;
+}
+.centerH {
+  justify-content: center;
+}
+.justifyLeft {
+  /* justify-content: left; */
+  text-align: left;
+}
+
+/* SubSettings Card Display */
+.card-header:hover {
+  cursor: pointer;
+  background-color: #007bff;
+  color: white;
+}
+.card-header[aria-expanded = "true"] {
+  background-color: #007bff;
+  color: white;
+}
+.cardIn {
+  width: 363px;
+  height: 190px;
+  border: none;
+  /* margin-bottom: 5px; */
+  margin: auto;
+  margin-bottom: 5px;
+  border-radius: 0.75rem;
+}
+.cardWrap {
+  display: flex;
+  flex-direction: row;
+  justify-self: center;
+  width: 363px;
+  height: 190px;
+  border: none;
+}
+.logoArea {
+  display: flex;
+  width: 40%;
+  align-items: center;
+  margin-right: 0.5rem;
+}
+.logoArea > img{
+  border-radius: 0.3rem;
+}
+.infoArea {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  width: 60%;
+  height: 100%;
+}
+.infoTitle {
+  display: flex;
+  width: 100%;
+  height: 25%;
+  justify-content: center;
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+.infoContent {
+  display: flex;
+  width: 100%;
+  height: 75%;
+  text-align: left;
+  padding: 5%;
+}
+.branchTitleArea {
+  display: flex;
+  width: 100%;
+  height: 50%;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+.progressBarArea {
+  display: inline-flex;
+  width: 100%;
+  height: 50%;
+  align-items: center;
+  justify-content: space-between;
+}
+.progressBarAreaInner {
+  display: flex;
+  width: 90%;
+  padding-right: 5px;
+}
+.durationArea, .rankArea {
+  display: flex;
+  width: 10%;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.8rem;
+}
+/* Army, Police, Marine */
+#progressBarArmy {
+  display: flex;
+  width: 87.5%;
+  height: 20px;
+}
+#progressBarArmy2 {
+  display: flex;
+  width: 75%;
+  height: 20px;
+}
+/* Navy */
+#progressBarNavy {
+  display: flex;
+  width: 95.8%;
+  height: 20px;
+}
+#progressBarNavy2 {
+  display: flex;
+  width: 83.33%;
+  height: 20px;
+}
+/* AirForce */
+#progressBarAirForce {
+  display: flex;
+  width: 100%;
+  height: 20px;
+}
+#progressBarAirForce2 {
+  display: flex;
+  width: 91.67%;
+  height: 20px;
+}
+/* Social Servce */
+#progressBarSocialService {
+  display: flex;
+  width: 100%;
+  height: 20px;
+}
+#progressBarSocialService2 {
+  display: flex;
+  width: 87.5%;
+  height: 20px;
+}
+/* Salary 2019 */
+#progressBar2019_1 {
+  display: flex;
+  width: 56.60%;
+  height: 20px;
+}
+#progressBar2019_2 {
+  display: flex;
+  width: 61.26%;
+  height: 20px;
+}
+#progressBar2019_3 {
+  display: flex;
+  width: 67.71%;
+  height: 20px;
+}
+#progressBar2019_4 {
+  display: flex;
+  width: 75.18%;
+  height: 20px;
+}
+#progressBar2020_1 {
+  display: flex;
+  width: 75.44%;
+  height: 20px;
+}
+#progressBar2020_2 {
+  display: flex;
+  width: 81.66%;
+  height: 20px;
+}
+#progressBar2020_3 {
+  display: flex;
+  width: 90.26%;
+  height: 20px;
+}
+#progressBar2020_4 {
+  display: flex;
+  width: 100%;
+  height: 20px;
+}
+
+
+
+/* Subsetting Card Display */
+#settingsAboutSub > div > a > img {
+  border-radius: 0.3rem;
+  width: 180px;
+  height: 180px;
+}
+#settingsAboutSub > div > a > img:hover {
+  transform: scale(1.03);
 }

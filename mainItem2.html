@@ -17,7 +17,7 @@
 
     </head>
 
-    <body class = "gamja middle" style="background-color:transparent">
+    <body class = "gamja middle font-color" style="background-color:transparent">
         <!-- <div id="nextRandom" style="float: right; margin-right: 10px; margin-top: 10px">
             <i class = "fa fa-random fa-lg"></i>
         </div>
@@ -33,16 +33,17 @@
         <div id="textBottom">
             <span id="leftCount" style="font-weight: bold;"></span> 남았다~
         </div> -->
-        <div id="pageContent" style="display: flex; flex-direction: row; width: 100%; height: 100%">
-            <div id="textBottom" style="display: inline-flex; width: 40%; height: 100%; justify-content: center; align-items: center">
-                <span id="leftCount" style="font-weight: bold;"></span> 남았다!
-            </div>
-            <div id="remainContent" style="display:inline-flex; width: 60%; height: 100%; justify-content: center; align-items: center">
+        <div id="pageContent" style="display: flex; flex-direction: row; width: 100%; height: 100%; justify-content: center">
+            <div id="remainContent" style="display:inline-flex; flex-direction: column; height: 100%; justify-content: center; align-items: center;">
+                <!-- <div id="description"></div> -->
                 <img id="remainContentImg">
-                <div id="nextRandom">
-                    <i class = "fa fa-random fa-lg"></i>
-                </div>
             </div>
+            <div id="textBottom" style="display: inline-flex; height: 100%; justify-content: center; align-items: center">
+                <span id="leftCount" style="font-weight: bold;"></span><span id="rightCount"></span>
+            </div>
+            <!-- <div id="nextRandom">
+                <i class = "fa fa-random fa-lg"></i>
+            </div> -->
         </div>
         <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
         <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script> -->

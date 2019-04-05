@@ -1,7 +1,7 @@
 window.onresize = resizeBrowser;
 
 function resizeBrowser(){
-
+    
     if(localStorage.length!=0) {
         // 모니터 해상도를 가져와서 가로 세로 비율 구해줌
         var sizeRate = screen.height / screen.width;
@@ -21,14 +21,14 @@ function resizeBrowser(){
         }
     }
 
-    if(!isHeaderWidgetShown && !isSearchClosed && window.innerWidth * 2 > screen.width) {//창크기가 반보다 작은상태에서 검색이 열림 -> 창크기 확대
-        isHeaderWidgetShown = true;
-        $("#timeUI").show();
-    }
-    else if(isHeaderWidgetShown && !isSearchClosed && window.innerWidth *2 <= screen.width) { // 창 크기가 반보다 큰 상태에서 검색이 열림 -> 창 크기 축소
-        isHeaderWidgetShown = false;
-        $("#timeUI").hide();
-    }
+    // if(!isHeaderWidgetShown && !isSearchClosed && window.innerWidth * 2 > screen.width) {//창크기가 반보다 작은상태에서 검색이 열림 -> 창크기 확대
+    //     isHeaderWidgetShown = true;
+    //     $("#timeUI").show();
+    // }
+    // else if(isHeaderWidgetShown && !isSearchClosed && window.innerWidth *2 <= screen.width) { // 창 크기가 반보다 큰 상태에서 검색이 열림 -> 창 크기 축소
+    //     isHeaderWidgetShown = false;
+    //     $("#timeUI").hide();
+    // }
 
     // if(localStorage.length!=0) {
     //     // 모니터 해상도를 가져와서 가로 세로 비율 구해줌

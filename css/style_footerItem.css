@@ -1,6 +1,7 @@
 .modal-header {
     background-color: rgb(0, 123, 255);
     border: 1px solid rgb(0, 123, 255, 0.8);
+    border-bottom: none;
     padding-bottom: 0;
 }
 .modal-header .nav-tabs{
@@ -8,11 +9,11 @@
     width: 100%;
     margin: 0;
     list-style-type: none;
-    border-bottom: none;
+    border-bottom-color: transparent;
 }
 .modal-header .nav-tabs > li {
     float: left;
-    border-bottom: transparet;
+    border-bottom-color: transparent;
     margin-right: 2px;
     /* margin-bottom: -1px; */
 }
@@ -30,7 +31,8 @@
 .modal-header .nav-tabs > li > a:hover {
     /* border-color: #eee #eee #ddd; */
     color: #007bff;
-    background-color: white;
+    background-color: #f9f9f9;
+    border-bottom-color: transparent;
     /* background-color: rgba(255, 255, 255, 0.8); */
 }
 .nav-tabs .nav-link {
@@ -39,13 +41,14 @@
 /* 설정탭에 클릭했을때 */
 .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
     color: #007bff;
-    background-color: white;
+    background-color: #f9f9f9;
     /* background-color: rgba(255, 255, 255, 0.8); */
     border-color: transparent;
+    border-bottom: none;
 }
 /* 설정탭에 클릭했을때 a css */
 .modal-header .nav-tabs > li > a.active > a {
-    color: white;
+    color: #f9f9f9;
     cursor: default;
     background-color: #007bff;
     border-bottom-color: transparent;
@@ -53,7 +56,7 @@
 /* 설정탭에 클릭후 다시 같은 곳에 hover했을때 */
 .modal-header .nav-tabs > li > a.active > a:hover {
     color: #007bff;
-    background-color: white;
+    background-color: #f9f9f9;
     /* background-color: rgba(255, 255, 255, 0.8); */
     cursor: default;
     border-bottom-color: transparent;
@@ -61,7 +64,7 @@
 /* 설정탭에 클릭후 다시 같은 곳에 클릭했을때 */
 .modal-header .nav-tabs > li > a.active > a:focus {
     color: #007bff;
-    background-color: white;
+    background-color: #f9f9f9;
     /* background-color: rgba(255, 255, 255, 0.8); */
     cursor: default;
     border-bottom-color: transparent;
@@ -72,7 +75,7 @@
 }
 
 .close{
-    color: white;
+    color: #f9f9f9;
     text-shadow: none;
 }
 
@@ -85,9 +88,9 @@
 }
 .container--tabs .tab-content > .tab-pane.active {
     display: block;
-    padding: 2.5% 3.5%;
+    padding: 0% 3.5%;
     /* background-color:rgba(255, 255, 255, 0.1); */
-    background-color: white;
+    background-color: #f9f9f9;
     /* 설정 배경 색깔 */
 }
 .container--tabs .tab-content > .active {
@@ -99,13 +102,31 @@
     margin-right: 10px;
     margin-top: 45px;
 }
-
+#settingButtonSub{
+    float: right;
+    margin-right: 20px;
+    margin-top: 45px;
+}
 /* settings tab/content */
 #modalContent {
     /* background-color: rgba(255, 255, 255, 0.8); */
-    background-color: #F8F8FF;
-    border-top-left-radius: 3%;
-    border-top-right-radius: 3%;
+    background-color:#f9f9f9;
+    /* border-top-left-radius: 3%;
+    border-top-right-radius: 3%; */
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+    border: none;
+    color: #5e5e5e;
+}
+#subModalContent {
+    /* background-color: rgba(255, 255, 255, 0.8); */
+    background-color: #f9f9f9;
+    /* border-top-left-radius: 3%;
+    border-top-right-radius: 3%; */
+    /* border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem; */
+    border: none;
+    color: #5e5e5e;
 }
 #settingsAbout, #settingsInfo, #settings, #settingsBG, #settingsLove {
     background-color: transparent;
@@ -121,7 +142,11 @@
 }
 .modal-body{
     height: 250px;
-    overflow-y: auto;
+    overflow-y: overlay;
+    padding-top: 0;
+    padding-bottom: 0;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
 }
 
 /* settings layout */
@@ -135,10 +160,30 @@ hr {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 100%
 }
 .settingsTitle {
     width: 100%;
     display: flex;
     justify-content: left;
     /* align-self: flex-end; */
+}
+#modalContent {
+    min-width: 471px;
+}
+#subModalContent {
+    min-width: 471px;
+}
+.modal-header {
+    min-width: 471px;
+}
+#modalBody {
+    min-width: 471px;
+}
+#subModalBody{
+    min-width: 471px;
+    overflow-y: overlay; 
+}
+.modal-footer {
+    min-width: 471px;
 }

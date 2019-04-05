@@ -35,8 +35,13 @@ $("#engineLogo").click(searchEngineChange);
 
 function onEnterPressed() {
   urlString = document.getElementById("searchBar").value;
+
   if(event.which==13 || event.keycode==13) {
-    search();
+    if (urlString == "") {
+      searchEngineHome();
+    } else {
+      search();
+    }
   }
 }
 
@@ -52,7 +57,6 @@ function searchIcoClose() {
 }
 
 function searchUIOpen() {
-
     if (!localStorage.currEngine) {//처음에 열었을때, 기본으로 네이버 설정, 기본으로 이거 4개 넣어줌
         engineArray = ["naver", "google", "daum", "youtube"];
         localStorage.setItem("currEngine", "naver");
@@ -98,38 +102,59 @@ function searchUIOpen() {
     $("#engineLogo").attr("src", currEngineLink);
 
     if(isSearchClosed) {
-        if(window.innerWidth * 2 <= screen.width) {
-        $("#timeUI").hide();
-        isHeaderWidgetShown = false;
-        }
-        searchIco.style.display = "none";
-        searchUI.style.width = "45vw";
-        searchBar.style.width = "40vw";
-        searchBar.style.display = "inline-flex";    
-        setTimeout(function() {
+      // if(window.innerWidth * 2 <= screen.width) {
+      // $("#timeUI").hide();
+      // isHeaderWidgetShown = false;
+      // }
+      searchIco.style.display = "none";
+      if (window.innerWidth <= "643"){
+        searchUI.style.width = "80vw";
+        searchBar.style.width = "75vw";
+      }
+      else{          
+        searchUI.style.width = "43vw";
+        searchBar.style.width = "38vw";
+      }
+      searchBar.style.display = "inline-flex";    
+      setTimeout(function() {
         searchEngine.style.display = "inline-flex";
         searchIco.style.width="50px";
         searchIco.style.display = "inline-flex";
-        }, 500);
-        isSearchClosed = false;
+      }, 500);
+      isSearchClosed = false;
 
-        // 뭔가를 적었을때만 검색되게. 이전에 searchUI 켰다가 닫고 다시 킬때, searchIconImg 눌러지면 바로 검색되가지고, 이렇게 바꿈.
-        $("#searchIconImg").click(function() {
-          if(searchBar.value != ""){
-              urlString = document.getElementById("searchBar").value;
-              search();
-          }
-        });
+      // 뭔가를 적었을때만 검색되게. 이전에 searchUI 켰다가 닫고 다시 킬때, searchIconImg 눌러지면 바로 검색되가지고, 이렇게 바꿈.
+      $("#searchIconImg").click(function() {
+        if (searchBar.value != "") {
+          search();
+        }
+      });
+
+      // if (isSearchClosed) {
+      //   $("#searchIconImg").click(function() {
+      //     if(searchBar.value != ""){
+      //       search();
+      //     }
+      //   });
+      // } else {
+      //   $("#searchIconImg").click(function() {
+      //     if(searchBar.value == ""){
+      //       searchEngineHome();
+      //     }
+      //   });
+      // }
     }
+  
 }
 
 function searchUIClose() {
   if ($(event.target).hasClass("search")) {
-  } else{
-    if(isHeaderWidgetShown == false) {
-      $("#timeUI").show();
-      isHeaderWidgetShown = true;
-    }
+  } 
+  else{
+  // if(isHeaderWidgetShown == false) {
+  //   $("#timeUI").show();
+  //   isHeaderWidgetShown = true;
+  // }
     searchEngine.style.display = "none";
     searchBar.style.display = "none";
     searchBar.style.width = "0px";
@@ -159,6 +184,11 @@ function searchEngineChange() {
     });
 }
 
-// function searchEngineHome() {
-//   location.href = engineHomeArray[localStorage.index];
-// }
+function searchEngineHome() {
+  var domain = ".com";
+  if (localStorage.currEngine == "daum") {
+    domain = ".net";
+  }
+
+  location.href = "https://www." + localStorage.currEngine + domain;
+}
