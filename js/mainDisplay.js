@@ -67,6 +67,7 @@ $("#offButton").click(function(){
 $("#weatherInitButton").click(function() {
     $("#toWeatherSettings").hide();
     $("#weatherArrow").hide();
+    $("#settingsModal").modal("hide");
     localStorage.setItem("currLocAllowed", true);
     storageCheckLocation();
 });
