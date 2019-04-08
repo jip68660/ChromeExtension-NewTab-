@@ -17,7 +17,7 @@ body {
 #leftBox {
     font-size: 3vw;
     padding-left: 5%;
-    padding-right: 8%;
+    padding-right: 5%;
 }
 
 #profPicUser, #moreInfo {
@@ -35,7 +35,7 @@ body {
     margin: auto;
 }
 #dDayDisplay {
-    font-size: 6vw;
+    font-size: 8vw;
 }
 #toRankSettingsButton {
     width: 15vw;
@@ -101,13 +101,15 @@ body {
         padding-right: 0;  
     }    
     #dDayDisplay {
-        font-size: 12vw;
+        font-size: 15vw;
     }
     #toRankSettingsButton {
         width: auto;
     }
     .rankImg{
         width: 53vw !important; 
+        height: 40vh;
+        /* padding-bottom: 2vh; */
     }    
     .SGT{
         width: 75vw !important;

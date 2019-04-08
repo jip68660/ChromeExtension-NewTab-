@@ -1,3 +1,12 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+}
+.font-color {
+    color: white;
+}
 #betweenPic {
     background-image:url("/img/heartFrame.png");
     background-size: 100% 100%;
@@ -96,6 +105,9 @@
 #picModal {
     overflow:hidden;
 }
+#modalContent {
+    box-shadow: 0px 0px 1rem black;
+}
 #modalBody, #modalContent {
     border: none;
     border-top-left-radius: 0.3rem;
@@ -123,6 +135,8 @@
     /* border-top-left-radius: 0.25rem;
     border-top-right-radius: 0.25rem; */
     border: none;
+    width: 50%;
+    margin: auto;
 }
 
 /* @media (max-width: 560px) and (min-height: 400px){ */
@@ -164,5 +178,8 @@
     }
     #middleBox, #anniversaryDate, .space{
         display: none;
+    }
+    #modalContent {
+        width: 100%;
     }
 }

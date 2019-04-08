@@ -76,13 +76,14 @@
                 <img id="weatherMist" class="weatherIconImg" src="img/mist.png">
     
               </div>
-              <div id="weatherDesc"></div>
             </div>
             <div id="weatherStatsArea">
-              <div id="currTempArea"><span id="currTemp"></span><span id="currTempUnit"> ºC</span></div>
-              <div id="tempMinMaxArea">
-                <!-- <div id="tempMin"></div>
-                <div id="tempMax"></div> -->
+              <div class="weatherFront animated fadeIn">
+                <div id="currTempArea"><span id="currTemp"></span><span id="currTempUnit"> o</span><span id="tempUnit">C</span></div>
+              </div>
+              <div class="weatherBack animated fadeIn" style="display: none">
+                <div id="tempMinMaxArea"></div>
+                <div id="weatherDesc"></div>
               </div>
             </div>
           </div>
@@ -504,7 +505,7 @@
                                       </form>
                                     </div>
                                     <div class="switch-title settingsTitle" style="visibility: hidden">검색엔진</div>
-                                  </div><br>
+                                  </div>
 
                                   <!-- 날씨 -->
                                   <div id="weatherInit" class="settingsBox">
@@ -1571,7 +1572,7 @@
       </mainRight>
 
       <!-- FOOTER -->
-      <footerLeft>
+      <footerLeft><!-- 이거 창 줄었을때 보여준건데... 필요없지 않나?-->
         <div id="dDayDisplaySm" class="answer"></div>
       </footerLeft>
 

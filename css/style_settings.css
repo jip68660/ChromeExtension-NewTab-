@@ -236,6 +236,9 @@
 #mainModal, #subModal {
   color: #5e5e5e;
 }
+#saveSettings {
+  width: 100%;
+}
 
 /* SettingsAbout */
 #settingsAbout {

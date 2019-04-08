@@ -11,6 +11,7 @@
         <link rel="stylesheet" href="css/style_headerItem.css"> 
         <link rel="stylesheet" href="css/style_mainContainer.css">
         <link rel="stylesheet" href="css/style_mainItem3.css">
+        <link rel="stylesheet" href="css/animation.css">
 
         <!-- <link rel="stylesheet" href="css/style_footerItem.css">     -->
 
@@ -18,9 +19,9 @@
 
     </head>
 
-    <body style="background-color: rgb(255, 255, 255, 0); display: flex; justify-content: center; align-items: center" class="gamja font-color">
+    <body class="animated fadeIn gamja font-color">
 
-        <div id = "instruction" class= "answer gamja" style="display: none">설정에서 '우리사이'의 정보를 입력해주시기 바랍니다</div>
+        <div id = "instruction" class="answer gamja" style="display: none">설정에서 '우리사이'의 정보를 입력해주시기 바랍니다</div>
 
         <div id="pageContent" class="flexColumn" style="width: 85%; height: 100%">
             <div class= "space" style="height: 20%"></div>
@@ -38,7 +39,7 @@
                         <div id="loverName"></div>
                     </div>
                     <div id="dateBox" class="flexRow centerH centerV">
-                        D+<span id="daysInRel"></span>
+                        <span id="daysInRel" class="animated rubberBand jua"></span>
                     </div>
                     <div id="infoBox" class="flexColumn centerH centerV">
                         <div id="waitDaysBox" class="flexRow centerV spaceAround" style="padding-top:5%">

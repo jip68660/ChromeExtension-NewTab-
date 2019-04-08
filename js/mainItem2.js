@@ -10,7 +10,9 @@ var endDate = new Date(localStorage.endDateYear, localStorage.endDateMonth - 1, 
 // });
 
 // $('#nextRandom').mousedown(nextRandomContent);
-$("#remainContent").mousedown(nextRandomContent);
+$("#remainContent").mousedown(function() {
+    nextRandomContent();
+});
 $(document).ready(function() {
     if (localStorage.background == "img/mainback1.jpg") {
         $(".font-color").css("color", "#303030");
@@ -85,11 +87,10 @@ function currTimeCheck(nextTime, remainCount) {
 
 function leftCountCal(randomIndex) {
     var rightCountStr;
-    if(localStorage.identity=="girlfriend")
-    {   rightCountStr = "꽃신!";
-    }
-    else
-    {   rightCountStr = "전역!";
+    if(localStorage.identity=="girlfriend"){
+       rightCountStr = "꽃신!";
+    } else {  
+        rightCountStr = "전역!";
     }
         
     if (randomIndex == 2 || randomIndex == 8) {// 하루에 몇번 하는건 따로 계산
@@ -105,7 +106,7 @@ function leftCountCal(randomIndex) {
         remainCount = currTimeCheck(nextTime3, remainCount);
 
         $("#leftCount").html(remainCount + leftCountStr);
-        $("#rightCount").html("만 더 먹으면 " + rightCountStr);
+        $("#rightCount").html("더 먹으면 " + rightCountStr);
     } else if (randomIndex == 5) { // 아침점호도 따로 계산
         leftCountStr = "번";
         var remainCount = 0;
@@ -113,7 +114,7 @@ function leftCountCal(randomIndex) {
         remainCount = currTimeCheck(nextTime, remainCount);
 
         $("#leftCount").html(remainCount + leftCountStr);
-        $("#rightCount").html("만 더 하면 " + rightCountStr);
+        $("#rightCount").html("더 하면 " + rightCountStr);
     } else if (randomIndex == 9) { // 아침점호도 따로 계산
         leftCountStr = "번";
         var remainCount = 0;
@@ -121,7 +122,7 @@ function leftCountCal(randomIndex) {
         remainCount = currTimeCheck(nextTime, remainCount);
 
         $("#leftCount").html(remainCount + leftCountStr);
-        $("#rightCount").html("만 더 하면 " + rightCountStr);
+        $("#rightCount").html("더 하면 " + rightCountStr);
     } else if (randomIndex == 6) { // 뜀걸음
         leftCountStr = "번";
         var remainCount = 0;
@@ -129,7 +130,7 @@ function leftCountCal(randomIndex) {
         remainCount = currTimeCheck(nextTime, remainCount);
 
         $("#leftCount").html(remainCount + leftCountStr);
-        $("#rightCount").html("만 더 뛰면 " + rightCountStr);
+        $("#rightCount").html("더 뛰면 " + rightCountStr);
     } else {//일주일에 한번
         leftCountStr = "번"
         var nextTime = getNextWeeklyTime(new Date());
@@ -141,9 +142,9 @@ function leftCountCal(randomIndex) {
 
         $("#leftCount").html(remainCount + leftCountStr);
         if(randomIndex == 7)
-            $("#rightCount").html("만 더 가면 " + rightCountStr);
+            $("#rightCount").html("더 가면 " + rightCountStr);
         else
-            $("#rightCount").html("만 더 보면 " + rightCountStr);
+            $("#rightCount").html("더 보면 " + rightCountStr);
     }
 }
 

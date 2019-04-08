@@ -33,13 +33,24 @@
         <div id="textBottom">
             <span id="leftCount" style="font-weight: bold;"></span> 남았다~
         </div> -->
-        <div id="pageContent" style="display: flex; flex-direction: row; width: 100%; height: 100%; justify-content: center">
-            <div id="remainContent" style="display:inline-flex; flex-direction: column; height: 100%; justify-content: center; align-items: center;">
-                <!-- <div id="description"></div> -->
-                <img id="remainContentImg">
+        <div id="pageContent" class="container animated fadeIn">
+            <!-- <div id="remainContent" class="overlayContainer">
+                <img id="remainContentImg" class="overlayContent">
+                <h3 class="overlayTitle">
+                    Click to Shuffle
+                </h3>
+            </div> -->
+
+            <div id="remainContent" class="content"><!-- click on content to shuffle... fix on js-->
+                <div class="content-overlay"></div>
+                <img id="remainContentImg" class="content-image">
+                <div class="content-details fadeIn-bottom">
+                  <span class="content-title fa fa-random fa-3x"></span>
+                </div>
             </div>
-            <div id="textBottom" style="display: inline-flex; height: 100%; justify-content: center; align-items: center">
-                <span id="leftCount" style="font-weight: bold;"></span><span id="rightCount"></span>
+
+            <div id="textBottom">
+                <span id="leftCount" class="animated rubberBand jua" style="font-weight: bold;"></span><span id="rightCount"></span>
             </div>
             <!-- <div id="nextRandom">
                 <i class = "fa fa-random fa-lg"></i>

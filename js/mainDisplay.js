@@ -11,7 +11,7 @@ var settingsEnterCountSub = 0;
 
 // starting point
 $(document).ready(checkStorage);
-$(document).ready(setBackgroundImage);
+// $(document).ready(setBackgroundImage);
 
 //actions from mainPage
 $("#storageResetButton").click(function() {
@@ -27,6 +27,17 @@ $("#storageResetButton").click(function() {
 });
 $("#leftPointer").click(clickLeft);
 $("#rightPointer").click(clickRight);
+$("#weatherInfoArea").mousedown(function() {
+    if (localStorage.weatherStatus == "weatherFront") {
+        $(".weatherFront").hide();
+        $(".weatherBack").show();
+        localStorage.weatherStatus = "weatherBack";
+    } else if (localStorage.weatherStatus == "weatherBack") {
+        $(".weatherBack").hide();
+        $(".weatherFront").show();
+        localStorage.weatherStatus = "weatherFront";
+    }
+});
 
 //설정 바로가기 action
 $("#toWeatherSettingsButton").click(function() {
@@ -94,12 +105,7 @@ $("#saveSettings").click(function() {
         }
     }
     if (engineArray.length == 0) {
-
-        bootbox.alert({
-            message: "최소한 1개의 검색엔진을 선택해주세요!",
-            callback: function(){ /* your callback code */ }
-        })
-
+        bootbox.alert("최소한 1개의 검색엔진을 선택해주세요!");
     } else {
         onSaveSettings(engineArray);
     }
@@ -212,12 +218,13 @@ function clickLeft() {
     }
 }
 
-function setBackgroundImage() {
-    if(localStorage.length!=0) {
-        var imgUrl = "url(../" + localStorage.background + ")";
-        $("#defaultBG").css("background-image",imgUrl);
-    }
-}
+// function setBackgroundImage() {
+//     if(localStorage.length != 0) {
+//         var imgUrl = "url(../" + localStorage.background + ")";
+//         console.log(imgUrl);
+//         $("#defaultBG").css("background-image", imgUrl);
+//     }
+// }
 
 // 정보를 입력받았을 때만 환영합니다 띄우고 3초 후 보여주고, 새로고침 or 새 탭 시에는 바로 띄우게 하기 위한 변수
 
@@ -262,6 +269,7 @@ function checkStorage() {
     if (localStorage.length == 0) {
         // 정보 입력을 받았을 때만 timeoutCheck를 1로 바꿔줘서 3초 딜레이
         timeoutCheck = 1;
+        console.log("hit1");
         $("#defaultBG").css("background-image","url(../img/mainback4.jpg)");
         loadPage();
     } else {
@@ -272,7 +280,8 @@ function checkStorage() {
 
             //하드코딩하면 가능.
             timeoutCheck = 1;
-            localStorage.clear();            
+            localStorage.clear();       
+            console.log("hit2");     
             $("#defaultBG").css("background-image","url(../img/mainback4.jpg)");
             nameCheck();
         }
@@ -309,6 +318,7 @@ function initDoneDisplay() {
     localStorage.setItem("currLocAllowed", false);//처음에는 날씨 위치정보 허용 안 된 상태
     localStorage.setItem("setUpComplete", true);
     localStorage.couplePicFileName = "";//처음에는 커플사진 아무것도 설정 안 되어 있는 상태
+    localStorage.weatherStatus = "weatherFront";//처음에는 무조건 날씨 앞면 보이게
 
     if (localStorage.name != "" && localStorage.identity != "" && !(localStorage.branch == "undefined") && localStorage.enlistDate != "") {
         // console.log("enterinitdisplay");    
@@ -364,6 +374,7 @@ function displayAllFunc() {
 
     if (!localStorage.background) {
         // 기본 2번째 이미지로 html에서 정해져 있으니까 이렇게 함
+        console.log("hit3");
         localStorage.setItem("background", "img/mainback3.jpg");
     }
 
@@ -505,15 +516,20 @@ function presetSettings() {//설정창 들어갔을때 local에 있는 내용으
     $("#user-enlistDate").val(localStorage.enlistDate);
     //preset background
     if (localStorage.background == "img/mainback1.jpg") {
-        $("input[name=bgImgRadioSettings][value='img/mainback1.jpg']").prop("checked",true);
+        $("#img1").prop("checked", true);
+        // $("input[name=bgImgRadioSettings][value='img/mainback1.jpg']").prop("checked",true);
     } else if (localStorage.background == "img/mainback2.jpg") {
-        $("input[name=bgImgRadioSettings][value='img/mainback2.jpg']").prop("checked",true);
+        $("#img2").prop("checked", true);
+        // $("input[name=bgImgRadioSettings][value='img/mainback2.jpg']").prop("checked",true);
     } else if (localStorage.background == "img/mainback3.jpg") {
-        $("input[name=bgImgRadioSettings][value='img/mainback3.jpg']").prop("checked",true);
+        $("#img3").prop("checked", true);
+        // $("input[name=bgImgRadioSettings][value='img/mainback3.jpg']").prop("checked",true);
     } else if (localStorage.background == "img/mainback4.jpg") {
-        $("input[name=bgImgRadioSettings][value='img/mainback4.jpg']").prop("checked",true);
+        $("#img4").prop("checked", true);
+        // $("input[name=bgImgRadioSettings][value='img/mainback4.jpg']").prop("checked",true);
     } else if (localStorage.background == "img/mainback5.jpg") {
-        $("input[name=bgImgRadioSettings][value='img/mainback5.jpg']").prop("checked",true);
+        $("#img5").prop("checked", true);
+        // $("input[name=bgImgRadioSettings][value='img/mainback5.jpg']").prop("checked",true);
     }
     //preset relationship info - 우리사이 세팅, 이거 은근히 길이질꺼 같은데, 나중에 다 tab마다 빼도 될듯? 
     $("#lover-name").attr("value", localStorage.loverName);
@@ -561,29 +577,23 @@ function presetSettingsSub() {
 }
 
 function onSaveSettings(engineArray) {
-    /**
-     * 입력된 날짜 유효한지 체크 - 입대일, 본인 생일, 연인 생일, 사귄 날짜
-     * 
-     * 이거 input date에서 알아서 하는데... 
-     * */
-    // let checkEnlistDate = isValidDate($("#user-enlistDate").val().getFullYear(), $("#user-enlistDate").val().getMonth() - 1, $("#user-enlistDate").val().getDate());
-    // let checkUserBDay = isValidDate($("#user-birthday").val().getFullYear(), $("#user-birthday").val().getMonth() - 1, $("#user-birthday").val().getDate());
-    // let checkLoverBDay = isValidDate($("#lover-birthday").val().getFullYear(), $("#lover-birthday").val().getMonth() - 1, $("#lover-birthday").val().getDate());
-    // let checkFirstDate = isValidDate($("#first-date").val().getFullYear(), $("#first-date").val().getMonth() - 1, $("#first-date").val().getDate());
-    // if (localStorage.switchOnOff == "on") {//4개 다 체크
-    //     if (!checkUserBDay) {
-    //         alert("본인 생일을 다시 입력해주세요.");
-    //     }
-    //     if (!checkLoverBDay) {
-    //         alert("연인 생일을 다시 입력해주세요.");
-    //     }
-    //     if (!checkFirstDate) {
-    //         alert("사귄 날짜를 다시 입력해주세요.");
-    //     }
-    // }
-    // if (!checkEnlistDate) {
-    //     alert("입대일을 다시 입력해주세요.");
-    // }
+    // 우리사이 키고 저장할때 확인
+    if ($("input[name=loveRadioSettings]:checked").val() == "on") {//우리사이 켰을때 확인
+        // 입력란 모두 채웠는지
+        if ($("#lover-name").val() == "" || $("#lover-birthday").val() == "" || $("#user-birthday").val() == "" || $("#first-date").val() == "") {
+            bootbox.alert("우리사이의 모든 정보를 입력해주세요");
+            return;
+        }
+
+        // 생일두개가 사귄날짜보다 빠르진 않는지
+        let loverBD = new Date($("#lover-birthday").val());
+        let userBD = new Date($("#user-birthday").val());
+        let firstDate = new Date($("#first-date").val());
+        if (firstDate - loverBD <= 0 || firstDate - userBD <= 0) {
+            bootbox.alert("생일과 사귄날짜를 올바르게 입력해주세요");
+            return;
+        }
+    }
 
     //settings-시간
     localStorage.setItem("timeOpt", $("input[name=timeRadioSettings]:checked").val());
@@ -593,30 +603,6 @@ function onSaveSettings(engineArray) {
         localStorage.setItem("currEngine", engineArray[0]);
         //현재 engine을 없애면 그냥 남아있는거 중 처음으로, 현재 engine 안 없애고 앞의 index의 engine을 추가시키면 안 돌아가게
     }
-    // engineArray = [];//engineArray 비워두고 시작
-    // for (var i = 0; i < possibleSearchEngine.length; i++) {
-    //     if ($("#" + possibleSearchEngine[i] + "CB_id").is(":checked")) {//체크되어 있는거만 추가
-    //         engineArray.push(possibleSearchEngine[i]);
-    //     }
-    // }
-    // if (engineArray.length == 0) {
-
-    //     // bootbox.alert("Alert!");
-    //     // bootbox.alert({
-    //     //     size: "small",
-    //     //     title: "Dialog Title",
-    //     //     message: "Your message here…",
-    //     //     callback: function(){alert("problem");}
-    //     // });
-
-    //     alert("최소한 1개의 검색엔진을 선택해주세요");//아무것도 체크 안 되어 있으면 검색 못하니까
-    // } else {
-    //     localStorage.setItem("engineArray", JSON.stringify(engineArray));//engineArray 업데이트
-    //     if (!($("#" + localStorage.currEngine + "CB_id").is(":checked"))) {
-    //         localStorage.setItem("currEngine", engineArray[0]);
-    //         //현재 engine을 없애면 그냥 남아있는거 중 처음으로, 현재 engine 안 없애고 앞의 index의 engine을 추가시키면 안 돌아가게
-    //     }
-    // }
 
     // settingsInfo
     localStorage.setItem("name", document.getElementById("user-name").value);
@@ -629,16 +615,17 @@ function onSaveSettings(engineArray) {
     localStorage.setItem("background", $("input[name=bgImgRadioSettings]:checked").val())
 
     // settingsLove
-    localStorage.setItem("loverName", document.getElementById("lover-name").value);
-    localStorage.setItem("loverBD", document.getElementById("lover-birthday").value);
-    localStorage.setItem("userBD", document.getElementById("user-birthday").value);    
-    localStorage.setItem("relStartDate", document.getElementById("first-date").value);
+    localStorage.setItem("switchOnOff", $("input[name=loveRadioSettings]:checked").val());
+
+    localStorage.setItem("loverName", $("#lover-name").val());
+    localStorage.setItem("loverBD", $("#lover-birthday").val());
+    localStorage.setItem("userBD", $("#user-birthday").val());
+    localStorage.setItem("relStartDate", $("#first-date").val());
     // if ($("#onOffToggle").hasClass("active")) {
     //     localStorage.setItem("switchOnOff", "on");
     // } else {
     //     localStorage.setItem("switchOnOff", "off");
     // }
-    localStorage.setItem("switchOnOff", $("input[name=loveRadioSettings]:checked").val());
 
     location.reload();
 }

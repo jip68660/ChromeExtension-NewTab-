@@ -33,6 +33,13 @@ $(document).ready(function() {
 
     checking();
     checkAnniversary();
+
+    // $("#picModal").modal({
+    //     keyboard: false,
+    //     backdrop: true,
+    //     focus: true,
+    //     show: false
+    // });
 });
 
 $("#betweenPic").ready(function() {
@@ -53,13 +60,18 @@ function checking() {
 
         $("#userName").html(localStorage.name);
         $("#loverName").html(localStorage.loverName);
-        $("#daysInRel").html(Math.floor((new Date(today.getFullYear(), today.getMonth(), today.getDate()) - new Date(relDate.getFullYear(), relDate.getMonth(), relDate.getDate())) / (1000 * 3600 * 24)) + 1);
+        var daysInRelVal = Math.floor((new Date(today.getFullYear(), today.getMonth() - 1, today.getDate()) - new Date(relDate.getFullYear(), relDate.getMonth() - 1, relDate.getDate())) / (1000 * 3600 * 24)) + 1;
+        $("#daysInRel").html("D+" + daysInRelVal);
         $("#infoBox").hide();
 
         if (!localStorage.couplePicFileName || localStorage.couplePicFileName == "") {
             $("#fileName").text("default image");
         } else {
             $("#fileName").text(localStorage.couplePicFileName);
+        }
+
+        if (localStorage.background == "img/mainback1.jpg") {
+            $(".font-color").css("color", "#303030");
         }
     }    
 }
@@ -187,7 +199,7 @@ function toggle() {
         $('#waitDaysCount').html(waitDays + "일");
     }
     // $("#waitDaysCount").html(Math.floor((new Date() - new Date(localStorage.relStartDate)) / (1000 * 3600 * 24))+1);
-    $("#leftDaysCount").html(localStorage.todoDays);
+    $("#leftDaysCount").html(localStorage.todoDays + "일");
 }
 
 function toggle2(){

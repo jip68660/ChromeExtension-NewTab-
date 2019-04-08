@@ -19,7 +19,7 @@ $(document).ready(function() {
     var rankImage = ["img/soldier_PV2.png", "img/soldier_PFC.png", "img/soldier_CPL.png", "img/soldier_SGT.png"];
     var soldierName = localStorage.name;
     var endDateStr = localStorage.endDateYear + "년 " + localStorage.endDateMonth + "월 " + localStorage.endDateDate + "일까지"
-    var dDayCount = "D-" + localStorage.todoDays + "일!";
+    var dDayCount = "D-" + localStorage.todoDays;
     var progressBarWidth = Math.floor((1 - localStorage.getItem("todoDays") / localStorage.getItem("wholeDays")) * 1000) / 10;
     if(!isNaN(progressBarWidth)){
         localStorage.setItem("progressBar", progressBarWidth);
