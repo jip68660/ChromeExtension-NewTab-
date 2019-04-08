@@ -235,10 +235,10 @@ function resetStorage() {
     req.onsuccess = function () {
     };
     req.onerror = function () {
-        alert("데이터베이스를 지우는데 오류가 발생했습니다.");
+        // alert("데이터베이스를 지우는데 오류가 발생했습니다.");
     };
     req.onblocked = function () {
-        alert("데이터베이스를 지우는데 오류가 발생했습니다.");
+        // alert("데이터베이스를 지우는데 오류가 발생했습니다.");
     };
 
     location.reload();
@@ -276,7 +276,7 @@ function checkStorage() {
         if (!localStorage.name || !localStorage.identity|| !localStorage.branch || !localStorage.enlistDate) {
             
             // bootbox.alert("최초설정이 완료되지 않았습니다.");
-            alert("최초설정이 완료되지 않았습니다.");
+            bootbox.alert("최초설정이 완료되지 않았습니다.");
 
             //하드코딩하면 가능.
             timeoutCheck = 1;
@@ -328,7 +328,7 @@ function initDoneDisplay() {
         $("#welcomeMsg").fadeOut(2000, displayWidgets());
        
     } else {
-        alert("모든 정보를 입력하지 않았습니다.");//TODO: make a custom alert message
+        bootbox.alert("모든 정보를 입력하지 않았습니다.");//TODO: make a custom alert message
         nameCheck();
     }
 }

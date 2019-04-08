@@ -277,11 +277,13 @@
 
 .bootbox-alert > .modal-dialog > .modal-content > .modal-body {
     height: 100px;
+    width: 100%;
     border-bottom: 1px solid #c7c7c7;
 }
 
 .bootbox-alert > .modal-dialog > .modal-content > .modal-footer {
     padding: 0.25rem;
+    width: 70%;
 }
 
 .bootbox-alert > .modal-dialog > .modal-content > .modal-footer > .btn-primary {

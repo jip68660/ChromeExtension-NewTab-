@@ -50,7 +50,6 @@ function onNameEnter() {
 function onNameInEnd() {
     if ($("#nameInput").val() == ""){
         bootbox.alert("이름을 적어주세요");
-        // alert("이름을 적어주세요");
     }
     else{
         localStorage.setItem("name", document.getElementById("nameInput").value);
@@ -63,7 +62,11 @@ function onNameInEnd() {
     }
 }
 
-/* IDENTITY */
+/**
+ * IDENTITY
+ * 
+ * 사실상 alert가 필요없음... 사진 누르기 전까지 다음으로 넘어갈수가 없게 만들었음
+ *  */
 function identityCheck() {
     $("#identityIn").show();
     setTimeout(function() {
@@ -91,7 +94,7 @@ function onIdentitySelect() {
         localStorage.setItem("identity", identitySelected);
     }
     if (!localStorage.identity || localStorage.identity == "") {
-        alert("신분을 선택해주세요");
+        bootbox.alert("신분을 선택해주세요");
     } else {
         onIdentityInEnd();
     }
@@ -115,7 +118,11 @@ function onIdentityInEnd() {//끝날때 효과 + 로컬에 저장
     }, 1000);
 }
 
-/* GIRLFRIENDCHECK, IF IDENTITY = SOLDIER*/
+/**
+ * GIRLFRIENDCHECK, IF IDENTITY = SOLDIER
+ * 
+ * 사실상 alert가 필요없음... 사진 누르기 전까지 다음으로 넘어갈수가 없게 만들었음
+ *  */
 function girlfriendCheck() {
     $("#girlfriendIn").show();
     setTimeout(function() {
@@ -143,7 +150,7 @@ function onGirlfriendSelect() {
         localStorage.setItem("girlfriendYN", girlfriendSelected);
     }
     if (!localStorage.girlfriendYN || localStorage.girlfriendYN == "") {
-        alert("항목을 선택해주세요");
+        bootbox.alert("항목을 선택해주세요");
     } else {
         onGirlfriendInEnd();
     }
@@ -194,7 +201,7 @@ function onLoverNameEnter() {
 }
 function onLoverNameInEnd() {
     if ($("#loverNameInput").val() == "") {
-        alert("이름을 적어주세요");
+        bootbox.alert("이름을 적어주세요");
     } else {
         localStorage.setItem("loverName", document.getElementById("loverNameInput").value);
 
@@ -645,7 +652,7 @@ function onRelStartDateClick() {
     currRelStartM = relStartMInput.value;
     currRelStartD = relStartDInput.value;
     if (!isValidDate(currRelStartY, currRelStartM - 1, currRelStartD)){
-        alert("가능한 날짜가 아닙니다. 다시 적어주세요");
+        bootbox.alert("가능한 날짜가 아닙니다. 다시 적어주세요");
     }
     else{                
         if (currRelStartM < 10) {
@@ -754,7 +761,7 @@ function onBranchSelect() {
         localStorage.setItem("branch", branchSelected);
     }
     if (!localStorage.branch || localStorage.branch == "") {
-        alert("소속을 선택해주세요");
+        bootbox.alert("소속을 선택해주세요");
     } else {
         onBranchInEnd();
     }
@@ -765,7 +772,7 @@ function onBranchSelectKey() {
     }
     if  (event.which==13 || event.keycode==13) {
         if (!localStorage.branch || localStorage.branch == "") {
-            alert("소속을 선택해주세요");
+            bootbox.alert("소속을 선택해주세요");
         } else {
             onBranchInEnd();
         }
@@ -1182,7 +1189,7 @@ function onEnlistDateClick() {
     currEnlistM = enlistMInput.value;
     currEnlistD = enlistDInput.value;
     if (!isValidDate(currEnlistY, currEnlistM - 1, currEnlistD)){
-        alert("가능한 날짜가 아닙니다. 다시 적어주세요");
+        bootbox.alert("가능한 날짜가 아닙니다. 다시 적어주세요");
     }
     else{                
         if (currEnlistM < 10) {

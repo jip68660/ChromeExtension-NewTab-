@@ -27,7 +27,7 @@ function storageCheckLocation() {
             getWeather();
         }
     } else {
-        alert("현재위치정보 사용을 허용해주세요");
+        bootbox.alert("현재위치정보 사용을 허용해주세요");
     }
 }
 
@@ -44,7 +44,7 @@ function onSuccess(pos) {
 }
 
 function onError(err) {
-    alert("현재 위치를 가져올수 없습니다.");
+    bootbox.alert("현재 위치를 가져올수 없습니다.</br> 날씨정보를 이용하려면 현재위치 사용을 허용해주세요");
 }
 
 function displayWeatherInfo(data) {
