@@ -10,9 +10,14 @@ var endDate = new Date(localStorage.endDateYear, localStorage.endDateMonth - 1, 
 // });
 
 // $('#nextRandom').mousedown(nextRandomContent);
-$("#remainContent").mousedown(function() {
+
+$("#remainContent").click(function() {
+    if (!$("#leftCount").hasClass("animated rubberBand")) {
+        $("#leftCount").addClass("animated rubberBand");
+    }
     nextRandomContent();
 });
+
 $(document).ready(function() {
     if (localStorage.background == "img/mainback1.jpg") {
         $(".font-color").css("color", "#303030");
@@ -23,8 +28,7 @@ $(document).ready(function() {
 
     $("#remainContentImg").attr("src", remainContentArr[randomInd]);
     // $("#remainContentImg").css("width", "45%");
-    leftCountCal(randomInd);
-
+    leftCountCal(randomInd); 
 });
 
 function getNextWeeklyTime(curr) {
@@ -146,6 +150,10 @@ function leftCountCal(randomIndex) {
         else
             $("#rightCount").html("더 보면 " + rightCountStr);
     }
+
+    $("#remainContent").mousedown(function() {
+        $("#leftCount").removeClass("animated rubberBand");
+    });
 }
 
 function nextRandomContent(){
@@ -156,5 +164,6 @@ function nextRandomContent(){
     randomInd = randomIndNext;
     // $("#remainContentImg").addClass("animated flipInX");
     $("#remainContentImg").attr("src", remainContentArr[randomInd]);
+
     leftCountCal(randomInd);
 }
