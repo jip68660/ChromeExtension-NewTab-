@@ -49,7 +49,17 @@ function search() {
   searchBar.value = "";
   targetUrl = localStorage.targetUrl;
   urlString =  targetUrl+ urlString;
-  location.href = urlString;
+
+  if (localStorage.newTabOpt == "on") {
+    var win = window.open(urlString, "_blank");
+    if (win) {
+      win.focus();
+    } else {
+      bootbox.alert("팝업을 허용해주세요");
+    }
+  } else if (localStorage.newTabOpt == "off") {
+    location.href = urlString;
+  }
 }
 
 function searchIcoClose() {
@@ -190,5 +200,14 @@ function searchEngineHome() {
     domain = ".net";
   }
 
-  location.href = "https://www." + localStorage.currEngine + domain;
+  if (localStorage.newTabOpt == "on") {
+    var win = window.open("https://www." + localStorage.currEngine + domain, "_blank");
+    if (win) {
+      win.focus();
+    } else {
+      bootbox.alert("팝업을 허용해주세요");
+    }
+  } else if (localStorage.newTabOpt == "off") {
+    location.href = "https://www." + localStorage.currEngine + domain;
+  }
 }

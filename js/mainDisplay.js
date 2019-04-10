@@ -382,6 +382,10 @@ function displayAllFunc() {
         localStorage.setItem("timeOpt", "12hr");
     }
 
+    if (!localStorage.newTabOpt) {
+        localStorage.setItem("newTabOpt", "off");
+    }
+
     if (!localStorage.salYear) {
         localStorage.setItem("salYear", "sal" + new Date().getFullYear());
     }
@@ -393,6 +397,9 @@ function displayAllFunc() {
     else{
         $("#toWeatherSettings").show();
     }
+
+    // 새탭에서 열기 옵션 설정
+    checkOpenInNewTab();
 
     document.getElementById("iframe").contentDocument.location.reload(true);
 
@@ -439,6 +446,19 @@ function displayAllFunc() {
 }
 
 /**
+ * 새탭에서 여는지 확인
+ * 
+ * 군관련사이트, 군인혜택만 해당
+ */
+function checkOpenInNewTab() {
+    if (localStorage.newTabOpt == "off") {
+        $(".content-icon").find("a").attr("target", "_self");
+    } else if (localStorage.newTabOpt == "on") {
+        $(".content-icon").find("a").attr("target", "_blank");
+    }
+}
+
+/**
  * settings
  */
 function presetSettings() {//설정창 들어갔을때 local에 있는 내용으로 presetting만
@@ -456,6 +476,16 @@ function presetSettings() {//설정창 들어갔을때 local에 있는 내용으
         $("input[name=timeRadioSettings][value='12hr']").prop("checked",true);
     } else if (localStorage.timeOpt == "24hr") {
         $("input[name=timeRadioSettings][value='24hr']").prop("checked",true);
+    }
+    //preset new tab option
+    if (localStorage.newTabOpt == "on") {
+        // $("#onNewTab").prop("checked",true);
+        $("input[name=newTabRadioSettings][value='on']").prop("checked",true);
+
+    } else if (localStorage.newTabOpt == "off") {
+        // $("#offNewTab").prop("checked",true);
+        $("input[name=newTabRadioSettings][value='off']").prop("checked",true);
+
     }
     //preset searchEngine
     var engineArray2 = JSON.parse(localStorage.engineArray);
@@ -603,6 +633,8 @@ function onSaveSettings(engineArray) {
         localStorage.setItem("currEngine", engineArray[0]);
         //현재 engine을 없애면 그냥 남아있는거 중 처음으로, 현재 engine 안 없애고 앞의 index의 engine을 추가시키면 안 돌아가게
     }
+    //settings-새탭 옵션
+    localStorage.setItem("newTabOpt", $("input[name=newTabRadioSettings]:checked").val())
 
     // settingsInfo
     localStorage.setItem("name", document.getElementById("user-name").value);

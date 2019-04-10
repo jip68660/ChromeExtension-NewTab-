@@ -520,6 +520,18 @@
                                     </div>
                                     <div class="switch-title" class="settingsTitle" style="visibility: hidden">날씨</div>
                                   </div>
+
+                                  <!-- 새 창 -->
+                                  <div class="switch-field settingsBox">
+                                    <div class="switch-title settingsTitle">새 탭에서 열기</div>
+                                    <hr>
+                                    <div class="settingsContent">
+                                      <input type="radio" id="onNewTab" name="newTabRadioSettings" value="on" class="radioButton">
+                                      <label id="labelOnNewTab" for="onNewTab">켜기</label>
+                                      <input type="radio" id="offNewTab" name="newTabRadioSettings" value="off" class="radioButton">
+                                      <label id="labelOffNewTab" for="offNewTab">끄기</label>
+                                    </div>
+                                  </div><br>
                                   
                                   <!-- 초기화 -->
                                   <div class="settingsBox">
@@ -818,35 +830,138 @@
                           <!-- defaul tab - 군 관련 사이트-->
                           <div id="settingsAboutSub" class="tab-pane settingsPaneSub flexCol centerH centerV">                            
                             <br>
-                            <div class="flexRow centerV" style="justify-content: space-around">
-                              <a href="http://www.mnd.go.kr" target="blank"><img src="/img/mnd.jpg"></a>
-                              <a href="https://www.mma.go.kr/index.do" target="blank"><img src="/img/maa.jpg"></a>                              
+                            <!-- row 1 -->
+                            <div class="container">
+                              <div class="content">
+                                <div class="content-overlay"></div>
+                                <img class="content-image" src="/img/mnd.jpg">
+                                <div class="content-details">
+                                  <h3 class="content-title">국방부</h3>
+                                  <div class="content-icon"><a href="http://www.mnd.go.kr" target="blank"><i class="fa fa-external-link fa-4x"></i></a></div>
+                                </div>
+                              </div>
+                              <div class="content">
+                                <div class="content-overlay"></div>
+                                <img class="content-image" src="/img/maa.jpg">                     
+                                <div class="content-details">
+                                  <h3 class="content-title">병무청</h3>
+                                  <div class="content-icon"><a href="http://www.mma.go.kr/index.do" target="blank"><i class="fa fa-external-link fa-4x"></i></a></div>
+                                </div>
+                              </div>
                             </div><br>
-
-                            <div class="flexRow centerV" style="justify-content: space-around">
-                              <a href="http://www.army.mil.kr/webapp/user/indexMain.do?siteId=army" target="blank"><img src="/img/army.jpg"></a>
-                              <a href="http://www.navy.mil.kr/mbshome/mbs/navy/index.do" target="blank"><img src="/img/navy.jpg"></a>                              
+                            <!-- row 2 -->
+                            <div class="container">
+                              <div class="content">
+                                <div class="content-overlay"></div>
+                                <img class="content-image" src="/img/army.jpg">
+                                <div class="content-details">
+                                  <h3 class="content-title">육군</h3>
+                                  <div class="content-icon"><a href="http://www.army.mil.kr/" target="blank"><i class="fa fa-external-link fa-4x"></i></a></div>
+                                </div>
+                              </div>
+                              <div class="content">
+                                <div class="content-overlay"></div>
+                                <img class="content-image" src="/img/navy.jpg">                     
+                                <div class="content-details">
+                                  <h3 class="content-title">해군</h3>
+                                  <div class="content-icon"><a href="http://www.navy.mil.kr/" target="blank"><i class="fa fa-external-link fa-4x"></i></a></div>
+                                </div>
+                              </div>
                             </div><br>
-                            <div class="flexRow centerV" style="justify-content: space-around">
-                              <a href="http://rokaf.airforce.mil.kr/airforce/index.do" target="blank"><img src="/img/airForce.jpg"></a>
-                              <a href="http://www.rokmc.mil.kr/index.do" target="blank"><img src="/img/marine.jpg"></a>                              
+                            <!-- row 3 -->
+                            <div class="container">
+                              <div class="content">
+                                <div class="content-overlay"></div>
+                                <img class="content-image" src="/img/airForce.jpg">
+                                <div class="content-details">
+                                  <h3 class="content-title">공군</h3>
+                                  <div class="content-icon"><a href="http://www.airforce.mil.kr/" target="blank"><i class="fa fa-external-link fa-4x"></i></a></div>
+                                </div>
+                              </div>
+                              <div class="content">
+                                <div class="content-overlay"></div>
+                                <img class="content-image" src="/img/marine.jpg">                     
+                                <div class="content-details">
+                                  <h3 class="content-title">해병대</h3>
+                                  <div class="content-icon"><a href="http://www.rokmc.mil.kr/" target="blank"><i class="fa fa-external-link fa-4x"></i></a></div>
+                                </div>
+                              </div>
                             </div><br>
-                            <div class="flexRow centerV" style="justify-content: space-around">
-                              <a href="https://sbm.mma.go.kr/caisSHBS/" target="blank"><img src="/img/socialService.jpg"></a>
-                              <a href="https://ap.police.go.kr/main.html" target="blank"><img src="/img/police.jpg"></a>                              
+                            <!-- row 4 -->
+                            <div class="container">
+                              <div class="content">
+                                <div class="content-overlay"></div>
+                                <img class="content-image" src="/img/socialService.jpg">
+                                <div class="content-details">
+                                  <h3 class="content-title">사회복무</h3>
+                                  <div class="content-icon"><a href="http://www.sba.mma.go.kr/" target="blank"><i class="fa fa-external-link fa-4x"></i></a></div>
+                                </div>
+                              </div>
+                              <div class="content">
+                                <div class="content-overlay"></div>
+                                <img class="content-image" src="/img/police.jpg">                     
+                                <div class="content-details">
+                                  <h3 class="content-title">의무경찰</h3>
+                                  <div class="content-icon"><a href="http://ap.police.go.kr/" target="blank"><i class="fa fa-external-link fa-4x"></i></a></div>
+                                </div>
+                              </div>
                             </div><br>
-                            
-                            <div class="flexRow centerV" style="justify-content: space-around">
-                              <a href="http://cafe.naver.com/komusincafe" target="blank"><img src="/img/gomshinCafe.jpg"></a>
-                              <a href="http://www.mmaa.or.kr/main.action" target="blank"><img src="/img/mmaa.jpg"></a>
+                            <!-- row 5 -->
+                            <div class="container">
+                              <div class="content">
+                                <div class="content-overlay"></div>
+                                <img class="content-image" src="/img/gomshinCafe.jpg">
+                                <div class="content-details">
+                                  <h3 class="content-title">곰신카페</h3>
+                                  <div class="content-icon"><a href="http://cafe.naver.com/komusincafe" target="blank"><i class="fa fa-external-link fa-4x"></i></a></div>
+                                </div>
+                              </div>
+                              <div class="content">
+                                <div class="content-overlay"></div>
+                                <img class="content-image" src="/img/mmaa.jpg">                     
+                                <div class="content-details">
+                                  <h3 class="content-title">군인공제회</h3>
+                                  <div class="content-icon"><a href="http://www.mmaa.or.kr/" target="blank"><i class="fa fa-external-link fa-4x"></i></a></div>
+                                </div>
+                              </div>
                             </div><br>
-                            <div class="flexRow centerV" style="justify-content: space-around">
-                              <a href="http://kookbang.dema.mil.kr/newsWeb/main.do" target="blank"><img src="/img/kbNews.jpg"></a>
-                              <a href="http://www.army.mil.kr/unitarng/searchRST.do;unitarng=Q0Ylh99HhxLF2d0CmrpLpKrHLRbRwFKS84h4GZg5x9nvddQKy8Yp!-1134494398" target="blank"><img src="/img/bootCamp.jpg"></a>
+                            <!-- row 6 -->
+                            <div class="container">
+                              <div class="content">
+                                <div class="content-overlay"></div>
+                                <img class="content-image" src="/img/kbNews.jpg">
+                                <div class="content-details">
+                                  <h3 class="content-title">국방일보</h3>
+                                  <div class="content-icon"><a href="http://www.mmaa.or.kr/" target="blank"><i class="fa fa-external-link fa-4x"></i></a></div>
+                                </div>
+                              </div>
+                              <div class="content">
+                                <div class="content-overlay"></div>
+                                <img class="content-image" src="/img/bootCamp.jpg">                     
+                                <div class="content-details">
+                                  <h4 class="content-title">신병부대배치조회</h4>
+                                  <div class="content-icon"><a href="http://www.army.mil.kr/unitarng/searchRST.do" target="blank"><i class="fa fa-external-link fa-4x"></i></a></div>
+                                </div>
+                              </div>
                             </div><br>
-                            <div class="flexRow centerV" style="justify-content: space-around">
-                              <a href="https://www.thecamp.or.kr/pcws/main/viewList.do;jsessionid=33AD032010B202503F4984D8D6CC8F42.pcws02" target="blank"><img src="/img/theCamp.jpg"></a>
-                              <a href="https://www.yebigun1.mil.kr/" target="blank"><img src="/img/yebigun.png"></a>
+                            <!-- row 7 -->
+                            <div class="container">
+                              <div class="content">
+                                <div class="content-overlay"></div>
+                                <img class="content-image" src="/img/theCamp.jpg">
+                                <div class="content-details">
+                                  <h3 class="content-title">더캠프</h3>
+                                  <div class="content-icon"><a href="http://www.thecamp.or.kr" target="blank"><i class="fa fa-external-link fa-4x"></i></a></div>
+                                </div>
+                              </div>
+                              <div class="content">
+                                <div class="content-overlay"></div>
+                                <img class="content-image" src="/img/yebigun.png">                     
+                                <div class="content-details">
+                                  <h3 class="content-title">예비군</h3>
+                                  <div class="content-icon"><a href="https://www.yebigun1.mil.kr/" target="blank"><i class="fa fa-external-link fa-4x"></i></a></div>
+                                </div>
+                              </div>
                             </div><br>
                           </div>
 
@@ -927,9 +1042,16 @@
 
                                     <div class="card cardIn" style="background-color: #e50000;">
                                       <div class="card-body cardWrap">
+
                                         <div class="logoArea">
-                                          <img src="/img/cgv.jpg" style="width: 100%;">
-                                        </div>
+                                          <div class="content" style="width: 100%; margin: 0">
+                                            <div class="content-overlay"></div>
+                                            <img class="content-image" src="/img/cgv.jpg">
+                                            <div class="content-details">
+                                              <div class="content-icon"><a href="http://www.cgv.co.kr" target="blank"><i class="fa fa-external-link fa-3x"></i></a></div>
+                                            </div>
+                                          </div>
+                                        </div><br>
                                         <div class="infoArea" style="color: white">
                                           <div class="infoTitle">
                                             CGV 
@@ -946,8 +1068,14 @@
                                     <div class="card cardIn" style="background-color: #00b3b3;">
                                       <div class="card-body cardWrap">
                                         <div class="logoArea">
-                                          <img class="centerV" src="/img/megabox.png" style="width: 100%">
-                                        </div>
+                                          <div class="content" style="width: 100%; margin: 0">
+                                            <div class="content-overlay"></div>
+                                            <img class="content-image" src="/img/megabox.jpg">
+                                            <div class="content-details">
+                                              <div class="content-icon"><a href="http://www.megabox.co.kr" target="blank"><i class="fa fa-external-link fa-3x"></i></a></div>
+                                            </div>
+                                          </div>
+                                        </div><br>
                                         <div class="infoArea" style="color: white">
                                           <div class="infoTitle">
                                             메가박스
@@ -963,8 +1091,14 @@
                                     <div class="card cardIn" style="background-color: #eeeeee;">
                                       <div class="card-body cardWrap">
                                         <div class="logoArea">
-                                          <img class="centerV" src="/img/lotteCinema.png" style="width: 100%">
-                                        </div>
+                                          <div class="content" style="width: 100%; margin: 0">
+                                            <div class="content-overlay"></div>
+                                            <img class="content-image" src="/img/lotteCinema.png">
+                                            <div class="content-details">
+                                              <div class="content-icon"><a href="http://www.lottecinema.co.kr" target="blank"><i class="fa fa-external-link fa-3x"></i></a></div>
+                                            </div>
+                                          </div>
+                                        </div><br>
                                         <div class="infoArea" style="color: #303030">
                                           <div class="infoTitle">
                                             롯데시네마
@@ -994,8 +1128,14 @@
                                     <div class="card cardIn" style="background-color:#340034;">
                                       <div class="card-body cardWrap">
                                         <div class="logoArea">
-                                          <img class="centerV" src="/img/everland.png" style="width: 100%">
-                                        </div>
+                                          <div class="content" style="width: 100%; margin: 0">
+                                            <div class="content-overlay"></div>
+                                            <img class="content-image" src="/img/everland.png">
+                                            <div class="content-details">
+                                              <div class="content-icon"><a href="http://www.everland.com" target="blank"><i class="fa fa-external-link fa-3x"></i></a></div>
+                                            </div>
+                                          </div>
+                                        </div><br>
                                         <div class="infoArea" style="color: white">
                                           <div class="infoTitle">
                                             에버랜드
@@ -1009,9 +1149,16 @@
 
                                     <div class="card cardIn" style="background-color:#eeeeee;">
                                       <div class="card-body cardWrap">
+
                                         <div class="logoArea">
-                                          <img class="centerV" src="/img/seoulLand.jpg" style="width: 100%">
-                                        </div>
+                                          <div class="content" style="width: 100%; margin: 0">
+                                            <div class="content-overlay"></div>
+                                            <img class="content-image" src="/img/seoulLand.jpg">
+                                            <div class="content-details">
+                                              <div class="content-icon"><a href="http://www.seoulland.co.kr" target="blank"><i class="fa fa-external-link fa-3x"></i></a></div>
+                                            </div>
+                                          </div>
+                                        </div><br>
                                         <div class="infoArea" style="color: #303030">
                                           <div class="infoTitle">
                                             서울랜드
@@ -1026,8 +1173,14 @@
                                     <div class="card cardIn" style="background-color:#e50000;">
                                       <div class="card-body cardWrap">
                                         <div class="logoArea">
-                                          <img class="centerV" src="/img/lotteWorld.jpg" style="width: 100%">
-                                        </div>
+                                          <div class="content" style="width: 100%; margin: 0">
+                                            <div class="content-overlay"></div>
+                                            <img class="content-image" src="/img/lotteWorld.jpg">
+                                            <div class="content-details">
+                                              <div class="content-icon"><a href="http://www.lotteworld.com" target="blank"><i class="fa fa-external-link fa-3x"></i></a></div>
+                                            </div>
+                                          </div>
+                                        </div><br>
                                         <div class="infoArea" style="color: white">
                                           <div class="infoTitle">
                                             롯데월드
@@ -1056,8 +1209,14 @@
                                     <div class="card cardIn" style="background-color:#006734;">
                                       <div class="card-body cardWrap">
                                         <div class="logoArea">
-                                          <img class="centerV" src="/img/vips.png" style="width: 100%">
-                                        </div>
+                                          <div class="content" style="width: 100%; margin: 0">
+                                            <div class="content-overlay"></div>
+                                            <img class="content-image" src="/img/vips.png">
+                                            <div class="content-details">
+                                              <div class="content-icon"><a href="http://www.ivips.co.kr" target="blank"><i class="fa fa-external-link fa-3x"></i></a></div>
+                                            </div>
+                                          </div>
+                                        </div><br>
                                         <div class="infoArea" style="color: white">
                                           <div class="infoTitle">
                                             VIPS
@@ -1073,8 +1232,14 @@
                                     <div class="card cardIn" style="background-color:#990000;">
                                       <div class="card-body cardWrap">
                                         <div class="logoArea">
-                                          <img class="centerV" src="/img/outback.jfif" style="width: 100%">
-                                        </div>
+                                          <div class="content" style="width: 100%; margin: 0">
+                                            <div class="content-overlay"></div>
+                                            <img class="content-image" src="/img/outback.jfif">
+                                            <div class="content-details">
+                                              <div class="content-icon"><a href="http://www.outback.co.kr" target="blank"><i class="fa fa-external-link fa-3x"></i></a></div>
+                                            </div>
+                                          </div>
+                                        </div><br>
                                         <div class="infoArea" style="color: white">
                                           <div class="infoTitle">
                                             아웃백
@@ -1103,8 +1268,14 @@
                                     <div class="card cardIn" style="background-color:#000067;">
                                       <div class="card-body cardWrap">
                                         <div class="logoArea">
-                                          <img class="centerV" src="/img/toeic.jpg" style="width: 100%">
-                                        </div>
+                                          <div class="content" style="width: 100%; margin: 0">
+                                            <div class="content-overlay"></div>
+                                            <img class="content-image" src="/img/toeic.jpg">
+                                            <div class="content-details">
+                                              <div class="content-icon"><a href="http://exam.ybmnet.co.kr/toeic/" target="blank"><i class="fa fa-external-link fa-3x"></i></a></div>
+                                            </div>
+                                          </div>
+                                        </div><br>
                                         <div class="infoArea" style="color: white">
                                           <div class="infoTitle">
                                             TOEIC
@@ -1119,8 +1290,14 @@
                                     <div class="card cardIn" style="background-color:#0892d0;">
                                       <div class="card-body cardWrap">
                                         <div class="logoArea">
-                                          <img class="centerV" src="/img/opic.png" style="width: 100%">
-                                        </div>
+                                          <div class="content" style="width: 100%; margin: 0">
+                                            <div class="content-overlay"></div>
+                                            <img class="content-image" src="/img/opic.png">
+                                            <div class="content-details">
+                                              <div class="content-icon"><a href="http://www.opic.co.kr/" target="blank"><i class="fa fa-external-link fa-3x"></i></a></div>
+                                            </div>
+                                          </div>
+                                        </div><br>
                                         <div class="infoArea" style="color: white">
                                           <div class="infoTitle">
                                             OPIC
@@ -1135,8 +1312,14 @@
                                     <div class="card cardIn" style="background-color:#000067;">
                                       <div class="card-body cardWrap">
                                         <div class="logoArea">
-                                          <img class="centerV" src="/img/teps.PNG" style="width: 100%">
-                                        </div>
+                                          <div class="content" style="width: 100%; margin: 0">
+                                            <div class="content-overlay"></div>
+                                            <img class="content-image" src="/img/teps.PNG">
+                                            <div class="content-details">
+                                              <div class="content-icon"><a href="http://www.teps.or.kr" target="blank"><i class="fa fa-external-link fa-3x"></i></a></div>
+                                            </div>
+                                          </div>
+                                        </div><br>
                                         <div class="infoArea" style="color: white">
                                           <div class="infoTitle">
                                             TEPS
@@ -1165,8 +1348,14 @@
                                     <div class="card cardIn" style="background-color:#155193;">
                                       <div class="card-body cardWrap">
                                         <div class="logoArea">
-                                          <img class="centerV" src="/img/korail.PNG" style="width: 100%">
-                                        </div>
+                                          <div class="content" style="width: 100%; margin: 0">
+                                            <div class="content-overlay"></div>
+                                            <img class="content-image" src="/img/korail.png">
+                                            <div class="content-details">
+                                              <div class="content-icon"><a href="http://www.letskorail.com/ebizprd/prdMain.do" target="blank"><i class="fa fa-external-link fa-3x"></i></a></div>
+                                            </div>
+                                          </div>
+                                        </div><br>
                                         <div class="infoArea" style="color: white">
                                           <div class="infoTitle">
                                             코레일
@@ -1196,8 +1385,14 @@
                                     <div class="card cardIn" style="background-color:#eeeeee;">
                                       <div class="card-body cardWrap">
                                         <div class="logoArea">
-                                          <img class="centerV" src="/img/kLeague.png" style="width: 100%">
-                                        </div>
+                                          <div class="content" style="width: 100%; margin: 0">
+                                            <div class="content-overlay"></div>
+                                            <img class="content-image" src="/img/kLeague.png">
+                                            <div class="content-details">
+                                              <div class="content-icon"><a href="http://www.kleague.com" target="blank"><i class="fa fa-external-link fa-3x"></i></a></div>
+                                            </div>
+                                          </div>
+                                        </div><br>
                                         <div class="infoArea" style="color: #303030">
                                           <div class="infoTitle">
                                             K리그
@@ -1212,8 +1407,14 @@
                                     <div class="card cardIn" style="background-color:#000067;">
                                       <div class="card-body cardWrap">
                                         <div class="logoArea">
-                                          <img class="centerV" src="/img/kbl.jpg" style="width: 100%">
-                                        </div>
+                                          <div class="content" style="width: 100%; margin: 0">
+                                            <div class="content-overlay"></div>
+                                            <img class="content-image" src="/img/kbl.jpg">
+                                            <div class="content-details">
+                                              <div class="content-icon"><a href="http://www.kbl.or.kr" target="blank"><i class="fa fa-external-link fa-3x"></i></a></div>
+                                            </div>
+                                          </div>
+                                        </div><br>
                                         <div class="infoArea" style="color: white">
                                           <div class="infoTitle">
                                             프로농구
@@ -1228,8 +1429,14 @@
                                     <div class="card cardIn" style="background-color:#eeeeee;">
                                       <div class="card-body cardWrap">
                                         <div class="logoArea">
-                                          <img class="centerV" src="/img/kbo.png" style="width: 100%">
-                                        </div>
+                                          <div class="content" style="width: 100%; margin: 0">
+                                            <div class="content-overlay"></div>
+                                            <img class="content-image" src="/img/kbo.png">
+                                            <div class="content-details">
+                                              <div class="content-icon"><a href="http://www.koreabaseball.com" target="blank"><i class="fa fa-external-link fa-3x"></i></a></div>
+                                            </div>
+                                          </div>
+                                        </div><br>
                                         <div class="infoArea" style="color: #303030">
                                           <div class="infoTitle">
                                             프로야구

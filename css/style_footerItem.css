@@ -143,6 +143,7 @@
 .modal-body{
     height: 250px;
     overflow-y: overlay;
+    overflow-x: hidden;
     padding-top: 0;
     padding-bottom: 0;
     padding-left: 1.5rem;
