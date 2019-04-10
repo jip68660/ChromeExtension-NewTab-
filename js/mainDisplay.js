@@ -610,7 +610,7 @@ function onSaveSettings(engineArray) {
     // 우리사이 키고 저장할때 확인
     if ($("input[name=loveRadioSettings]:checked").val() == "on") {//우리사이 켰을때 확인
         // 입력란 모두 채웠는지
-        if ($("#lover-name").val() == "" || $("#lover-birthday").val() == "" || $("#user-birthday").val() == "" || $("#first-date").val() == "") {
+        if ($("#lover-name").val() == "" || $("#first-date").val() == "") {
             bootbox.alert("우리사이의 모든 정보를 입력해주세요");
             return;
         }
