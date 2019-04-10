@@ -154,24 +154,24 @@ body {
     #topBox{
         flex-direction: column !important;
         width: 100%;
-        height: 60%;
+        height: 80%;
         align-items: center;
         justify-content: space-evenly;
     }    
     #relationshipInfo{
         width: 100%;
-        height: 45%;
+        height: 60%;
         justify-content: center;
     }
     #betweenPic {
         width: 100vw;
-        height: 30vh;
+        height: 50vh;
     }
     #userName, #loverName {
         font-size: 10vw;
     }
     #dateBox{
-        font-size: 30vw;
+        font-size: 18vw;
     }
     #waitDaysBox, #leftDaysBox{
         font-size: 8vw;

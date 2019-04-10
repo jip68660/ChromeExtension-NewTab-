@@ -134,15 +134,19 @@
         width: 90vw;
         height: 45vh !important;
         justify-content: center !important;
+        /* 대충 mainItem1이랑 mainItem3랑 높이 맞춤 */
+        margin-top: -5%;
     }
     .content-image{
         height: 100%;
         width: 100%;
     }
     #textBottom {
-        height: 20% !important;
+        height: 30% !important;
         width: 100%;
         font-size: 9vw;
+        /* 대충 mainItem1이랑 mainItem3랑 높이 맞춤 */
+        margin-top: -30%;
     }
     #leftCount{
         font-size: 15vw;    

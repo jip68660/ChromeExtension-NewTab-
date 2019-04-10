@@ -609,7 +609,7 @@ function presetSettingsSub() {
 function onSaveSettings(engineArray) {
     // 우리사이 키고 저장할때 확인
     if ($("input[name=loveRadioSettings]:checked").val() == "on") {//우리사이 켰을때 확인
-        // 입력란 모두 채웠는지
+        // 입력란 모두 채웠는지 >> 여기서 birthday까지 받으니까 처음에 계급넣는칸에서까지 뜸.
         if ($("#lover-name").val() == "" || $("#first-date").val() == "") {
             bootbox.alert("우리사이의 모든 정보를 입력해주세요");
             return;
