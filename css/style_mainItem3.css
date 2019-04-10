@@ -23,23 +23,29 @@ body {
     transition: transform 0.3s;
     border-radius: 0.3rem;
 }
-#withGF:hover {
+#withGF:hover, #anniversaryImg:hover {
     transform: scale(1.01);
 }
 
 #waitDaysBox, #leftDaysBox {
     font-size: 3vw;
 }
-#dateBox, #infoBox :hover {
+#dateBox, #infoBox :hover, #anniversaryImg:hover {
     cursor: pointer;
 }
 
-#lastAnniversaryImg, #nextAnniversaryImg{
+#lastAnniversaryImg, #nextAnniversaryImg {
     height: 15vh;
+}
+#anniversaryImg{
+    height: 18vh;
 }
 
 #userName, #loverName {
     font-size: 5vw;
+}
+#celebrateAnn {
+    font-size: 4vw;
 }
 
 /* layout */
@@ -177,7 +183,7 @@ body {
         font-size: 8vw;
     }
     #middleBox, #anniversaryDate, .space{
-        display: none;
+        display: none !important;
     }
     #modalContent {
         width: 100%;

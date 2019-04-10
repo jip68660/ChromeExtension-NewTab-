@@ -7,6 +7,7 @@ $("#imgUpload").change(doFile);
 $("#closeImgUpload").click(doImageTest);
 $("#imgRevert").click(revertImg);
 
+$("#anniversaryImg").click(celebrate);
 // var anniversaryDate = ["img/heart.png", "img/100.png", "img/200.png", "img/300.png", "img/1year.png", "img/400.png", "img/500.png", "img/600.png", "img/700.png", "img/2year.png", "img/800.png", "img/900.png", "img/1000.png", "img/3year.png", "img/4year.png", "img/BD_lover.png", "img/BD_user.png"];
 
 var loverBD = new Date(localStorage.loverBD);
@@ -207,7 +208,12 @@ function toggle2(){
     $('#dateBox').show();
 }
 
-
+function celebrate() {
+    $("#celebrateAnn").show();
+    $('#celebrateAnn').addClass("animated tada");
+    $("#anniversaryDate").css("justify-content", "space-evenly");
+    // $("#pageContent").css("background-image", "url(/img/firework.png)");
+}
 /**
  * Image Upload / Change Couple Pic
  */
