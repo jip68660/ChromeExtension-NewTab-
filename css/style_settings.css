@@ -287,6 +287,9 @@
 .spaceBetween {
   justify-content: space-between;
 }
+.spaceAround {
+  justify-content: space-around;
+}
 
 /* SubSettings Card Display */
 .card-header:hover {
@@ -552,6 +555,14 @@
 }
 .content-icon > a > i:hover {
   color: #007bff;
+}
+
+.content-icon-settings {
+  display: flex;
+  align-items: center;
+}
+.content-icon-settings > a {
+  text-decoration: none;
 }
 
 .fadeIn-bottom{
