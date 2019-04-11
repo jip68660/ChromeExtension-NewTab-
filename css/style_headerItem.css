@@ -146,7 +146,7 @@
 } */
 
 /* layout */
-.flexColumn {
+.flexCol {
   display: flex;
   flex-direction: column;
 }

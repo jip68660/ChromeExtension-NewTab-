@@ -266,7 +266,7 @@
 }
 
 /* layout */
-.flexColumn {
+.flexCol {
   display: flex;
   flex-direction: column;
 }
@@ -283,6 +283,9 @@
 .justifyLeft {
   /* justify-content: left; */
   text-align: left;
+}
+.spaceBetween {
+  justify-content: space-between;
 }
 
 /* SubSettings Card Display */
