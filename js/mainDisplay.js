@@ -441,7 +441,15 @@ function displayAllFunc() {
         backdrop: true,
         focus: true,
         show: false
-    });    
+    });
+
+    $('#settingsSubModal').appendTo("body");
+    $('#settingsSubModal').modal({
+        keyboard: true,
+        backdrop: true,
+        focus: true,
+        show: false
+    });  
     // presetSettings();
 }
 
