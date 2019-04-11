@@ -292,6 +292,9 @@
 }
 
 /* SubSettings Card Display */
+.card {
+  width: 100%;
+}
 .card-header:hover {
   cursor: pointer;
   background-color: #007bff;
@@ -300,6 +303,9 @@
 .card-header[aria-expanded = "true"] {
   background-color: #007bff;
   color: white;
+}
+.card-body {
+  width: 100%;
 }
 .cardIn {
   width: 363px;
