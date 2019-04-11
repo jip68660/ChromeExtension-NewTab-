@@ -460,9 +460,9 @@ function displayAllFunc() {
  */
 function checkOpenInNewTab() {
     if (localStorage.newTabOpt == "off") {
-        $(".content-icon").find("a").attr("target", "_self");
+        $(".tabOpt").find("a").attr("target", "_self");
     } else if (localStorage.newTabOpt == "on") {
-        $(".content-icon").find("a").attr("target", "_blank");
+        $(".tabOpt").find("a").attr("target", "_blank");
     }
 }
 
