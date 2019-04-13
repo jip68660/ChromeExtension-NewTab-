@@ -88,10 +88,6 @@ $(document).ready(function() {
     checking();
     checkAnniversary();
 
-    if (localStorage.main3FirstRun == "true") {
-        initDb();
-        localStorage.main3FirstRun = "false";
-    }
 
     // $("#picModal").modal({
     //     keyboard: false,
@@ -101,13 +97,13 @@ $(document).ready(function() {
     // });
 });
 
-// $("#betweenPic1").ready(function() {
-//         // check if there is a picture in objectstore
-//         // 1. if there is a picture, preset to the picture
-//         // 2. if there isn't a
-//     console.log('dom content loaded');
-//     initDb();
-// })
+$("#betweenPic1").ready(function() {
+        // check if there is a picture in objectstore
+        // 1. if there is a picture, preset to the picture
+        // 2. if there isn't a
+    console.log('dom content loaded');
+    initDb();
+})
 
 function checking() {
     if (!localStorage.loverName || !localStorage.relStartDate){//활성화는 됐는데 init에서 이거 두개 밖에 안 받아서... 이거라도 있으면 display
