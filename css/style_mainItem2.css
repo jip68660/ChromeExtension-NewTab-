@@ -135,7 +135,7 @@
         height: 45vh !important;
         justify-content: center !important;
         /* 대충 mainItem1이랑 mainItem3랑 높이 맞춤 */
-        margin-top: -5%;
+        
     }
     .content-image{
         height: 100%;
