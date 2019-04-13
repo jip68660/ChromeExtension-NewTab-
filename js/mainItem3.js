@@ -472,9 +472,12 @@ function revertImg() {//그냥 objectstore 비우면 됨
     console.log("revertImg");
     localStorage.couplePicFileName = "";
     let trans = db.transaction(["couplePicOS"], "readwrite");
-    let req = trans.objectStore("couplePicOS").delete(0);
-    req.onsuccess = function(e) {
-        console.log("deleted objectstore to revert to default img");
-        $("#withGF").attr("src", "img/withGF.png");
-    }
+    for (var i = 0; i < 3; i++){
+        let req = trans.objectStore("couplePicOS").delete(i);
+        req.onsuccess = function(e) {
+            console.log("deleted objectstore to revert to default img");
+            $("#withGF").attr("src", "img/withGF.png");
+        }
+    }    
+    location.reload();
 }
