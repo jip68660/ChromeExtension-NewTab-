@@ -115,6 +115,7 @@ function leftCountCal(randomIndex) {
         remainCount = currTimeCheck(nextTime2, remainCount);
         remainCount = currTimeCheck(nextTime3, remainCount);
 
+        $("#title").html("짬밥");
         $("#leftCount").html(remainCount + leftCountStr);
         $("#rightCount").html("더 먹으면 " + rightCountStr);
     } else if (randomIndex == 5) { // 아침점호도 따로 계산
@@ -123,14 +124,16 @@ function leftCountCal(randomIndex) {
         var nextTime = getNextDailyTime(new Date(), 7, 0);
         remainCount = currTimeCheck(nextTime, remainCount);
 
+        $("#title").html("아침점호");
         $("#leftCount").html(remainCount + leftCountStr);
         $("#rightCount").html("더 하면 " + rightCountStr);
-    } else if (randomIndex == 9) { // 아침점호도 따로 계산
+    } else if (randomIndex == 9) { // 저녁점호도 따로 계산
         leftCountStr = "번";
         var remainCount = 0;
         var nextTime = getNextDailyTime(new Date(), 21, 0);
         remainCount = currTimeCheck(nextTime, remainCount);
 
+        $("#title").html("저녁점호");
         $("#leftCount").html(remainCount + leftCountStr);
         $("#rightCount").html("더 하면 " + rightCountStr);
     } else if (randomIndex == 6) { // 뜀걸음
@@ -139,6 +142,7 @@ function leftCountCal(randomIndex) {
         var nextTime = getNextDailyTime(new Date(), 16, 0); //뜀걸음
         remainCount = currTimeCheck(nextTime, remainCount);
 
+        $("#title").html("뜀걸음");
         $("#leftCount").html(remainCount + leftCountStr);
         $("#rightCount").html("더 뛰면 " + rightCountStr);
     } else {//일주일에 한번
@@ -151,10 +155,24 @@ function leftCountCal(randomIndex) {
         }
 
         $("#leftCount").html(remainCount + leftCountStr);
-        if(randomIndex == 7)
+        if(randomIndex == 7) {
+            $("#title").html("종교행사");
             $("#rightCount").html("더 가면 " + rightCountStr);
-        else
+        } else {
+            if (randomIndex == 0) {//아는형님
+                $("#title").html("아는형님");
+
+            } else if (randomIndex == 1) {//골목식당
+                $("#title").html("골목식당");
+
+            } else if (randomIndex == 3) {//뮤직뱅크
+                $("#title").html("뮤직뱅크");
+
+            } else if (randomIndex == 4) {//나혼자산다
+                $("#title").html("나혼자산다");
+            }
             $("#rightCount").html("더 보면 " + rightCountStr);
+        }
     }
 
     $("#remainContent").mousedown(function() {

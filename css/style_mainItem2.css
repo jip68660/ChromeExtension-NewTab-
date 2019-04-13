@@ -89,7 +89,7 @@
 #leftCount{
     font-size: 8vw;
 }
-#rightCount {
+#rightCount, #title {
     width: 100%;
     font-size: 4vw;
 }
