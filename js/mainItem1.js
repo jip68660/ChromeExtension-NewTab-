@@ -46,7 +46,7 @@ $(document).ready(function() {
     } else if (localStorage.rank == "병장"){
         $("#toRankSettingsButton").hide();
         $("#profPicUser").attr("src", rankImage[3]);
-        $("#profPicUser").css("width", "35vw"); 
+        $("#profPicUser").css("width", "38vw"); 
         $("#profPicUser").css("justify-self", "center");
         $("#profPicUser").addClass("SGT");
     }

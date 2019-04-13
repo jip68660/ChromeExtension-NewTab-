@@ -1,4 +1,4 @@
-var remainContentArr = ["img/knowingBros.png", "img/baekRestaurant.png", "img/food.jpg", "img/musicBank.jpg", "img/iLiveAlone.png", "img/rollCall.jpg", "img/running.jpg", "img/religion.jpg", "img/foodBread.jpg", "img/rollCallNight.jpg"];
+var remainContentArr = ["img/knowingBros.png", "img/baekRestaurant.png", "img/food.png", "img/musicBank.png", "img/iLiveAlone.png", "img/rollCall.jpg", "img/running.jpg", "img/religion.png", "img/rollCallNight.jpg"];
 var randomInd = Math.floor(Math.random() * remainContentArr.length);
 var leftCountStr = "번";
 //전역일 오전 9시를 기준으로 잡음
@@ -103,7 +103,7 @@ function leftCountCal(randomIndex) {
         rightCountStr = "전역!";
     }
         
-    if (randomIndex == 2 || randomIndex == 8) {// 하루에 몇번 하는건 따로 계산
+    if (randomIndex == 2) {// 하루에 몇번 하는건 따로 계산
         leftCountStr = "끼";
         // 짬밥, 아침(08:00), 점심(12:00), 저녁(17:30)
         var nextTime1 = getNextDailyTime(new Date(), 8, 0);//아침
@@ -127,7 +127,7 @@ function leftCountCal(randomIndex) {
         $("#title").html("아침점호");
         $("#leftCount").html(remainCount + leftCountStr);
         $("#rightCount").html("더 하면 " + rightCountStr);
-    } else if (randomIndex == 9) { // 저녁점호도 따로 계산
+    } else if (randomIndex == 8) { // 저녁점호도 따로 계산
         leftCountStr = "번";
         var remainCount = 0;
         var nextTime = getNextDailyTime(new Date(), 21, 0);
