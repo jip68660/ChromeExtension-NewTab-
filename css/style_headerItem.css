@@ -154,10 +154,10 @@
   display: flex;
   flex-direction: row;
 }
-.centerH {
+.centerV {
   align-items: center;
 }
-.centerV {
+.centerH {
   justify-content: center;
 }
 .spaceAround {

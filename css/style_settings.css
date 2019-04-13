@@ -1,4 +1,4 @@
-/* On-Off Switch */
+/* On-Off Switch
 .btn-toggle {
   margin: 0 ;
   padding: 0;
@@ -89,7 +89,7 @@
 }
 .btn-toggle.active {
   background-color: #29b5a8;
-}
+} */
 
 /* Radio Buttons for Identity and Branch Select */
 .switch-field {
@@ -169,9 +169,10 @@
 }
 
 /* form-control */
-.form-control {
-  line-height: 1.5;
-  padding: .5rem .75rem;
+#user-branch, #user-rank {
+  display: inline-flex;
+  align-items: center;
+  appearance: none;
 }
 
 /* Radio Input with Images */
@@ -208,8 +209,8 @@
   display:inline-block;
   /* width:200px;
   height:140px; */
-  width: 400px;
-  height: 200px;
+  width: 450px;
+  height: 225px;
   -webkit-transition: all 100ms ease-in;
      -moz-transition: all 100ms ease-in;
           transition: all 100ms ease-in;
