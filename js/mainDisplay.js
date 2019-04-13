@@ -673,9 +673,6 @@ function onSaveSettings(engineArray) {
 function setDefaultSettingsTab(index, mainOrSub) {
     var settingsTabs;
     var settingsPanes;
-    alert("jihoon");
-
-    console.log("seon change");
 
     if (mainOrSub == "main") {
         settingsTabs = $(".settingsMain");
@@ -691,5 +688,9 @@ function setDefaultSettingsTab(index, mainOrSub) {
         settingsPanes[i].classList.remove("active");
     }
     settingsTabs[index].classList.add("active");
-    // settingsPanes[index].classList.add("active");
+    settingsPanes[index].classList.add("active");
+}
+
+function mergetest() {
+    settingsPanes[index].classList.add("pone");
 }
