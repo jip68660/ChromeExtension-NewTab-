@@ -59,16 +59,27 @@ function displayWeatherInfo(data) {
     // $("#tempMax").html("최대: " + data.main.temp_max + " ºC");
 
     var desc = data.weather[0].description;
+    let sunrise = data.sys.sunrise;
+    let sunset = data.sys.sunset;
+    var time = Math.floor(new Date().getTime() / 1000);
 
     var weatherDesc;
     if (desc == "clear sky") {
         weatherDesc = "맑음";
         //check time
-        $("#weatherSun").show();
+        if (time >= sunrise && time < sunset) {
+            $("#weatherSun").show();
+        } else {
+            $("#weatherMoon").show();
+        }
     } else if (desc == "few clouds" || desc == "scattered clouds" || desc == "broken clouds" || desc == "overcast clouds" || data.weather[0].main == "Clouds") {
         weatherDesc = "흐림";
         //check time
-        $("#weatherClouds").show();
+        if (time >= sunrise && time < sunset) {
+            $("#weatherClouds").show();
+        } else {
+            $("#weatherMoon").show();//밤 구름 그림 삽입
+        }
     } else if (desc == "shower rain" || desc == "moderate rain") {
         weatherDesc = "이슬비";
         $("#weatherShower").show();
