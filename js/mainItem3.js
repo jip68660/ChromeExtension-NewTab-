@@ -2,22 +2,29 @@ var img1;
 var img2;
 var img3;
 
+var firstfile;
+
 $('#dateBox').click(toggle);
 $("#infoBox").click(toggle2);
 $(".imgSetting").click(function() {
     $("#picModal").modal("hide");
 });
-$("#imgUpload1").change(doFile1);
-$("#imgUpload2").change(doFile2);
-$("#imgUpload3").change(doFile3);
+// $("#imgUpload1").change(doFile1);
+// $("#imgUpload2").change(doFile2);
+// $("#imgUpload3").change(doFile3);
+$("#imgUpload1").change(fileUpload);
 
 $("#imgSave").click(function() {
-    doImageTest1();
-    doImageTest2();
-    doImageTest3();
-    $("#picModal").modal("hide");
-    // location.reload();
-});
+    saveToDb();
+})
+
+// $("#imgSave").click(function() {
+//     doImageTest1();
+//     doImageTest2();
+//     doImageTest3();
+//     $("#picModal").modal("hide");
+//     // location.reload();
+// });
 
 // $("#closeImgUpload").click(function() {
 //     doImageTest1();
@@ -97,13 +104,13 @@ $(document).ready(function() {
     // });
 });
 
-$("#betweenPic1").ready(function() {
-        // check if there is a picture in objectstore
-        // 1. if there is a picture, preset to the picture
-        // 2. if there isn't a
-    console.log('dom content loaded');
-    initDb();
-})
+// $(document).ready(function() {
+//         // check if there is a picture in objectstore
+//         // 1. if there is a picture, preset to the picture
+//         // 2. if there isn't a
+//     console.log('dom content loaded');
+//     initDb();
+// })
 
 function checking() {
     if (!localStorage.loverName || !localStorage.relStartDate){//활성화는 됐는데 init에서 이거 두개 밖에 안 받아서... 이거라도 있으면 display
@@ -118,6 +125,10 @@ function checking() {
         var daysInRelVal = Math.floor((new Date(today.getFullYear(), today.getMonth() - 1, today.getDate()) - new Date(relDate.getFullYear(), relDate.getMonth() - 1, relDate.getDate())) / (1000 * 3600 * 24)) + 1;
         $("#daysInRel").html("D+" + daysInRelVal);
         $("#infoBox").hide();
+
+        //open database
+        initDb();
+        // preset images if db exists, and length is greater than 0
 
         // if (!localStorage.couplePicFileName || localStorage.couplePicFileName == "") {
         //     $("#fileName").text("default image");
@@ -290,17 +301,92 @@ function initDb() {
         db = e.target.result;
         console.log("데이터베이스를 열었습니다.");
         console.log(db);
+
+        let trans = db.transaction(["couplePicOS"], "readonly");
+        
         
         //preset couple picture on load
-        doImageTest1();
-        doImageTest2();
-        doImageTest3();
+        fetchFromDb();
     }
     request.onupgradeneeded = function(e) {
         let db = e.target.result;
         db.createObjectStore("couplePicOS");
     }
 }
+
+function fileUpload(e) {
+    console.log(e);
+    let file = e.target.files[0];
+    var reader = new FileReader();
+    reader.readAsBinaryString(file);
+    reader.onload = function(e) {
+        let bits = e.target.result;
+        firstfile = {
+            created: new Date(),
+            data: bits
+        }
+    }
+}
+
+function saveToDb() {
+    // db에 파일 저장
+    let trans = db.transaction(["couplePicOS"], "readwrite");
+    let addReq = trans.objectStore("couplePicOS").add(firstfile, "key1");
+    console.log("runsavetodb");
+    addReq.onerror = function(e) {
+        console.log("데이터 저장 오류");
+        console.error(e);
+    }
+    addReq.onsuccess = function(e) {
+        console.log("데이터 저장 성공");
+        console.log(trans.objectStore("couplePicOS"));
+
+        fetchReq = trans.objectStore("couplePicOS").get("key1");
+        fetchReq.onsuccess = function(e) {
+            let record = e.target.result;
+            console.log("성공했다", record);
+
+            if (record == "null") {
+                console.log("no shot this is null");
+            } else {
+                var imgSrcStr = "data:image/jpeg;base64," + btoa(record.data)
+                $("#withGF1").attr("src", imgSrcStr);
+                $("#withGF1").show();
+                $("#plus1").hide();
+
+                console.log(db);
+
+            }
+        }
+    }
+    $("#picModal").modal("hide");
+}
+
+function fetchFromDb() {
+    console.log("fetching from DB");
+    let trans = db.transaction(["couplePicOS"], "readonly");
+    req = trans.objectStore("couplePicOS").get("key1");
+    console.log(trans.objectStore("couplePicOS").get("key1"));
+    req.onsuccess = function(e) {
+        let record = e.target.result;
+        console.log("성공", record);
+
+        // display image
+        if (record == null) {
+            console.log("record null")
+            // $("#withGF1").attr("src", "img/withGF.png");
+        } else {
+            var imgSrcStr = "data:image/jpeg;base64," + btoa(record.data)
+            $("#withGF1").attr("src", imgSrcStr);
+            $("#withGF1").show();
+            $("#plus1").hide();
+        }
+    }
+}
+
+
+
+
 
 function doFile1(e) {
     console.log("change event fired for input field");

@@ -320,6 +320,9 @@ function initDoneDisplay() {
     localStorage.couplePicFileName = "";//처음에는 커플사진 아무것도 설정 안 되어 있는 상태
     localStorage.weatherStatus = "weatherFront";//처음에는 무조건 날씨 앞면 보이게
 
+    //open database here?
+    initDb();
+
     if (localStorage.name != "" && localStorage.identity != "" && !(localStorage.branch == "undefined") && localStorage.enlistDate != "") {
         // console.log("enterinitdisplay");    
         var welcomeStr = localStorage.name + "님!</br>환영합니다";
