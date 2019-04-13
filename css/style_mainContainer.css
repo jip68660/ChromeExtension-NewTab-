@@ -207,6 +207,9 @@ mainMiddle {
 
 #dateSlider {
     margin: 0 30px 0 30px;
+    width: 70vw;
+    height: 40vh;
+    overflow-y: auto;
 }
 
 /* init img-selector */
