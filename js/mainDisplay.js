@@ -690,8 +690,3 @@ function setDefaultSettingsTab(index, mainOrSub) {
     settingsTabs[index].classList.add("active");
     settingsPanes[index].classList.add("active");
 }
-
-function mergetest() {
-    settingsPanes[index].classList.add("jihoon");
-    settingsPanes[index].classList.add("seon");
-}
