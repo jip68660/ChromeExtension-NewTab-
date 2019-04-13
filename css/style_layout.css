@@ -173,8 +173,13 @@ footerRight{
     }
     headerLeft, headerRight {
         display: inline-flex;
-        justify-content: center;
         align-items: center;
+    }
+    headerLeft {
+        justify-content: flex-start;
+    }
+    headerRight {
+        justify-content: flex-end;
     }
     #iframe{
         height: 100%;

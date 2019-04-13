@@ -438,7 +438,7 @@ function displayAllFunc() {
     
     var dDayCount = "D-" + localStorage.todoDays + "일!";
     $("#dDayDisplaySm").html(dDayCount);
-    resizeBrowser();
+    // resizeBrowser();
 
     $('#settingsModal').appendTo("body");
     $('#settingsModal').modal({
