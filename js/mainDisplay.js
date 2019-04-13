@@ -321,7 +321,7 @@ function initDoneDisplay() {
     localStorage.weatherStatus = "weatherFront";//처음에는 무조건 날씨 앞면 보이게
 
     //open database here?
-    initDb();
+    // initDb();
 
     if (localStorage.name != "" && localStorage.identity != "" && !(localStorage.branch == "undefined") && localStorage.enlistDate != "") {
         // console.log("enterinitdisplay");    
