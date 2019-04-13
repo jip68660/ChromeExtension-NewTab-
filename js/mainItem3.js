@@ -1,3 +1,7 @@
+var img1;
+var img2;
+var img3;
+
 $('#dateBox').click(toggle);
 $("#infoBox").click(toggle2);
 $(".imgSetting").click(function() {
@@ -7,11 +11,18 @@ $("#imgUpload1").change(doFile1);
 $("#imgUpload2").change(doFile2);
 $("#imgUpload3").change(doFile3);
 
-$("#closeImgUpload").click(function() {
+$("#imgSave").click(function() {
     doImageTest1();
     doImageTest2();
     doImageTest3();
+    location.reload();
 });
+
+// $("#closeImgUpload").click(function() {
+//     doImageTest1();
+//     doImageTest2();
+//     doImageTest3();
+// });
 $("#imgRevert").click(revertImg);
 
 // 이미지 추가할때 - hover effect
@@ -75,6 +86,7 @@ $(document).ready(function() {
 
     checking();
     checkAnniversary();
+    initDb();
 
     // $("#picModal").modal({
     //     keyboard: false,
@@ -84,13 +96,13 @@ $(document).ready(function() {
     // });
 });
 
-$("#betweenPic1").ready(function() {
-        // check if there is a picture in objectstore
-        // 1. if there is a picture, preset to the picture
-        // 2. if there isn't a
-    console.log('dom content loaded');
-    initDb();
-})
+// $("#betweenPic1").ready(function() {
+//         // check if there is a picture in objectstore
+//         // 1. if there is a picture, preset to the picture
+//         // 2. if there isn't a
+//     console.log('dom content loaded');
+//     initDb();
+// })
 
 function checking() {
     if (!localStorage.loverName || !localStorage.relStartDate){//활성화는 됐는데 init에서 이거 두개 밖에 안 받아서... 이거라도 있으면 display
@@ -106,11 +118,11 @@ function checking() {
         $("#daysInRel").html("D+" + daysInRelVal);
         $("#infoBox").hide();
 
-        if (!localStorage.couplePicFileName || localStorage.couplePicFileName == "") {
-            $("#fileName").text("default image");
-        } else {
-            $("#fileName").text(localStorage.couplePicFileName);
-        }
+        // if (!localStorage.couplePicFileName || localStorage.couplePicFileName == "") {
+        //     $("#fileName").text("default image");
+        // } else {
+        //     $("#fileName").text(localStorage.couplePicFileName);
+        // }
 
         if (localStorage.background == "img/mainback1.jpg") {
             $(".font-color").css("color", "#303030");
@@ -300,6 +312,7 @@ function doFile1(e) {
             created: new Date(),
             data:bits
         }
+        img1 = obj;
         console.log("assigned obj");
 
         // 파일 이름 display 및 local에 저장
@@ -307,16 +320,16 @@ function doFile1(e) {
         // localStorage.setItem("couplePicFileName", file.name);
 
         // db에 파일 저장
-        let trans = db.transaction(["couplePicOS"], "readwrite");
+        // let trans = db.transaction(["couplePicOS"], "readwrite");
 
-        let addReq = trans.objectStore("couplePicOS").put(obj, 0);
-        addReq.onerror = function(e) {
-            console.log("데이터 저장 오류");
-            console.error(e);
-        }
-        trans.oncomplete = function(e) {
-            console.log("데이터 저장 성공");
-        }
+        // let addReq = trans.objectStore("couplePicOS").put(obj, 0);
+        // addReq.onerror = function(e) {
+        //     console.log("데이터 저장 오류");
+        //     console.error(e);
+        // }
+        // trans.oncomplete = function(e) {
+        //     console.log("데이터 저장 성공");
+        // }
     }
 }
 function doFile2(e) {
@@ -381,45 +394,40 @@ function doFile3(e) {
 }
 
 function doImageTest1() {
-    // console.log("doFile pt.2 - saving in the db")
-    // let trans = db.transaction(["couplePicOS"], "readwrite");
-    // let addReq = trans.objectStore("couplePicOS").put(obj, 0);
-    // addReq.onerror = function(e) {
-    //     console.log("데이터 저장 오류");
-    //     console.error(e);
-    // }
-    // trans.oncomplete = function(e) {
-    //     console.log("데이터 저장 성공");
-    // }
 
+    // db에 파일 저장
+    let trans = db.transaction(["couplePicOS"], "readwrite");
+    let addReq = trans.objectStore("couplePicOS").put(img1, 0);
+    addReq.onerror = function(e) {
+        console.log("데이터 저장 오류");
+        console.error(e);
+    }
+    trans.oncomplete = function(e) {
+        console.log("데이터 저장 성공");
+    }
+
+    // get from db
     console.log("doImageTest");
-    let trans = db.transaction(["couplePicOS"], "readonly");
-
+    // let trans = db.transaction(["couplePicOS"], "readonly");
     let req = trans.objectStore("couplePicOS").get(0);
     req.onsuccess = function(e) {
         let record = e.target.result;
         console.log("성공", record);
 
+        // display image
         if (record == null) {
+            console.log("recrd null")
             // $("#withGF1").attr("src", "img/withGF.png");
         } else {
+            console.log("imagetest1")
             var imgSrcStr = "data:image/jpeg;base64," + btoa(record.data)
             $("#withGF1").attr("src", imgSrcStr);
             $("#withGF1").show();
+            $("#plus1").hide();
         }
     }
 }
 function doImageTest2() {
-    // console.log("doFile pt.2 - saving in the db")
-    // let trans = db.transaction(["couplePicOS"], "readwrite");
-    // let addReq = trans.objectStore("couplePicOS").put(obj, 0);
-    // addReq.onerror = function(e) {
-    //     console.log("데이터 저장 오류");
-    //     console.error(e);
-    // }
-    // trans.oncomplete = function(e) {
-    //     console.log("데이터 저장 성공");
-    // }
 
     console.log("doImageTest");
     let trans = db.transaction(["couplePicOS"], "readonly");
@@ -439,16 +447,6 @@ function doImageTest2() {
     }
 } 
 function doImageTest3() {
-    // console.log("doFile pt.2 - saving in the db")
-    // let trans = db.transaction(["couplePicOS"], "readwrite");
-    // let addReq = trans.objectStore("couplePicOS").put(obj, 0);
-    // addReq.onerror = function(e) {
-    //     console.log("데이터 저장 오류");
-    //     console.error(e);
-    // }
-    // trans.oncomplete = function(e) {
-    //     console.log("데이터 저장 성공");
-    // }
 
     console.log("doImageTest");
     let trans = db.transaction(["couplePicOS"], "readonly");
