@@ -18,7 +18,7 @@ body {
 }
 
 #leftBox {
-    font-size: 3vw;
+    font-size: 4vw;
     padding-left: 5%;
     padding-right: 5%;
 }
@@ -46,7 +46,7 @@ body {
     width: 15vw;
 }
 .rankImg {
-    width: 35vh;
+    width: 26vw;
 }
 #bottomBox {
     font-size: 2.5vw;
@@ -92,23 +92,24 @@ body {
 @media (max-width: 272px) {
     body{
         height: 400px;
-        margin-top: 7px;
         overflow-y: hidden;
     }
-    #middleBox{
+    #box{
         flex-direction: column;
-        height: 75% !important;
+        height: 100% !important;
         justify-content: space-evenly;
     }
     #rightBox{
-        order: -1;
+        /* order: -1; */
         font-size: 8.5vw;
         width: 100% !important;
         padding-right: 0px;
         justify-self: center;
+        height: 55%;
     }
     #leftBox{
         width: 100% !important;   
+        height: 45%;
         flex-direction: column;
         padding-left: 0;
         padding-right: 0;  
@@ -120,13 +121,11 @@ body {
         width: auto;
     }
     .rankImg{
-        width: 53vw !important; 
-        height: 40vh;
+        width: 50vw !important;
         /* padding-bottom: 2vh; */
     }    
     .SGT{
         width: 75vw !important;
-        height: 27vh;
     }
     
     #moreInfo{
@@ -137,7 +136,7 @@ body {
         font-size: 7vw;
     }
     #progress{
-        width: 90%;
+        width: 70%;
     }
     .space{
         display:none;
