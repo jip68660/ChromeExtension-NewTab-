@@ -48,9 +48,7 @@
 
             <div id="percentageDiv" class="majorMono"></div>
         </div> -->
-        <div class="space" style="height: 15%"></div>
-        <div id="middleBox" class="flexRow centerH centerV" style="width: 100%; height: 60%">
-            <div class="space" style="width: 10%"></div>
+        <div id="box" class="flexRow centerH centerV">
             <div id="leftBox" class="flexRow centerH centerV" style="width: 40%;"> 
                 <button id="toRankSettingsButton" class="btn btn-primary rankSettings" style="display: none;">계급 설정</button>
                 <img id ="profPicUser" class="rankImg animated fadeIn">
@@ -74,20 +72,29 @@
                 </div>
             </div>
             <div id="rightBox" class="flexCol centerH centeV" style="width: 45%">
-                <div id="nameDisplay"></div>
-                <div id="endDateDisplay"></div>
-                <div id="dDayDisplay" class="jua animated rubberBand"></div>
+                <div id="topBox">
+                    <div id="nameDisplay"></div>
+                    <div id="endDateDisplay"></div>
+                    <div id="dDayDisplay" class="jua animated rubberBand"></div>
+                </div>
+                <div id="bottomBox">
+                    <div id="progress" class="progress" data-toggle="popover">
+                        <div id="progressBar" class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+        
+                    <div id="percentageDiv" class="majorMono animated fadeInUp"></div>
+                    <div id="msgDateOf" class="animated bounce font-color gamja"></div>
+                </div>
             </div>
-            <div class="space" style="width: 5%"></div>
         </div>
-        <div id="bottomBox">
+        <!-- <div id="bottomBox">
             <div id="progress" class="progress" data-toggle="popover">
                 <div id="progressBar" class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
             </div>
 
             <div id="percentageDiv" class="majorMono animated fadeInUp"></div>
             <div id="msgDateOf" class="animated bounce font-color gamja"></div>
-        </div>
+        </div> -->
 
         <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
