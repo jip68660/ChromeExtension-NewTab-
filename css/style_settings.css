@@ -492,7 +492,7 @@
   display: flex;
   flex-direction: row;
   width: 100%;
-  height: 180px;
+  height: 120px;
   justify-content: space-around;
   align-items: center;
 }
@@ -500,14 +500,14 @@
   display: flex;
   /* width: 100%;
   height: 100%; */
-  width: 45%;
+  width: 120px;
   height: 100%;
   justify-content: center;
   align-items: center;
   border-radius: 0.3rem;
 
   position: relative;
-  margin: 1rem;
+  margin: 0.5rem;
   overflow: hidden;
 }
 .content .content-overlay {

@@ -19,6 +19,12 @@ $("#remainContent").click(function() {
 });
 
 $(document).ready(function() {
+
+    //모든 이미지 오른쪽 마우스 클릭 금지
+    $("img").on("contextmenu",function(){
+        return false;
+    }); 
+
     if (localStorage.background == "img/mainback1.jpg") {
         $(".font-color").css("color", "#303030");
     }

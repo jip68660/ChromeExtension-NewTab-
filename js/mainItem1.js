@@ -9,6 +9,11 @@ $("#moreInfo").click(function() {
 
 $(document).ready(function() {
 
+    //모든 이미지 오른쪽 마우스 클릭 금지
+    $("img").on("contextmenu",function(){
+        return false;
+    }); 
+
     $("body").css({
         "text-align": "center"
     });
