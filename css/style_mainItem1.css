@@ -82,11 +82,18 @@ body {
 
 /* 반응형 */
 /* @media (max-width: 560px) and (min-height: 400px) { */
+
+@media (max-height: 280px) {
+    body{
+        height: 280px;
+        overflow-y: hidden;
+    }
+}
 @media (max-width: 272px) {
     body{
         height: 400px;
         margin-top: 7px;
-        overflow-y: auto;
+        overflow-y: hidden;
     }
     #middleBox{
         flex-direction: column;
