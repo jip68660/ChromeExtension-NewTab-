@@ -7,19 +7,12 @@ body {
 .font-color {
     color: white;
 }
-#betweenPic {
-    background-image:url("/img/heartFrame.png");
-    background-size: 100% 100%;
-    justify-content: center;
-    align-items: center;
-    width: 50%;
-    height: 100%;
-}
+
 #withGF {
     /* max-width: 100%;
     max-height: 100%; */
-    width: 90%;
-    height: 90%;
+    width: 100%;
+    height: 100%;
     transition: transform 0.3s;
     border-radius: 0.3rem;
 }
@@ -42,7 +35,7 @@ body {
 }
 
 #userName, #loverName {
-    font-size: 5vw;
+    font-size: 6vw;
 }
 #celebrateAnn {
     font-size: 4vw;
@@ -73,7 +66,10 @@ body {
 }
 #topBox {
     width: 100%;
-    height: 55%;
+    height: 20%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
 }
 #relationshipInfo, #progressAnniversary {
     width: 50%;
@@ -81,11 +77,12 @@ body {
 }
 #nameBox {
     width: 100%;
-    height: 30%;;
+    height: 100%;;
+    justify-content: space-around;
 }
 #dateBox, #infoBox {
     width: 100%;
-    height: 45%;
+    height: 100%;
 }
 #dateBox {
     font-size: 10vw;
@@ -94,7 +91,29 @@ body {
     width: 100%;
     height: 50%;
 }
-#middleBox, #anniversaryDate {
+
+#middleBox {
+    width: 100%;
+    height: 30%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+#middleLeft, #middleRight {
+    width: 50%;
+    height: 100%;
+}
+
+#bottomBox {
+    width: 100%;
+    height: 50%;
+    display: inline-flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+#anniversaryDate {
     width: 100%;
     height: 25%;
 }
@@ -105,6 +124,22 @@ body {
 #nextAnniversary {
     width: 20%;
     height: 100%;
+}
+.coupleImg {
+    height: 100%;
+    width: 30%;
+    border: 2px solid white;
+    background-color: rgb(184, 184, 184, 0.5);
+    border-radius: 1rem;
+}
+.coupleImg:hover .plus {
+    transform: scale(1.2);
+}
+.fa-check-circle {
+    color: green;
+}
+.fa-times-circle {
+    color: red;
 }
 
 /* modal css */
@@ -125,7 +160,7 @@ body {
     padding-bottom: 0;
     color: white;
 }
-#imgUpload {
+#imgUpload1, #imgUpload2, #imgUpload3 {
     display: none;
 }
 .modal-header .close {
@@ -165,7 +200,7 @@ body {
         margin-top: -5%;
     }
     #topBox{
-        flex-direction: column !important;
+        flex-direction: row !important;
         width: 100%;
         height: 80%;
         align-items: center;
@@ -181,7 +216,7 @@ body {
         height: 50vh;
     }
     #userName, #loverName {
-        font-size: 10vw;
+        font-size: 10vh;
     }
     #dateBox{
         font-size: 18vw;
@@ -189,9 +224,9 @@ body {
     #waitDaysBox, #leftDaysBox{
         font-size: 8vw;
     }
-    #middleBox, #anniversaryDate, .space{
+    /* #middleBox, #anniversaryDate, .space{
         display: none !important;
-    }
+    } */
     #modalContent {
         width: 100%;
     }

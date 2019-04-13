@@ -170,9 +170,7 @@
 
 /* form-control */
 #user-branch, #user-rank {
-  display: inline-flex;
-  align-items: center;
-  appearance: none;
+  text-indent: .25rem;
 }
 
 /* Radio Input with Images */

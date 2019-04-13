@@ -3,9 +3,45 @@ $("#infoBox").click(toggle2);
 $(".imgSetting").click(function() {
     $("#picModal").modal("hide");
 });
-$("#imgUpload").change(doFile);
-$("#closeImgUpload").click(doImageTest);
+$("#imgUpload1").change(doFile1);
+$("#imgUpload2").change(doFile2);
+$("#imgUpload3").change(doFile3);
+
+$("#closeImgUpload").click(function() {
+    doImageTest1();
+    doImageTest2();
+    doImageTest3();
+});
 $("#imgRevert").click(revertImg);
+
+// 이미지 추가할때 - hover effect
+$("#betweenPic1").mouseover(function() {
+    $("#betweenPic1").css("border", "none");
+    $("#betweenPic1").css("cursor", "pointer");
+    $("#betweenPic1").css("background-color", "rgb(200, 200, 200, 0.7)");
+});
+$("#betweenPic1").mouseleave(function() {
+    $("#betweenPic1").css("border", "2px solid white");
+    $("#betweenPic1").css("background-color", "rgb(184, 184, 184, 0.5)");
+});
+$("#betweenPic2").mouseover(function() {
+    $("#betweenPic2").css("border", "none");
+    $("#betweenPic2").css("cursor", "pointer");
+    $("#betweenPic2").css("background-color", "rgb(200, 200, 200, 0.7)");
+});
+$("#betweenPic2").mouseleave(function() {
+    $("#betweenPic2").css("border", "2px solid white");
+    $("#betweenPic2").css("background-color", "rgb(184, 184, 184, 0.5)");
+});
+$("#betweenPic3").mouseover(function() {
+    $("#betweenPic3").css("border", "none");
+    $("#betweenPic3").css("cursor", "pointer");
+    $("#betweenPic3").css("background-color", "rgb(200, 200, 200, 0.7)");
+});
+$("#betweenPic3").mouseleave(function() {
+    $("#betweenPic3").css("border", "2px solid white");
+    $("#betweenPic3").css("background-color", "rgb(184, 184, 184, 0.5)");
+});
 
 $("#anniversaryImg").click(celebrate);
 // var anniversaryDate = ["img/heart.png", "img/100.png", "img/200.png", "img/300.png", "img/1year.png", "img/400.png", "img/500.png", "img/600.png", "img/700.png", "img/2year.png", "img/800.png", "img/900.png", "img/1000.png", "img/3year.png", "img/4year.png", "img/BD_lover.png", "img/BD_user.png"];
@@ -48,7 +84,7 @@ $(document).ready(function() {
     // });
 });
 
-$("#betweenPic").ready(function() {
+$("#betweenPic1").ready(function() {
         // check if there is a picture in objectstore
         // 1. if there is a picture, preset to the picture
         // 2. if there isn't a
@@ -156,7 +192,7 @@ function checkAnniversary() {
         
         //오늘이 기념일
         if (dateCheck[0] == todayISO){
-            $("#middleBox").hide();
+            // $("#middleBox").hide();
             $("#anniversaryDate").show();
             $("#anniversaryImg").attr("src", "/img/" + dateCheck[1] + ".png");
             break;
@@ -243,7 +279,9 @@ function initDb() {
         console.log(db);
         
         //preset couple picture on load
-        doImageTest();
+        doImageTest1();
+        doImageTest2();
+        doImageTest3();
     }
     request.onupgradeneeded = function(e) {
         let db = e.target.result;
@@ -251,7 +289,7 @@ function initDb() {
     }
 }
 
-function doFile(e) {
+function doFile1(e) {
     console.log("change event fired for input field");
     let file = e.target.files[0];
     var reader = new FileReader();
@@ -265,11 +303,12 @@ function doFile(e) {
         console.log("assigned obj");
 
         // 파일 이름 display 및 local에 저장
-        $("#fileName").text(file.name);
-        localStorage.setItem("couplePicFileName", file.name);
+        // $("#fileName").text(file.name);
+        // localStorage.setItem("couplePicFileName", file.name);
 
         // db에 파일 저장
         let trans = db.transaction(["couplePicOS"], "readwrite");
+
         let addReq = trans.objectStore("couplePicOS").put(obj, 0);
         addReq.onerror = function(e) {
             console.log("데이터 저장 오류");
@@ -280,9 +319,68 @@ function doFile(e) {
         }
     }
 }
+function doFile2(e) {
+    console.log("change event fired for input field");
+    let file = e.target.files[0];
+    var reader = new FileReader();
+    reader.readAsBinaryString(file);
+    reader.onload = function(e) {
+        let bits = e.target.result;
+        let obj = {
+            created: new Date(),
+            data:bits
+        }
+        console.log("assigned obj");
 
-function doImageTest() {
+        // 파일 이름 display 및 local에 저장
+        // $("#fileName").text(file.name);
+        // localStorage.setItem("couplePicFileName", file.name);
 
+        // db에 파일 저장
+        let trans = db.transaction(["couplePicOS"], "readwrite");
+
+        let addReq = trans.objectStore("couplePicOS").put(obj, 1);
+        addReq.onerror = function(e) {
+            console.log("데이터 저장 오류");
+            console.error(e);
+        }
+        trans.oncomplete = function(e) {
+            console.log("데이터 저장 성공");
+        }
+    }
+}
+function doFile3(e) {
+    console.log("change event fired for input field");
+    let file = e.target.files[0];
+    var reader = new FileReader();
+    reader.readAsBinaryString(file);
+    reader.onload = function(e) {
+        let bits = e.target.result;
+        let obj = {
+            created: new Date(),
+            data:bits
+        }
+        console.log("assigned obj");
+
+        // 파일 이름 display 및 local에 저장
+        // $("#fileName").text(file.name);
+        // localStorage.setItem("couplePicFileName", file.name);
+
+        // db에 파일 저장
+        let trans = db.transaction(["couplePicOS"], "readwrite");
+
+        let addReq = trans.objectStore("couplePicOS").put(obj, 2);
+        addReq.onerror = function(e) {
+            console.log("데이터 저장 오류");
+            console.error(e);
+        }
+        trans.oncomplete = function(e) {
+            console.log("데이터 저장 성공");
+        }
+    }
+}
+
+function doImageTest1() {
     // console.log("doFile pt.2 - saving in the db")
     // let trans = db.transaction(["couplePicOS"], "readwrite");
     // let addReq = trans.objectStore("couplePicOS").put(obj, 0);
@@ -303,10 +401,69 @@ function doImageTest() {
         console.log("성공", record);
 
         if (record == null) {
-            $("#withGF").attr("src", "img/withGF.png");
+            // $("#withGF1").attr("src", "img/withGF.png");
         } else {
             var imgSrcStr = "data:image/jpeg;base64," + btoa(record.data)
-            $("#withGF").attr("src", imgSrcStr);
+            $("#withGF1").attr("src", imgSrcStr);
+            $("#withGF1").show();
+        }
+    }
+}
+function doImageTest2() {
+    // console.log("doFile pt.2 - saving in the db")
+    // let trans = db.transaction(["couplePicOS"], "readwrite");
+    // let addReq = trans.objectStore("couplePicOS").put(obj, 0);
+    // addReq.onerror = function(e) {
+    //     console.log("데이터 저장 오류");
+    //     console.error(e);
+    // }
+    // trans.oncomplete = function(e) {
+    //     console.log("데이터 저장 성공");
+    // }
+
+    console.log("doImageTest");
+    let trans = db.transaction(["couplePicOS"], "readonly");
+
+    let req = trans.objectStore("couplePicOS").get(1);
+    req.onsuccess = function(e) {
+        let record = e.target.result;
+        console.log("성공", record);
+
+        if (record == null) {
+            // $("#withGF1").attr("src", "img/withGF.png");
+        } else {
+            var imgSrcStr = "data:image/jpeg;base64," + btoa(record.data)
+            $("#withGF2").attr("src", imgSrcStr);
+            $("#withGF2").show();
+        }
+    }
+} 
+function doImageTest3() {
+    // console.log("doFile pt.2 - saving in the db")
+    // let trans = db.transaction(["couplePicOS"], "readwrite");
+    // let addReq = trans.objectStore("couplePicOS").put(obj, 0);
+    // addReq.onerror = function(e) {
+    //     console.log("데이터 저장 오류");
+    //     console.error(e);
+    // }
+    // trans.oncomplete = function(e) {
+    //     console.log("데이터 저장 성공");
+    // }
+
+    console.log("doImageTest");
+    let trans = db.transaction(["couplePicOS"], "readonly");
+
+    let req = trans.objectStore("couplePicOS").get(2);
+    req.onsuccess = function(e) {
+        let record = e.target.result;
+        console.log("성공", record);
+
+        if (record == null) {
+            // $("#withGF1").attr("src", "img/withGF.png");
+        } else {
+            var imgSrcStr = "data:image/jpeg;base64," + btoa(record.data)
+            $("#withGF3").attr("src", imgSrcStr);
+            $("#withGF3").show();
         }
     }
 } 
