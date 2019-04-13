@@ -673,6 +673,7 @@ function onSaveSettings(engineArray) {
 function setDefaultSettingsTab(index, mainOrSub) {
     var settingsTabs;
     var settingsPanes;
+    alert("jihoon");
 
     if (mainOrSub == "main") {
         settingsTabs = $(".settingsMain");
