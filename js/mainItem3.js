@@ -15,7 +15,8 @@ $("#imgSave").click(function() {
     doImageTest1();
     doImageTest2();
     doImageTest3();
-    location.reload();
+    $("#picModal").modal("hide");
+    // location.reload();
 });
 
 // $("#closeImgUpload").click(function() {
@@ -86,7 +87,11 @@ $(document).ready(function() {
 
     checking();
     checkAnniversary();
-    initDb();
+
+    if (localStorage.main3FirstRun == "true") {
+        initDb();
+        localStorage.main3FirstRun = "false";
+    }
 
     // $("#picModal").modal({
     //     keyboard: false,
