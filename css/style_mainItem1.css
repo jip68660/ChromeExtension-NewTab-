@@ -33,7 +33,7 @@ body {
 #rightBox {
     width: 45%;
     height: 100%;
-    font-size: 1.4rem;
+    font-size: 4vw;
     padding-right: 10%;
 }
 #rightBox ul {
@@ -52,7 +52,7 @@ body {
     font-size: 2.5vw;
 }
 #percentageDiv{
-    font-size: 1.4rem;
+    font-size: 4vw;
 }
 #progress {
     height: 5vh;
