@@ -693,4 +693,5 @@ function setDefaultSettingsTab(index, mainOrSub) {
 
 function mergetest() {
     settingsPanes[index].classList.add("jihoon");
+    settingsPanes[index].classList.add("seon");
 }
