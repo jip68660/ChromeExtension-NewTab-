@@ -155,9 +155,9 @@ footerRight{
 } */
 
 /* 700px? */
-@media (max-width: 950px) {
+@media (max-width: 1200px) {
     #dateSlider{
-        width: 470px !important;
+        width: 600px !important;
     }
 }
 @media (max-width: 643px){

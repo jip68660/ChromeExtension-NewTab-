@@ -30,8 +30,7 @@ $("#engineLogo").click(searchEngineChange);
 // $("#engineLogo").dblclick(searchEngineHome);//지금은 클릭이랑 충돌나서 안 먹어요
 
 $(window).on("resize", function() {
-  console.log(window.innerWidth);
-  if(window.innerWidth <= "643") {
+  if(window.innerWidth < "643") {
     searchUIOpen();
   }
   else {
@@ -123,7 +122,7 @@ function searchUIOpen() {
       // isHeaderWidgetShown = false;
       // }
       searchIco.style.display = "none";
-      if (window.innerWidth <= "643"){
+      if (window.innerWidth < "643"){
         searchUI.style.width = "90vw";
         searchBar.style.width = "75vw";
       }

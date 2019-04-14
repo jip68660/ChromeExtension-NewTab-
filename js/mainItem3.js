@@ -385,7 +385,7 @@ function fetchFromDb(index) {
             var imgSrcStr = "data:image/jpeg;base64," + btoa(record.data)
             $("#withGF" + index).attr("src", imgSrcStr);
             $("#withGF" + index).show();
-            $("#icon" + idex).removeClass("fa-plus-circle");
+            $("#icon" + index).removeClass("fa-plus-circle");
             $("#icon" + index).addClass("fa-exchange-alt");
             // $("#plus" + index).hide();
 
