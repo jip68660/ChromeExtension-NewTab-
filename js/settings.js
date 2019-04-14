@@ -7,7 +7,6 @@
 
 window.addEventListener("load", function() {
 	
-	$("body").removeClass("modal-open");
 	// store tabs variable
 	var myTabs = document.querySelectorAll("div.main > ul.nav-tabs > li > a");
 	var mySubTabs = document.querySelectorAll("div.sub > ul.nav-tabs > li > a");
