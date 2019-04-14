@@ -461,6 +461,7 @@ function displayAllFunc() {
         focus: true,
         show: false
     });  
+    
     // presetSettings();
 }
 

@@ -68,14 +68,9 @@ headerRight{
     text-align: right;
 }
 
-mainLeft{
-    grid-area: mainL;
-}
+
 mainMiddle{
     grid-area: mainM;
-}
-mainRight{
-    grid-area: mainR;
 }
 
 footerLeft{
@@ -173,7 +168,7 @@ footerRight{
         height: 100%;
         position: relative;
     }
-    mainLeft, mainRight, footerLeft{
+    footerLeft{
         display: none;
     }
     headerLeft, headerRight {
