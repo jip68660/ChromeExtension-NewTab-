@@ -379,12 +379,15 @@ function fetchFromDb(index) {
         if (record == null) {
             console.log("record null")
             $("#withGF" + index).attr("src", "img/imgIcon.png");
-            $(".icon").addClass("fa-plus-circle");
+            $("#icon" + index).removeClass("fa-exchange-alt");
+            $("#icon" + index).addClass("fa-plus-circle");
         } else {
             var imgSrcStr = "data:image/jpeg;base64," + btoa(record.data)
             $("#withGF" + index).attr("src", imgSrcStr);
             $("#withGF" + index).show();
-            $("#plus" + index).hide();
+            $("#icon" + idex).removeClass("fa-plus-circle");
+            $("#icon" + index).addClass("fa-exchange-alt");
+            // $("#plus" + index).hide();
 
             $("#betweenPic" + index).css("border", "none");
             $("#betweenPic" + index).css("background-color", "transparent");
