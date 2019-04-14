@@ -1,6 +1,3 @@
-var img1;
-var img2;
-var img3;
 var currFileNum;
 
 var firstfile;
@@ -32,31 +29,42 @@ $("#imgRevert").click(revertImg);
 
 // 이미지 추가할때 - hover effect
 $("#betweenPic1").mouseover(function() {
-    $("#betweenPic1").css("border", "none");
+    if ($("#plus1").css("display") == "inline") {
+        $("#betweenPic1").css("border", "none");
+        $("#betweenPic1").css("background-color", "rgb(200, 200, 200, 0.7)");
+    }
     $("#betweenPic1").css("cursor", "pointer");
-    $("#betweenPic1").css("background-color", "rgb(200, 200, 200, 0.7)");
 });
 $("#betweenPic1").mouseleave(function() {
-    $("#betweenPic1").css("border", "2px solid white");
-    $("#betweenPic1").css("background-color", "rgb(184, 184, 184, 0.5)");
+    if ($("#plus1").css("display") == "inline") {
+        $("#betweenPic1").css("border", "2px solid white");
+        $("#betweenPic1").css("background-color", "rgb(184, 184, 184, 0.5)");
+    }
 });
 $("#betweenPic2").mouseover(function() {
-    $("#betweenPic2").css("border", "none");
+    if ($("#plus2").css("display") == "inline") {
+        $("#betweenPic2").css("border", "none");
+        $("#betweenPic2").css("background-color", "rgb(200, 200, 200, 0.7)");
+    }
     $("#betweenPic2").css("cursor", "pointer");
-    $("#betweenPic2").css("background-color", "rgb(200, 200, 200, 0.7)");
 });
 $("#betweenPic2").mouseleave(function() {
-    $("#betweenPic2").css("border", "2px solid white");
-    $("#betweenPic2").css("background-color", "rgb(184, 184, 184, 0.5)");
-});
-$("#betweenPic3").mouseover(function() {
-    $("#betweenPic3").css("border", "none");
+    if ($("#plus2").css("display") == "inline") {
+        $("#betweenPic2").css("border", "2px solid white");
+        $("#betweenPic2").css("background-color", "rgb(184, 184, 184, 0.5)");
+    }
+});$("#betweenPic3").mouseover(function() {
+    if ($("#plus3").css("display") == "inline") {
+        $("#betweenPic3").css("border", "none");
+        $("#betweenPic3").css("background-color", "rgb(200, 200, 200, 0.7)");
+    }
     $("#betweenPic3").css("cursor", "pointer");
-    $("#betweenPic3").css("background-color", "rgb(200, 200, 200, 0.7)");
 });
 $("#betweenPic3").mouseleave(function() {
-    $("#betweenPic3").css("border", "2px solid white");
-    $("#betweenPic3").css("background-color", "rgb(184, 184, 184, 0.5)");
+    if ($("#plus3").css("display") == "inline") {
+        $("#betweenPic3").css("border", "2px solid white");
+        $("#betweenPic3").css("background-color", "rgb(184, 184, 184, 0.5)");
+    }
 });
 
 $("#anniversaryImg").click(celebrate);
@@ -315,41 +323,46 @@ function saveToDb() {
     let os = trans.objectStore("couplePicOS");
 
     //add new picture
-    let addReq1 = os.put(firstfile, 1);
-    let addReq2 = os.put(secondfile, 2);
-    let addReq3 = os.put(thirdfile, 3);
-
-    console.log("runsavetodb");
-    addReq1.onerror = function(e) {
-        console.log("데이터 저장 오류");
-        console.error(e);
+    if (firstfile != null) {
+        let addReq1 = os.put(firstfile, 1);
+        addReq1.onerror = function(e) {
+            console.log("데이터 저장 오류");
+            console.error(e);
+        }
+        addReq1.onsuccess = function(e) {
+            console.log("데이터 저장 성공");
+            console.log(trans.objectStore("couplePicOS"));
+    
+            fetchFromDb(1);
+        }
     }
-    addReq1.onsuccess = function(e) {
-        console.log("데이터 저장 성공");
-        console.log(trans.objectStore("couplePicOS"));
-
-        fetchFromDb(1);
+    if (secondfile != null) {
+        let addReq2 = os.put(secondfile, 2);
+        addReq2.onerror = function(e) {
+            console.log("데이터 저장 오류");
+            console.error(e);
+        }
+        addReq2.onsuccess = function(e) {
+            console.log("데이터 저장 성공");
+            console.log(trans.objectStore("couplePicOS"));
+    
+            fetchFromDb(2);
+        }
     }
-    addReq2.onerror = function(e) {
-        console.log("데이터 저장 오류");
-        console.error(e);
+    if (thirdfile != null) {
+        let addReq3 = os.put(thirdfile, 3);
+        addReq3.onerror = function(e) {
+            console.log("데이터 저장 오류");
+            console.error(e);
+        }
+        addReq3.onsuccess = function(e) {
+            console.log("데이터 저장 성공");
+            console.log(trans.objectStore("couplePicOS"));
+    
+            fetchFromDb(3);
+        }
     }
-    addReq2.onsuccess = function(e) {
-        console.log("데이터 저장 성공");
-        console.log(trans.objectStore("couplePicOS"));
-
-        fetchFromDb(2);
-    }
-    addReq3.onerror = function(e) {
-        console.log("데이터 저장 오류");
-        console.error(e);
-    }
-    addReq3.onsuccess = function(e) {
-        console.log("데이터 저장 성공");
-        console.log(trans.objectStore("couplePicOS"));
-
-        fetchFromDb(3);
-    }
+    
     $("#picModal").modal("hide");
 }
 
@@ -365,12 +378,16 @@ function fetchFromDb(index) {
         // display image
         if (record == null) {
             console.log("record null")
-            // $("#withGF1").attr("src", "img/withGF.png");
+            $("#withGF" + index).attr("src", "img/imgIcon.png");
+            $(".icon").addClass("fa-plus-circle");
         } else {
             var imgSrcStr = "data:image/jpeg;base64," + btoa(record.data)
             $("#withGF" + index).attr("src", imgSrcStr);
             $("#withGF" + index).show();
             $("#plus" + index).hide();
+
+            $("#betweenPic" + index).css("border", "none");
+            $("#betweenPic" + index).css("background-color", "transparent");
         }
     }
 }
