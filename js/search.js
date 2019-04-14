@@ -29,9 +29,15 @@ $(".search").click(searchUIOpen);
 $("#engineLogo").click(searchEngineChange);
 // $("#engineLogo").dblclick(searchEngineHome);//지금은 클릭이랑 충돌나서 안 먹어요
 
-// $(document).ready(function() {
-//     localStorage.setItem("currEngine", "naver");
-// });
+$(window).on("resize", function() {
+  console.log(window.innerWidth);
+  if(window.innerWidth <= "643") {
+    searchUIOpen();
+  }
+  else {
+    searchUIClose();
+  }
+});
 
 function onEnterPressed() {
   urlString = document.getElementById("searchBar").value;
@@ -118,7 +124,7 @@ function searchUIOpen() {
       // }
       searchIco.style.display = "none";
       if (window.innerWidth <= "643"){
-        searchUI.style.width = "80vw";
+        searchUI.style.width = "90vw";
         searchBar.style.width = "75vw";
       }
       else{          
@@ -158,7 +164,7 @@ function searchUIOpen() {
 }
 
 function searchUIClose() {
-  if ($(event.target).hasClass("search")) {
+  if ($(event.target).hasClass("search") || window.innerWidth <= "643") {
   } 
   else{
   // if(isHeaderWidgetShown == false) {

@@ -359,6 +359,9 @@ function displayAllFunc() {
         return false;
     }); 
 
+    if (window.innerWidth <= "634") {
+        searchUIOpen();
+    }
     //만약 군생활 끝났거나, 시작도 안했으면 mainItem1만 띄우기
     if (localStorage.progressBar > 100 || localStorage.progressBar < 0) {
         iframeArr = ["mainItem1.html"];
