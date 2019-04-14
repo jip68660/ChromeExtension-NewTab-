@@ -64,25 +64,12 @@
             </div>
 
             <div id="bottomBox">
-                <!-- <div id="betweenPic1" class="coupleImg flexCol centerV" data-toggle="modal" data-target="#picModal" data-backdrop="false" data-keyboard="true">
-                    <i id="plus1" class="plus fa fa-plus-circle fa-3x"></i>
-                    <img id ="withGF1" style="display: none">
-                </div>
-                <div id="betweenPic2" class="coupleImg flexCol centerV" data-toggle="modal" data-target="#picModal" data-backdrop="false" data-keyboard="true">
-                    <i id="plus2" class="plus fa fa-plus-circle fa-3x"></i>
-                    <img id ="withGF2" style="display: none">
-                </div>
-                <div id="betweenPic3" class="coupleImg flexCol centerV" data-toggle="modal" data-target="#picModal" data-backdrop="false" data-keyboard="true">
-                    <i id="plus3" class="plus fa fa-plus-circle fa-3x"></i>
-                    <img id ="withGF3" style="display: none">
-                </div> -->
-
                 <div id="betweenPic1" class="coupleImg flexCol centerV content" data-toggle="modal" data-target="#picModal" data-backdrop="false" data-keyboard="true">
                     <div class="content-overlay"></div>
                     <img id="withGF1" class="content-image">
                     <div class="content-details">
                         <div class="content-icon">
-                            <i id="icon1" class="fa fa-exchange-alt fa-3x"></i>
+                            <i id="icon1" class="fa fa-exchange fa-3x"></i>
                         </div>
                     </div>
                 </div>
@@ -91,7 +78,7 @@
                     <img id="withGF2" class="content-image">
                     <div class="content-details">
                         <div class="content-icon">
-                            <i id="icon2" class="fa fa-exchange-alt fa-3x"></i>
+                            <i id="icon2" class="fa fa-exchange fa-3x"></i>
                         </div>
                     </div>
                 </div>
@@ -100,11 +87,10 @@
                     <img id="withGF3" class="content-image">
                     <div class="content-details">
                         <div class="content-icon">
-                            <i id="icon3" class="fa fa-exchange-alt fa-3x"></i>
+                            <i id="icon3" class="fa fa-exchange fa-3x"></i>
                         </div>
                     </div>
                 </div>
-
 
             </div>
 
@@ -116,9 +102,9 @@
             <div id="mainModal">
                 <div class="modal fade bd-example-modal-sm" id="picModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="height: 100%">
                     <div class="modal-dialog modal-dialog-centered" role="document" style="height: 90%">
-                        <div id="modalContent" class="modal-content" style="height: 80%">
+                        <div id="modalContent" class="modal-content" style="height: 60%">
                             <div class="modal-header">
-                                <h3>이미지 설정</h3>
+                                <h3>이미지 업로드</h3>
                                 <button id="closeImgUpload" type="button" class="close" data-dismiss="modal" aria-label="Close" style="outline: none">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -126,31 +112,41 @@
     
                             <div id="modalBody" class="modal-body flexCol centerH">
 
-                                <div>
-                                    <label id="fileUploadButton1" class="btn btn-primary">파일 업로드
-                                        <input type="file" id="imgUpload1" class="imgUpload1" capture>
-                                    </label>
-                                    <i class="fa fa-check-circle"></i>
-                                    <i class="fa fa-times-circle"></i>
-                                </div>
-                                <div>
-                                    <label id="fileUploadButton2" class="btn btn-primary">파일 업로드
-                                        <input type="file" id="imgUpload2" capture>
-                                    </label>
-                                    <i class="fa fa-check-circle"></i>
-                                    <i class="fa fa-times-circle"></i>
-                                </div>
-                                <div>
-                                    <label id="fileUploadButton3" class="btn btn-primary">파일 업로드
-                                        <input type="file" id="imgUpload3" capture>
-                                    </label>
-                                    <i class="fa fa-check-circle"></i>
-                                    <i class="fa fa-times-circle"></i>
-                                </div>
-                                <!-- <button id="imgSubmit" class="imgSetting btn btn-primary">변경</button> -->
+                                <div class="flexRow centerV spaceBetween" style="width: 80%">
+                                    <div class="flexRow centerV" style="width: 100%;">
+                                        <label id="fileUploadButton1" class="btn btn-info" style="margin: .2rem; padding: .3rem">
+                                            <i class="fa fa-camera-retro fa-2x"></i>
+                                            <input type="file" id="imgUpload1" class="imgUpload1" capture>
+                                        </label>
+                                        <div class="flexCol centerH">
+                                            <i id="check1" class="uploadStatus fa fa-check-circle"></i>
+                                            <i id="x1" class="fa fa-times-circle"></i>
+                                        </div>
+                                    </div>
+                                    <div class="flexRow centerV" style="width: 100%">
+                                        <label id="fileUploadButton2" class="btn btn-info" style="margin: .2rem; padding: .3rem">
+                                            <i class="fa fa-camera-retro fa-2x"></i>
+                                            <input type="file" id="imgUpload2" capture>
+                                        </label>
+                                        <div class="flexCol centerH">
+                                            <i id="check2" class="uploadStatus fa fa-check-circle"></i>
+                                            <i id="x2" class="fa fa-times-circle"></i>
+                                        </div>
+                                    </div>
+                                    <div class="flexRow centerV" style="width: 100%">
+                                        <label id="fileUploadButton3" class="btn btn-info" style="margin: .2rem; padding: .3rem">
+                                            <i class="fa fa-camera-retro fa-2x"></i>
+                                            <input type="file" id="imgUpload3" capture>
+                                        </label>
+                                        <div class="flexCol centerH">
+                                            <i id="check3" class="uploadStatus fa fa-check-circle"></i>
+                                            <i id="x3" class="fa fa-times-circle"></i>
+                                        </div>
+                                    </div>
+                                </div><br>
                                 
-                                <div class="flexRow spaceAround centerV">
-                                    <button id="imgSave" class="btn btn-primary">저장</button>
+                                <div class="flexRow spaceAround centerV" style="width: 80%">
+                                    <button id="imgSave" class="imgSetting btn btn-primary">저장</button>
                                     <button id="imgRevert" class="imgSetting btn btn-secondary">복구</button>
                                 </div>
                                 

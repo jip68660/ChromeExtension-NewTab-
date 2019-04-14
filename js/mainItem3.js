@@ -1,15 +1,17 @@
-var currFileNum;
-
-var firstfile;
-var secondfile;
-var thirdfile;
-
 $('#dateBox').click(toggle);
 $("#infoBox").click(toggle2);
 $(".imgSetting").click(function() {
     $("#picModal").modal("hide");
 });
 
+$(".coupleImg").click(function() {
+    for (var i = 1; i <= 3; i++) {
+        if ($("#withGF" + i).attr("src") != "img/imgIcon.png") {
+            console.log("ennasdfadsf");
+            $("#check" + i).css("visibility", "visible");
+        }
+    }
+})
 $("#imgUpload1").change(function(e) {
     currFileNum = 1;
     fileUpload(e);
@@ -22,50 +24,20 @@ $("#imgUpload3").change(function(e) {
     currFileNum = 3;
     fileUpload(e);
 });
-
+$("#x1").click(function() {
+    $("#check1").css("visibility", "hidden");
+    deleteImg(1);
+});
+$("#x2").click(function() {
+    $("#check2").css("visibility", "hidden");
+    deleteImg(2);
+});
+$("#x3").click(function() {
+    $("#check3").css("visibility", "hidden");
+    deleteImg(3);
+});
 $("#imgSave").click(saveToDb);
-
 $("#imgRevert").click(revertImg);
-
-// 이미지 추가할때 - hover effect
-$("#betweenPic1").mouseover(function() {
-    if ($("#plus1").css("display") == "inline") {
-        $("#betweenPic1").css("border", "none");
-        $("#betweenPic1").css("background-color", "rgb(200, 200, 200, 0.7)");
-    }
-    $("#betweenPic1").css("cursor", "pointer");
-});
-$("#betweenPic1").mouseleave(function() {
-    if ($("#plus1").css("display") == "inline") {
-        $("#betweenPic1").css("border", "2px solid white");
-        $("#betweenPic1").css("background-color", "rgb(184, 184, 184, 0.5)");
-    }
-});
-$("#betweenPic2").mouseover(function() {
-    if ($("#plus2").css("display") == "inline") {
-        $("#betweenPic2").css("border", "none");
-        $("#betweenPic2").css("background-color", "rgb(200, 200, 200, 0.7)");
-    }
-    $("#betweenPic2").css("cursor", "pointer");
-});
-$("#betweenPic2").mouseleave(function() {
-    if ($("#plus2").css("display") == "inline") {
-        $("#betweenPic2").css("border", "2px solid white");
-        $("#betweenPic2").css("background-color", "rgb(184, 184, 184, 0.5)");
-    }
-});$("#betweenPic3").mouseover(function() {
-    if ($("#plus3").css("display") == "inline") {
-        $("#betweenPic3").css("border", "none");
-        $("#betweenPic3").css("background-color", "rgb(200, 200, 200, 0.7)");
-    }
-    $("#betweenPic3").css("cursor", "pointer");
-});
-$("#betweenPic3").mouseleave(function() {
-    if ($("#plus3").css("display") == "inline") {
-        $("#betweenPic3").css("border", "2px solid white");
-        $("#betweenPic3").css("background-color", "rgb(184, 184, 184, 0.5)");
-    }
-});
 
 $("#anniversaryImg").click(celebrate);
 // var anniversaryDate = ["img/heart.png", "img/100.png", "img/200.png", "img/300.png", "img/1year.png", "img/400.png", "img/500.png", "img/600.png", "img/700.png", "img/2year.png", "img/800.png", "img/900.png", "img/1000.png", "img/3year.png", "img/4year.png", "img/BD_lover.png", "img/BD_user.png"];
@@ -80,10 +52,15 @@ var relDate = new Date(localStorage.relStartDate);
 var year, month, day;
 var lastAnniversaryDate;
 var nextAnniversaryDate;
-// var dateFormat = new Date();
+
+// Database
 let db;
 let dbVersion = 1;
 let dbReady = false;
+var currFileNum;
+var firstfile;
+var secondfile;
+var thirdfile;
 
 $(document).ready(function() {
 
@@ -118,7 +95,6 @@ function checking() {
 
         //open database
         initDb();
-        // preset images if db exists, and length is greater than 0
 
         if (localStorage.background == "img/mainback1.jpg") {
             $(".font-color").css("color", "#303030");
@@ -267,6 +243,7 @@ function celebrate() {
  * Image Upload / Change Couple Pic
  */
 function initDb() {
+
     let request = indexedDB.open("couplePic", dbVersion);
     
     request.onerror = function(e) {
@@ -303,16 +280,20 @@ function fileUpload(e) {
                 created: new Date(),
                 data: bits
             }
+            $("#check1").css("visibility", "visible");
         } else if (currFileNum == 2) {
             secondfile = {
                 created: new Date(),
                 data: bits
             }
+            $("#check2").css("visibility", "visible");
+
         } else if (currFileNum == 3) {
             thirdfile = {
                 created: new Date(),
                 data: bits
             }
+            $("#check3").css("visibility", "visible");
         }
     }
 }
@@ -322,7 +303,7 @@ function saveToDb() {
     let trans = db.transaction(["couplePicOS"], "readwrite");
     let os = trans.objectStore("couplePicOS");
 
-    //add new picture
+    // null check first
     if (firstfile != null) {
         let addReq1 = os.put(firstfile, 1);
         addReq1.onerror = function(e) {
@@ -362,8 +343,6 @@ function saveToDb() {
             fetchFromDb(3);
         }
     }
-    
-    $("#picModal").modal("hide");
 }
 
 function fetchFromDb(index) {
@@ -379,15 +358,14 @@ function fetchFromDb(index) {
         if (record == null) {
             console.log("record null")
             $("#withGF" + index).attr("src", "img/imgIcon.png");
-            $("#icon" + index).removeClass("fa-exchange-alt");
+            $("#icon" + index).removeClass("fa-exchange");
             $("#icon" + index).addClass("fa-plus-circle");
         } else {
             var imgSrcStr = "data:image/jpeg;base64," + btoa(record.data)
             $("#withGF" + index).attr("src", imgSrcStr);
             $("#withGF" + index).show();
-            $("#icon" + idex).removeClass("fa-plus-circle");
-            $("#icon" + index).addClass("fa-exchange-alt");
-            // $("#plus" + index).hide();
+            $("#icon" + index).removeClass("fa-plus-circle");
+            $("#icon" + index).addClass("fa-exchange");
 
             $("#betweenPic" + index).css("border", "none");
             $("#betweenPic" + index).css("background-color", "transparent");
@@ -397,14 +375,20 @@ function fetchFromDb(index) {
 
 function revertImg() {//그냥 objectstore 비우면 됨
     console.log("revertImg");
-    localStorage.couplePicFileName = "";
     let trans = db.transaction(["couplePicOS"], "readwrite");
-    for (var i = 0; i < 3; i++){
-        let req = trans.objectStore("couplePicOS").delete(i);
-        req.onsuccess = function(e) {
-            console.log("deleted objectstore to revert to default img");
-            $("#withGF").attr("src", "img/withGF.png");
-        }
-    }    
-    location.reload();
+    let req = trans.objectStore("couplePicOS").clear();
+    req.onsuccess = function(e) {
+        console.log("deleted objectstore to revert to default img");
+        location.reload();
+    }
+}
+
+function deleteImg(index) {
+    console.log("enter deleteImg");
+    let trans = db.transaction(["couplePicOS"], "readwrite");
+    let req = trans.objectStore("couplePicOS").delete(index);
+    req.onsuccess = function(e) {
+        console.log("deleted objectstore to revert to default img");
+        $("#withGF" + index).attr("src", "img/imgIcon.png");
+    }
 }
