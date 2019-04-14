@@ -212,14 +212,14 @@ body {
     display: flex;
     /* width: 100%;
     height: 100%; */
-    width: 120px;
+    width: 30%;
     height: 100%;
     justify-content: center;
     align-items: center;
     border-radius: 1rem;
   
     position: relative;
-    margin: 0.5rem;
+    /* margin: 0.5rem; */
     overflow: hidden;
 }
 .content .content-overlay {
@@ -310,32 +310,40 @@ body {
         width: 100% !important;
         height: 100%;    
         justify-content: center;  
-        margin-top: -5%;
+        /* margin-top: -5%; */
     }
     #topBox{
         flex-direction: row !important;
         width: 100%;
-        height: 80%;
+        height: 40%;
         align-items: center;
         justify-content: space-evenly;
     }    
+    #middleBox {
+        flex-direction: column;
+        height: 60%;
+        width: 100%;
+    }
+    #middleLeft, #middleRight {
+        width: 100%;
+        height: 50%;
+    }
     #relationshipInfo{
         width: 100%;
         height: 60%;
         justify-content: center;
     }
-    /* #betweenPic {
-        width: 100vw;
-        height: 50vh;
-    } */
     #userName, #loverName {
         font-size: 10vh;
     }
     #dateBox{
-        font-size: 18vw;
+        font-size: 25vw;
     }
     #waitDaysBox, #leftDaysBox{
         font-size: 8vw;
+    }
+    #bottomBox {
+        display: none;
     }
     /* #middleBox, #anniversaryDate, .space{
         display: none !important;
