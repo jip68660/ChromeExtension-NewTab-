@@ -26,9 +26,9 @@ body {
     cursor: pointer;
 }
 
-#lastAnniversaryImg, #nextAnniversaryImg {
+/* #lastAnniversaryImg, #nextAnniversaryImg {
     height: 15vh;
-}
+} */
 #anniversaryImg{
     height: 18vh;
 }
@@ -72,10 +72,15 @@ body {
     display: inline-flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: 0.5rem;
 }
 #relationshipInfo, #progressAnniversary {
     width: 50%;
     height: 100%;
+}
+#relationshipInfo:hover {
+    cursor: pointer;
+    transform: scale(1.03);
 }
 #nameBox {
     width: 100%;
@@ -94,7 +99,7 @@ body {
     height: 50%;
 }
 
-#middleBox {
+/* #middleBox {
     width: 100%;
     height: 30%;
     display: inline-flex;
@@ -104,6 +109,44 @@ body {
 #middleLeft, #middleRight {
     width: 50%;
     height: 100%;
+} */
+
+#relationshipInfoBack {
+    width: 100%;
+    height: 80%;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+#relationshipInfoBack:hover {
+    cursor: pointer;
+    transform: scale(1.03);
+}
+.main3box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 25%;
+    height: 100%;
+    line-height: 1;
+}
+.boxContent {
+    font-size: 1.5rem;
+}
+#daysTogether {
+    background-color: #fbcabb;
+    border-top-left-radius: 0.3rem;
+    border-bottom-left-radius: 0.3rem;
+}
+#relDaysInMil {
+    background-color: #f9b0c3;
+}
+#daysToDischarge {
+    background-color: #e3abce;
+}
+#daysToNextAnni {
+    background-color: #ceb6d9;
+    border-top-right-radius: 0.3rem;
+    border-bottom-right-radius: 0.3rem;
 }
 
 #bottomBox {

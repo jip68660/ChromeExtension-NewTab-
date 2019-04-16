@@ -23,19 +23,54 @@
 
         <!-- <div id = "instruction" class="answer gamja" style="display: none">설정에서 '우리사이'의 정보를 입력해주시기 바랍니다</div> -->
 
-        <div id="pageContent" class="flexCol">
+        <div id="pageContent" class="flexCol centerV">
 
-            <div id="topBox">
-                <div id="relationshipInfo" class="flexCol centerV">
+            <div id="topBox" class="flexCol centerH">
+                <div id="relationshipInfo" class="flexCol centerV animated fadeIn">
                     <div id="nameBox" class="flexRow centerV">
                         <div id="userName"></div>
                         <image src="/img/heart.png" style="height: 8vw">
                         <div id="loverName"></div>
                     </div>
                 </div>
+
+                <div id="relationshipInfoBack" class="flexRow centerH centerV animated fadeIn" style="display: none">
+                    <div id="daysTogether" class="main3box flexCol centerH centerV">
+                        <div class="boxTitle">
+                            우리 이제 사귄지
+                        </div>
+                        <div class="boxContent">
+                            <span id="daysInRel"></span>
+                        </div>
+                    </div>
+                    <div id="relDaysInMil" class="main3box flexCol centerH centerV">
+                        <div class="boxTitle">
+                            군화 & 곰신된지
+                        </div>
+                        <div class="boxContent">
+                            <span id="waitDaysCount"></span>
+                        </div>
+                    </div>
+                    <div id="daysToDischarge" class="main3box flexCol centerH centerV">
+                        <div class="boxTitle">
+                            꽃신까지
+                        </div>
+                        <div class="boxContent">
+                            <span id="leftDaysCount"></span>
+                        </div>
+                    </div>
+                    <div id="daysToNextAnni" class="main3box flexCol centerH centerV">
+                        <div class="boxTitle">
+                            [<span id="nextAnni"></span>]까지
+                        </div>
+                        <div class="boxContent">
+                            <span id="numDaysToNextAnni"></span>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <div id="middleBox" class="flexRow">
+            <!-- <div id="middleBox" class="flexRow" style="display: none">
                 <div id="middleLeft" class="flexCol">
                     <div id="dateBox" class="flexRow centerH centerV">
                         <span id="daysInRel" class="animated rubberBand jua"></span>
@@ -53,15 +88,17 @@
                 <div id="middleRight" class="flexCol centerH centerV">
                     <h5>여기 뭔가 들어가야함</h5>
                 </div>
-                <!-- <div id="lastAnniversary" class="flexRow">
+
+                <div id="lastAnniversary" class="flexRow">
                     <img id="lastAnniversaryImg">
                 </div>
                 <div id="progressAnniversary" class="flexRow">                    
                 </div>
                 <div id="nextAnniversary" class="flexRow">
                     <img id="nextAnniversaryImg">
-                </div> -->
-            </div>
+                </div>
+
+            </div> -->
 
             <div id="bottomBox">
                 <div id="betweenPic1" class="coupleImg flexCol centerV content" data-toggle="modal" data-target="#picModal" data-backdrop="false" data-keyboard="true">

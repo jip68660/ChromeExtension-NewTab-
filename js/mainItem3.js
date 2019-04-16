@@ -1,5 +1,16 @@
-$('#dateBox').click(toggle);
-$("#infoBox").click(toggle2);
+// $('#dateBox').click(toggle);
+// $("#infoBox").click(toggle2);
+$("#relationshipInfo").click(function() {
+    displayDates();
+
+    $("#relationshipInfo").hide();
+    $("#relationshipInfoBack").show();
+});
+$("#relationshipInfoBack").click(function() {
+    $("#relationshipInfoBack").hide();
+    $("#relationshipInfo").show();
+});
+
 $(".imgSetting").click(function() {
     $("#picModal").modal("hide");
 });
@@ -211,26 +222,17 @@ function isValidDate(year, month, day) {
     return false;
 }
 
-function toggle() {
-    $('#dateBox').hide();
-    $('#infoBox').show();
-
+function displayDates() {
     var waitDays = Math.floor((new Date(today.getFullYear(), today.getMonth(), today.getDate()) - new Date(relDate.getFullYear(), relDate.getMonth(), relDate.getDate())) / (1000 * 3600 * 24)) + 1;
     var doneDays = localStorage.wholeDays - localStorage.todoDays;
     if (waitDays > doneDays){
-        $("#waitDaysCount").html(doneDays + "일");
+        $("#waitDaysCount").html("D+" + doneDays);
     }
     else
     {
-        $('#waitDaysCount').html(waitDays + "일");
+        $('#waitDaysCount').html("D+" + waitDays);
     }
-    // $("#waitDaysCount").html(Math.floor((new Date() - new Date(localStorage.relStartDate)) / (1000 * 3600 * 24))+1);
-    $("#leftDaysCount").html(localStorage.todoDays + "일");
-}
-
-function toggle2(){
-    $('#infoBox').hide();
-    $('#dateBox').show();
+    $("#leftDaysCount").html("D-" + localStorage.todoDays);
 }
 
 function celebrate() {
