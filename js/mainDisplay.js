@@ -270,7 +270,7 @@ function checkStorage() {
         // 정보 입력을 받았을 때만 timeoutCheck를 1로 바꿔줘서 3초 딜레이
         timeoutCheck = 1;
         console.log("hit1");
-        $("#defaultBG").css("background-image","url(../img/mainback4.jpg)");
+        $("#defaultBG").css("background-image","url(../img/mainback1.jpg)");
         loadPage();
     } else {
         if (!localStorage.name || !localStorage.identity|| !localStorage.branch || !localStorage.enlistDate) {
@@ -282,7 +282,7 @@ function checkStorage() {
             timeoutCheck = 1;
             localStorage.clear();       
             console.log("hit2");     
-            $("#defaultBG").css("background-image","url(../img/mainback4.jpg)");
+            $("#defaultBG").css("background-image","url(../img/mainback1.jpg)");
             nameCheck();
         }
         else{
@@ -386,7 +386,7 @@ function displayAllFunc() {
     if (!localStorage.background) {
         // 기본 2번째 이미지로 html에서 정해져 있으니까 이렇게 함
         console.log("hit3");
-        localStorage.setItem("background", "img/mainback3.jpg");
+        localStorage.setItem("background", "img/mainback1.jpg");
     }
 
     if (!localStorage.timeOpt) {

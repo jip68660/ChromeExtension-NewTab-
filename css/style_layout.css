@@ -196,6 +196,7 @@ footerRight{
     }
     #mainItemInner{
         height: 100%;
+        padding-top: 5%;
     }
     #mainItem{
         height: 100%;

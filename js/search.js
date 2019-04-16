@@ -164,6 +164,9 @@ function searchUIOpen() {
 
 function searchUIClose() {
   if ($(event.target).hasClass("search") || window.innerWidth <= "643") {
+    if (window.innerWidth <= "643"){
+      isSearchClosed = true;
+    }    
   } 
   else{
   // if(isHeaderWidgetShown == false) {
