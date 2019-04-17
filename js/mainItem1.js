@@ -80,7 +80,7 @@ $(document).ready(function() {
 
         // 배경색에 따른 진행바 색깔 선정
         if (localStorage.background ==  "img/mainback1.jpg") {
-            $("#progressBar").css("background", "#5fc8c8");//teal
+            $("#progressBar").css("background", "#84638F");//teal
         } else if (localStorage.background == "img/mainback2.jpg") {
             $("#progressBar").css("background", "#47d3c3");//teal
         } else if (localStorage.background == "img/mainback3.jpg") {

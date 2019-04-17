@@ -61,7 +61,7 @@ var todayOff = new Date(today - timeZoneOffSet);
 var todayISO = todayOff.toISOString().slice(0,10).replace(/-/g, "");
 var relDate = new Date(localStorage.relStartDate);
 var year, month, day;
-var lastAnniversaryDate;
+// var lastAnniversaryDate;
 var nextAnniversaryDate;
 
 // Database
@@ -120,14 +120,14 @@ function checkAnniversary() {
         var relCal = relDate;
         relCal.setDate(relDate.getDate() + i*100 - 1);
         //array사용하고 나서 그 해당 기념일의 이미지를 어떻게 받을까 고민하다 [기념일날, 기념일이미지이름] 이런식으로 설정함
-        var relCal = [relCal, i*100];
+        var relCal = [relCal, i*100 + "일"];
         anniversaryDateArray.push(relCal);
         relDate = new Date(localStorage.relStartDate);
     }
     //1주년,2주년...4주년까지 추가 -> 4주년 이후로는 그냥 안해도 될꺼같음, 아니면 그 위로는 글귀띄워도 재미있을듯. ex)"결혼하셔야죠 이제"
     for (var i = 1; i<5; i++){
         relCal365 = new Date(relDate.getFullYear() + i, relDate.getMonth(), relDate.getDate());
-        relCal365 = [relCal365, i + "year"];
+        relCal365 = [relCal365, i + "주년"];
         anniversaryDateArray.push(relCal365);
     }    
 
@@ -139,12 +139,12 @@ function checkAnniversary() {
         var lastYearUserBD = new Date(today.getFullYear() - 1, userBD.getMonth(), userBD.getDate());
         var thisYearUserBD = new Date(today.getFullYear(), userBD.getMonth(), userBD.getDate());
         var nextYearUserBD = new Date(today.getFullYear() + 1, userBD.getMonth(), userBD.getDate());
-        lastYearLoverBD = [lastYearLoverBD, "BD"];
-        thisYearLoverBD = [thisYearLoverBD, "BD"];
-        nextYearLoverBD = [nextYearLoverBD, "BD"];
-        lastYearUserBD = [lastYearUserBD, "BD"];
-        thisYearUserBD = [thisYearUserBD, "BD"];
-        nextYearUserBD = [nextYearUserBD, "BD"];
+        lastYearLoverBD = [lastYearLoverBD, "연인생일"];
+        thisYearLoverBD = [thisYearLoverBD, "연인생일"];
+        nextYearLoverBD = [nextYearLoverBD, "연인생일"];
+        lastYearUserBD = [lastYearUserBD, "본인생일"];
+        thisYearUserBD = [thisYearUserBD, "본인생일"];
+        nextYearUserBD = [nextYearUserBD, "본인생일"];
 
         //사귄날이 2019년도인데 2018년도 생일 기념일은 말이 안된다, 그거 계산;
         if (relDate > thisYearLoverBD[0] || relDate > thisYearUserBD[0]){
@@ -168,7 +168,7 @@ function checkAnniversary() {
             anniversaryDateArray.push(nextYearUserBD);
         }
     }
-    //기념일날 전부 string으로 변환
+    // 기념일날 전부 string으로 변환
     for (var i = 0; i < anniversaryDateArray.length; i++){
         var dateFormat = anniversaryDateArray[i][0];
         if(isValidDate(dateFormat.getFullYear(), dateFormat.getMonth(), dateFormat.getDate())){    
@@ -188,22 +188,32 @@ function checkAnniversary() {
         //오늘이 기념일
         if (dateCheck[0] == todayISO){
             // $("#middleBox").hide();
-            $("#anniversaryDate").show();
-            $("#anniversaryImg").attr("src", "/img/" + dateCheck[1] + ".png");
+            // $("#anniversaryDate").show();
+            // $("#anniversaryImg").attr("src", "/img/" + dateCheck[1] + ".png");
+            // $("#nextAnni").html(dateCheck[1]);
+            $("#anniversaryDate").html(dateCheck[1]);
+            celebrate();
+            
             break;
         }
         //전기념일 계산
-        else if (dateCheck[0] < todayISO){
-            lastAnniversaryDate = dateCheck[1];            
-        }
+        // else if (dateCheck[0] < todayISO){
+        //     lastAnniversaryDate = dateCheck[1];            
+        // }
         //다음기념일 계산하고나면, 마지막 전기념일이 전기념일
         else if (dateCheck[0] > todayISO){
+            console.log(dateCheck[0]);
+            var dateNextAnni = new Date(dateCheck[0].slice(0, 4), dateCheck[0].slice(4,6) - 1, dateCheck[0].slice(6,8));
+            var tilNextAnni = Math.floor((dateNextAnni - today) / (1000 * 3600 * 24)) + 1;;
             nextAnniversaryDate = dateCheck[1];    
-            if (lastAnniversaryDate == undefined){
-                lastAnniversaryDate = "heart";
-            }  
-            $("#lastAnniversaryImg").attr("src", "/img/" + lastAnniversaryDate + ".png");
-            $("#nextAnniversaryImg").attr("src", "/img/" + nextAnniversaryDate + ".png");
+            // if (lastAnniversaryDate == undefined){
+            //     lastAnniversaryDate = "heart";
+            // }  
+            // $("#lastAnniversaryImg").attr("src", "/img/" + lastAnniversaryDate + ".png");
+            // $("#nextAnniversaryImg").attr("src", "/img/" + nextAnniversaryDate + ".png");
+            $("#anniversaryDate").hide();
+            $("#nextAnni").html(nextAnniversaryDate + " 까지");
+            $("#numDaysToNextAnni").html("D-" + tilNextAnni);
             break;
         }
     }
@@ -236,9 +246,10 @@ function displayDates() {
 }
 
 function celebrate() {
-    $("#celebrateAnn").show();
-    $('#celebrateAnn').addClass("animated tada");
-    $("#anniversaryDate").css("justify-content", "space-evenly");
+    $("#anniveraryDate").show();
+    $("#anniversaryDate").css("font-size", "1.5rem");
+    $('#anniversaryDate').addClass("animated tada");
+    // $("#anniversaryDate").css("justify-content", "space-evenly");
     // $("#pageContent").css("background-image", "url(/img/firework.png)");
 }
 /**
