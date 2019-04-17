@@ -151,7 +151,7 @@ body {
 
 #bottomBox {
     width: 100%;
-    height: 50%;
+    height: 65%;
     display: inline-flex;
     justify-content: space-around;
     align-items: center;
@@ -175,15 +175,23 @@ body {
     width: 30%;
     /* border: 2px solid white;
     background-color: rgb(184, 184, 184, 0.5); */
-    border-radius: 1rem;
+    /* border-radius: 1rem; */
 }
 .coupleImg:hover {
     cursor: pointer;
 }
-#withGF1, #withGF2, #withGF3 {
+
+.frame {
     width: 100%;
     height: 100%;
+    position: absolute;
+}
+#withGF1, #withGF2, #withGF3 {
+    width: 100%;
+    height: 80%;
     border-radius: 1rem;
+    position: relative;
+    margin-bottom: 20%;
 }
 #withGF1:hover, #withGF2:hover, #withGF3:hover {
     transform: scale(1.05);
@@ -259,7 +267,7 @@ body {
     height: 100%;
     justify-content: center;
     align-items: center;
-    border-radius: 1rem;
+    /* border-radius: 1rem; */
   
     position: relative;
     /* margin: 0.5rem; */
@@ -281,7 +289,7 @@ body {
 }
 .content:hover .content-overlay{
     opacity: 1;
-    border-radius: 1rem;
+    /* border-radius: 1rem; */
 }
 
 .content-image {
@@ -296,7 +304,7 @@ body {
     /* padding-left: 1em;
     padding-right: 1em; */
     width: 100%;
-    top: 50%;
+    top: 45%;
     left: 50%;
     opacity: 0;
     /* -webkit-transform: translate(-50%, -50%);
@@ -307,10 +315,10 @@ body {
     transition: all 0.3s ease-in-out 0s;
 }
 .content:hover .content-details{
-    top: 50%;
+    top: 45%;
     left: 50%;
     opacity: 1;
-    border-radius: 0.3rem;
+    /* border-radius: 0.3rem; */
 }
 .content-details .content-title{
     color: #eeeeee;

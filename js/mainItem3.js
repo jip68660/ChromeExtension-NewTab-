@@ -88,6 +88,8 @@ $(document).ready(function() {
     checking();
     checkAnniversary();
 
+    $(".frame").attr("src", "img/frame.png");
+
 });
 
 function checking() {
@@ -219,11 +221,6 @@ function checkAnniversary() {
     }
 }
 
-// function changeToString(dateFormat) {
-//     dateFormat = dateFormat.toISOString().slice(0,10).replace(/-/g,"");
-//     return dateFormat;
-// }
-
 function isValidDate(year, month, day) {
     var d = new Date(year, month, day);
     if (d.getFullYear() == year && d.getMonth() == month && d.getDate() == day) {
@@ -249,8 +246,6 @@ function celebrate() {
     $("#anniveraryDate").show();
     $("#anniversaryDate").css("font-size", "1.5rem");
     $('#anniversaryDate').addClass("animated tada");
-    // $("#anniversaryDate").css("justify-content", "space-evenly");
-    // $("#pageContent").css("background-image", "url(/img/firework.png)");
 }
 /**
  * Image Upload / Change Couple Pic
@@ -370,7 +365,8 @@ function fetchFromDb(index) {
         // display image
         if (record == null) {
             console.log("record null")
-            $("#withGF" + index).attr("src", "img/imgIcon.png");
+            // $("#withGF" + index).attr("src", "img/imgIcon.png");
+            $("#withGF" + index).css("background-color", "black");
             $("#icon" + index).removeClass("fa-exchange");
             $("#icon" + index).addClass("fa-plus-circle");
         } else {
