@@ -365,8 +365,8 @@ function fetchFromDb(index) {
         // display image
         if (record == null) {
             console.log("record null")
-            // $("#withGF" + index).attr("src", "img/imgIcon.png");
-            $("#withGF" + index).css("background-color", "black");
+            $("#withGF" + index).attr("src", "img/imgIcon2.png");
+            // $("#withGF" + index).css("background-color", "black");
             $("#icon" + index).removeClass("fa-exchange");
             $("#icon" + index).addClass("fa-plus-circle");
         } else {
@@ -398,6 +398,6 @@ function deleteImg(index) {
     let req = trans.objectStore("couplePicOS").delete(index);
     req.onsuccess = function(e) {
         console.log("deleted objectstore to revert to default img");
-        $("#withGF" + index).attr("src", "img/imgIcon.png");
+        $("#withGF" + index).attr("src", "img/imgIcon2.png")
     }
 }
