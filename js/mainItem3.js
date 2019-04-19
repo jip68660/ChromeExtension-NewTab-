@@ -19,7 +19,7 @@ $(".coupleImg").click(function() {
     for (var i = 1; i <= 3; i++) {
         if ($("#withGF" + i).attr("src") != "img/imgIcon.png") {
             console.log("ennasdfadsf");
-            $("#check" + i).css("visibility", "visible");
+            // $("#check" + i).css("visibility", "visible");
         }
     }
 })
@@ -321,7 +321,7 @@ function saveToDb() {
         addReq1.onsuccess = function(e) {
             console.log("데이터 저장 성공");
             console.log(trans.objectStore("couplePicOS"));
-    
+            
             fetchFromDb(1);
         }
     }
@@ -368,7 +368,7 @@ function fetchFromDb(index) {
             $("#withGF" + index).attr("src", "img/imgIcon2.png");
             // $("#withGF" + index).css("background-color", "black");
             $("#icon" + index).removeClass("fa-exchange");
-            $("#icon" + index).addClass("fa-plus-circle");
+            $("#icon" + index).addClass("fa-plus-circle");            
         } else {
             var imgSrcStr = "data:image/jpeg;base64," + btoa(record.data)
             $("#withGF" + index).attr("src", imgSrcStr);
@@ -378,12 +378,15 @@ function fetchFromDb(index) {
 
             $("#betweenPic" + index).css("border", "none");
             $("#betweenPic" + index).css("background-color", "transparent");
+
+            
+            $("#check" + index).css("visibility", "visible");
         }
     }
 }
 
 function revertImg() {//그냥 objectstore 비우면 됨
-    console.log("revertImg");
+    console.log("revertImg");   
     let trans = db.transaction(["couplePicOS"], "readwrite");
     let req = trans.objectStore("couplePicOS").clear();
     req.onsuccess = function(e) {
@@ -393,11 +396,13 @@ function revertImg() {//그냥 objectstore 비우면 됨
 }
 
 function deleteImg(index) {
-    console.log("enter deleteImg");
+    console.log("enter deleteImg"); 
     let trans = db.transaction(["couplePicOS"], "readwrite");
     let req = trans.objectStore("couplePicOS").delete(index);
     req.onsuccess = function(e) {
         console.log("deleted objectstore to revert to default img");
-        $("#withGF" + index).attr("src", "img/imgIcon2.png")
+        $("#withGF" + index).attr("src", "img/imgIcon2.png");
     }
+
+    //우리 delete하고나서 refresh안하고 저장 누르면 계속 삭제한 이미지 계속 나옴.    
 }
