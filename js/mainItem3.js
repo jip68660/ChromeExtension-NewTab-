@@ -1,14 +1,16 @@
 // $('#dateBox').click(toggle);
 // $("#infoBox").click(toggle2);
 $("#relationshipInfo").click(function() {
-    displayDates();
-
-    $("#relationshipInfo").hide();
-    $("#relationshipInfoBack").show();
+    if (window.innerWidth != 272){
+        $("#relationshipInfo").hide();
+        $("#relationshipInfoBack").css("display", "flex");
+    }    
 });
 $("#relationshipInfoBack").click(function() {
-    $("#relationshipInfoBack").hide();
-    $("#relationshipInfo").show();
+    if (window.innerWidth != 272){
+        $("#relationshipInfoBack").hide();
+        $("#relationshipInfo").show();
+    }
 });
 
 $(".imgSetting").click(function() {
@@ -89,6 +91,10 @@ $(document).ready(function() {
     checkAnniversary();
 
     $(".frame").attr("src", "img/frame.png");
+
+    displayDates();    
+    $("#relationshipInfoBack").hide();
+    
 
 });
 
