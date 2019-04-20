@@ -325,6 +325,7 @@ function saveToDb() {
             fetchFromDb(1);
         }
     }
+
     if (secondfile != null) {
         let addReq2 = os.put(secondfile, 2);
         addReq2.onerror = function(e) {
@@ -368,7 +369,8 @@ function fetchFromDb(index) {
             $("#withGF" + index).attr("src", "img/imgIcon2.png");
             // $("#withGF" + index).css("background-color", "black");
             $("#icon" + index).removeClass("fa-exchange");
-            $("#icon" + index).addClass("fa-plus-circle");            
+            $("#icon" + index).addClass("fa-plus-circle");     
+            $("#check" + index).css("visibility", "hidden");       
         } else {
             var imgSrcStr = "data:image/jpeg;base64," + btoa(record.data)
             $("#withGF" + index).attr("src", imgSrcStr);
@@ -391,7 +393,9 @@ function revertImg() {//그냥 objectstore 비우면 됨
     let req = trans.objectStore("couplePicOS").clear();
     req.onsuccess = function(e) {
         console.log("deleted objectstore to revert to default img");
-        location.reload();
+        fetchFromDb(1);
+        fetchFromDb(2);
+        fetchFromDb(3);
     }
 }
 
@@ -402,6 +406,17 @@ function deleteImg(index) {
     req.onsuccess = function(e) {
         console.log("deleted objectstore to revert to default img");
         $("#withGF" + index).attr("src", "img/imgIcon2.png");
+
+        if (index == 1){
+            firstfile = null;
+        }
+        else if (index == 2){
+            secondfile = null;
+        }
+        else {
+            thirdfile = null;
+        }
+
     }
 
     //우리 delete하고나서 refresh안하고 저장 누르면 계속 삭제한 이미지 계속 나옴.    
