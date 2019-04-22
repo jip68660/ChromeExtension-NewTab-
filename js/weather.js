@@ -54,7 +54,8 @@ function displayWeatherInfo(data) {
     $("#weatherInfoArea").show();
     $(".weatherIconImg").hide();
     $("#currTemp").html(Math.round(data.main.temp));
-    $("#tempMinMaxArea").html(data.main.temp_min + " ºC / " + data.main.temp_max + " ºC");
+    $("#tempMinArea").html("최저: " + data.main.temp_min + " ºC");
+    $("#tempMaxArea").html("최고: " + data.main.temp_max + " ºC");
     // $("#tempMin").html("최저: " + data.main.temp_min + " ºC");
     // $("#tempMax").html("최대: " + data.main.temp_max + " ºC");
 

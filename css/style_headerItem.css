@@ -103,6 +103,7 @@
 }
 #weatherDesc {
   height: 50%;
+  font-size: 1.2rem;
 }
 
 #weatherStatsArea {
@@ -119,11 +120,11 @@
 #currTempUnit {
   font-size: 1.5rem;
 }
-#tempMinMaxArea {
-  display: inline-flex;
-  flex-direction: column;
-  height: 50%;
+#tempMinArea, #tempMaxArea {
+  height: 25%;
+  font-size: 0.8rem;
 }
+
 /* #tempMin, #tempMax {
   height: 50%;
 } */
@@ -162,4 +163,10 @@
 }
 .spaceAround {
   justify-content: space-around;
+}
+
+@media (max-width: 643px){
+  #weatherIconArea {
+    visibility: hidden;
+  }
 }
