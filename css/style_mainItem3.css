@@ -185,6 +185,7 @@ body {
     width: 100%;
     height: 100%;
     position: absolute;
+    z-index: 101;
 }
 #withGF1, #withGF2, #withGF3 {
     width: 100%;
@@ -196,16 +197,45 @@ body {
 #withGF1:hover, #withGF2:hover, #withGF3:hover {
     transform: scale(1.05);
 }
+hr {
+    margin: 0;
+    border-top-color: rgb(210, 210, 210);
+}
 .fa-check-circle {
     color: green;
+    background-color: white;
+    border-radius: 50%;
+    width: 1rem;
+    height: 1rem;
 }
-.fa-times-circle {
+.fa-times {
+    color: white;
+    font-size: .8rem;
+    margin: auto;
+    z-index: 100;
+}
+.fa-minus-circle {
+    color: rgb(250, 108, 108);
+    background-color: white;
+    border-radius: 50%;
+    width: 1rem;
+    height: 1rem;
+}
+.fa-circle {
     color: gray;
 }
-.fa-times-circle:hover {
+#close1:hover, #close2:hover, #close3:hover {
     cursor: pointer;
     transform: scale(1.1);
     color: rgb(90, 90, 90);
+}
+.fa-undo {
+    color: white;
+    font-size: 0.9rem;
+}
+.fa-undo:hover, .fa-camera-retro:hover {
+    cursor: pointer;
+    color: rgb(196, 196, 196);
 }
 .imgSetting {
     width: 45%;
@@ -257,6 +287,25 @@ body {
     width: 80%;
     margin: auto;
 }
+#fileUploadButton1, #fileUploadButton2, #fileUploadButton3 {
+    margin: .2rem;
+    padding: .3rem;
+    position: relative;
+}
+#close1, #close2, #close3 {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-top: -.5rem;
+    margin-right: -.5rem;
+}
+#status1, #status2, #status3 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-top: -.5rem;
+    margin-left: -.5rem;
+}
 
 /* overlay effect */
 .content {
@@ -283,6 +332,7 @@ body {
     bottom: 0;
     right: 0;
     opacity: 0;
+    z-index: 100;
     /* -webkit-transition: all 0.4s ease-in-out 0s;
     -moz-transition: all 0.4s ease-in-out 0s; */
     transition: all 0.4s ease-in-out 0s;
@@ -313,6 +363,7 @@ body {
     /* -webkit-transition: all 0.3s ease-in-out 0s;
     -moz-transition: all 0.3s ease-in-out 0s; */
     transition: all 0.3s ease-in-out 0s;
+    z-index: 102;
 }
 .content:hover .content-details{
     top: 45%;
@@ -398,7 +449,9 @@ body {
     .main3box{
         flex-direction: row;
         width: 100%;
-        /* justify-items: space-between; */
+        justify-content: space-between;
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
         /* 작업중 */
 
     }

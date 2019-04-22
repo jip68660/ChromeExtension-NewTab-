@@ -113,7 +113,7 @@
             <div id="mainModal">
                 <div class="modal fade bd-example-modal-sm" id="picModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="height: 100%">
                     <div class="modal-dialog modal-dialog-centered" role="document" style="height: 90%">
-                        <div id="modalContent" class="modal-content" style="height: 60%">
+                        <div id="modalContent" class="modal-content" style="height: 70%">
                             <div class="modal-header">
                                 <h3>이미지 업로드</h3>
                                 <button id="closeImgUpload" type="button" class="close" data-dismiss="modal" aria-label="Close" style="outline: none">
@@ -123,37 +123,76 @@
     
                             <div id="modalBody" class="modal-body flexCol centerH">
 
-                                <div class="flexRow centerV spaceBetween" style="width: 80%">
+                                <div class="flexRow centerV spaceAround" style="width: 70%">
                                     <div class="flexRow centerV" style="width: 100%;">
-                                        <label id="fileUploadButton1" class="btn btn-info" style="margin: .2rem; padding: .3rem">
-                                            <i class="fa fa-camera-retro fa-2x"></i>
-                                            <input type="file" id="imgUpload1" class="imgUpload1" capture>
-                                        </label>
+                                        <div class="flexCol centerH">
+                                            <label id="fileUploadButton1" class="btn btn-info">
+                                                <div>
+                                                    <i class="fa fa-camera-retro fa-2x"></i>
+                                                    <input type="file" id="imgUpload1" class="imgUpload1" capture>
+                                                </div>
+                                                <div id="close1">
+                                                    <i id="x1" class="fa fa-minus-circle"></i>
+                                                </div>
+                                                <div id="status1">
+                                                    <i id="check1" class="uploadStatus fa fa-check-circle"></i>
+                                                </div>
+                                                <!-- <hr>
+                                                <div class="flexRow centerV spaceAround" style="padding-top: .3rem">
+                                                    <i id="rc1" class="fa fa-undo"></i>
+                                                    <i id="rac1" class="fa fa-undo fa-flip-horizontal"></i>
+                                                </div> -->
+                                            </label>
+                                        </div>
                                         <div class="flexCol centerH">
                                             <i id="check1" class="uploadStatus fa fa-check-circle"></i>
-                                            <i id="x1" class="fa fa-times-circle"></i>
                                         </div>
                                     </div>
-                                    <div class="flexRow centerV" style="width: 100%">
-                                        <label id="fileUploadButton2" class="btn btn-info" style="margin: .2rem; padding: .3rem">
-                                            <i class="fa fa-camera-retro fa-2x"></i>
-                                            <input type="file" id="imgUpload2" capture>
-                                        </label>
+
+                                    <div class="flexRow centerV" style="width: 100%;">
                                         <div class="flexCol centerH">
-                                            <i id="check2" class="uploadStatus fa fa-check-circle"></i>
-                                            <i id="x2" class="fa fa-times-circle"></i>
+                                            <label id="fileUploadButton2" class="btn btn-info">
+                                                <div>
+                                                    <i class="fa fa-camera-retro fa-2x"></i>
+                                                    <input type="file" id="imgUpload2" capture>
+                                                </div>
+                                                <div id="close2">
+                                                    <i id="x2" class="fa fa-minus-circle"></i>
+                                                </div>
+                                                <div id="status2">
+                                                    <i id="check2" class="uploadStatus fa fa-check-circle"></i>
+                                                </div>
+                                                <!-- <hr>
+                                                <div class="flexRow centerV spaceAround" style="padding-top: .3rem">
+                                                    <i class="fa fa-undo rotateC"></i>
+                                                    <i class="fa fa-undo fa-flip-horizontal rorateAC"></i>
+                                                </div> -->
+                                            </label>
                                         </div>
                                     </div>
-                                    <div class="flexRow centerV" style="width: 100%">
-                                        <label id="fileUploadButton3" class="btn btn-info" style="margin: .2rem; padding: .3rem">
-                                            <i class="fa fa-camera-retro fa-2x"></i>
-                                            <input type="file" id="imgUpload3" capture>
-                                        </label>
+
+                                    <div class="flexRow centerV" style="width: 100%;">
                                         <div class="flexCol centerH">
-                                            <i id="check3" class="uploadStatus fa fa-check-circle"></i>
-                                            <i id="x3" class="fa fa-times-circle"></i>
+                                            <label id="fileUploadButton3" class="btn btn-info">
+                                                <div>
+                                                    <i class="fa fa-camera-retro fa-2x"></i>
+                                                    <input type="file" id="imgUpload3" capture>
+                                                </div>
+                                                <div id="close3">
+                                                    <i id="x3" class="fa fa-minus-circle"></i>
+                                                </div>
+                                                <div id="status3">
+                                                    <i id="check3" class="uploadStatus fa fa-check-circle"></i>
+                                                </div>
+                                                <!-- <hr>
+                                                <div class="flexRow centerV spaceAround" style="padding-top: .3rem">
+                                                    <i class="fa fa-undo rotateC"></i>
+                                                    <i class="fa fa-undo fa-flip-horizontal rorateAC"></i>
+                                                </div> -->
+                                            </label>
                                         </div>
                                     </div>
+
                                 </div><br>
                                 
                                 <div class="flexRow spaceAround centerV" style="width: 80%">

@@ -37,18 +37,31 @@ $("#imgUpload3").change(function(e) {
     currFileNum = 3;
     fileUpload(e);
 });
-$("#x1").click(function() {
+$("#close1").click(function(e) {
     $("#check1").css("visibility", "hidden");
+    e.preventDefault();
     deleteImg(1);
 });
-$("#x2").click(function() {
+$("#close2").click(function(e) {
     $("#check2").css("visibility", "hidden");
+    e.preventDefault();
     deleteImg(2);
 });
-$("#x3").click(function() {
+$("#close3").click(function(e) {
     $("#check3").css("visibility", "hidden");
+    e.preventDefault();
     deleteImg(3);
 });
+
+// $("#rc1").mousedown(function(e) {
+//     e.preventDefault();
+
+//     var rot1 = localStorage.rot1;
+//     rot1 += 90;
+//     $("#withGF1").css("transform", "rotate(" + rot1 + "deg)");
+//     localStorage.rot1 = rot1;
+// });
+
 $("#imgSave").click(saveToDb);
 $("#imgRevert").click(revertImg);
 
@@ -91,6 +104,7 @@ $(document).ready(function() {
     checkAnniversary();
 
     $(".frame").attr("src", "img/frame.png");
+    // $(".content-image").attr("src", "/img/frame.png");
 
     displayDates();    
     $("#relationshipInfoBack").hide();
@@ -111,6 +125,16 @@ function checking() {
         var daysInRelVal = Math.floor((new Date(today.getFullYear(), today.getMonth() - 1, today.getDate()) - new Date(relDate.getFullYear(), relDate.getMonth() - 1, relDate.getDate())) / (1000 * 3600 * 24)) + 1;
         $("#daysInRel").html("D+" + daysInRelVal);
         $("#infoBox").hide();
+
+        if (!localStorage.rot1) {
+            localStorage.rot1 = 0;
+        }
+        if (!localStorage.rot2) {
+            localStorage.rot2 = 0;
+        }
+        if (!localStorage.rot3) {
+            localStorage.rot3 = 0;
+        }
 
         //open database
         initDb();
@@ -378,7 +402,7 @@ function fetchFromDb(index) {
             $("#icon" + index).addClass("fa-plus-circle");     
             $("#check" + index).css("visibility", "hidden");       
         } else {
-            var imgSrcStr = "data:image/jpeg;base64," + btoa(record.data)
+            var imgSrcStr = "data:image/jpeg;base64," + btoa(record.data);
             $("#withGF" + index).attr("src", imgSrcStr);
             $("#withGF" + index).show();
             $("#icon" + index).removeClass("fa-plus-circle");
