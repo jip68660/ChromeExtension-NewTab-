@@ -80,27 +80,16 @@ $(document).ready(function() {
 
         // 배경색에 따른 진행바 색깔 선정
         if (localStorage.background ==  "img/mainback1.jpg") {
-            $("#progressBar").css("background", "#84638F");//teal
+            $("#progressBar").css("background", "#84638F");
         } else if (localStorage.background == "img/mainback2.jpg") {
-            $("#progressBar").css("background", "#47d3c3");//teal
+            $("#progressBar").css("background", "#47d3c3");
         } else if (localStorage.background == "img/mainback3.jpg") {
-            $("#progressBar").css("background", "#50dc9b");//teal?green?
+            $("#progressBar").css("background", "#50dc9b");
         } else if (localStorage.background == "img/mainback4.jpg") {
-            $("#progressBar").css("background", "#5c93ad");//blue
+            $("#progressBar").css("background", "#5c93ad");
         } else if (localStorage.background == "img/mainback5.jpg") {
-            $("#progressBar").css("background", "#a5a675");//mustard?
+            $("#progressBar").css("background", "#a5a675");
         } 
-        // if (progressBarWidth < 20) {
-        //     $("#progressBar").css("background", "linear-gradient(0.25turn, rgb(67, 198, 172), rgb(54, 179, 154))");
-        // } else if (progressBarWidth < 40) {
-        //     $("#progressBar").css("background", "linear-gradient(0.25turn, rgb(67, 198, 172), rgb(44, 158, 135))");
-        // } else if (progressBarWidth < 60) {
-        //     $("#progressBar").css("background", "linear-gradient(0.25turn, rgb(67, 198, 172), rgb(36, 131, 112)");
-        // } else if (progressBarWidth < 80) {
-        //     $("#progressBar").css("background", "linear-gradient(0.25turn, rgb(67, 198, 172), rgb(28, 109, 93))");
-        // } else {
-        //     $("#progressBar").css("background", "linear-gradient(0.25turn, rgb(67, 198, 172), rgb(18, 88, 74))");
-        // }
         progressBarWidth = progressBarWidth + "%";
 
         $("#progressBar").css("width", progressBarWidth);
@@ -131,19 +120,5 @@ $(document).ready(function() {
         } else if (today.getFullYear() == endDateTime.getFullYear() && today.getMonth() == endDateTime.getMonth() && today.getDate() == endDateTime.getDate()) {//오늘이 전역일
             $("#msgDateOf").html("전역일입니다. 축하합니다!");
         }
-
-        // $("#progressBar").html(progressBarWidth);
-
-        //일단 이 정보 밖으로 빼놔서, comment 시킴.
-        // $('[data-toggle="popover"]').popover({
-        //     trigger: "hover",
-        //     title: "정보",
-        //     content: 
-        //     '<ul style="list-style: none; padding-left: 0"><li>전체 복무일: ' + localStorage.getItem("wholeDays") 
-        //     + '일</li><li>현재 복무일: ' + (localStorage.getItem("wholeDays") - localStorage.getItem("todoDays")) 
-        //     + '일</li><li>남은 복무일: ' + localStorage.getItem("todoDays") 
-        //     + '일</li><li>단축 복무일: ' + localStorage.getItem("reducedDays") + '일</li></ul>',
-        //     html: true
-        // });
     }
 });

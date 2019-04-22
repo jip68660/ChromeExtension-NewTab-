@@ -20,15 +20,7 @@ $("#iframe").on("load",function() {
         pressLeftRight(e);
     });
 
-    iframeContent.find("#anniversaryDate").mouseover(function() {        
-        // $("mainMiddle").addClass("animated pulse");  
+    iframeContent.find("#anniversaryDate").mouseover(function() {   
         $("mainMiddle").css("background-image", "url(/img/firework.png)");
     });
 });
-
-// $("#iframe").contents().find("#toRankSettingsButton").click(function() {
-//     alert("hi");
-//     presetSettings();
-//     $("#settingsModal").modal("show");
-//     setDefaultSettingsTab(2);
-// });

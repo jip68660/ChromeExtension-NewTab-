@@ -47,17 +47,12 @@ function onError(err) {
     bootbox.alert("현재 위치를 가져올수 없습니다.</br> 날씨정보를 이용하려면 현재위치 사용을 허용해주세요");
 }
 
-function displayWeatherInfo(data) {
-
-    // console.log(data);
-    
+function displayWeatherInfo(data) {    
     $("#weatherInfoArea").show();
     $(".weatherIconImg").hide();
     $("#currTemp").html(Math.round(data.main.temp));
     $("#tempMinArea").html("최저: " + data.main.temp_min + " ºC");
     $("#tempMaxArea").html("최고: " + data.main.temp_max + " ºC");
-    // $("#tempMin").html("최저: " + data.main.temp_min + " ºC");
-    // $("#tempMax").html("최대: " + data.main.temp_max + " ºC");
 
     var desc = data.weather[0].description;
     let sunrise = data.sys.sunrise;

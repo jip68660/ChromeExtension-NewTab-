@@ -4,13 +4,6 @@ var leftCountStr = "번";
 //전역일 오전 9시를 기준으로 잡음
 var endDate = new Date(localStorage.endDateYear, localStorage.endDateMonth - 1, localStorage.endDateDate, 9, 0, 0, 0);
 
-// $("#re").mouseenter(function(){
-//     $("#remainContentImg").removeClass("animated flipInX");
-//     $('#nextRandom').mousedown(nextRandomContent);
-// });
-
-// $('#nextRandom').mousedown(nextRandomContent);
-
 $("#remainContent").click(function() {
     if (!$("#leftCount").hasClass("animated rubberBand")) {
         $("#leftCount").addClass("animated rubberBand");
@@ -33,7 +26,6 @@ $(document).ready(function() {
     });
 
     $("#remainContentImg").attr("src", remainContentArr[randomInd]);
-    // $("#remainContentImg").css("width", "45%");
     leftCountCal(randomInd); 
 });
 
@@ -186,8 +178,6 @@ function nextRandomContent(){
         randomIndNext = Math.floor(Math.random() * remainContentArr.length);
     }
     randomInd = randomIndNext;
-    // $("#remainContentImg").addClass("animated flipInX");
     $("#remainContentImg").attr("src", remainContentArr[randomInd]);
-
     leftCountCal(randomInd);
 }

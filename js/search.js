@@ -23,11 +23,10 @@ var targetUrlBaidu = "https://www.baidu.com/s?wd=";
 var targetUrlBing = "https://www.bing.com/search?q=";
 var targetUrl;
 
-document.getElementById("searchBar").addEventListener("keyup", onEnterPressed);
+$("#searchBar").keyup(onEnterPressed);
 $(window).click(searchUIClose);
 $(".search").click(searchUIOpen);
 $("#engineLogo").click(searchEngineChange);
-// $("#engineLogo").dblclick(searchEngineHome);//지금은 클릭이랑 충돌나서 안 먹어요
 
 $(window).on("resize", function() {
   if(window.innerWidth < "643") {
@@ -39,7 +38,7 @@ $(window).on("resize", function() {
 });
 
 function onEnterPressed() {
-  urlString = document.getElementById("searchBar").value;
+  urlString = $("#searchBar").val();
 
   if(event.which==13 || event.keycode==13) {
     if (urlString == "") {
@@ -117,10 +116,6 @@ function searchUIOpen() {
     $("#engineLogo").attr("src", currEngineLink);
 
     if(isSearchClosed) {
-      // if(window.innerWidth * 2 <= screen.width) {
-      // $("#timeUI").hide();
-      // isHeaderWidgetShown = false;
-      // }
       searchIco.style.display = "none";
       if (window.innerWidth < "643"){
         searchUI.style.width = "90vw";
@@ -144,22 +139,7 @@ function searchUIOpen() {
           search();
         }
       });
-
-      // if (isSearchClosed) {
-      //   $("#searchIconImg").click(function() {
-      //     if(searchBar.value != ""){
-      //       search();
-      //     }
-      //   });
-      // } else {
-      //   $("#searchIconImg").click(function() {
-      //     if(searchBar.value == ""){
-      //       searchEngineHome();
-      //     }
-      //   });
-      // }
-    }
-  
+    }  
 }
 
 function searchUIClose() {
@@ -169,10 +149,6 @@ function searchUIClose() {
     }    
   } 
   else{
-  // if(isHeaderWidgetShown == false) {
-  //   $("#timeUI").show();
-  //   isHeaderWidgetShown = true;
-  // }
     searchEngine.style.display = "none";
     searchBar.style.display = "none";
     searchBar.style.width = "0px";
