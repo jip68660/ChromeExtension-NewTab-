@@ -8,8 +8,6 @@
 }
 .content {
     display: flex;
-    /* width: 100%;
-    height: 100%; */
     width: 45vw;
     justify-content: center;
     align-items: center;
@@ -29,8 +27,6 @@
     bottom: 0;
     right: 0;
     opacity: 0;
-    /* -webkit-transition: all 0.4s ease-in-out 0s;
-    -moz-transition: all 0.4s ease-in-out 0s; */
     transition: all 0.4s ease-in-out 0s;
 }
 .content:hover .content-overlay{
@@ -42,17 +38,11 @@
 .content-details {
     position: absolute;
     text-align: center;
-    /* padding-left: 1em;
-    padding-right: 1em; */
     width: 100%;
     top: 50%;
     left: 50%;
     opacity: 0;
-    /* -webkit-transform: translate(-50%, -50%);
-    -moz-transform: translate(-50%, -50%); */
     transform: translate(-50%, -50%);
-    /* -webkit-transition: all 0.3s ease-in-out 0s;
-    -moz-transition: all 0.3s ease-in-out 0s; */
     transition: all 0.3s ease-in-out 0s;
 }
 .content:hover .content-details{
@@ -65,7 +55,6 @@
 .content-details span{
   color: #eeeeee;
   font-weight: 500;
-  /* letter-spacing: 0.15em; */
 }
 
 .fadeIn-bottom{
@@ -77,10 +66,6 @@
     width: 100%;
     border-radius: 0.3rem;
 }
-/* .content-image:hover {
-    cursor: pointer;
-    transform: scale(1.02);
-} */
 
 #title{
     font-size: 5vw;
@@ -99,19 +84,8 @@
     height: 100%;
     justify-content: center;
     align-items: center;
-    /* margin-left: 30px; */
 }
 
-/* #nextRandom {
-    position: fixed;
-    right: 0px;
-    bottom: 0px;
-    right: 100px;
-    bottom: 50px;
-}
-#nextRandom:hover{
-    cursor: pointer;
-} */
 .middle {
     display: flex;
     align-items: center;
@@ -119,7 +93,6 @@
     flex-direction: column;
 }
 
-/* @media (max-width: 560px) and (min-height: 400px){ */
 @media (max-height: 280px) {
     body{
         height: 280px;
@@ -139,9 +112,7 @@
     }
     .content{
         width: 90vw;
-        justify-content: center !important;
-        /* 대충 mainItem1이랑 mainItem3랑 높이 맞춤 */
-        
+        justify-content: center !important;        
     }
     .content-image{
         height: 100%;

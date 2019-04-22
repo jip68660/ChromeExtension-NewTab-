@@ -36,9 +36,6 @@ mainMiddle {
     outline: none;
     border: none;
 }
-/* .relStartInput:focus, .relStartInput::selection, .enlistInput:focus, .enlistInput::selection {
-    outline: none;
-} */
 .relStartInput:not(:disabled), .enlistInput:not(:disabled){
     color: white;
 }
@@ -46,19 +43,7 @@ mainMiddle {
     color: rgba(77, 77, 77, 0.918);
 }
 .selected {
-    /* outline: 2px solid #007bff;
-    outline-offset: -2px; */
-
-    /* border: 2px solid #007bff; */
-
-    /* border: transparent 1px;
-    border-radius: 10%;
-    margin: 15px;
-    box-shadow: 0px 0px 0px 2px #007bff inset; */
-
     outline: none;
-    /* box-shadow: inset 0px 0px 0px 3px #007bff; */
-    /* background-color: rgb(250, 206, 124); */
     background-color: #007bff;
     box-shadow: inset 0 0 0.5rem white;
     border: 2px solid white;
@@ -86,9 +71,6 @@ mainMiddle {
     align-items: center;
     width: 60%;
 }
-/* #girlfriendInput {
-    display: inline-flex;
-} */
 
 @keyframes fadeOutLeftInit {
     from {
@@ -173,9 +155,7 @@ mainMiddle {
     margin: auto !important;
     text-align: center !important;
 }
-/* #nameIn{
-    margin-top: 25%;
-} */
+
 #nameInput, #loverNameInput{
     padding: 10px;
     text-align: center;
