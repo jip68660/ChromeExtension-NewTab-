@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
-  "name": "New Tab Extension",
-  "short_name": "New Tab",
+  "name": "짭탭-전역일계산기",
+  "short_name": "짬탭",
   "version": "1.0",
 
   "icons": [
