@@ -20,7 +20,7 @@ $(".imgSetting").click(function() {
 $(".coupleImg").click(function() {
     for (var i = 1; i <= 3; i++) {
         if ($("#withGF" + i).attr("src") != "img/imgIcon.png") {
-            console.log("ennasdfadsf");
+            //console.log("ennasdfadsf");
             // $("#check" + i).css("visibility", "visible");
         }
     }
@@ -211,7 +211,7 @@ function checkAnniversary() {
     }
     //기념일날 기준으로 sort
     anniversaryDateArray.sort();
-    console.log(anniversaryDateArray);
+    //console.log(anniversaryDateArray);
 
     //오늘기준으로 기념일인지, 전 기념일은 뭔지, 다음 기념일은 뭔지 계산 및 보여주기
     for (var i = 0; i < anniversaryDateArray.length; i++) {
@@ -234,7 +234,7 @@ function checkAnniversary() {
         // }
         //다음기념일 계산하고나면, 마지막 전기념일이 전기념일
         else if (dateCheck[0] > todayISO){
-            console.log(dateCheck[0]);
+            //console.log(dateCheck[0]);
             var dateNextAnni = new Date(dateCheck[0].slice(0, 4), dateCheck[0].slice(4,6) - 1, dateCheck[0].slice(6,8));
             var tilNextAnni = Math.floor((dateNextAnni - today) / (1000 * 3600 * 24)) + 1;;
             nextAnniversaryDate = dateCheck[1];    
@@ -285,12 +285,12 @@ function initDb() {
     let request = indexedDB.open("couplePic", dbVersion);
     
     request.onerror = function(e) {
-        console.error("데이터베이스를 열수 없습니다.");
+        // console.error("데이터베이스를 열수 없습니다.");
     }
     request.onsuccess = function(e) {
         db = e.target.result;
-        console.log("데이터베이스를 열었습니다.");
-        console.log(db);
+        //console.log("데이터베이스를 열었습니다.");
+        //console.log(db);
 
         let trans = db.transaction(["couplePicOS"], "readonly");
         
@@ -307,7 +307,7 @@ function initDb() {
 }
 
 function fileUpload(e) {
-    console.log(e);
+    //console.log(e);
     let file = e.target.files[0];
     var reader = new FileReader();
     reader.readAsBinaryString(file);
@@ -345,12 +345,12 @@ function saveToDb() {
     if (firstfile != null) {
         let addReq1 = os.put(firstfile, 1);
         addReq1.onerror = function(e) {
-            console.log("데이터 저장 오류");
-            console.error(e);
+            //console.log("데이터 저장 오류");
+            // console.error(e);
         }
         addReq1.onsuccess = function(e) {
-            console.log("데이터 저장 성공");
-            console.log(trans.objectStore("couplePicOS"));
+            //console.log("데이터 저장 성공");
+            //console.log(trans.objectStore("couplePicOS"));
             
             fetchFromDb(1);
         }
@@ -359,12 +359,12 @@ function saveToDb() {
     if (secondfile != null) {
         let addReq2 = os.put(secondfile, 2);
         addReq2.onerror = function(e) {
-            console.log("데이터 저장 오류");
-            console.error(e);
+            //console.log("데이터 저장 오류");
+            //console.error(e);
         }
         addReq2.onsuccess = function(e) {
-            console.log("데이터 저장 성공");
-            console.log(trans.objectStore("couplePicOS"));
+            //console.log("데이터 저장 성공");
+            //console.log(trans.objectStore("couplePicOS"));
     
             fetchFromDb(2);
         }
@@ -372,12 +372,12 @@ function saveToDb() {
     if (thirdfile != null) {
         let addReq3 = os.put(thirdfile, 3);
         addReq3.onerror = function(e) {
-            console.log("데이터 저장 오류");
-            console.error(e);
+            //console.log("데이터 저장 오류");
+            // console.error(e);
         }
         addReq3.onsuccess = function(e) {
-            console.log("데이터 저장 성공");
-            console.log(trans.objectStore("couplePicOS"));
+            //console.log("데이터 저장 성공");
+            //console.log(trans.objectStore("couplePicOS"));
     
             fetchFromDb(3);
         }
@@ -385,17 +385,17 @@ function saveToDb() {
 }
 
 function fetchFromDb(index) {
-    console.log("fetching from DB");
+    //console.log("fetching from DB");
     let trans = db.transaction(["couplePicOS"], "readonly");
     req = trans.objectStore("couplePicOS").get(index);
-    // console.log(trans.objectStore("couplePicOS").get("key1"));
+    //console.log(trans.objectStore("couplePicOS").get("key1"));
     req.onsuccess = function(e) {
         let record = e.target.result;
-        console.log("성공", record);
+        //console.log("성공", record);
 
         // display image
         if (record == null) {
-            console.log("record null")
+            //console.log("record null")
             $("#withGF" + index).attr("src", "img/imgIcon2.png");
             // $("#withGF" + index).css("background-color", "black");
             $("#icon" + index).removeClass("fa-exchange");
@@ -418,11 +418,11 @@ function fetchFromDb(index) {
 }
 
 function revertImg() {//그냥 objectstore 비우면 됨
-    console.log("revertImg");   
+    //console.log("revertImg");   
     let trans = db.transaction(["couplePicOS"], "readwrite");
     let req = trans.objectStore("couplePicOS").clear();
     req.onsuccess = function(e) {
-        console.log("deleted objectstore to revert to default img");
+        //console.log("deleted objectstore to revert to default img");
         fetchFromDb(1);
         fetchFromDb(2);
         fetchFromDb(3);
@@ -430,11 +430,11 @@ function revertImg() {//그냥 objectstore 비우면 됨
 }
 
 function deleteImg(index) {
-    console.log("enter deleteImg"); 
+    //console.log("enter deleteImg"); 
     let trans = db.transaction(["couplePicOS"], "readwrite");
     let req = trans.objectStore("couplePicOS").delete(index);
     req.onsuccess = function(e) {
-        console.log("deleted objectstore to revert to default img");
+        //console.log("deleted objectstore to revert to default img");
         $("#withGF" + index).attr("src", "img/imgIcon2.png");
 
         if (index == 1){

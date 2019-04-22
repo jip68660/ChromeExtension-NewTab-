@@ -49,7 +49,7 @@ function onError(err) {
 
 function displayWeatherInfo(data) {
 
-    console.log(data);
+    // console.log(data);
     
     $("#weatherInfoArea").show();
     $(".weatherIconImg").hide();
