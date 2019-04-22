@@ -212,246 +212,217 @@ function onLoverNameInEnd() {
         }, 1000);
     }
 }
+// var mouseLocation, mouseDown;
 
+// // 년도 선택
+// function currRelStartYPlus() {
+//     mouseDown = true;
+//     $("#upPointerRelStart1").mouseup(function () {
+//         mouseDown = false;
+//         return false;
+//     });
+//     if (mouseDown) {
+//         mouseLocation = true;
+//         $(document).mousemove(function (event) {
+//             if (event.target != upPointerRelStartBtn1)
+//                 mouseLocation = false;
+//         });
+//         setTimeout(function () {
+//             setTimeout(currRelStartYPlusAuto, 100);
+//         }, 1000);
+//     }
 
+//     return false;
+// }
+// function currRelStartYPlusAuto() {
+//     $("#upPointerRelStart1").mouseup(function () {
+//         mouseDown = false;
+//     });
+//     $(document).mousemove(function (event) {
+//         if (event.target != upPointerRelStartBtn1)
+//             mouseLocation = false;
+//     });
+//     if (mouseLocation && mouseDown) {
+//         $("#relStartYInput").val(++currRelStartY);
+//         setTimeout(currRelStartYPlusAuto, 100);
+//     }
+// }
+// function currRelStartYMinus() {
+//     mouseDown = true;
+//     $("#downPointerRelStart1").mouseup(function () {
+//         mouseDown = false;
+//         return false;
+//     });
+//     if (mouseDown) {
+//         mouseLocation = true;
+//         $(document).mousemove(function (event) {
+//             if (event.target != downPointerRelStartBtn1)
+//                 mouseLocation = false;
+//         });
+//         setTimeout(function () {
+//             setTimeout(currRelStartYMinusAuto, 100);
+//         }, 1000);
+//     }
 
+//     return false;
+// }
+// function currRelStartYMinusAuto() {
+//     $("#downPointerRelStart1").mouseup(function () {
+//         mouseDown = false;
+//     });
+//     $(document).mousemove(function (event) {
+//         if (event.target != downPointerRelStartBtn1)
+//             mouseLocation = false;
+//     });
+//     if (mouseLocation && mouseDown) {
+//         $("#relStartYInput").val(--currRelStartY);
+//         setTimeout(currRelStartYMinusAuto, 100);
+//     }
+// }
 
+// // 월 선택
+// function currRelStartMPlus() {
+//     mouseDown = true;
+//     $("#upPointerRelStart2").mouseup(function () {
+//         mouseDown = false;
+//         return false;
+//     });
+//     if (mouseDown) {
+//         mouseLocation = true;
+//         $(document).mousemove(function (event) {
+//             if (event.target != upPointerRelStartBtn2)
+//                 mouseLocation = false;
+//         });
+//         setTimeout(function () {
+//             setTimeout(currRelStartMPlusAuto, 100);
+//         }, 1000);
+//     }
 
+//     return false;
+// }
+// function currRelStartMPlusAuto() {
+//     $("#upPointerRelStart2").mouseup(function () {
+//         mouseDown = false;
+//     });
+//     $(document).mousemove(function (event) {
+//         if (event.target != upPointerRelStartBtn2)
+//             mouseLocation = false;
+//     });
+//     if (mouseLocation && mouseDown) {
+//         if (currRelStartM == 12) {
+//             currRelStartM = 0;
+//         }
+//         $("#relStartMInput").val(++currRelStartM);
+//         setTimeout(currRelStartMPlusAuto, 100);
+//     }
+// }
+// function currRelStartMMinus() {
+//     mouseDown = true;
+//     $("#downPointerRelStart2").mouseup(function () {
+//         mouseDown = false;
+//         return false;
+//     });
+//     if (mouseDown) {
+//         mouseLocation = true;
+//         $(document).mousemove(function (event) {
+//             if (event.target != downPointerRelStartBtn2)
+//                 mouseLocation = false;
+//         });
+//         setTimeout(function () {
+//             setTimeout(currRelStartMMinusAuto, 100);
+//         }, 1000);
+//     }
 
+//     return false;
+// }
+// function currRelStartMMinusAuto() {
+//     $("#downPointerRelStart2").mouseup(function () {
+//         mouseDown = false;
+//     });
+//     $(document).mousemove(function (event) {
+//         if (event.target != downPointerRelStartBtn2)
+//             mouseLocation = false;
+//     });
+//     if (mouseLocation && mouseDown) {
+//         if (currRelStartM == 1) {
+//             currRelStartM = 13;
+//         }
+//         $("#relStartMInput").val(--currRelStartM);
+//         setTimeout(currRelStartMMinusAuto, 100);
+//     }
+// }
 
+// // 일 선택
+// function currRelStartDPlus() {
+//     mouseDown = true;
+//     $("#upPointerRelStart3").mouseup(function () {
+//         mouseDown = false;
+//         return false;
+//     });
+//     if (mouseDown) {
+//         mouseLocation = true;
+//         $(document).mousemove(function (event) {
+//             if (event.target != upPointerRelStartBtn3)
+//                 mouseLocation = false;
+//         });
+//         setTimeout(function () {
+//             setTimeout(currRelStartDPlusAuto, 100);
+//         }, 1000);
+//     }
 
+//     return false;
+// }
+// function currRelStartDPlusAuto() {
+//     $("#upPointerRelStart3").mouseup(function () {
+//         mouseDown = false;
+//     });
+//     $(document).mousemove(function (event) {
+//         if (event.target != upPointerRelStartBtn3)
+//             mouseLocation = false;
+//     });
+//     if (mouseLocation && mouseDown) {
+//         if (currRelStartD == 31) {
+//             currRelStartD = 0;
+//         }
+//         $("#relStartDInput").val(++currRelStartD);
+//         setTimeout(currRelStartDPlusAuto, 100);
+//     }
+// }
+// function currRelStartDMinus() {
+//     mouseDown = true;
+//     $("#downPointerRelStart3").mouseup(function () {
+//         mouseDown = false;
+//         return false;
+//     });
+//     if (mouseDown) {
+//         mouseLocation = true;
+//         $(document).mousemove(function (event) {
+//             if (event.target != downPointerRelStartBtn3)
+//                 mouseLocation = false;
+//         });
+//         setTimeout(function () {
+//             setTimeout(currRelStartDMinusAuto, 100);
+//         }, 1000);
+//     }
 
-
-
-
-
-
-
-/* GET THE START DATE OF THE RELATIONSHIP, FOR GF AND SOLDIER W/ GF */
-/** TODO
- * 입대일 받는거처럼 바꿔주기
- * */
-
-
-
-
-
-
-
-
-
-
-var mouseLocation, mouseDown;
-
-// 년도 선택
-function currRelStartYPlus() {
-    mouseDown = true;
-    $("#upPointerRelStart1").mouseup(function () {
-        mouseDown = false;
-        return false;
-    });
-    if (mouseDown) {
-        mouseLocation = true;
-        $(document).mousemove(function (event) {
-            if (event.target != upPointerRelStartBtn1)
-                mouseLocation = false;
-        });
-        setTimeout(function () {
-            setTimeout(currRelStartYPlusAuto, 100);
-        }, 1000);
-    }
-
-    return false;
-}
-function currRelStartYPlusAuto() {
-    $("#upPointerRelStart1").mouseup(function () {
-        mouseDown = false;
-    });
-    $(document).mousemove(function (event) {
-        if (event.target != upPointerRelStartBtn1)
-            mouseLocation = false;
-    });
-    if (mouseLocation && mouseDown) {
-        $("#relStartYInput").val(++currRelStartY);
-        setTimeout(currRelStartYPlusAuto, 100);
-    }
-}
-function currRelStartYMinus() {
-    mouseDown = true;
-    $("#downPointerRelStart1").mouseup(function () {
-        mouseDown = false;
-        return false;
-    });
-    if (mouseDown) {
-        mouseLocation = true;
-        $(document).mousemove(function (event) {
-            if (event.target != downPointerRelStartBtn1)
-                mouseLocation = false;
-        });
-        setTimeout(function () {
-            setTimeout(currRelStartYMinusAuto, 100);
-        }, 1000);
-    }
-
-    return false;
-}
-function currRelStartYMinusAuto() {
-    $("#downPointerRelStart1").mouseup(function () {
-        mouseDown = false;
-    });
-    $(document).mousemove(function (event) {
-        if (event.target != downPointerRelStartBtn1)
-            mouseLocation = false;
-    });
-    if (mouseLocation && mouseDown) {
-        $("#relStartYInput").val(--currRelStartY);
-        setTimeout(currRelStartYMinusAuto, 100);
-    }
-}
-
-// 월 선택
-function currRelStartMPlus() {
-    mouseDown = true;
-    $("#upPointerRelStart2").mouseup(function () {
-        mouseDown = false;
-        return false;
-    });
-    if (mouseDown) {
-        mouseLocation = true;
-        $(document).mousemove(function (event) {
-            if (event.target != upPointerRelStartBtn2)
-                mouseLocation = false;
-        });
-        setTimeout(function () {
-            setTimeout(currRelStartMPlusAuto, 100);
-        }, 1000);
-    }
-
-    return false;
-}
-function currRelStartMPlusAuto() {
-    $("#upPointerRelStart2").mouseup(function () {
-        mouseDown = false;
-    });
-    $(document).mousemove(function (event) {
-        if (event.target != upPointerRelStartBtn2)
-            mouseLocation = false;
-    });
-    if (mouseLocation && mouseDown) {
-        if (currRelStartM == 12) {
-            currRelStartM = 0;
-        }
-        $("#relStartMInput").val(++currRelStartM);
-        setTimeout(currRelStartMPlusAuto, 100);
-    }
-}
-function currRelStartMMinus() {
-    mouseDown = true;
-    $("#downPointerRelStart2").mouseup(function () {
-        mouseDown = false;
-        return false;
-    });
-    if (mouseDown) {
-        mouseLocation = true;
-        $(document).mousemove(function (event) {
-            if (event.target != downPointerRelStartBtn2)
-                mouseLocation = false;
-        });
-        setTimeout(function () {
-            setTimeout(currRelStartMMinusAuto, 100);
-        }, 1000);
-    }
-
-    return false;
-}
-function currRelStartMMinusAuto() {
-    $("#downPointerRelStart2").mouseup(function () {
-        mouseDown = false;
-    });
-    $(document).mousemove(function (event) {
-        if (event.target != downPointerRelStartBtn2)
-            mouseLocation = false;
-    });
-    if (mouseLocation && mouseDown) {
-        if (currRelStartM == 1) {
-            currRelStartM = 13;
-        }
-        $("#relStartMInput").val(--currRelStartM);
-        setTimeout(currRelStartMMinusAuto, 100);
-    }
-}
-
-// 일 선택
-function currRelStartDPlus() {
-    mouseDown = true;
-    $("#upPointerRelStart3").mouseup(function () {
-        mouseDown = false;
-        return false;
-    });
-    if (mouseDown) {
-        mouseLocation = true;
-        $(document).mousemove(function (event) {
-            if (event.target != upPointerRelStartBtn3)
-                mouseLocation = false;
-        });
-        setTimeout(function () {
-            setTimeout(currRelStartDPlusAuto, 100);
-        }, 1000);
-    }
-
-    return false;
-}
-function currRelStartDPlusAuto() {
-    $("#upPointerRelStart3").mouseup(function () {
-        mouseDown = false;
-    });
-    $(document).mousemove(function (event) {
-        if (event.target != upPointerRelStartBtn3)
-            mouseLocation = false;
-    });
-    if (mouseLocation && mouseDown) {
-        if (currRelStartD == 31) {
-            currRelStartD = 0;
-        }
-        $("#relStartDInput").val(++currRelStartD);
-        setTimeout(currRelStartDPlusAuto, 100);
-    }
-}
-function currRelStartDMinus() {
-    mouseDown = true;
-    $("#downPointerRelStart3").mouseup(function () {
-        mouseDown = false;
-        return false;
-    });
-    if (mouseDown) {
-        mouseLocation = true;
-        $(document).mousemove(function (event) {
-            if (event.target != downPointerRelStartBtn3)
-                mouseLocation = false;
-        });
-        setTimeout(function () {
-            setTimeout(currRelStartDMinusAuto, 100);
-        }, 1000);
-    }
-
-    return false;
-}
-function currRelStartDMinusAuto() {
-    $("#downPointerRelStart3").mouseup(function () {
-        mouseDown = false;
-    });
-    $(document).mousemove(function (event) {
-        if (event.target != downPointerRelStartBtn3)
-            mouseLocation = false;
-    });
-    if (mouseLocation && mouseDown) {
-        if (currRelStartD == 1) {
-            currRelStartD = 31;
-        }
-        $("#relStartDInput").val(--currRelStartD);
-        setTimeout(currRelStartDMinusAuto, 100);
-    }
-}
+//     return false;
+// }
+// function currRelStartDMinusAuto() {
+//     $("#downPointerRelStart3").mouseup(function () {
+//         mouseDown = false;
+//     });
+//     $(document).mousemove(function (event) {
+//         if (event.target != downPointerRelStartBtn3)
+//             mouseLocation = false;
+//     });
+//     if (mouseLocation && mouseDown) {
+//         if (currRelStartD == 1) {
+//             currRelStartD = 31;
+//         }
+//         $("#relStartDInput").val(--currRelStartD);
+//         setTimeout(currRelStartDMinusAuto, 100);
+//     }
+// }
 
 /* relStartDATE */
 function relStartDateCheck() {
@@ -477,16 +448,16 @@ function relStartDateCheck() {
     // year update
     $("#relStartYInput").val(currRelStartY);
     $("#relStartYInput").select();
-    setTimeout(function() { $('#relStartYInput').focus() }, 1000);
+    // setTimeout(function() { $('#relStartYInput').focus() }, 1000);
 
-    $("#upPointerRelStart1").mousedown(function(){
-        $("#relStartYInput").val(++currRelStartY);
-        currRelStartYPlus();
-    });
-    $("#downPointerRelStart1").mousedown(function(){
-        $("#relStartYInput").val(--currRelStartY);
-        currRelStartYMinus();
-    });       
+    // $("#upPointerRelStart1").mousedown(function(){
+    //     $("#relStartYInput").val(++currRelStartY);
+    //     currRelStartYPlus();
+    // });
+    // $("#downPointerRelStart1").mousedown(function(){
+    //     $("#relStartYInput").val(--currRelStartY);
+    //     currRelStartYMinus();
+    // });       
     $("#relStartY").keydown(function(){
         if (event.which == 38 || event.keycode == 38) {
             $("#relStartYInput").val(++currRelStartY);
@@ -503,23 +474,23 @@ function relStartDateCheck() {
 
     // month update
     $("#relStartMInput").val(currRelStartM);
-    $("#relStartMInput").select();
-    $("#upPointerRelStart2").mousedown(function(){
-        $("#relStartMInput").val(++currRelStartM);
-        if (currRelStartM > 12){
-            currRelStartM = 0;
-            $("#relStartMInput").val(++currRelStartM);
-        }
-        currRelStartMPlus();
-    });
-    $("#downPointerRelStart2").mousedown(function(){
-        $("#relStartMInput").val(--currRelStartM );
-        if (currRelStartM <= 0){
-            currRelStartM = 13;
-            $("#relStartMInput").val(--currRelStartM);
-        }
-        currRelStartMMinus();
-    });
+    // $("#relStartMInput").select();
+    // $("#upPointerRelStart2").mousedown(function(){
+    //     $("#relStartMInput").val(++currRelStartM);
+    //     if (currRelStartM > 12){
+    //         currRelStartM = 0;
+    //         $("#relStartMInput").val(++currRelStartM);
+    //     }
+    //     currRelStartMPlus();
+    // });
+    // $("#downPointerRelStart2").mousedown(function(){
+    //     $("#relStartMInput").val(--currRelStartM );
+    //     if (currRelStartM <= 0){
+    //         currRelStartM = 13;
+    //         $("#relStartMInput").val(--currRelStartM);
+    //     }
+    //     currRelStartMMinus();
+    // });
     $("#relStartM").keydown(function(){
         if (event.which == 38 || event.keycode == 38){
             $("#relStartMInput").val(++currRelStartM);
@@ -548,25 +519,25 @@ function relStartDateCheck() {
 
     // date update
     $("#relStartDInput").val(currRelStartD);
-    $("#relStartDInput").select();
-    $("#upPointerRelStart3").mousedown(function(){
-        $("#relStartDInput").val(++currRelStartD);
-        if (currRelStartD > 31){
-            currRelStartD = 0;
-            $("#relStartDInput").val(++currRelStartD);
-            // $("#relStartDInput").val("  " + ++currRelStartD);
-        }
-        currRelStartDPlus();
-    });
-    $("#downPointerRelStart3").mousedown(function(){
-        $("#relStartDInput").val(--currRelStartD);
-        if (currRelStartD <= 0){
-            currRelStartD = 32;
-            $("#relStartDInput").val(--currRelStartD);
-            // $("#relStartDInput").val("  " + --currRelStartD);
-        }
-        currRelStartDMinus();
-    });
+    // $("#relStartDInput").select();
+    // $("#upPointerRelStart3").mousedown(function(){
+    //     $("#relStartDInput").val(++currRelStartD);
+    //     if (currRelStartD > 31){
+    //         currRelStartD = 0;
+    //         $("#relStartDInput").val(++currRelStartD);
+    //         // $("#relStartDInput").val("  " + ++currRelStartD);
+    //     }
+    //     currRelStartDPlus();
+    // });
+    // $("#downPointerRelStart3").mousedown(function(){
+    //     $("#relStartDInput").val(--currRelStartD);
+    //     if (currRelStartD <= 0){
+    //         currRelStartD = 32;
+    //         $("#relStartDInput").val(--currRelStartD);
+    //         // $("#relStartDInput").val("  " + --currRelStartD);
+    //     }
+    //     currRelStartDMinus();
+    // });
     $("#relStartD").keydown(function(){
         if (event.which == 38 || event.keycode == 38){
             $("#relStartDInput").val(++currRelStartD);
@@ -686,19 +657,6 @@ function onRelStartDateInEnd(relStartDateStr) {
     }, 1000);
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* BRANCH */
 function branchCheck() {
     $("#branchIn").show();
@@ -788,217 +746,217 @@ function onBranchInEnd() {
     }, 1000);
 }
 
-var mouseLocation, mouseDown;
+// var mouseLocation, mouseDown;
 
-// 년도 선택
-function currEnlistYPlus() {
-    mouseDown = true;
-    $("#upPointerEnlist1").mouseup(function () {
-        mouseDown = false;
-        return false;
-    });
-    if (mouseDown) {
-        mouseLocation = true;
-        $(document).mousemove(function (event) {
-            if (event.target != upPointerEnlistBtn1)
-                mouseLocation = false;
-        });
-        setTimeout(function () {
-            setTimeout(currEnlistYPlusAuto, 100);
-        }, 1000);
-    }
+// // 년도 선택
+// function currEnlistYPlus() {
+//     mouseDown = true;
+//     $("#upPointerEnlist1").mouseup(function () {
+//         mouseDown = false;
+//         return false;
+//     });
+//     if (mouseDown) {
+//         mouseLocation = true;
+//         $(document).mousemove(function (event) {
+//             if (event.target != upPointerEnlistBtn1)
+//                 mouseLocation = false;
+//         });
+//         setTimeout(function () {
+//             setTimeout(currEnlistYPlusAuto, 100);
+//         }, 1000);
+//     }
 
-    return false;
-}
-function currEnlistYPlusAuto() {
-    $("#upPointerEnlist1").mouseup(function () {
-        mouseDown = false;
-    });
-    $(document).mousemove(function (event) {
-        if (event.target != upPointerEnlistBtn1)
-            mouseLocation = false;
-    });
-    if (mouseLocation && mouseDown) {
-        $("#enlistYInput").val(++currEnlistY);
-        setTimeout(currEnlistYPlusAuto, 100);
-    }
-}
-function currEnlistYMinus() {
-    mouseDown = true;
-    $("#downPointerEnlist1").mouseup(function () {
-        mouseDown = false;
-        return false;
-    });
-    if (mouseDown) {
-        mouseLocation = true;
-        $(document).mousemove(function (event) {
-            if (event.target != downPointerEnlistBtn1)
-                mouseLocation = false;
-        });
-        setTimeout(function () {
-            setTimeout(currEnlistYMinusAuto, 100);
-        }, 1000);
-    }
+//     return false;
+// }
+// function currEnlistYPlusAuto() {
+//     $("#upPointerEnlist1").mouseup(function () {
+//         mouseDown = false;
+//     });
+//     $(document).mousemove(function (event) {
+//         if (event.target != upPointerEnlistBtn1)
+//             mouseLocation = false;
+//     });
+//     if (mouseLocation && mouseDown) {
+//         $("#enlistYInput").val(++currEnlistY);
+//         setTimeout(currEnlistYPlusAuto, 100);
+//     }
+// }
+// function currEnlistYMinus() {
+//     mouseDown = true;
+//     $("#downPointerEnlist1").mouseup(function () {
+//         mouseDown = false;
+//         return false;
+//     });
+//     if (mouseDown) {
+//         mouseLocation = true;
+//         $(document).mousemove(function (event) {
+//             if (event.target != downPointerEnlistBtn1)
+//                 mouseLocation = false;
+//         });
+//         setTimeout(function () {
+//             setTimeout(currEnlistYMinusAuto, 100);
+//         }, 1000);
+//     }
 
-    return false;
-}
-function currEnlistYMinusAuto() {
-    $("#downPointerEnlist1").mouseup(function () {
-        mouseDown = false;
-    });
-    $(document).mousemove(function (event) {
-        if (event.target != downPointerEnlistBtn1)
-            mouseLocation = false;
-    });
-    if (mouseLocation && mouseDown) {
-        $("#enlistYInput").val(--currEnlistY);
-        setTimeout(currEnlistYMinusAuto, 100);
-    }
-}
+//     return false;
+// }
+// function currEnlistYMinusAuto() {
+//     $("#downPointerEnlist1").mouseup(function () {
+//         mouseDown = false;
+//     });
+//     $(document).mousemove(function (event) {
+//         if (event.target != downPointerEnlistBtn1)
+//             mouseLocation = false;
+//     });
+//     if (mouseLocation && mouseDown) {
+//         $("#enlistYInput").val(--currEnlistY);
+//         setTimeout(currEnlistYMinusAuto, 100);
+//     }
+// }
 
-// 월 선택
-function currEnlistMPlus() {
-    mouseDown = true;
-    $("#upPointerEnlist2").mouseup(function () {
-        mouseDown = false;
-        return false;
-    });
-    if (mouseDown) {
-        mouseLocation = true;
-        $(document).mousemove(function (event) {
-            if (event.target != upPointerEnlistBtn2)
-                mouseLocation = false;
-        });
-        setTimeout(function () {
-            setTimeout(currEnlistMPlusAuto, 100);
-        }, 1000);
-    }
+// // 월 선택
+// function currEnlistMPlus() {
+//     mouseDown = true;
+//     $("#upPointerEnlist2").mouseup(function () {
+//         mouseDown = false;
+//         return false;
+//     });
+//     if (mouseDown) {
+//         mouseLocation = true;
+//         $(document).mousemove(function (event) {
+//             if (event.target != upPointerEnlistBtn2)
+//                 mouseLocation = false;
+//         });
+//         setTimeout(function () {
+//             setTimeout(currEnlistMPlusAuto, 100);
+//         }, 1000);
+//     }
 
-    return false;
-}
-function currEnlistMPlusAuto() {
-    $("#upPointerEnlist2").mouseup(function () {
-        mouseDown = false;
-    });
-    $(document).mousemove(function (event) {
-        if (event.target != upPointerEnlistBtn2)
-            mouseLocation = false;
-    });
-    if (mouseLocation && mouseDown) {
-        if (currEnlistM == 12) {
-            currEnlistM = 0;
-        }
-        $("#enlistMInput").val(++currEnlistM);
-        setTimeout(currEnlistMPlusAuto, 100);
-    }
-}
-function currEnlistMMinus() {
-    mouseDown = true;
-    $("#downPointerEnlist2").mouseup(function () {
-        mouseDown = false;
-        return false;
-    });
-    if (mouseDown) {
-        mouseLocation = true;
-        $(document).mousemove(function (event) {
-            if (event.target != downPointerEnlistBtn2)
-                mouseLocation = false;
-        });
-        setTimeout(function () {
-            setTimeout(currEnlistMMinusAuto, 100);
-        }, 1000);
-    }
+//     return false;
+// }
+// function currEnlistMPlusAuto() {
+//     $("#upPointerEnlist2").mouseup(function () {
+//         mouseDown = false;
+//     });
+//     $(document).mousemove(function (event) {
+//         if (event.target != upPointerEnlistBtn2)
+//             mouseLocation = false;
+//     });
+//     if (mouseLocation && mouseDown) {
+//         if (currEnlistM == 12) {
+//             currEnlistM = 0;
+//         }
+//         $("#enlistMInput").val(++currEnlistM);
+//         setTimeout(currEnlistMPlusAuto, 100);
+//     }
+// }
+// function currEnlistMMinus() {
+//     mouseDown = true;
+//     $("#downPointerEnlist2").mouseup(function () {
+//         mouseDown = false;
+//         return false;
+//     });
+//     if (mouseDown) {
+//         mouseLocation = true;
+//         $(document).mousemove(function (event) {
+//             if (event.target != downPointerEnlistBtn2)
+//                 mouseLocation = false;
+//         });
+//         setTimeout(function () {
+//             setTimeout(currEnlistMMinusAuto, 100);
+//         }, 1000);
+//     }
 
-    return false;
-}
-function currEnlistMMinusAuto() {
-    $("#downPointerEnlist2").mouseup(function () {
-        mouseDown = false;
-    });
-    $(document).mousemove(function (event) {
-        if (event.target != downPointerEnlistBtn2)
-            mouseLocation = false;
-    });
-    if (mouseLocation && mouseDown) {
-        if (currEnlistM == 1) {
-            currEnlistM = 13;
-        }
-        $("#enlistMInput").val(--currEnlistM);
-        setTimeout(currEnlistMMinusAuto, 100);
-    }
-}
+//     return false;
+// }
+// function currEnlistMMinusAuto() {
+//     $("#downPointerEnlist2").mouseup(function () {
+//         mouseDown = false;
+//     });
+//     $(document).mousemove(function (event) {
+//         if (event.target != downPointerEnlistBtn2)
+//             mouseLocation = false;
+//     });
+//     if (mouseLocation && mouseDown) {
+//         if (currEnlistM == 1) {
+//             currEnlistM = 13;
+//         }
+//         $("#enlistMInput").val(--currEnlistM);
+//         setTimeout(currEnlistMMinusAuto, 100);
+//     }
+// }
 
-// 일 선택
-function currEnlistDPlus() {
-    mouseDown = true;
-    $("#upPointerEnlist3").mouseup(function () {
-        mouseDown = false;
-        return false;
-    });
-    if (mouseDown) {
-        mouseLocation = true;
-        $(document).mousemove(function (event) {
-            if (event.target != upPointerEnlistBtn3)
-                mouseLocation = false;
-        });
-        setTimeout(function () {
-            setTimeout(currEnlistDPlusAuto, 100);
-        }, 1000);
-    }
+// // 일 선택
+// function currEnlistDPlus() {
+//     mouseDown = true;
+//     $("#upPointerEnlist3").mouseup(function () {
+//         mouseDown = false;
+//         return false;
+//     });
+//     if (mouseDown) {
+//         mouseLocation = true;
+//         $(document).mousemove(function (event) {
+//             if (event.target != upPointerEnlistBtn3)
+//                 mouseLocation = false;
+//         });
+//         setTimeout(function () {
+//             setTimeout(currEnlistDPlusAuto, 100);
+//         }, 1000);
+//     }
 
-    return false;
-}
-function currEnlistDPlusAuto() {
-    $("#upPointerEnlist3").mouseup(function () {
-        mouseDown = false;
-    });
-    $(document).mousemove(function (event) {
-        if (event.target != upPointerEnlistBtn3)
-            mouseLocation = false;
-    });
-    if (mouseLocation && mouseDown) {
-        if (currEnlistD == 31) {
-            currEnlistD = 0;
-        }
-        $("#enlistDInput").val(++currEnlistD);
-        setTimeout(currEnlistDPlusAuto, 100);
-    }
-}
-function currEnlistDMinus() {
-    mouseDown = true;
-    $("#downPointerEnlist3").mouseup(function () {
-        mouseDown = false;
-        return false;
-    });
-    if (mouseDown) {
-        mouseLocation = true;
-        $(document).mousemove(function (event) {
-            if (event.target != downPointerEnlistBtn3)
-                mouseLocation = false;
-        });
-        setTimeout(function () {
-            setTimeout(currEnlistDMinusAuto, 100);
-        }, 1000);
-    }
+//     return false;
+// }
+// function currEnlistDPlusAuto() {
+//     $("#upPointerEnlist3").mouseup(function () {
+//         mouseDown = false;
+//     });
+//     $(document).mousemove(function (event) {
+//         if (event.target != upPointerEnlistBtn3)
+//             mouseLocation = false;
+//     });
+//     if (mouseLocation && mouseDown) {
+//         if (currEnlistD == 31) {
+//             currEnlistD = 0;
+//         }
+//         $("#enlistDInput").val(++currEnlistD);
+//         setTimeout(currEnlistDPlusAuto, 100);
+//     }
+// }
+// function currEnlistDMinus() {
+//     mouseDown = true;
+//     $("#downPointerEnlist3").mouseup(function () {
+//         mouseDown = false;
+//         return false;
+//     });
+//     if (mouseDown) {
+//         mouseLocation = true;
+//         $(document).mousemove(function (event) {
+//             if (event.target != downPointerEnlistBtn3)
+//                 mouseLocation = false;
+//         });
+//         setTimeout(function () {
+//             setTimeout(currEnlistDMinusAuto, 100);
+//         }, 1000);
+//     }
 
-    return false;
-}
-function currEnlistDMinusAuto() {
-    $("#downPointerEnlist3").mouseup(function () {
-        mouseDown = false;
-    });
-    $(document).mousemove(function (event) {
-        if (event.target != downPointerEnlistBtn3)
-            mouseLocation = false;
-    });
-    if (mouseLocation && mouseDown) {
-        if (currEnlistD == 1) {
-            currEnlistD = 31;
-        }
-        $("#enlistDInput").val(--currEnlistD);
-        setTimeout(currEnlistDMinusAuto, 100);
-    }
-}
+//     return false;
+// }
+// function currEnlistDMinusAuto() {
+//     $("#downPointerEnlist3").mouseup(function () {
+//         mouseDown = false;
+//     });
+//     $(document).mousemove(function (event) {
+//         if (event.target != downPointerEnlistBtn3)
+//             mouseLocation = false;
+//     });
+//     if (mouseLocation && mouseDown) {
+//         if (currEnlistD == 1) {
+//             currEnlistD = 31;
+//         }
+//         $("#enlistDInput").val(--currEnlistD);
+//         setTimeout(currEnlistDMinusAuto, 100);
+//     }
+// }
 
 /* ENLISTDATE */
 function enlistDateCheck() {
@@ -1014,16 +972,16 @@ function enlistDateCheck() {
     // year update
     $("#enlistYInput").val(currEnlistY);
     $("#enlistYInput").select();
-    setTimeout(function() { $('#enlistYInput').focus() }, 1000);
+    // setTimeout(function() { $('#enlistYInput').focus() }, 1000);
 
-    $("#upPointerEnlist1").mousedown(function(){
-        $("#enlistYInput").val(++currEnlistY);
-        currEnlistYPlus();
-    });
-    $("#downPointerEnlist1").mousedown(function(){
-        $("#enlistYInput").val(--currEnlistY);
-        currEnlistYMinus();
-    });       
+    // $("#upPointerEnlist1").mousedown(function(){
+    //     $("#enlistYInput").val(++currEnlistY);
+    //     currEnlistYPlus();
+    // });
+    // $("#downPointerEnlist1").mousedown(function(){
+    //     $("#enlistYInput").val(--currEnlistY);
+    //     currEnlistYMinus();
+    // });       
     $("#enlistY").keydown(function(){
         if (event.which == 38 || event.keycode == 38) {
             $("#enlistYInput").val(++currEnlistY);
@@ -1040,23 +998,23 @@ function enlistDateCheck() {
 
     // month update
     $("#enlistMInput").val(currEnlistM);
-    $("#enlistMInput").select();
-    $("#upPointerEnlist2").mousedown(function(){
-        $("#enlistMInput").val(++currEnlistM);
-        if (currEnlistM > 12){
-            currEnlistM = 0;
-            $("#enlistMInput").val(++currEnlistM);
-        }
-        currEnlistMPlus();
-    });
-    $("#downPointerEnlist2").mousedown(function(){
-        $("#enlistMInput").val(--currEnlistM );
-        if (currEnlistM <= 0){
-            currEnlistM = 13;
-            $("#enlistMInput").val(--currEnlistM);
-        }
-        currEnlistMMinus();
-    });
+    // $("#enlistMInput").select();
+    // $("#upPointerEnlist2").mousedown(function(){
+    //     $("#enlistMInput").val(++currEnlistM);
+    //     if (currEnlistM > 12){
+    //         currEnlistM = 0;
+    //         $("#enlistMInput").val(++currEnlistM);
+    //     }
+    //     currEnlistMPlus();
+    // });
+    // $("#downPointerEnlist2").mousedown(function(){
+    //     $("#enlistMInput").val(--currEnlistM );
+    //     if (currEnlistM <= 0){
+    //         currEnlistM = 13;
+    //         $("#enlistMInput").val(--currEnlistM);
+    //     }
+    //     currEnlistMMinus();
+    // });
     $("#enlistM").keydown(function(){
         if (event.which == 38 || event.keycode == 38){
             $("#enlistMInput").val(++currEnlistM);
@@ -1085,25 +1043,25 @@ function enlistDateCheck() {
 
     // date update
     $("#enlistDInput").val(currEnlistD);
-    $("#enlistDInput").select();
-    $("#upPointerEnlist3").mousedown(function(){
-        $("#enlistDInput").val(++currEnlistD);
-        if (currEnlistD > 31){
-            currEnlistD = 0;
-            $("#enlistDInput").val(++currEnlistD);
-            // $("#enlistDInput").val("  " + ++currEnlistD);
-        }
-        currEnlistDPlus();
-    });
-    $("#downPointerEnlist3").mousedown(function(){
-        $("#enlistDInput").val(--currEnlistD);
-        if (currEnlistD <= 0){
-            currEnlistD = 32;
-            $("#enlistDInput").val(--currEnlistD);
-            // $("#enlistDInput").val("  " + --currEnlistD);
-        }
-        currEnlistDMinus();
-    });
+    // $("#enlistDInput").select();
+    // $("#upPointerEnlist3").mousedown(function(){
+    //     $("#enlistDInput").val(++currEnlistD);
+    //     if (currEnlistD > 31){
+    //         currEnlistD = 0;
+    //         $("#enlistDInput").val(++currEnlistD);
+    //         // $("#enlistDInput").val("  " + ++currEnlistD);
+    //     }
+    //     currEnlistDPlus();
+    // });
+    // $("#downPointerEnlist3").mousedown(function(){
+    //     $("#enlistDInput").val(--currEnlistD);
+    //     if (currEnlistD <= 0){
+    //         currEnlistD = 32;
+    //         $("#enlistDInput").val(--currEnlistD);
+    //         // $("#enlistDInput").val("  " + --currEnlistD);
+    //     }
+    //     currEnlistDMinus();
+    // });
     $("#enlistD").keydown(function(){
         if (event.which == 38 || event.keycode == 38){
             $("#enlistDInput").val(++currEnlistD);
@@ -1222,7 +1180,7 @@ function onEnlistDateInEnd(enlistDateStr) {
     }, 1000);
 }
 
-//인터넷에서 긁어온거라 변경요망
+//check whether date input is valid
 function isValidDate(year, month, day) {
     var d = new Date(year, month, day);
     if (d.getFullYear() == year && d.getMonth() == month && d.getDate() == day) {
