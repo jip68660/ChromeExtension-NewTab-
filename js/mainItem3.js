@@ -213,7 +213,6 @@ function checkAnniversary() {
     }
     //기념일날 기준으로 sort
     anniversaryDateArray.sort();
-    console.log(anniversaryDateArray);
 
     //오늘기준으로 기념일인지, 전 기념일은 뭔지, 다음 기념일은 뭔지 계산 및 보여주기
     for (var i = 0; i < anniversaryDateArray.length; i++) {

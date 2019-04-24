@@ -343,11 +343,7 @@ function displayAllFunc() {
     $(".widget").css("visibility","visible");
     $("#timeColon").show();
    
-    var imgUrl = "url(" + localStorage.background + ")";
-    if (localStorage.background == "img/mainback1.jpg") {
-        $(".font-color").css("color", "#303030");
-        $("#searchUI").css("box-shadow", "0px 0px 5px #505050");
-    }    
+    var imgUrl = "url(" + localStorage.background + ")";    
     $("#defaultBG").css("background-image", imgUrl);
     
     var dDayCount = "D-" + localStorage.todoDays + "일!";

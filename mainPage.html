@@ -49,7 +49,7 @@
         <div id="weatherUI" class="widget jua font-color">
 
           <div id="toWeatherSettings" style="display: none">
-            <button id="toWeatherSettingsButton" class="btn btn-primary">설정에서 날씨 활성화</button>
+            <button id="toWeatherSettingsButton" class="btn btn-primary fitBGborder">설정에서 날씨 활성화</button>
           </div>
 
           <div id="weatherInfoArea" style="display: none">
@@ -288,15 +288,15 @@
             <div class="modal fade bd-example-modal-sm" id="settingsModal" tabindex="-1" role="dialog" aria-hidden="true" style="height: 100%">
                 <div class="modal-dialog modal-dialog-centered" role="document" style="height: 90%">
                   <div id="modalContent" class="modal-content" style="height: 80%">
-                    <div class="modal-header poor main">
+                    <div class="modal-header poor main fitBGborder">
 
                       <!-- html 탭 -->
                       <ul class="nav nav-tabs">
                         <li class="nav-item hideSave" id="aboutTab"><a class="nav-link settingsMain" href="#settingsAbout" id="aboutTabLink">정보</a></li> 
-                        <li class="nav-item showSave"><a class="nav-link settingsMain" href="#settings">설정</a></li>
-                        <li class="nav-item showSave"><a class="nav-link settingsMain" href="#settingsInfo">사용자 정보변경</a></li>
-                        <li class="nav-item showSave"><a class="nav-link settingsMain" href="#settingsBG">배경화면</a></li>
-                        <li class="nav-item showSave"><a class="nav-link settingsMain" href="#settingsLove" id="settingsRelTab">우리사이</a></li>
+                        <li class="nav-item showSave"><a class="nav-link settingsMain fitColor" href="#settings">설정</a></li>
+                        <li class="nav-item showSave"><a class="nav-link settingsMain fitColor" href="#settingsInfo">사용자 정보변경</a></li>
+                        <li class="nav-item showSave"><a class="nav-link settingsMain fitColor" href="#settingsBG">배경화면</a></li>
+                        <li class="nav-item showSave"><a class="nav-link settingsMain fitColor" href="#settingsLove" id="settingsRelTab">우리사이</a></li>
                       </ul>
 
                       <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="outline: none">
@@ -443,9 +443,9 @@
                                     <hr>
                                     <div class="settingsContent">
                                       <input type="radio" id="12hrButton" name="timeRadioSettings" value="12hr" class="radioButton">
-                                      <label id="label12hrButton" for="12hrButton">12시간</label>
+                                      <label id="label12hrButton" class="fitBG" for="12hrButton">12시간</label>
                                       <input type="radio" id="24hrButton" name="timeRadioSettings" value="24hr" class="radioButton">
-                                      <label id="label24hrButton" for="24hrButton">24시간</label>
+                                      <label id="label24hrButton" class="fitBG" for="24hrButton">24시간</label>
                                     </div>
                                   </div><br>
                                   
@@ -666,7 +666,7 @@
 
                       </div>
                     <div id="modalFooter" class="modal-footer poor">
-                      <button id="saveSettings" type="button" class="btn btn-primary" data-dismiss="modal">저장</button>
+                      <button id="saveSettings" type="button" class="btn btn-primary fitBGborder" data-dismiss="modal">저장</button>
                     </div>
                   </div>
                 </div>
@@ -678,7 +678,7 @@
             <div class="modal fade bd-example-modal-sm" id="settingsSubModal" tabindex="-1" role="dialog" aria-hidden="true" style="height: 100%">
               <div class="modal-dialog modal-dialog-centered" role="document" style="height: 90%">
                 <div id="subModalContent" class="modal-content" style="height: 80%">
-                  <div class="modal-header poor sub">
+                  <div class="modal-header poor sub fitBGborder">
 
                     <!-- html 탭 -->
                     <ul class="nav nav-tabs">
@@ -1585,6 +1585,7 @@
     <script type="text/javascript" src="js/endDateCalc.js"></script>
     <script type="text/javascript" src="js/init.js"></script>
     <script type="text/javascript" src="js/settings.js"></script>
+    <script type="text/javascript" src="js/changeTheme.js"></script>
     <script type="text/javascript" src="js/mainDisplay.js"></script>
     <script src="js/overIframe.js"></script>
     <!-- mainDisplay.js should be at the bottom. i want to have this call methods in other js files declared above -->

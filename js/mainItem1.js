@@ -17,10 +17,6 @@ $(document).ready(function() {
     $("body").css({
         "text-align": "center"
     });
-    if (localStorage.background == "img/mainback1.jpg") {
-        $(".font-color").css("color", "#303030");
-        $("#progress").css("border", "2px solid #8e8e8e");
-    }
     var rankImage = ["img/soldier_PV2.png", "img/soldier_PFC.png", "img/soldier_CPL.png", "img/soldier_SGT.png"];
     var soldierName = localStorage.name;
     var endDateStr = localStorage.endDateYear + "년 " + localStorage.endDateMonth + "월 " + localStorage.endDateDate + "일까지"
@@ -78,9 +74,13 @@ $(document).ready(function() {
         $("#endDateDisplay").html(endDateStr);
         $("#dDayDisplay").html(dDayCount);
 
-        // 배경색에 따른 진행바 색깔 선정
+        // 배경색에 따른 테마 색깔 선정
         if (localStorage.background ==  "img/mainback1.jpg") {
-            $("#progressBar").css("background", "#84638F");
+            $("#progressBar").css("background", "#84638F");            
+            $(".font-color").css("color", "#303030");
+            $("#progress").css("border", "2px solid #8e8e8e");
+            $("#toRankSettingsButton").css("background-color", "#84638F");
+            $("#toRankSettingsButton").css("border-color", "#84638F");
         } else if (localStorage.background == "img/mainback2.jpg") {
             $("#progressBar").css("background", "#47d3c3");
         } else if (localStorage.background == "img/mainback3.jpg") {
