@@ -275,12 +275,19 @@ mainMiddle {
     border-bottom: 1px solid #c7c7c7;
 }
 
+.bootbox-alert > .modal-dialog > .modal-content > .modal-body > button{
+    display: none;
+}
+
 .bootbox-alert > .modal-dialog > .modal-content > .modal-footer {
     padding: 0.25rem;
-    width: 70%;
+    /* width: 70%; */
 }
 
 .bootbox-alert > .modal-dialog > .modal-content > .modal-footer > .btn-primary {
+    text-indent: -40%;
+    white-space: nowrap;
+    overflow: hidden;
     visibility: hidden;
 }
 .bootbox-alert > .modal-dialog > .modal-content > .modal-footer > .btn-primary:after {
@@ -307,11 +314,18 @@ mainMiddle {
     border-bottom: 1px solid #c7c7c7;
 }
 
+.bootbox-confirm > .modal-dialog > .modal-content > .modal-body > button{
+    display: none;
+}
+
 .bootbox-confirm > .modal-dialog > .modal-content > .modal-footer {
     padding: 0.25rem;
 }
 
 .bootbox-confirm > .modal-dialog > .modal-content > .modal-footer > .btn-default {
+    text-indent: -60%;
+    white-space: nowrap;
+    overflow: hidden;
     visibility: hidden;
 }
 .bootbox-confirm > .modal-dialog > .modal-content > .modal-footer > .btn-default:after {
@@ -320,6 +334,9 @@ mainMiddle {
 }
 
 .bootbox-confirm > .modal-dialog > .modal-content > .modal-footer > .btn-primary {
+    text-indent: -40%;
+    white-space: nowrap;
+    overflow: hidden;
     visibility: hidden;
 }
 .bootbox-confirm > .modal-dialog > .modal-content > .modal-footer > .btn-primary:after {

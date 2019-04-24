@@ -167,6 +167,6 @@ hr {
     min-width: 471px;
     overflow-y: overlay; 
 }
-.modal-footer {
+#modalFooter {
     min-width: 471px;
 }

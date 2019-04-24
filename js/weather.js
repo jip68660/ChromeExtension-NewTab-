@@ -49,8 +49,6 @@ function onError(err) {
 
 function displayWeatherInfo(data) {    
 
-    console.log(data);
-
     $("#weatherInfoArea").show();
     $(".weatherIconImg").hide();
     $("#currTemp").html(Math.round(data.main.temp));
