@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-    <!-- <link rel="stylesheet" href="css/style.css"> -->
     <link rel="stylesheet" href="css/style_layout.css">        
     <link rel="stylesheet" href="css/style_headerItem.css"> 
     <link rel="stylesheet" href="css/style_mainContainer.css">
@@ -19,11 +18,7 @@
   </head>
 
   <body id="defaultBG" style="overflow: hidden">
-    <!-- style.css 에서 background세팅법 설정해놨는데, 바꾸면 화면 background 안들어감 -->
-    <!-- <img src="img/mainback2.jpg" name="backImg" id="backImg"> -->
-
     <div id="wrapper">
-
       <!-- HEADER -->
       <headerLeft>
         <!-- 시계 -->
@@ -59,21 +54,16 @@
 
           <div id="weatherInfoArea" style="display: none">
             <div id="weatherIconArea" style="float: left">
-              <div id="weatherIcon">
-                <!-- <span id="weatherSun"><i class="fa fa-sun fa-3x weatherImg"></i></span>
-                <span id="weatherClouds"><i class="fa fa-sun fa-3x weatherImg"></i></span>
-                <span id="weatherShower"><i class="fa fa-sun fa-3x weatherImg"></i></span>
-                <span id="weatherRain"><i class="fa fa-sun fa-3x weatherImg"></i></span>
-                <span id="weatherStorm"><i class="fa fa-sun fa-3x weatherImg"></i></span>
-                <span id="weatherSnow"><i class="fa fa-sun fa-3x weatherImg"></i></span>
-                <span id="weatherMist"><i class="fa fa-sun fa-3x weatherImg"></i></span> -->
-    
+              <div id="weatherIcon">    
                 <img id="weatherSun" class="weatherIconImg" src="img/sun.png">
+                <img id="weatherMoon" class="weatherIconImg" src="img/moon.png">
                 <img id="weatherClouds" class="weatherIconImg" src="img/cloud.png">
                 <img id="weatherShower" class="weatherIconImg" src="img/shower.png">
                 <img id="weatherRain" class="weatherIconImg" src="img/rain.png">
                 <img id="weatherStorm" class="weatherIconImg" src="img/thunder.png">
                 <img id="weatherMist" class="weatherIconImg" src="img/mist.png">
+                <img id="weatherWind" class="weatherIconImg" src="img/wind.png">
+                <img id="weatherDust" class="weatherIconImg" src="img/dust.png">
     
               </div>
             </div>
@@ -81,8 +71,9 @@
               <div class="weatherFront animated fadeIn">
                 <div id="currTempArea"><span id="currTemp"></span><span id="currTempUnit"> o</span><span id="tempUnit">C</span></div>
               </div>
-              <div class="weatherBack animated fadeIn" style="display: none">
-                <div id="tempMinMaxArea"></div>
+              <div class="weatherBack animated fadeIn flexCol centerV" style="display: none">
+                <div id="tempMinArea"></div>
+                <div id="tempMaxArea"></div>
                 <div id="weatherDesc"></div>
               </div>
             </div>
@@ -92,19 +83,11 @@
       </headerRight>    
 
       <!-- MAIN -->
-      <mainLeft>
-        <br>
-      </mainLeft>
-
       <mainMiddle style="height: 100%">
         <mainMiddleContent class= "font-color" style="display: flex; align-items: center; justify-items: center; height: 100%">
 
           <div id="mainLoad" style="display: none; width: 100%" class="gamja">
             <image id="loadLogo" class="animated pulse" style="width: 200px; animation-iteration-count: 3"><br>
-            <!-- <div id="loadSpinner">
-              <i class="fa fa-spinner fa-spin fa-5x fa-fw margin-bottom"></i>
-              <span class="sr-only">Loading...</span>
-            </div> -->
             <div id="loadEffect" class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
           </div>
 
@@ -140,7 +123,7 @@
                 <div class="initCenter">
                   <div id="identityInst" class="question animated zoomIn">본인의 성별을 선택해주세요<br></div>
                   <div id="identityInput" style="visibility: hidden" width="100%">
-                    <input type="image" class="identity" id="identitySoldierImg" src="/img/soldier.png" value="soldier" width="20%">
+                    <input type="image" class="identity" id="identitySoldierImg" src="/img/soldier_PV2.png" value="soldier" width="20%">
                     <input type="image" class="identity" id="identityGirlfriendImg" src="/img/GF.png" value="girlfriend" width="20%"><br>
                   </div>
                 </div>
@@ -199,37 +182,17 @@
 
                   <div id="relStartDateInput" style="visibility: hidden; width: 100%; height: 100%">
                     <div id="relStartY" class="floatLeft" style="text-align: center; width: 33%;">
-                      <div id="upPointerRelStart1" class="relStartInput">
-                        <button id="upPointerRelStartBtn1" style="background-color: transparent; border: none; padding: 0; outline: none" class="relStartInput"><i class="fa fa-chevron-up fa-3x"></i></button>
-                      </div><br>
                       <input type = "text" class="relStartInput answer" id="relStartYInput" style="text-align: center; width: 90px" autofocus><span id = "yearRelStart" class= "relStartInput answer">년</span>
-                      <!-- <div id="relStartYInput" class="answer"></div><br> -->             
-                      <div id="downPointerRelStart1" class="relStartInput">
-                        <button id="downPointerRelStartBtn1" style="background-color: transparent; border: none; padding: 0; outline: none" class="relStartInput"><i class="fa fa-chevron-down fa-3x"></i></button>
-                      </div>
                     </div>
     
-                    <div id="relStartM" class="floatLeft" style="text-align: center; width: 33%">
-                      <div id="upPointerRelStart2" class="relStartInput">
-                        <button id="upPointerRelStartBtn2" style="background-color: transparent; border: none; padding: 0; outline: none" class="relStartInput"><i class="fa fa-chevron-up fa-3x"></i></button>
-                      </div><br>
+                    <div id="relStartM" class="floatLeft" style="text-align: center; width: 33%">                      
                       <input type = "text" class="relStartInput answer" id="relStartMInput" style="text-align: center; width: 45px"><span id = "monthRelStart" class= "relStartInput answer">월</span>
-                      <div id="downPointerRelStart2" class="relStartInput">
-                        <button id="downPointerRelStartBtn2" style="background-color: transparent; border: none; padding: 0; outline: none" class="relStartInput"><i class="fa fa-chevron-down fa-3x"></i></button>
-                      </div>
                     </div>
     
-                    <div id="relStartD" class="floatLeft" style="text-align: center; width: 33%">
-                      <div id="upPointerRelStart3" class="relStartInput">
-                        <button id="upPointerRelStartBtn3" style="background-color: transparent; border: none; padding: 0; outline: none" class="relStartInput"><i class="fa fa-chevron-up fa-3x"></i></button>
-                      </div><br>
+                    <div id="relStartD" class="floatLeft" style="text-align: center; width: 33%">                      
                       <input type = "text" class="relStartInput answer" id="relStartDInput" style="text-align: center; width: 45px"><span id = "dayRelStart" class= "relStartInput answer">일</span>
-                      <div id="downPointerRelStart3" class="relStartInput">
-                        <button id="downPointerRelStartBtn3" style="background-color: transparent; border: none; padding: 0; outline: none" class="relStartInput"><i class="fa fa-chevron-down fa-3x"></i></button>
-                      </div>
                     </div>
                   </div>
-
                 </div>
                 <div class="initRight">
                   <i id="relStartDateInRight" class="fa fa-arrow-right 3x animated fadeInLeft" aria-hidden="true" style="display: none"></i>
@@ -247,14 +210,7 @@
                   <div id="branchInst" class="question animated zoomIn">
                     <div class= "fitQuestion"></div>소속을 선택해주세요<br>
                   </div>
-                  <div id="branchInput" style="visibility: hidden; width:100%">
-                    <!-- <input type="image" class="branch" id="army" alt="육군" width="15%" src="https://drive.google.com/uc?export=view&id=1h94u4UUrRJ0paa_cE__RtUnfJALcoHk4">
-                    <input type="image" class="branch" id="navy" alt="해군" width="15%" src="https://drive.google.com/uc?export=view&id=1ghkHyrTLgLfALjCdaMPO8JwlSX6lw5Pn">
-                    <input type="image" class="branch" id="airForce" alt="공군" width="15%" src="https://drive.google.com/uc?export=view&id=1oXkT8LQ1MTqm81IidTUs0x9EV2CwNgaB"><br>
-                    <input type="image" class="branch" id="marine" alt="해병대" width="15%" src="https://drive.google.com/uc?export=view&id=1j-goG46fgUBL_6jBdHrkCznhBsXmClXe">
-                    <input type="image" class="branch" id="socialService" alt="사회복무요원" width="15%" src="https://drive.google.com/uc?export=view&id=1h4sipevcN-Ku6TWOWdQ0EPw-G294CZeq">
-                    <input type="image" class="branch" id="police" alt="의경" width="15%" src="https://drive.google.com/uc?export=view&id=1Ihp9x9uLQ2tZzCVm9-sqiB27HhYXxCr3"><br> -->
-                    
+                  <div id="branchInput" style="visibility: hidden; width:100%">                    
                     <input type="image" class="branch" id="army" alt="육군" width="15%" src="/img/army.png">
                     <input type="image" class="branch" id="navy" alt="해군" width="15%" src="/img/navy.png">
                     <input type="image" class="branch" id="airForce" alt="공군" width="15%" src="/img/airForce.png"><br>
@@ -268,24 +224,6 @@
                   <i id="branchInRight" class="fa fa-arrow-right 3x animated fadeInLeft" aria-hidden="true" style="display: none"></i>
                 </div>
               </div>
-
-              <!-- <form>
-                <div class="img-selector">
-                  <input id="army_init" type="radio" name="branchSettings" value="img/mainback1.jpg" />
-                  <label class="img-init army_init" for="army_init"></label>
-                  <input id="navy_init" type="radio" name="branchSettings" value="img/mainback2.jpg" />
-                  <label class="img-init navy_init" for="navy_init"></label>
-                  <input id="airForce_init" type="radio" name="branchSettings" value="img/mainback3.jpg" />
-                  <label class="img-init airForce_init" for="airForce_init"></label>
-                  <input id="marine_init" type="radio" name="branchSettings" value="img/mainback4.jpg" />
-                  <label class="img-init marine_init" for="marine_init"></label>
-                  <input id="socialService_init" type="radio" name="branchSettings" value="img/mainback5.jpg" />
-                  <label class="img-init socialService_init" for="socialService_init"></label>
-                  <input id="police_init" type="radio" name="branchSettings" value="img/mainback5.jpg" />
-                  <label class="img-init police_init" for="police_init"></label>
-                </div>
-                <button id="branchSubmit" class="btn btn-primary">확인</button>
-              </form> -->
             </div>
 
             <!-- ask date of enlistment -->
@@ -300,35 +238,16 @@
                   </div>
       
                   <div id="enlistDateInput" style="visibility: hidden; width: 100%; height: 100%">
-                    <div id="enlistY" class="floatLeft" style="text-align: center; width: 33%;">
-                      <div id="upPointerEnlist1" class="enlistInput">
-                        <button id="upPointerEnlistBtn1" style="background-color: transparent; border: none; padding: 0; outline: none" class="enlistInput"><i class="fa fa-chevron-up fa-3x"></i></button>
-                      </div><br>
+                    <div id="enlistY" class="floatLeft" style="text-align: center; width: 33%;">                      
                       <input type = "text" class="enlistInput answer" id="enlistYInput" style="text-align: center; width: 90px" autofocus><span id = "yearEnlist" class= "enlistInput answer">년</span>
-                      <!-- <div id="enlistYInput" class="answer"></div><br> -->             
-                      <div id="downPointerEnlist1" class="enlistInput">
-                        <button id="downPointerEnlistBtn1" style="background-color: transparent; border: none; padding: 0; outline: none" class="enlistInput"><i class="fa fa-chevron-down fa-3x"></i></button>
-                      </div>
                     </div>
     
                     <div id="enlistM" class="floatLeft" style="text-align: center; width: 33%">
-                      <div id="upPointerEnlist2" class="enlistInput">
-                        <button id="upPointerEnlistBtn2" style="background-color: transparent; border: none; padding: 0; outline: none" class="enlistInput"><i class="fa fa-chevron-up fa-3x"></i></button>
-                      </div><br>
                       <input type = "text" class="enlistInput answer" id="enlistMInput" style="text-align: center; width: 45px"><span id = "monthEnlist" class= "enlistInput answer">월</span>
-                      <div id="downPointerEnlist2" class="enlistInput">
-                        <button id="downPointerEnlistBtn2" style="background-color: transparent; border: none; padding: 0; outline: none" class="enlistInput"><i class="fa fa-chevron-down fa-3x"></i></button>
-                      </div>
                     </div>
     
-                    <div id="enlistD" class="floatLeft" style="text-align: center; width: 33%">
-                      <div id="upPointerEnlist3" class="enlistInput">
-                        <button id="upPointerEnlistBtn3" style="background-color: transparent; border: none; padding: 0; outline: none" class="enlistInput"><i class="fa fa-chevron-up fa-3x"></i></button>
-                      </div><br>
+                    <div id="enlistD" class="floatLeft" style="text-align: center; width: 33%">                     
                       <input type = "text" class="enlistInput answer" id="enlistDInput" style="text-align: center; width: 45px"><span id = "dayEnlist" class= "enlistInput answer">일</span>
-                      <div id="downPointerEnlist3" class="enlistInput">
-                        <button id="downPointerEnlistBtn3" style="background-color: transparent; border: none; padding: 0; outline: none" class="enlistInput"><i class="fa fa-chevron-down fa-3x"></i></button>
-                      </div>
                     </div>
                   </div>
                 </div>
@@ -370,7 +289,6 @@
                 <div class="modal-dialog modal-dialog-centered" role="document" style="height: 90%">
                   <div id="modalContent" class="modal-content" style="height: 80%">
                     <div class="modal-header poor main">
-                      <!-- <h5 class="modal-title" id="exampleModalLabel">설정</h5> -->
 
                       <!-- html 탭 -->
                       <ul class="nav nav-tabs">
@@ -390,15 +308,6 @@
                     <div id="modalBody" class="modal-body poor">
                       <div id="modalContainerTabs" class="container--tabs">
                         <section class="row">
-                          <!-- html 탭 -->
-                          <!-- <ul class="nav nav-tabs">
-                            <li class="nav-item" id="aboutTab"><a class="nav-link" href="#settingsAbout" id="aboutTabLink">정보</a></li> 
-                            <li class="nav-item"><a class="nav-link" href="#settings">설정</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#settingsInfo">사용자 정보변경</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#settingsBG">배경화면</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#settingsLove" id="settingsRelTab">우리사이</a></li>
-                          </ul> -->
-
                           <!-- tab content -->
                           <div id="tabContent" class="tab-content">
 
@@ -410,16 +319,10 @@
                                 </div>
                                 <div id="aboutTopRight" class="flexCol centerH centerV" style="width: 50%">
                                   <br><h4>짭탭 by 털난 달팽이</h4><br>
-                                  <!-- <h6>v.2019.03.31<br>ⓒ2019.털난 달팽이.All rights reserved.</h6> -->
                                   <h6>v.2019.05.01</h6>
                                 </div>
                               </div>
                               <div id="aboutBottom" class="flexCol centerV">
-                                <!-- 
-                                  1. 우리 코드 저작물 보호 (한줄 설명)
-                                  2. 다른 코드/이미지 등 크레딧 주고 + 혹시나 안 이상하면 연락ㄱㄱ
-                                  3. Contact / Names
-                                 -->
                                 <hr><br>
                                 <h6 style="line-height: 1.8">[짭탭]은 군복무 중 말년의 허황세월을 보내던 병장 4명 사이에서 탄생했습니다. 
                                   이 익스텐션은 대한민국 저작권법에 의해 보호를 받는 저작물이므로 무단전재와 무단 복제를 엄금합니다.
@@ -458,15 +361,68 @@
                                   <div class="flexCol centerV" style="color: gray; width: 100%; text-align: center; padding: 0 2rem 0 2rem;">
                                     [개발]
                                     <div class="flexRow centerV spaceAround" style="width: 100%; margin-top: 0.2rem;">
-                                      <div class="flexRow">신지훈&nbsp;<a href="mailto:jip68660%40gmail%2ecom?subject=" class="noUndlink"><i class="fa fa-envelope"></i></a></div>
-                                      <div class="flexRow">이선규&nbsp;<a href="mailto:seongyoolee%40gmail%2ecom?subject=" class="noUndlink"><i class="fa fa-envelope"></i></a></div>
-                                      <div class="flexRow">이윤수&nbsp;<a href="mailto:starlee9711%40gmail%2ecom?subject=" class="noUndlink"><i class="fa fa-envelope"></i></a></div>
+                                      <div class="flexCol">
+                                        <div class="content" style="width: 93px; margin: 0">
+                                          <div class="content-overlay" style="border-radius: 50%"></div>
+                                          <img src="/img/eddie.png" class="caricature content-image" style="width:93px; height: 93px; border-radius: 50%">
+                                          <div class="content-details">
+                                            <div class="content-icon">
+                                              <a href="mailto:jip68660%40gmail%2ecom?subject=" class="noUndlink"><i class="fa fa-envelope fa-2x"></i></a>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <div>
+                                          신지훈
+                                        </div>
+                                      </div>
+
+                                      <div class="flexCol">
+                                        <div class="content" style="width: 93px; margin: 0">
+                                          <div class="content-overlay" style="border-radius: 50%"></div>
+                                          <img src="/img/seon.PNG" class="caricature content-image" style="width:93px; height: 93px; border-radius: 50%">
+                                          <div class="content-details">
+                                            <div class="content-icon">
+                                              <a href="mailto:seongyoolee%40gmail%2ecom?subject=" class="noUndlink"><i class="fa fa-envelope fa-2x"></i></a>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <div>
+                                          이선규
+                                        </div>
+                                      </div>
+
+                                      <div class="flexCol">
+                                        <div class="content" style="width: 93px; margin: 0">
+                                          <div class="content-overlay" style="border-radius: 50%"></div>
+                                          <img src="/img/yunsoo.png" class="caricature content-image" style="width:93px; height: 93px; border-radius: 50%">
+                                          <div class="content-details">
+                                            <div class="content-icon">
+                                              <a href="mailto:starlee9711%40gmail%2ecom?subject=" class="noUndlink"><i class="fa fa-envelope fa-2x"></i></a>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <div>
+                                          이윤수
+                                        </div>
+                                      </div>
+
                                     </div><br>
 
                                     [그림]
-                                    <div class="flexRow centerV centerH" style="width: 100%; margin-top: 0.2rem;">
-                                        <div class="flexRow">박준영&nbsp;<a href="mailto:seeismin%40gmail%2ecom?subject=" class="noUndlink"><i class="fa fa-envelope"></i></a></div>
+                                    <div class="flexCol">
+                                      <div class="content" style="width: 93px; margin: 0">
+                                        <div class="content-overlay" style="border-radius: 50%"></div>
+                                        <img src="/img/jyp.jpg" class="caricature content-image" style="width:93px; height: 93px; border-radius: 50%">
+                                        <div class="content-details">
+                                          <div class="content-icon">
+                                            <a href="mailto:seeismin%40gmail%2ecom?subject=" class="noUndlink"><i class="fa fa-envelope fa-2x"></i></a>
+                                          </div>
+                                        </div>
                                       </div>
+                                      <div>
+                                        박준영
+                                      </div>
+                                    </div>
                                   </div>
                                 </div>
                                 <br><hr><br>
@@ -510,7 +466,6 @@
                                           <label id="youtubeLabel" class="img-sel youtubeCB" for="youtubeCB_id"></label>
                                           <input id="yahooCB_id" type="checkbox" name="engineCheckBox" value="https://www.yahoo.com/favicon.ico" />
                                           <label id="yahooLabel" class="img-sel yahooCB" for="yahooCB_id"></label>
-                                          <!-- baidu favicon has white background -->
                                           <input id="baiduCB_id" type="checkbox" name="engineCheckBox" value="https://www.baidu.com/favicon.ico" />
                                           <label id="baiduLabel" class="img-sel baiduCB" for="baiduCB_id"></label>
                                           <input id="bingCB_id" type="checkbox" name="engineCheckBox" value="https://www.bing.com/sa/simg/bing_p_rr_teal_min.ico" />
@@ -563,7 +518,6 @@
                               <span class="col-md-10">
                                 <form>
                                   <!-- 이름 설정 -->
-                                  <!-- <div class="form-group" style="width: 100%;"> -->
                                   <div class="settingsBox" style="width: 100%">
                                     <div class="settingsTitle">이름
                                     </div>
@@ -572,7 +526,6 @@
                                       <input type="text" id="user-name" class="form-control">
                                     </div><br>
                                   </div>
-                                  <!-- </div> -->
                               
                                   <!-- 신분 설정 -->
                                   <div class="settingsBox switch-field">
@@ -585,26 +538,13 @@
                                       <label id="labelGfButton" for="gfButton">곰신</label>
                                     </div>
                                   </div><br>
-                                  <!-- <div class="form-group">
-                                      <form class="form">
-                                        <div class="switch-field">
-                                          <div class="switch-title">신분</div>
-                                          <div>
-                                            <input type="radio" id="soldierButton" name="identityRadioSettings" value="soldier">
-                                            <label for="soldierButton">군인</label>
-                                            <input type="radio" id="gfButton" name="identityRadioSettings" value="girlfriend" />
-                                            <label for="gfButton">곰신</label>
-                                          </div>
-                                        </div>
-                                      </form>
-                                  </div> -->
                               
                                   <!-- 소속 설정 -->
                                   <div class="settingsBox">
-                                    <div class="settingsTitle"><span class = "fitQuestion"></span>소속</div>
+                                    <div class="settingsTitle"><span class="fitQuestion"></span>소속</div>
                                     <hr>
                                     <div style="width: 100%;">
-                                      <select class="form-control flexCol centerH" id="user-branch">
+                                      <select id="user-branch">
                                         <option value="army">육군</option>
                                         <option value="navy">해군</option>
                                         <option value="airForce">공군</option>
@@ -614,22 +554,6 @@
                                       </select>
                                     </div>
                                   </div><br>
-                                  <!-- <div class="form-group" style="width: 100%;">
-                                    <div>
-                                      <label for="user-branch" class="col-form-label"style="width: 100%"><span class = "fitQuestion"></span>소속</label>
-                                    </div>
-
-                                    <div class="input-group mb-3">
-                                      <select class="custom-select" id="user-branch">
-                                        <option value="army">육군</option>
-                                        <option value="navy">해군</option>
-                                        <option value="airForce">공군</option>
-                                        <option value="marine">해병대</option>
-                                        <option value="socialService">사회복무</option>
-                                        <option value="police">의경</option>
-                                      </select>
-                                    </div>
-                                  </div> -->
 
                                   <!-- 계급 설정 -->
                                   <div class="settingsBox">
@@ -638,7 +562,7 @@
                                     </div>
                                     <hr>
                                     <div style="width: 100%">
-                                      <select class="form-control flexCol centerH" id="user-rank">
+                                      <select id="user-rank">
                                         <option value="rankQ">현 계급을 선택하세요</option>
                                         <option value="이병">이병</option>
                                         <option value="일병">일병</option>
@@ -647,20 +571,6 @@
                                       </select>
                                     </div>
                                   </div><br>
-                                  <!-- <div class="form-group" style="width: 100%;">
-                                    <div>
-                                      <label for="user-rank" class="col-form-label"style="width: 100%"><span class = "fitQuestion"></span>계급</label>
-                                    </div>
-                                    <div class="input-group mb-3">
-                                      <select class="custom-select" id="user-rank">
-                                        <option value="rankQ">현 계급을 선택하세요</option>
-                                        <option value="이병">이병</option>
-                                        <option value="일병">일병</option>
-                                        <option value="상병">상병</option>
-                                        <option value="병장">병장</option>
-                                      </select>
-                                    </div>
-                                  </div> -->
                               
                                   <!-- 입대일 설정 -->
                                   <div class="settingsBox">
@@ -670,12 +580,6 @@
                                       <input type="date" id="user-enlistDate" class="form-control">
                                     </div>
                                   </div>
-                                  <!-- <div class="form-group">
-                                    <label for="user-enlistDate" class="col-form-label"><span class = "fitQuestion"></span>입대일</label>
-                                    <span style="display: flex; justify-content: center">
-                                        <input type="date" id="user-enlistDate" class="form-control">
-                                    </span>
-                                  </div> -->
                                 
                                 </form>
                               </span>
@@ -683,22 +587,18 @@
 
                             <!-- third tab - 배경화면 바꾸기-->
                             <div id="settingsBG" class="tab-pane settingsPaneMain flexCol centerH">
-                              <span class="col-md-10 flexCol">
-                                <form class="flexCol" style="width: 100%">
-                                  <div class="img-selector flexCol" style="width: 100%; height: 100%">
-                                    <input id="img1" type="radio" name="bgImgRadioSettings" value="img/mainback1.jpg" />
-                                    <label class="img-sel img1" for="img1"></label>
-                                    <input id="img2" type="radio" name="bgImgRadioSettings" value="img/mainback2.jpg" />
-                                    <label class="img-sel img2" for="img2"></label>
-                                    <input id="img3" type="radio" name="bgImgRadioSettings" value="img/mainback3.jpg" />
-                                    <label class="img-sel img3" for="img3"></label>
-                                    <input id="img4" type="radio" name="bgImgRadioSettings" value="img/mainback4.jpg" />
-                                    <label class="img-sel img4" for="img4"></label>
-                                    <input id="img5" type="radio" name="bgImgRadioSettings" value="img/mainback5.jpg" />
-                                    <label class="img-sel img5" for="img5"></label>
-                                  </div>
-                                </form>
-                              </span>
+                              <div class="img-selector flexCol centerH" style="width: 100%; height: 100%">
+                                <input id="img1" type="radio" name="bgImgRadioSettings" value="img/mainback1.jpg" />
+                                <label class="img-sel img1" for="img1"></label>
+                                <input id="img2" type="radio" name="bgImgRadioSettings" value="img/mainback2.jpg" />
+                                <label class="img-sel img2" for="img2"></label>
+                                <input id="img3" type="radio" name="bgImgRadioSettings" value="img/mainback3.jpg" />
+                                <label class="img-sel img3" for="img3"></label>
+                                <input id="img4" type="radio" name="bgImgRadioSettings" value="img/mainback4.jpg" />
+                                <label class="img-sel img4" for="img4"></label>
+                                <input id="img5" type="radio" name="bgImgRadioSettings" value="img/mainback5.jpg" />
+                                <label class="img-sel img5" for="img5"></label>
+                              </div>
                             </div>
 
                             <!-- fourth tab - 우리사이 -->
@@ -708,11 +608,6 @@
                                 <div class="switch-field settingsBox">
                                   <div class="settingsTitle">'우리사이' 활성화</div>
                                   <hr>
-                                  <!-- <div>
-                                    <button id = "onOffToggle" type="button" class="btn btn-sm btn-toggle" data-toggle="button" aria-pressed="false" autocomplete="off" style="float: right">
-                                      <div class="handle"></div>
-                                    </button>
-                                  </div> -->
                                   <div class="settingsContent">
                                     <input type="radio" id="onButton" name="loveRadioSettings" value="on" class="radioButton">
                                     <label id="labelOnButton" for="onButton">켜기</label>
@@ -721,15 +616,6 @@
                                   </div>
                                 </div>
                                 <br>
-                                <!-- <div class="row">
-                                  '우리사이' 활성화
-                                  <div class="col-sm-10">
-                                    <button id = "onOffToggle" type="button" class="btn btn-sm btn-toggle" data-toggle="button" aria-pressed="false" autocomplete="off" style="float: right">
-                                      <div class="handle"></div>
-                                    </button>
-                                  </div>
-                                </div>
-                                <br> -->
 
                                 <!-- 여기다가 이렇게 정보넣게 하고, toggle이벤트로 보였다 안보였다 하면 될듯 -->
                                 <div id="loveInfo" style="text-align: left">
@@ -742,12 +628,6 @@
                                         <input type="text" id="lover-name" class="loveSetting form-control">
                                       </div>
                                     </div><br>
-                                    <!-- <div class="form-group">
-                                      <label for="lover-name" class="col-form-label">애인 이름: </label>
-                                      <div style="display: flex; justify-content: center">
-                                      <input type="text" id="lover-name" class="loveSetting form-control">
-                                      </div>
-                                    </div> -->
                                       
                                     <!-- 애인 생일 설정 -->
                                     <div class="settingsBox">
@@ -757,12 +637,6 @@
                                         <input type="date" id="lover-birthday" class="loveSetting form-control">
                                       </div>
                                     </div><br>
-                                    <!-- <div class="form-group">
-                                      <label for="lover-birthday" class="col-form-label">애인 생일:</label>
-                                      <span style="display: flex; justify-content: center">
-                                          <input type="date" id="lover-birthday" class="loveSetting form-control">
-                                      </span>
-                                    </div> -->
 
                                     <!-- 본인 생일 설정 -->
                                     <div class="settingsBox">
@@ -772,12 +646,6 @@
                                         <input type="date" id="user-birthday" class="loveSetting form-control">
                                       </div>
                                     </div><br>
-                                    <!-- <div class="form-group">
-                                      <label for="user-birthday" class="col-form-label">본인 생일:</label>
-                                      <span style="display: flex; justify-content: center">
-                                        <input type="date" id="user-birthday" class="loveSetting form-control">
-                                      </span>
-                                    </div> -->
 
                                     <!-- 사귄 날짜 설정 -->
                                     <div class="settingsBox">
@@ -786,14 +654,7 @@
                                       <div style="width: 100%">
                                         <input type="date" id="first-date" class="loveSetting form-control">
                                       </div>
-                                    </div><br>
-                                    <!-- <div class="form-group">
-                                      <label for="first-date" class="col-form-label">사귄 날짜: </label>
-                                      <span style="display: flex; justify-content: center">
-                                        <input type="date" id="first-date" class="loveSetting form-control">
-                                      </span>
-                                    </div> -->
-                                
+                                    </div><br>                                
                                   </form>
                                 </div>
                               </span>
@@ -805,7 +666,6 @@
 
                       </div>
                     <div class="modal-footer poor">
-                      <!-- <button id="closeSettings" type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button> -->
                       <button id="saveSettings" type="button" class="btn btn-primary" data-dismiss="modal">저장</button>
                     </div>
                   </div>
@@ -819,7 +679,6 @@
               <div class="modal-dialog modal-dialog-centered" role="document" style="height: 90%">
                 <div id="subModalContent" class="modal-content" style="height: 80%">
                   <div class="modal-header poor sub">
-                    <!-- <h5 class="modal-title" id="exampleModalLabel">설정</h5> -->
 
                     <!-- html 탭 -->
                     <ul class="nav nav-tabs">
@@ -850,16 +709,24 @@
                                 <div class="content-overlay"></div>
                                 <img class="content-image" src="/img/mnd.jpg">
                                 <div class="content-details">
-                                  <h3 class="content-title">국방부</h3>
-                                  <div class="content-icon tabOpt"><a href="http://www.mnd.go.kr" target="blank"><i class="fa fa-external-link fa-4x"></i></a></div>
+                                  <h5 class="content-title">국방부</h5>
+                                  <div class="content-icon tabOpt"><a href="http://www.mnd.go.kr" target="blank"><i class="fa fa-external-link fa-2x"></i></a></div>
                                 </div>
                               </div>
                               <div class="content">
                                 <div class="content-overlay"></div>
                                 <img class="content-image" src="/img/maa.jpg">                     
                                 <div class="content-details">
-                                  <h3 class="content-title">병무청</h3>
-                                  <div class="content-icon tabOpt"><a href="http://www.mma.go.kr/index.do" target="blank"><i class="fa fa-external-link fa-4x"></i></a></div>
+                                  <h5 class="content-title">병무청</h5>
+                                  <div class="content-icon tabOpt"><a href="http://www.mma.go.kr/index.do" target="blank"><i class="fa fa-external-link fa-2x"></i></a></div>
+                                </div>
+                              </div>
+                              <div class="content">
+                                <div class="content-overlay"></div>
+                                <img class="content-image" src="/img/army.jpg">
+                                <div class="content-details">
+                                  <h5 class="content-title">육군</h5>
+                                  <div class="content-icon tabOpt"><a href="http://www.army.mil.kr/" target="blank"><i class="fa fa-external-link fa-2x"></i></a></div>
                                 </div>
                               </div>
                             </div><br>
@@ -867,18 +734,26 @@
                             <div class="container">
                               <div class="content">
                                 <div class="content-overlay"></div>
-                                <img class="content-image" src="/img/army.jpg">
+                                <img class="content-image" src="/img/navy.jpg">                     
                                 <div class="content-details">
-                                  <h3 class="content-title">육군</h3>
-                                  <div class="content-icon tabOpt"><a href="http://www.army.mil.kr/" target="blank"><i class="fa fa-external-link fa-4x"></i></a></div>
+                                  <h5 class="content-title">해군</h5>
+                                  <div class="content-icon tabOpt"><a href="http://www.navy.mil.kr/" target="blank"><i class="fa fa-external-link fa-2x"></i></a></div>
                                 </div>
                               </div>
                               <div class="content">
                                 <div class="content-overlay"></div>
-                                <img class="content-image" src="/img/navy.jpg">                     
+                                <img class="content-image" src="/img/airForce.jpg">
                                 <div class="content-details">
-                                  <h3 class="content-title">해군</h3>
-                                  <div class="content-icon tabOpt"><a href="http://www.navy.mil.kr/" target="blank"><i class="fa fa-external-link fa-4x"></i></a></div>
+                                  <h5 class="content-title">공군</h5>
+                                  <div class="content-icon tabOpt"><a href="http://www.airforce.mil.kr/" target="blank"><i class="fa fa-external-link fa-2x"></i></a></div>
+                                </div>
+                              </div>
+                              <div class="content">
+                                <div class="content-overlay"></div>
+                                <img class="content-image" src="/img/marine.jpg">                     
+                                <div class="content-details">
+                                  <h5 class="content-title">해병대</h5>
+                                  <div class="content-icon tabOpt"><a href="http://www.rokmc.mil.kr/" target="blank"><i class="fa fa-external-link fa-2x"></i></a></div>
                                 </div>
                               </div>
                             </div><br>
@@ -886,18 +761,26 @@
                             <div class="container">
                               <div class="content">
                                 <div class="content-overlay"></div>
-                                <img class="content-image" src="/img/airForce.jpg">
+                                <img class="content-image" src="/img/socialService.jpg">
                                 <div class="content-details">
-                                  <h3 class="content-title">공군</h3>
-                                  <div class="content-icon tabOpt"><a href="http://www.airforce.mil.kr/" target="blank"><i class="fa fa-external-link fa-4x"></i></a></div>
+                                  <h5 class="content-title">사회복무</h5>
+                                  <div class="content-icon tabOpt"><a href="http://www.sba.mma.go.kr/" target="blank"><i class="fa fa-external-link fa-2x"></i></a></div>
                                 </div>
                               </div>
                               <div class="content">
                                 <div class="content-overlay"></div>
-                                <img class="content-image" src="/img/marine.jpg">                     
+                                <img class="content-image" src="/img/police.jpg">                     
                                 <div class="content-details">
-                                  <h3 class="content-title">해병대</h3>
-                                  <div class="content-icon tabOpt"><a href="http://www.rokmc.mil.kr/" target="blank"><i class="fa fa-external-link fa-4x"></i></a></div>
+                                  <h5 class="content-title">의무경찰</h5>
+                                  <div class="content-icon tabOpt"><a href="http://ap.police.go.kr/" target="blank"><i class="fa fa-external-link fa-2x"></i></a></div>
+                                </div>
+                              </div>
+                              <div class="content">
+                                <div class="content-overlay"></div>
+                                <img class="content-image" src="/img/gomshinCafe.jpg">
+                                <div class="content-details">
+                                  <h5 class="content-title">곰신카페</h5>
+                                  <div class="content-icon tabOpt"><a href="http://cafe.naver.com/komusincafe" target="blank"><i class="fa fa-external-link fa-2x"></i></a></div>
                                 </div>
                               </div>
                             </div><br>
@@ -905,18 +788,26 @@
                             <div class="container">
                               <div class="content">
                                 <div class="content-overlay"></div>
-                                <img class="content-image" src="/img/socialService.jpg">
+                                <img class="content-image" src="/img/mmaa.jpg">                     
                                 <div class="content-details">
-                                  <h3 class="content-title">사회복무</h3>
-                                  <div class="content-icon tabOpt"><a href="http://www.sba.mma.go.kr/" target="blank"><i class="fa fa-external-link fa-4x"></i></a></div>
+                                  <h5 class="content-title">군인공제회</h5>
+                                  <div class="content-icon tabOpt"><a href="http://www.mmaa.or.kr/" target="blank"><i class="fa fa-external-link fa-2x"></i></a></div>
                                 </div>
                               </div>
                               <div class="content">
                                 <div class="content-overlay"></div>
-                                <img class="content-image" src="/img/police.jpg">                     
+                                <img class="content-image" src="/img/kbNews.jpg">
                                 <div class="content-details">
-                                  <h3 class="content-title">의무경찰</h3>
-                                  <div class="content-icon tabOpt"><a href="http://ap.police.go.kr/" target="blank"><i class="fa fa-external-link fa-4x"></i></a></div>
+                                  <h5 class="content-title">국방일보</h5>
+                                  <div class="content-icon tabOpt"><a href="http://www.mmaa.or.kr/" target="blank"><i class="fa fa-external-link fa-2x"></i></a></div>
+                                </div>
+                              </div>
+                              <div class="content">
+                                <div class="content-overlay"></div>
+                                <img class="content-image" src="/img/bootCamp.jpg">                     
+                                <div class="content-details">
+                                  <h6 class="content-title">신병부대배치조회</h6>
+                                  <div class="content-icon tabOpt"><a href="http://www.army.mil.kr/unitarng/searchRST.do" target="blank"><i class="fa fa-external-link fa-2x"></i></a></div>
                                 </div>
                               </div>
                             </div><br>
@@ -924,124 +815,26 @@
                             <div class="container">
                               <div class="content">
                                 <div class="content-overlay"></div>
-                                <img class="content-image" src="/img/gomshinCafe.jpg">
-                                <div class="content-details">
-                                  <h3 class="content-title">곰신카페</h3>
-                                  <div class="content-icon tabOpt"><a href="http://cafe.naver.com/komusincafe" target="blank"><i class="fa fa-external-link fa-4x"></i></a></div>
-                                </div>
-                              </div>
-                              <div class="content">
-                                <div class="content-overlay"></div>
-                                <img class="content-image" src="/img/mmaa.jpg">                     
-                                <div class="content-details">
-                                  <h3 class="content-title">군인공제회</h3>
-                                  <div class="content-icon tabOpt"><a href="http://www.mmaa.or.kr/" target="blank"><i class="fa fa-external-link fa-4x"></i></a></div>
-                                </div>
-                              </div>
-                            </div><br>
-                            <!-- row 6 -->
-                            <div class="container">
-                              <div class="content">
-                                <div class="content-overlay"></div>
-                                <img class="content-image" src="/img/kbNews.jpg">
-                                <div class="content-details">
-                                  <h3 class="content-title">국방일보</h3>
-                                  <div class="content-icon tabOpt"><a href="http://www.mmaa.or.kr/" target="blank"><i class="fa fa-external-link fa-4x"></i></a></div>
-                                </div>
-                              </div>
-                              <div class="content">
-                                <div class="content-overlay"></div>
-                                <img class="content-image" src="/img/bootCamp.jpg">                     
-                                <div class="content-details">
-                                  <h4 class="content-title">신병부대배치조회</h4>
-                                  <div class="content-icon tabOpt"><a href="http://www.army.mil.kr/unitarng/searchRST.do" target="blank"><i class="fa fa-external-link fa-4x"></i></a></div>
-                                </div>
-                              </div>
-                            </div><br>
-                            <!-- row 7 -->
-                            <div class="container">
-                              <div class="content">
-                                <div class="content-overlay"></div>
                                 <img class="content-image" src="/img/theCamp.jpg">
                                 <div class="content-details">
-                                  <h3 class="content-title">더캠프</h3>
-                                  <div class="content-icon tabOpt"><a href="http://www.thecamp.or.kr" target="blank"><i class="fa fa-external-link fa-4x"></i></a></div>
+                                  <h5 class="content-title">더캠프</h5>
+                                  <div class="content-icon tabOpt"><a href="http://www.thecamp.or.kr" target="blank"><i class="fa fa-external-link fa-2x"></i></a></div>
                                 </div>
                               </div>
                               <div class="content">
                                 <div class="content-overlay"></div>
                                 <img class="content-image" src="/img/yebigun.png">                     
                                 <div class="content-details">
-                                  <h3 class="content-title">예비군</h3>
-                                  <div class="content-icon tabOpt"><a href="https://www.yebigun1.mil.kr/" target="blank"><i class="fa fa-external-link fa-4x"></i></a></div>
+                                  <h5 class="content-title">예비군</h5>
+                                  <div class="content-icon tabOpt"><a href="https://www.yebigun1.mil.kr/" target="blank"><i class="fa fa-external-link fa-2x"></i></a></div>
                                 </div>
                               </div>
+                              <div class="content" style="visibility: hidden"></div>
                             </div><br>
                           </div>
 
                           <!-- first tab 군인혜택 -->
-                          <div id="benefitInfo" class="tab-pane settingsPaneSub centerH">                                
-                            <!-- <div class="flexCol justifyLeft centerV" style="color: rgb(88, 88, 88)">
-                              <br>
-                              <h6>
-                              [영화관] <br>
-                              CGV <br>
-                              - 나라사랑카드 사용시(기업,신한) 본인 및 동반 1인 각 1500원 할인<br>
-                              - 2D 7,000원 / 3D 8,000원 [군인 본인 및 동반 3인] 군인 본인 오징어 
-                              <br>&nbsp;&nbsp;콤보 5천원 할인<br>
-                              <br>
-                              롯데시네마 <br>
-                              - 2D 7,000원 / 3D 8,000원 [동반 3인]<br>
-                              - 매점콤보 2,000원 할인<br>
-                              <br><hr><br>
-
-                              [놀이공원]<br>
-                              에버랜드 <br>
-                              - 본인(군인) 무료 입장<br><br>
-                              서울랜드 <br>
-                              - 본인(군인) + 동반 1일 35% 할인<br><br>
-                              롯데월드<br>
-                              - 본인(군인) + 동반 1인 50% 할인<br>
-                              <br><hr><br>
-
-                              [외식]<br>
-                              VIPS<br>
-                              - 군인할인 15% + 제휴신용카드 중복 할인<br>
-                              - 국인할인 25%(제휴신용카드 중복 미사용 시<br><br>
-                              아웃백<br>
-                              - 군인 동반 테이블 20% 현장 할인(월 1회, 최대 4만원 할인)<br>
-                              <br><hr><br>
-
-                              [어학]<br>
-                              토익<br>
-                              - 응시료 50% 할인<br><br>
-                              오픽<br>
-                              - 응시료 30% 할인<br><br>
-                              TEPS<br>
-                              - 응시료 50% 할인 <br>
-                              <br><hr><br>
-
-                              [교통]<br>
-                              KTX<br>
-                              - 열차 운임 10% 할인(병장 이하만)<br><br>
-                              TMO<br>
-                              - 무료 <br>
-                              <br><hr><br>
-
-                              [스포츠]<br>
-                              K리그<br>
-                              - 본인(군인) 포함 동반 1인 무료(일반석 한정) <br><br>
-                              프로야구<br>
-                              - 본인(군인) 일반석 50% 할인 <br><br>
-                              프로농구<br>
-                              - 본인(군인) 일반석 무료 <br>
-                              <br><hr><br>
-                              </h6>
-                              <div style="text-align: center;">
-                                <h6>위 내용을 포함하여 다양하고 신기한 군인혜택들이 많습니다. <br>
-                                    유용하게 쓰시길 바랍니다.<br><br></h6>
-                              </div>                              
-                            </div> -->
+                          <div id="benefitInfo" class="tab-pane settingsPaneSub centerH">                             
                             <br>
                             <div id="accordion">
                               <!-- 영화관 -->
@@ -1474,7 +1267,7 @@
                             <div class="flexCol justifyLeft centerV" style="color: rgb(88, 88, 88)">
                               <br>
                               <h6 style="text-align: center">
-                                ※아래의 내용은 진급누락이나 조기진급은 포함하지 않고 있습니다.
+                                ※아래의 내용은 진급누락이나 조기진급은 포함하지 않고 있습니다. 
                               </h6><br>
 
                               <!-- 육군, 의경, 해병대 -->
@@ -1759,42 +1552,13 @@
                 </div>
               </div>
             </div>
-          </div>
-
-          <!-- 알림창 -->
-
-          <!-- <div id="alertModalDiv" style="height: 100%;">
-            <div class="modal fade bd-example-modal-sm" id="alertModal" tabindex="-1" role="dialog" aria-hidden="true" style="height: 100%">
-              <div class="modal-dialog modal-dialog-centered" role="document" style="height: 90%">
-                <div id="alertModalContent" class="modal-content" style="height: 80%">
-                  <div class="modal-header poor">
-                  </div>
-
-                  <div id="alertModalBody" class="modal-body poor">
-                    <h6> something here </h6>
-                  </div>
-
-                  <div class="modal-footer">
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div> -->
-          
-          <!-- <div class="alert alert-primary" role="alert" tabindex="-1" aria-hidden="true" style="display: none">
-            This is a primary alert—check it out!
-          </div> -->
-      
+          </div>       
         </mainMiddleContent>
       </mainMiddle>
 
-      <mainRight style="display: flex"> 
-          <br>
-      </mainRight>
-
       <!-- FOOTER -->
-      <footerLeft><!-- 이거 창 줄었을때 보여준건데... 필요없지 않나?-->
-        <div id="dDayDisplaySm" class="answer"></div>
+      <footerLeft>
+        <br>
       </footerLeft>
 
       <footerMiddle>
@@ -1813,10 +1577,8 @@
     </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script> -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.js"></script>
-    <script type="text/javascript" src="js/resize.js"></script>
     <script type="text/javascript" src="js/search.js"></script>
     <script type="text/javascript" src="js/clock.js"></script>
     <script type="text/javascript" src="js/weather.js"></script>

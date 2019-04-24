@@ -9,20 +9,12 @@ var branchSelected;
 var identitySelected;
 var girlfriendSelected;
 
-/* ENTER로 다음 질문 넘어가기 */
-// function onEnterPressed() {
-//     urlString = document.getElementById("searchBar").value;
-//     if(event.which==13 || event.keycode==13) {
-//         search();
-//     }
-// }
 $("#relStartY").mousedown(relStartYActive);
 $("#relStartM").mousedown(relStartMActive);
 $("#relStartD").mousedown(relStartDActive);
 $("#enlistY").mousedown(enlistYActive);
 $("#enlistM").mousedown(enlistMActive);
 $("#enlistD").mousedown(enlistDActive);
-
 
 /* NAME */
 function nameCheck() {
@@ -37,7 +29,7 @@ function nameCheck() {
             }, 700);
         });
     }, 1200);
-    document.getElementById("nameInput").addEventListener("keyup", onNameEnter);
+    $("#nameInput").keyup(onNameEnter);
 }
 function onNameEnter() {
     $("#nameInRight").show();
@@ -52,7 +44,7 @@ function onNameInEnd() {
         bootbox.alert("이름을 적어주세요");
     }
     else{
-        localStorage.setItem("name", document.getElementById("nameInput").value);
+        localStorage.setItem("name", $("#nameInput").val());
         
         $("#nameIn").addClass("animated fadeOutLeftInit");
         setTimeout(function() {
@@ -62,11 +54,7 @@ function onNameInEnd() {
     }
 }
 
-/**
- * IDENTITY
- * 
- * 사실상 alert가 필요없음... 사진 누르기 전까지 다음으로 넘어갈수가 없게 만들었음
- *  */
+/** IDENTITY */
 function identityCheck() {
     $("#identityIn").show();
     setTimeout(function() {
@@ -87,7 +75,7 @@ function identityCheck() {
         identitySelected = $("#identityGirlfriendImg").val();
     });
     $("#identityInRight").click(onIdentitySelect);
-    document.getElementById("identityInput").addEventListener("keyup", onIdentitySelectKey);
+    $("#identityInput").keyup(onIdentitySelectKey);
 }
 function onIdentitySelect() {
     if (identitySelected!=undefined) {
@@ -118,11 +106,7 @@ function onIdentityInEnd() {//끝날때 효과 + 로컬에 저장
     }, 1000);
 }
 
-/**
- * GIRLFRIENDCHECK, IF IDENTITY = SOLDIER
- * 
- * 사실상 alert가 필요없음... 사진 누르기 전까지 다음으로 넘어갈수가 없게 만들었음
- *  */
+/* GIRLFRIEND if user chooses soldier*/
 function girlfriendCheck() {
     $("#girlfriendIn").show();
     setTimeout(function() {
@@ -143,7 +127,7 @@ function girlfriendCheck() {
         girlfriendSelected = $("#singleImg").val();
     });
     $("#girlfriendInRight").click(onGirlfriendSelect);
-    document.getElementById("girlfriendInput").addEventListener("keyup", onGirlfriendSelectKey);
+    $("#girlfriendInput").keyup(onGirlfriendSelectKey)
 }
 function onGirlfriendSelect() {
     if (girlfriendSelected!=undefined) {
@@ -189,7 +173,7 @@ function loverNameCheck() {
     else{
         $(".fitQuestion").html("여자친구의 ");
     }
-    document.getElementById("loverNameInput").addEventListener("keyup", onLoverNameEnter);
+    $("#loverNameInput").keyup(onLoverNameEnter);
 }
 function onLoverNameEnter() {
     $("#loverNameInRight").show();
@@ -203,253 +187,13 @@ function onLoverNameInEnd() {
     if ($("#loverNameInput").val() == "") {
         bootbox.alert("이름을 적어주세요");
     } else {
-        localStorage.setItem("loverName", document.getElementById("loverNameInput").value);
+        localStorage.setItem("loverName",$("#loverNameInput").val());
 
         $("#loverNameIn").addClass("animated fadeOutLeftInit");
         setTimeout(function() {
             $("#loverNameIn").hide();
             relStartDateCheck();
         }, 1000);
-    }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* GET THE START DATE OF THE RELATIONSHIP, FOR GF AND SOLDIER W/ GF */
-/** TODO
- * 입대일 받는거처럼 바꿔주기
- * */
-
-
-
-
-
-
-
-
-
-
-var mouseLocation, mouseDown;
-
-// 년도 선택
-function currRelStartYPlus() {
-    mouseDown = true;
-    $("#upPointerRelStart1").mouseup(function () {
-        mouseDown = false;
-        return false;
-    });
-    if (mouseDown) {
-        mouseLocation = true;
-        $(document).mousemove(function (event) {
-            if (event.target != upPointerRelStartBtn1)
-                mouseLocation = false;
-        });
-        setTimeout(function () {
-            setTimeout(currRelStartYPlusAuto, 100);
-        }, 1000);
-    }
-
-    return false;
-}
-function currRelStartYPlusAuto() {
-    $("#upPointerRelStart1").mouseup(function () {
-        mouseDown = false;
-    });
-    $(document).mousemove(function (event) {
-        if (event.target != upPointerRelStartBtn1)
-            mouseLocation = false;
-    });
-    if (mouseLocation && mouseDown) {
-        $("#relStartYInput").val(++currRelStartY);
-        setTimeout(currRelStartYPlusAuto, 100);
-    }
-}
-function currRelStartYMinus() {
-    mouseDown = true;
-    $("#downPointerRelStart1").mouseup(function () {
-        mouseDown = false;
-        return false;
-    });
-    if (mouseDown) {
-        mouseLocation = true;
-        $(document).mousemove(function (event) {
-            if (event.target != downPointerRelStartBtn1)
-                mouseLocation = false;
-        });
-        setTimeout(function () {
-            setTimeout(currRelStartYMinusAuto, 100);
-        }, 1000);
-    }
-
-    return false;
-}
-function currRelStartYMinusAuto() {
-    $("#downPointerRelStart1").mouseup(function () {
-        mouseDown = false;
-    });
-    $(document).mousemove(function (event) {
-        if (event.target != downPointerRelStartBtn1)
-            mouseLocation = false;
-    });
-    if (mouseLocation && mouseDown) {
-        $("#relStartYInput").val(--currRelStartY);
-        setTimeout(currRelStartYMinusAuto, 100);
-    }
-}
-
-// 월 선택
-function currRelStartMPlus() {
-    mouseDown = true;
-    $("#upPointerRelStart2").mouseup(function () {
-        mouseDown = false;
-        return false;
-    });
-    if (mouseDown) {
-        mouseLocation = true;
-        $(document).mousemove(function (event) {
-            if (event.target != upPointerRelStartBtn2)
-                mouseLocation = false;
-        });
-        setTimeout(function () {
-            setTimeout(currRelStartMPlusAuto, 100);
-        }, 1000);
-    }
-
-    return false;
-}
-function currRelStartMPlusAuto() {
-    $("#upPointerRelStart2").mouseup(function () {
-        mouseDown = false;
-    });
-    $(document).mousemove(function (event) {
-        if (event.target != upPointerRelStartBtn2)
-            mouseLocation = false;
-    });
-    if (mouseLocation && mouseDown) {
-        if (currRelStartM == 12) {
-            currRelStartM = 0;
-        }
-        $("#relStartMInput").val(++currRelStartM);
-        setTimeout(currRelStartMPlusAuto, 100);
-    }
-}
-function currRelStartMMinus() {
-    mouseDown = true;
-    $("#downPointerRelStart2").mouseup(function () {
-        mouseDown = false;
-        return false;
-    });
-    if (mouseDown) {
-        mouseLocation = true;
-        $(document).mousemove(function (event) {
-            if (event.target != downPointerRelStartBtn2)
-                mouseLocation = false;
-        });
-        setTimeout(function () {
-            setTimeout(currRelStartMMinusAuto, 100);
-        }, 1000);
-    }
-
-    return false;
-}
-function currRelStartMMinusAuto() {
-    $("#downPointerRelStart2").mouseup(function () {
-        mouseDown = false;
-    });
-    $(document).mousemove(function (event) {
-        if (event.target != downPointerRelStartBtn2)
-            mouseLocation = false;
-    });
-    if (mouseLocation && mouseDown) {
-        if (currRelStartM == 1) {
-            currRelStartM = 13;
-        }
-        $("#relStartMInput").val(--currRelStartM);
-        setTimeout(currRelStartMMinusAuto, 100);
-    }
-}
-
-// 일 선택
-function currRelStartDPlus() {
-    mouseDown = true;
-    $("#upPointerRelStart3").mouseup(function () {
-        mouseDown = false;
-        return false;
-    });
-    if (mouseDown) {
-        mouseLocation = true;
-        $(document).mousemove(function (event) {
-            if (event.target != upPointerRelStartBtn3)
-                mouseLocation = false;
-        });
-        setTimeout(function () {
-            setTimeout(currRelStartDPlusAuto, 100);
-        }, 1000);
-    }
-
-    return false;
-}
-function currRelStartDPlusAuto() {
-    $("#upPointerRelStart3").mouseup(function () {
-        mouseDown = false;
-    });
-    $(document).mousemove(function (event) {
-        if (event.target != upPointerRelStartBtn3)
-            mouseLocation = false;
-    });
-    if (mouseLocation && mouseDown) {
-        if (currRelStartD == 31) {
-            currRelStartD = 0;
-        }
-        $("#relStartDInput").val(++currRelStartD);
-        setTimeout(currRelStartDPlusAuto, 100);
-    }
-}
-function currRelStartDMinus() {
-    mouseDown = true;
-    $("#downPointerRelStart3").mouseup(function () {
-        mouseDown = false;
-        return false;
-    });
-    if (mouseDown) {
-        mouseLocation = true;
-        $(document).mousemove(function (event) {
-            if (event.target != downPointerRelStartBtn3)
-                mouseLocation = false;
-        });
-        setTimeout(function () {
-            setTimeout(currRelStartDMinusAuto, 100);
-        }, 1000);
-    }
-
-    return false;
-}
-function currRelStartDMinusAuto() {
-    $("#downPointerRelStart3").mouseup(function () {
-        mouseDown = false;
-    });
-    $(document).mousemove(function (event) {
-        if (event.target != downPointerRelStartBtn3)
-            mouseLocation = false;
-    });
-    if (mouseLocation && mouseDown) {
-        if (currRelStartD == 1) {
-            currRelStartD = 31;
-        }
-        $("#relStartDInput").val(--currRelStartD);
-        setTimeout(currRelStartDMinusAuto, 100);
     }
 }
 
@@ -476,17 +220,6 @@ function relStartDateCheck() {
 
     // year update
     $("#relStartYInput").val(currRelStartY);
-    $("#relStartYInput").select();
-    setTimeout(function() { $('#relStartYInput').focus() }, 1000);
-
-    $("#upPointerRelStart1").mousedown(function(){
-        $("#relStartYInput").val(++currRelStartY);
-        currRelStartYPlus();
-    });
-    $("#downPointerRelStart1").mousedown(function(){
-        $("#relStartYInput").val(--currRelStartY);
-        currRelStartYMinus();
-    });       
     $("#relStartY").keydown(function(){
         if (event.which == 38 || event.keycode == 38) {
             $("#relStartYInput").val(++currRelStartY);
@@ -503,23 +236,6 @@ function relStartDateCheck() {
 
     // month update
     $("#relStartMInput").val(currRelStartM);
-    $("#relStartMInput").select();
-    $("#upPointerRelStart2").mousedown(function(){
-        $("#relStartMInput").val(++currRelStartM);
-        if (currRelStartM > 12){
-            currRelStartM = 0;
-            $("#relStartMInput").val(++currRelStartM);
-        }
-        currRelStartMPlus();
-    });
-    $("#downPointerRelStart2").mousedown(function(){
-        $("#relStartMInput").val(--currRelStartM );
-        if (currRelStartM <= 0){
-            currRelStartM = 13;
-            $("#relStartMInput").val(--currRelStartM);
-        }
-        currRelStartMMinus();
-    });
     $("#relStartM").keydown(function(){
         if (event.which == 38 || event.keycode == 38){
             $("#relStartMInput").val(++currRelStartM);
@@ -548,32 +264,12 @@ function relStartDateCheck() {
 
     // date update
     $("#relStartDInput").val(currRelStartD);
-    $("#relStartDInput").select();
-    $("#upPointerRelStart3").mousedown(function(){
-        $("#relStartDInput").val(++currRelStartD);
-        if (currRelStartD > 31){
-            currRelStartD = 0;
-            $("#relStartDInput").val(++currRelStartD);
-            // $("#relStartDInput").val("  " + ++currRelStartD);
-        }
-        currRelStartDPlus();
-    });
-    $("#downPointerRelStart3").mousedown(function(){
-        $("#relStartDInput").val(--currRelStartD);
-        if (currRelStartD <= 0){
-            currRelStartD = 32;
-            $("#relStartDInput").val(--currRelStartD);
-            // $("#relStartDInput").val("  " + --currRelStartD);
-        }
-        currRelStartDMinus();
-    });
     $("#relStartD").keydown(function(){
         if (event.which == 38 || event.keycode == 38){
             $("#relStartDInput").val(++currRelStartD);
             if (currRelStartD > 31){
                 currRelStartD = 0;
                 $("#relStartDInput").val(++currRelStartD);
-                // $("#relStartDInput").val("  " + ++currRelStartD);
             }
         }
         else if (event.which == 40 || event.keycode == 40){            
@@ -581,7 +277,6 @@ function relStartDateCheck() {
             if (currRelStartD <= 0){
                 currRelStartD = 32;
                 $("#relStartDInput").val(--currRelStartD);
-                // $("#relStartDInput").val("  " + --currRelStartD);
             }
         }  
         else if  (event.which==13 || event.keycode==13) {                           
@@ -606,7 +301,6 @@ function relStartYActive(){
     $("#monthRelStart").css("color", "rgba(77, 77, 77, 0.918)");
     $("#dayRelStart").css("color", "rgba(77, 77, 77, 0.918)");
     $("#relStartYInput").focus();
-    // $("#relStartYInput").select();
 
     $("#relStartDateInRight").show();
     $("#relStartDateInRight").click(onRelStartDateClick);
@@ -623,7 +317,6 @@ function relStartMActive(){
     $("#monthRelStart").css("color", "white");
     $("#dayRelStart").css("color", "rgba(77, 77, 77, 0.918)");   
     $("#relStartMInput").focus();    
-    // $("#relStartMInput").select();
 
     $("#relStartDateInRight").show();
     $("#relStartDateInRight").click(onRelStartDateClick);
@@ -640,7 +333,6 @@ function relStartDActive(){
     $("#monthRelStart").css("color", "rgba(77, 77, 77, 0.918)"); 
     $("#dayRelStart").css("color", "white");   
     $("#relStartDInput").focus();
-    // $("#relStartDInput").select();
 
     $("#relStartDateInRight").show();
     $("#relStartDateInRight").click(onRelStartDateClick);
@@ -685,19 +377,6 @@ function onRelStartDateInEnd(relStartDateStr) {
         branchCheck();
     }, 1000);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /* BRANCH */
 function branchCheck() {
@@ -751,12 +430,9 @@ function branchCheck() {
     });
 
     $("#branchInRight").click(onBranchSelect);
-    document.getElementById("branchInput").addEventListener("keyup", onBranchSelectKey);//이게 안 먹음...
+    $("#branchInput").keyup(onBranchSelectKey);
 }
 function onBranchSelect() {
-    // localStorage.setItem("branch", $("input[name=branchRadio]:checked").val());
-    // document.getElementById("branchIn").style.display = "none";
-    // enlistDateCheck();
     if (branchSelected != undefined) {
         localStorage.setItem("branch", branchSelected);
     }
@@ -788,218 +464,6 @@ function onBranchInEnd() {
     }, 1000);
 }
 
-var mouseLocation, mouseDown;
-
-// 년도 선택
-function currEnlistYPlus() {
-    mouseDown = true;
-    $("#upPointerEnlist1").mouseup(function () {
-        mouseDown = false;
-        return false;
-    });
-    if (mouseDown) {
-        mouseLocation = true;
-        $(document).mousemove(function (event) {
-            if (event.target != upPointerEnlistBtn1)
-                mouseLocation = false;
-        });
-        setTimeout(function () {
-            setTimeout(currEnlistYPlusAuto, 100);
-        }, 1000);
-    }
-
-    return false;
-}
-function currEnlistYPlusAuto() {
-    $("#upPointerEnlist1").mouseup(function () {
-        mouseDown = false;
-    });
-    $(document).mousemove(function (event) {
-        if (event.target != upPointerEnlistBtn1)
-            mouseLocation = false;
-    });
-    if (mouseLocation && mouseDown) {
-        $("#enlistYInput").val(++currEnlistY);
-        setTimeout(currEnlistYPlusAuto, 100);
-    }
-}
-function currEnlistYMinus() {
-    mouseDown = true;
-    $("#downPointerEnlist1").mouseup(function () {
-        mouseDown = false;
-        return false;
-    });
-    if (mouseDown) {
-        mouseLocation = true;
-        $(document).mousemove(function (event) {
-            if (event.target != downPointerEnlistBtn1)
-                mouseLocation = false;
-        });
-        setTimeout(function () {
-            setTimeout(currEnlistYMinusAuto, 100);
-        }, 1000);
-    }
-
-    return false;
-}
-function currEnlistYMinusAuto() {
-    $("#downPointerEnlist1").mouseup(function () {
-        mouseDown = false;
-    });
-    $(document).mousemove(function (event) {
-        if (event.target != downPointerEnlistBtn1)
-            mouseLocation = false;
-    });
-    if (mouseLocation && mouseDown) {
-        $("#enlistYInput").val(--currEnlistY);
-        setTimeout(currEnlistYMinusAuto, 100);
-    }
-}
-
-// 월 선택
-function currEnlistMPlus() {
-    mouseDown = true;
-    $("#upPointerEnlist2").mouseup(function () {
-        mouseDown = false;
-        return false;
-    });
-    if (mouseDown) {
-        mouseLocation = true;
-        $(document).mousemove(function (event) {
-            if (event.target != upPointerEnlistBtn2)
-                mouseLocation = false;
-        });
-        setTimeout(function () {
-            setTimeout(currEnlistMPlusAuto, 100);
-        }, 1000);
-    }
-
-    return false;
-}
-function currEnlistMPlusAuto() {
-    $("#upPointerEnlist2").mouseup(function () {
-        mouseDown = false;
-    });
-    $(document).mousemove(function (event) {
-        if (event.target != upPointerEnlistBtn2)
-            mouseLocation = false;
-    });
-    if (mouseLocation && mouseDown) {
-        if (currEnlistM == 12) {
-            currEnlistM = 0;
-        }
-        $("#enlistMInput").val(++currEnlistM);
-        setTimeout(currEnlistMPlusAuto, 100);
-    }
-}
-function currEnlistMMinus() {
-    mouseDown = true;
-    $("#downPointerEnlist2").mouseup(function () {
-        mouseDown = false;
-        return false;
-    });
-    if (mouseDown) {
-        mouseLocation = true;
-        $(document).mousemove(function (event) {
-            if (event.target != downPointerEnlistBtn2)
-                mouseLocation = false;
-        });
-        setTimeout(function () {
-            setTimeout(currEnlistMMinusAuto, 100);
-        }, 1000);
-    }
-
-    return false;
-}
-function currEnlistMMinusAuto() {
-    $("#downPointerEnlist2").mouseup(function () {
-        mouseDown = false;
-    });
-    $(document).mousemove(function (event) {
-        if (event.target != downPointerEnlistBtn2)
-            mouseLocation = false;
-    });
-    if (mouseLocation && mouseDown) {
-        if (currEnlistM == 1) {
-            currEnlistM = 13;
-        }
-        $("#enlistMInput").val(--currEnlistM);
-        setTimeout(currEnlistMMinusAuto, 100);
-    }
-}
-
-// 일 선택
-function currEnlistDPlus() {
-    mouseDown = true;
-    $("#upPointerEnlist3").mouseup(function () {
-        mouseDown = false;
-        return false;
-    });
-    if (mouseDown) {
-        mouseLocation = true;
-        $(document).mousemove(function (event) {
-            if (event.target != upPointerEnlistBtn3)
-                mouseLocation = false;
-        });
-        setTimeout(function () {
-            setTimeout(currEnlistDPlusAuto, 100);
-        }, 1000);
-    }
-
-    return false;
-}
-function currEnlistDPlusAuto() {
-    $("#upPointerEnlist3").mouseup(function () {
-        mouseDown = false;
-    });
-    $(document).mousemove(function (event) {
-        if (event.target != upPointerEnlistBtn3)
-            mouseLocation = false;
-    });
-    if (mouseLocation && mouseDown) {
-        if (currEnlistD == 31) {
-            currEnlistD = 0;
-        }
-        $("#enlistDInput").val(++currEnlistD);
-        setTimeout(currEnlistDPlusAuto, 100);
-    }
-}
-function currEnlistDMinus() {
-    mouseDown = true;
-    $("#downPointerEnlist3").mouseup(function () {
-        mouseDown = false;
-        return false;
-    });
-    if (mouseDown) {
-        mouseLocation = true;
-        $(document).mousemove(function (event) {
-            if (event.target != downPointerEnlistBtn3)
-                mouseLocation = false;
-        });
-        setTimeout(function () {
-            setTimeout(currEnlistDMinusAuto, 100);
-        }, 1000);
-    }
-
-    return false;
-}
-function currEnlistDMinusAuto() {
-    $("#downPointerEnlist3").mouseup(function () {
-        mouseDown = false;
-    });
-    $(document).mousemove(function (event) {
-        if (event.target != downPointerEnlistBtn3)
-            mouseLocation = false;
-    });
-    if (mouseLocation && mouseDown) {
-        if (currEnlistD == 1) {
-            currEnlistD = 31;
-        }
-        $("#enlistDInput").val(--currEnlistD);
-        setTimeout(currEnlistDMinusAuto, 100);
-    }
-}
-
 /* ENLISTDATE */
 function enlistDateCheck() {
     $("#enlistDateIn").show();
@@ -1014,16 +478,6 @@ function enlistDateCheck() {
     // year update
     $("#enlistYInput").val(currEnlistY);
     $("#enlistYInput").select();
-    setTimeout(function() { $('#enlistYInput').focus() }, 1000);
-
-    $("#upPointerEnlist1").mousedown(function(){
-        $("#enlistYInput").val(++currEnlistY);
-        currEnlistYPlus();
-    });
-    $("#downPointerEnlist1").mousedown(function(){
-        $("#enlistYInput").val(--currEnlistY);
-        currEnlistYMinus();
-    });       
     $("#enlistY").keydown(function(){
         if (event.which == 38 || event.keycode == 38) {
             $("#enlistYInput").val(++currEnlistY);
@@ -1040,23 +494,6 @@ function enlistDateCheck() {
 
     // month update
     $("#enlistMInput").val(currEnlistM);
-    $("#enlistMInput").select();
-    $("#upPointerEnlist2").mousedown(function(){
-        $("#enlistMInput").val(++currEnlistM);
-        if (currEnlistM > 12){
-            currEnlistM = 0;
-            $("#enlistMInput").val(++currEnlistM);
-        }
-        currEnlistMPlus();
-    });
-    $("#downPointerEnlist2").mousedown(function(){
-        $("#enlistMInput").val(--currEnlistM );
-        if (currEnlistM <= 0){
-            currEnlistM = 13;
-            $("#enlistMInput").val(--currEnlistM);
-        }
-        currEnlistMMinus();
-    });
     $("#enlistM").keydown(function(){
         if (event.which == 38 || event.keycode == 38){
             $("#enlistMInput").val(++currEnlistM);
@@ -1085,32 +522,12 @@ function enlistDateCheck() {
 
     // date update
     $("#enlistDInput").val(currEnlistD);
-    $("#enlistDInput").select();
-    $("#upPointerEnlist3").mousedown(function(){
-        $("#enlistDInput").val(++currEnlistD);
-        if (currEnlistD > 31){
-            currEnlistD = 0;
-            $("#enlistDInput").val(++currEnlistD);
-            // $("#enlistDInput").val("  " + ++currEnlistD);
-        }
-        currEnlistDPlus();
-    });
-    $("#downPointerEnlist3").mousedown(function(){
-        $("#enlistDInput").val(--currEnlistD);
-        if (currEnlistD <= 0){
-            currEnlistD = 32;
-            $("#enlistDInput").val(--currEnlistD);
-            // $("#enlistDInput").val("  " + --currEnlistD);
-        }
-        currEnlistDMinus();
-    });
     $("#enlistD").keydown(function(){
         if (event.which == 38 || event.keycode == 38){
             $("#enlistDInput").val(++currEnlistD);
             if (currEnlistD > 31){
                 currEnlistD = 0;
                 $("#enlistDInput").val(++currEnlistD);
-                // $("#enlistDInput").val("  " + ++currEnlistD);
             }
         }
         else if (event.which == 40 || event.keycode == 40){            
@@ -1118,7 +535,6 @@ function enlistDateCheck() {
             if (currEnlistD <= 0){
                 currEnlistD = 32;
                 $("#enlistDInput").val(--currEnlistD);
-                // $("#enlistDInput").val("  " + --currEnlistD);
             }
         }  
         else if  (event.which==13 || event.keycode==13) {                           
@@ -1143,7 +559,6 @@ function enlistYActive(){
     $("#monthEnlist").css("color", "rgba(77, 77, 77, 0.918)");
     $("#dayEnlist").css("color", "rgba(77, 77, 77, 0.918)");
     $("#enlistYInput").focus();
-    // $("#enlistYInput").select();
 
     $("#enlistDateInRight").show();
     $("#enlistDateInRight").click(onEnlistDateClick);
@@ -1160,7 +575,6 @@ function enlistMActive(){
     $("#monthEnlist").css("color", "white");
     $("#dayEnlist").css("color", "rgba(77, 77, 77, 0.918)");   
     $("#enlistMInput").focus();    
-    // $("#enlistMInput").select();
 
     $("#enlistDateInRight").show();
     $("#enlistDateInRight").click(onEnlistDateClick);
@@ -1177,7 +591,6 @@ function enlistDActive(){
     $("#monthEnlist").css("color", "rgba(77, 77, 77, 0.918)"); 
     $("#dayEnlist").css("color", "white");   
     $("#enlistDInput").focus();
-    // $("#enlistDInput").select();
 
     $("#enlistDateInRight").show();
     $("#enlistDateInRight").click(onEnlistDateClick);
@@ -1222,7 +635,7 @@ function onEnlistDateInEnd(enlistDateStr) {
     }, 1000);
 }
 
-//인터넷에서 긁어온거라 변경요망
+//check whether date input is valid
 function isValidDate(year, month, day) {
     var d = new Date(year, month, day);
     if (d.getFullYear() == year && d.getMonth() == month && d.getDate() == day) {

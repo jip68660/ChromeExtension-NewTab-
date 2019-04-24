@@ -47,43 +47,59 @@ function onError(err) {
     bootbox.alert("현재 위치를 가져올수 없습니다.</br> 날씨정보를 이용하려면 현재위치 사용을 허용해주세요");
 }
 
-function displayWeatherInfo(data) {
+function displayWeatherInfo(data) {    
 
     console.log(data);
-    
+
     $("#weatherInfoArea").show();
     $(".weatherIconImg").hide();
     $("#currTemp").html(Math.round(data.main.temp));
-    $("#tempMinMaxArea").html(data.main.temp_min + " ºC / " + data.main.temp_max + " ºC");
-    // $("#tempMin").html("최저: " + data.main.temp_min + " ºC");
-    // $("#tempMax").html("최대: " + data.main.temp_max + " ºC");
+    $("#tempMinArea").html("최저: " + data.main.temp_min + " ºC");
+    $("#tempMaxArea").html("최고: " + data.main.temp_max + " ºC");
 
-    var desc = data.weather[0].description;
+    var main = data.weather[0].main;
+    let sunrise = data.sys.sunrise;
+    let sunset = data.sys.sunset;
+    var time = Math.floor(new Date().getTime() / 1000);
 
     var weatherDesc;
-    if (desc == "clear sky") {
+    if (main == "Clear") {
         weatherDesc = "맑음";
         //check time
-        $("#weatherSun").show();
-    } else if (desc == "few clouds" || desc == "scattered clouds" || desc == "broken clouds" || desc == "overcast clouds" || data.weather[0].main == "Clouds") {
+        if (time >= sunrise && time < sunset) {
+            $("#weatherSun").show();
+        } else {
+            $("#weatherMoon").show();
+        }
+    } else if (main == "Clouds") {
         weatherDesc = "흐림";
         //check time
-        $("#weatherClouds").show();
-    } else if (desc == "shower rain" || desc == "moderate rain") {
+        if (time >= sunrise && time < sunset) {
+            $("#weatherClouds").show();
+        } else {
+            $("#weatherMoon").show();//밤 구름 그림 삽입
+        }
+    } else if (main == "Drizzle") {
         weatherDesc = "이슬비";
         $("#weatherShower").show();
-    } else if (desc == "rain" || data.weather[0].main == "Rain") {
+    } else if (main == "Rain") {
         weatherDesc = "비";
         $("#weatherRain").show();
-    } else if (desc == "thunderstorm") {
+    } else if (main == "Thunderstorm") {
         weatherDesc = "폭풍";
         $("#weatherStorm").show();
-    } else if (desc == "snow") {
+    } else if (main == "Snow") {
         weatherDesc = "눈";
         $("#weatherSnow").show();
-    } else if (desc == "mist" || desc == "haze" || desc == "fog") {
+    } else if (main == "Mist" || main == "Smoke" || main == "Haze" || main == "Fog") {
         weatherDesc = "안개";
         $("#weatherMist").show();
+    } else if (main == "Dust" || main == "Sand" || main == "Ash") {
+        weatherDesc = "황사";
+        $("#weatherDust").show();
+    } else if (main == "squall" || main == "Tornado") {
+        weatherDesc = "바람";
+        $("#weatherWind").show();
     }
     $("#weatherDesc").html(weatherDesc);
 }

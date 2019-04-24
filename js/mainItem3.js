@@ -1,14 +1,58 @@
-$('#dateBox').click(toggle);
-$("#infoBox").click(toggle2);
+$("#relationshipInfo").click(function() {
+    if (window.innerWidth != 272){
+        $("#relationshipInfo").hide();
+        $("#relationshipInfoBack").css("display", "flex");
+    }    
+});
+$("#relationshipInfoBack").click(function() {
+    if (window.innerWidth != 272){
+        $("#relationshipInfoBack").hide();
+        $("#relationshipInfo").show();
+    }
+});
+
 $(".imgSetting").click(function() {
     $("#picModal").modal("hide");
 });
-$("#imgUpload").change(doFile);
-$("#closeImgUpload").click(doImageTest);
+
+$(".coupleImg").click(function() {
+    for (var i = 1; i <= 3; i++) {
+        if ($("#withGF" + i).attr("src") != "img/imgIcon.png") {
+        }
+    }
+})
+$("#imgUpload1").change(function(e) {
+    currFileNum = 1;
+    fileUpload(e);
+});
+$("#imgUpload2").change(function(e) {
+    currFileNum = 2;
+    fileUpload(e);
+});
+$("#imgUpload3").change(function(e) {
+    currFileNum = 3;
+    fileUpload(e);
+});
+$("#close1").click(function(e) {
+    $("#check1").css("visibility", "hidden");
+    e.preventDefault();
+    deleteImg(1);
+});
+$("#close2").click(function(e) {
+    $("#check2").css("visibility", "hidden");
+    e.preventDefault();
+    deleteImg(2);
+});
+$("#close3").click(function(e) {
+    $("#check3").css("visibility", "hidden");
+    e.preventDefault();
+    deleteImg(3);
+});
+
+$("#imgSave").click(saveToDb);
 $("#imgRevert").click(revertImg);
 
 $("#anniversaryImg").click(celebrate);
-// var anniversaryDate = ["img/heart.png", "img/100.png", "img/200.png", "img/300.png", "img/1year.png", "img/400.png", "img/500.png", "img/600.png", "img/700.png", "img/2year.png", "img/800.png", "img/900.png", "img/1000.png", "img/3year.png", "img/4year.png", "img/BD_lover.png", "img/BD_user.png"];
 
 var loverBD = new Date(localStorage.loverBD);
 var userBD = new Date(localStorage.userBD);
@@ -18,14 +62,23 @@ var todayOff = new Date(today - timeZoneOffSet);
 var todayISO = todayOff.toISOString().slice(0,10).replace(/-/g, "");
 var relDate = new Date(localStorage.relStartDate);
 var year, month, day;
-var lastAnniversaryDate;
 var nextAnniversaryDate;
-// var dateFormat = new Date();
+
+// Database
 let db;
 let dbVersion = 1;
 let dbReady = false;
+var currFileNum;
+var firstfile;
+var secondfile;
+var thirdfile;
 
 $(document).ready(function() {
+
+    //모든 이미지 오른쪽 마우스 클릭 금지
+    $("img").on("contextmenu",function(){
+        return false;
+    }); 
 
     $("body").css({
         "text-align": "center"
@@ -35,24 +88,16 @@ $(document).ready(function() {
     checking();
     checkAnniversary();
 
-    // $("#picModal").modal({
-    //     keyboard: false,
-    //     backdrop: true,
-    //     focus: true,
-    //     show: false
-    // });
+    $(".frame").attr("src", "img/frame.png");
+
+    displayDates();    
+    $("#relationshipInfoBack").hide();
+    
+
 });
 
-$("#betweenPic").ready(function() {
-        // check if there is a picture in objectstore
-        // 1. if there is a picture, preset to the picture
-        // 2. if there isn't a
-    console.log('dom content loaded');
-    initDb();
-})
-
 function checking() {
-    if (!localStorage.loverName || !localStorage.relStartDate){//활성화는 됐는데 init에서 이거 두개 밖에 안 받아서... 이거라도 있으면 display
+    if (!localStorage.loverName || !localStorage.relStartDate){
         $("#instruction").show();  
         $("#pageContent").hide(); 
     } else {
@@ -65,11 +110,18 @@ function checking() {
         $("#daysInRel").html("D+" + daysInRelVal);
         $("#infoBox").hide();
 
-        if (!localStorage.couplePicFileName || localStorage.couplePicFileName == "") {
-            $("#fileName").text("default image");
-        } else {
-            $("#fileName").text(localStorage.couplePicFileName);
+        if (!localStorage.rot1) {
+            localStorage.rot1 = 0;
         }
+        if (!localStorage.rot2) {
+            localStorage.rot2 = 0;
+        }
+        if (!localStorage.rot3) {
+            localStorage.rot3 = 0;
+        }
+
+        //open database
+        initDb();
 
         if (localStorage.background == "img/mainback1.jpg") {
             $(".font-color").css("color", "#303030");
@@ -83,15 +135,13 @@ function checkAnniversary() {
     for (var i = 1; i<11; i++){
         var relCal = relDate;
         relCal.setDate(relDate.getDate() + i*100 - 1);
-        //array사용하고 나서 그 해당 기념일의 이미지를 어떻게 받을까 고민하다 [기념일날, 기념일이미지이름] 이런식으로 설정함
-        var relCal = [relCal, i*100];
+        var relCal = [relCal, i*100 + "일"];
         anniversaryDateArray.push(relCal);
         relDate = new Date(localStorage.relStartDate);
     }
-    //1주년,2주년...4주년까지 추가 -> 4주년 이후로는 그냥 안해도 될꺼같음, 아니면 그 위로는 글귀띄워도 재미있을듯. ex)"결혼하셔야죠 이제"
     for (var i = 1; i<5; i++){
         relCal365 = new Date(relDate.getFullYear() + i, relDate.getMonth(), relDate.getDate());
-        relCal365 = [relCal365, i + "year"];
+        relCal365 = [relCal365, i + "주년"];
         anniversaryDateArray.push(relCal365);
     }    
 
@@ -103,12 +153,12 @@ function checkAnniversary() {
         var lastYearUserBD = new Date(today.getFullYear() - 1, userBD.getMonth(), userBD.getDate());
         var thisYearUserBD = new Date(today.getFullYear(), userBD.getMonth(), userBD.getDate());
         var nextYearUserBD = new Date(today.getFullYear() + 1, userBD.getMonth(), userBD.getDate());
-        lastYearLoverBD = [lastYearLoverBD, "BD"];
-        thisYearLoverBD = [thisYearLoverBD, "BD"];
-        nextYearLoverBD = [nextYearLoverBD, "BD"];
-        lastYearUserBD = [lastYearUserBD, "BD"];
-        thisYearUserBD = [thisYearUserBD, "BD"];
-        nextYearUserBD = [nextYearUserBD, "BD"];
+        lastYearLoverBD = [lastYearLoverBD, "연인생일"];
+        thisYearLoverBD = [thisYearLoverBD, "연인생일"];
+        nextYearLoverBD = [nextYearLoverBD, "연인생일"];
+        lastYearUserBD = [lastYearUserBD, "본인생일"];
+        thisYearUserBD = [thisYearUserBD, "본인생일"];
+        nextYearUserBD = [nextYearUserBD, "본인생일"];
 
         //사귄날이 2019년도인데 2018년도 생일 기념일은 말이 안된다, 그거 계산;
         if (relDate > thisYearLoverBD[0] || relDate > thisYearUserBD[0]){
@@ -132,7 +182,7 @@ function checkAnniversary() {
             anniversaryDateArray.push(nextYearUserBD);
         }
     }
-    //기념일날 전부 string으로 변환
+    // 기념일날 전부 string으로 변환
     for (var i = 0; i < anniversaryDateArray.length; i++){
         var dateFormat = anniversaryDateArray[i][0];
         if(isValidDate(dateFormat.getFullYear(), dateFormat.getMonth(), dateFormat.getDate())){    
@@ -143,7 +193,6 @@ function checkAnniversary() {
     }
     //기념일날 기준으로 sort
     anniversaryDateArray.sort();
-    console.log(anniversaryDateArray);
 
     //오늘기준으로 기념일인지, 전 기념일은 뭔지, 다음 기념일은 뭔지 계산 및 보여주기
     for (var i = 0; i < anniversaryDateArray.length; i++) {
@@ -151,32 +200,24 @@ function checkAnniversary() {
         
         //오늘이 기념일
         if (dateCheck[0] == todayISO){
-            $("#middleBox").hide();
-            $("#anniversaryDate").show();
-            $("#anniversaryImg").attr("src", "/img/" + dateCheck[1] + ".png");
+            $("#anniversaryDate").html(dateCheck[1]);
+            celebrate();
+            
             break;
         }
-        //전기념일 계산
-        else if (dateCheck[0] < todayISO){
-            lastAnniversaryDate = dateCheck[1];            
-        }
-        //다음기념일 계산하고나면, 마지막 전기념일이 전기념일
+        //다음기념일 계산
         else if (dateCheck[0] > todayISO){
+            var dateNextAnni = new Date(dateCheck[0].slice(0, 4), dateCheck[0].slice(4,6) - 1, dateCheck[0].slice(6,8));
+            var tilNextAnni = Math.floor((dateNextAnni - today) / (1000 * 3600 * 24)) + 1;;
             nextAnniversaryDate = dateCheck[1];    
-            if (lastAnniversaryDate == undefined){
-                lastAnniversaryDate = "heart";
-            }  
-            $("#lastAnniversaryImg").attr("src", "/img/" + lastAnniversaryDate + ".png");
-            $("#nextAnniversaryImg").attr("src", "/img/" + nextAnniversaryDate + ".png");
+    
+            $("#anniversaryDate").hide();
+            $("#nextAnni").html(nextAnniversaryDate + " 까지");
+            $("#numDaysToNextAnni").html("D-" + tilNextAnni);
             break;
         }
     }
 }
-
-// function changeToString(dateFormat) {
-//     dateFormat = dateFormat.toISOString().slice(0,10).replace(/-/g,"");
-//     return dateFormat;
-// }
 
 function isValidDate(year, month, day) {
     var d = new Date(year, month, day);
@@ -186,59 +227,43 @@ function isValidDate(year, month, day) {
     return false;
 }
 
-function toggle() {
-    $('#dateBox').hide();
-    $('#infoBox').show();
-
+function displayDates() {
     var waitDays = Math.floor((new Date(today.getFullYear(), today.getMonth(), today.getDate()) - new Date(relDate.getFullYear(), relDate.getMonth(), relDate.getDate())) / (1000 * 3600 * 24)) + 1;
     var doneDays = localStorage.wholeDays - localStorage.todoDays;
     if (waitDays > doneDays){
-        $("#waitDaysCount").html(doneDays + "일");
+        $("#waitDaysCount").html("D+" + doneDays);
     }
     else
     {
-        $('#waitDaysCount').html(waitDays + "일");
+        $('#waitDaysCount').html("D+" + waitDays);
     }
-    // $("#waitDaysCount").html(Math.floor((new Date() - new Date(localStorage.relStartDate)) / (1000 * 3600 * 24))+1);
-    $("#leftDaysCount").html(localStorage.todoDays + "일");
-}
-
-function toggle2(){
-    $('#infoBox').hide();
-    $('#dateBox').show();
+    $("#leftDaysCount").html("D-" + localStorage.todoDays);
 }
 
 function celebrate() {
-    $("#celebrateAnn").show();
-    $('#celebrateAnn').addClass("animated tada");
-    $("#anniversaryDate").css("justify-content", "space-evenly");
-    // $("#pageContent").css("background-image", "url(/img/firework.png)");
+    $("#anniveraryDate").show();
+    $("#anniversaryDate").css("font-size", "1.5rem");
+    $('#anniversaryDate').addClass("animated tada");
 }
 /**
  * Image Upload / Change Couple Pic
  */
-
-// $(document).ready(function() {
-//     console.log('dom content loaded');
-//     $("#imgUpload").change(doFile);
-//     $("#imgSubmit").click(doImageTest);
-
-//     initDb();
-// });
-
 function initDb() {
+
     let request = indexedDB.open("couplePic", dbVersion);
     
     request.onerror = function(e) {
-        console.error("데이터베이스를 열수 없습니다.");
     }
     request.onsuccess = function(e) {
         db = e.target.result;
-        console.log("데이터베이스를 열었습니다.");
-        console.log(db);
+
+        let trans = db.transaction(["couplePicOS"], "readonly");
         
         //preset couple picture on load
-        doImageTest();
+        fetchFromDb(1);
+        fetchFromDb(2);
+        fetchFromDb(3);
+
     }
     request.onupgradeneeded = function(e) {
         let db = e.target.result;
@@ -246,73 +271,120 @@ function initDb() {
     }
 }
 
-function doFile(e) {
-    console.log("change event fired for input field");
+function fileUpload(e) {
     let file = e.target.files[0];
     var reader = new FileReader();
     reader.readAsBinaryString(file);
     reader.onload = function(e) {
         let bits = e.target.result;
-        let obj = {
-            created: new Date(),
-            data:bits
-        }
-        console.log("assigned obj");
+        if (currFileNum == 1) {
+            firstfile = {
+                created: new Date(),
+                data: bits
+            }
+            $("#check1").css("visibility", "visible");
+        } else if (currFileNum == 2) {
+            secondfile = {
+                created: new Date(),
+                data: bits
+            }
+            $("#check2").css("visibility", "visible");
 
-        // 파일 이름 display 및 local에 저장
-        $("#fileName").text(file.name);
-        localStorage.setItem("couplePicFileName", file.name);
-
-        // db에 파일 저장
-        let trans = db.transaction(["couplePicOS"], "readwrite");
-        let addReq = trans.objectStore("couplePicOS").put(obj, 0);
-        addReq.onerror = function(e) {
-            console.log("데이터 저장 오류");
-            console.error(e);
-        }
-        trans.oncomplete = function(e) {
-            console.log("데이터 저장 성공");
+        } else if (currFileNum == 3) {
+            thirdfile = {
+                created: new Date(),
+                data: bits
+            }
+            $("#check3").css("visibility", "visible");
         }
     }
 }
 
-function doImageTest() {
+function saveToDb() {
+    // db에 파일 저장
+    let trans = db.transaction(["couplePicOS"], "readwrite");
+    let os = trans.objectStore("couplePicOS");
 
-    // console.log("doFile pt.2 - saving in the db")
-    // let trans = db.transaction(["couplePicOS"], "readwrite");
-    // let addReq = trans.objectStore("couplePicOS").put(obj, 0);
-    // addReq.onerror = function(e) {
-    //     console.log("데이터 저장 오류");
-    //     console.error(e);
-    // }
-    // trans.oncomplete = function(e) {
-    //     console.log("데이터 저장 성공");
-    // }
-
-    console.log("doImageTest");
-    let trans = db.transaction(["couplePicOS"], "readonly");
-
-    let req = trans.objectStore("couplePicOS").get(0);
-    req.onsuccess = function(e) {
-        let record = e.target.result;
-        console.log("성공", record);
-
-        if (record == null) {
-            $("#withGF").attr("src", "img/withGF.png");
-        } else {
-            var imgSrcStr = "data:image/jpeg;base64," + btoa(record.data)
-            $("#withGF").attr("src", imgSrcStr);
+    // null check first
+    if (firstfile != null) {
+        let addReq1 = os.put(firstfile, 1);
+        addReq1.onerror = function(e) {
+        }
+        addReq1.onsuccess = function(e) {            
+            fetchFromDb(1);
         }
     }
-} 
+
+    if (secondfile != null) {
+        let addReq2 = os.put(secondfile, 2);
+        addReq2.onerror = function(e) {
+        }
+        addReq2.onsuccess = function(e) {    
+            fetchFromDb(2);
+        }
+    }
+    if (thirdfile != null) {
+        let addReq3 = os.put(thirdfile, 3);
+        addReq3.onerror = function(e) {
+        }
+        addReq3.onsuccess = function(e) {    
+            fetchFromDb(3);
+        }
+    }
+}
+
+function fetchFromDb(index) {
+    let trans = db.transaction(["couplePicOS"], "readonly");
+    req = trans.objectStore("couplePicOS").get(index);
+    req.onsuccess = function(e) {
+        let record = e.target.result;
+
+        // display image
+        if (record == null) {
+            $("#withGF" + index).attr("src", "img/imgIcon2.png");
+            $("#icon" + index).removeClass("fa-exchange");
+            $("#icon" + index).addClass("fa-plus-circle");     
+            $("#check" + index).css("visibility", "hidden");       
+        } else {
+            var imgSrcStr = "data:image/jpeg;base64," + btoa(record.data);
+            $("#withGF" + index).attr("src", imgSrcStr);
+            $("#withGF" + index).show();
+            $("#icon" + index).removeClass("fa-plus-circle");
+            $("#icon" + index).addClass("fa-exchange");
+
+            $("#betweenPic" + index).css("border", "none");
+            $("#betweenPic" + index).css("background-color", "transparent");
+            
+            $("#check" + index).css("visibility", "visible");
+        }
+    }
+}
 
 function revertImg() {//그냥 objectstore 비우면 됨
-    console.log("revertImg");
-    localStorage.couplePicFileName = "";
     let trans = db.transaction(["couplePicOS"], "readwrite");
-    let req = trans.objectStore("couplePicOS").delete(0);
+    let req = trans.objectStore("couplePicOS").clear();
     req.onsuccess = function(e) {
-        console.log("deleted objectstore to revert to default img");
-        $("#withGF").attr("src", "img/withGF.png");
+        fetchFromDb(1);
+        fetchFromDb(2);
+        fetchFromDb(3);
+    }
+}
+
+function deleteImg(index) {
+    let trans = db.transaction(["couplePicOS"], "readwrite");
+    let req = trans.objectStore("couplePicOS").delete(index);
+    req.onsuccess = function(e) {
+        $("#withGF" + index).attr("src", "img/imgIcon2.png");
+
+        if (index == 1){
+            firstfile = null;
+        }
+        else if (index == 2){
+            secondfile = null;
+        }
+        else {
+            thirdfile = null;
+        }
+
     }
 }

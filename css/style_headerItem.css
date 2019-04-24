@@ -27,7 +27,6 @@
   height: 50px;
 }
 #searchBar {
-  /* transition: width 0.5s; */
   display: none;
   text-align: center;
   border: 0px;
@@ -47,21 +46,14 @@
 #searchIconImg:hover {
   transform: scale(1.1);
 }
-/* .searchCenter{
-  margin-top: 90px - 22.5px;
-} */
 #timeUI {
   padding: 10px 0 0 10px;
 }
 #dateDisplay {
-  /* width: 150px;
-  height: 1.2em; */
   font-size: 15px;
   display: inline;
 }
 #timeDisplay1, #timeDisplay2, #timeColon {
-  /* width: 150px;
-  height: 1.2em; */
   font-size: 45px;
   display: inline;
 }
@@ -94,7 +86,6 @@
 }
 .weatherIconImg {
   display: none;
-  /* color: white; */
   height: 100%;
   display: inline;
 }
@@ -103,6 +94,7 @@
 }
 #weatherDesc {
   height: 50%;
+  font-size: 1.2rem;
 }
 
 #weatherStatsArea {
@@ -119,31 +111,10 @@
 #currTempUnit {
   font-size: 1.5rem;
 }
-#tempMinMaxArea {
-  display: inline-flex;
-  flex-direction: column;
-  height: 50%;
+#tempMinArea, #tempMaxArea {
+  height: 25%;
+  font-size: 0.8rem;
 }
-/* #tempMin, #tempMax {
-  height: 50%;
-} */
-/* #cityInput{
-  outline: none;
-  text-align: center;
-  border: none;
-  background: transparent;
-  border-bottom: 1px solid white;
-  color: white;
-  width: 9em;
-  font-size: 18px;
-} */
-/* #submitWeather{
-  background: white;
-  border-radius: 1em;
-  cursor: pointer;
-  outline: none;
-  border: none;
-} */
 
 /* layout */
 .flexCol {
@@ -154,12 +125,18 @@
   display: flex;
   flex-direction: row;
 }
-.centerH {
+.centerV {
   align-items: center;
 }
-.centerV {
+.centerH {
   justify-content: center;
 }
 .spaceAround {
   justify-content: space-around;
+}
+
+@media (max-width: 643px){
+  #weatherIconArea {
+    visibility: hidden;
+  }
 }

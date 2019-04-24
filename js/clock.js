@@ -14,6 +14,7 @@ window.onload = setInterval(function() {
   currMinute = checkTime(currMinute);
   currSecond = checkTime(currSecond);
 
+  //요일 설정
   var weekday = new Array(7);
   weekday[0] = "일";
   weekday[1] = "월";
@@ -36,33 +37,27 @@ window.onload = setInterval(function() {
         currHour = 12;
       }
       if (currHour - 10 < 0) {
-        // timeOutString = "0" + currHour + ":" + currMinute + " AM";
         timeOutString1 = currHour;
-        // timeOutString2 = currMinute + " AM";
         timeOutString2 = currMinute 
         $("#amOrPm").html("AM");
       } else {
         timeOutString1 = currHour;
-        // timeOutString2 = currMinute + " AM";
         timeOutString2 = currMinute
         $("#amOrPm").html("AM");
       }
     } else {//PM
       if (currHour == 12) {
         timeOutString1 = currHour;
-        // timeOutString2 = currMinute + " PM";
         timeOutString2 = currMinute
         $("#amOrPm").html("PM");
       } else {
         currHour = currHour - 12;
         if (currHour - 10 < 0) {
           timeOutString1 = "0" + currHour;
-          // timeOutString2 = currMinute + " PM";
           timeOutString2 = currMinute
           $("#amOrPm").html("PM");
         } else {
           timeOutString1 = currHour;
-          // timeOutString2 = currMinute + " PM";
           timeOutString2 = currMinute
           $("#amOrPm").html("PM");
         }
@@ -72,10 +67,9 @@ window.onload = setInterval(function() {
       timeOutString1 = currHour;
       timeOutString2 = currMinute;
   }
-
-
-  document.getElementById("timeDisplay1").innerHTML = timeOutString1;
-  document.getElementById("timeDisplay2").innerHTML = timeOutString2;
+  $("#timeDisplay1").html(timeOutString1);
+  $("#timeDisplay2").html(timeOutString2);
+  
   if (toggleBool) {
     $("#timeColon").css("visibility", "visible");
     toggleBool = false;

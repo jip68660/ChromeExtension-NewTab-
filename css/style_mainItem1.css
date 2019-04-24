@@ -1,9 +1,10 @@
 body {
     overflow: hidden;
 }
+
 #progress {
     margin: auto;
-    width: 80%;
+    width: 100%;
     border: 2px solid white;
     border-radius: .5rem;
 }
@@ -11,24 +12,28 @@ body {
     width: 0%;
     border-radius: .25rem;
 }
-/* #topBox {
-    font-size: 4vw;
-} */
+
+#box {
+    width: 100%;
+    height: 100%;
+}
+
 #leftBox {
-    font-size: 3vw;
+    font-size: 4vw;
     padding-left: 5%;
     padding-right: 5%;
 }
 
 #profPicUser, #moreInfo {
     transition: transform 0.3s;
-    /* text-align: left; */
 }
 #profPicUser:hover, #moreInfo:hover {
     transform: scale(1.01);
 }
 #rightBox {
-    font-size: 3vw;
+    width: 45%;
+    height: 100%;
+    font-size: 4vw;
     padding-right: 10%;
 }
 #rightBox ul {
@@ -41,10 +46,10 @@ body {
     width: 15vw;
 }
 .rankImg {
-    width: 35vh;
+    width: 26vw;
 }
 #bottomBox {
-    font-size: 3vw;
+    font-size: 2.5vw;
 }
 #percentageDiv{
     font-size: 4vw;
@@ -76,26 +81,32 @@ body {
 }
 
 /* 반응형 */
-/* @media (max-width: 560px) and (min-height: 400px) { */
-@media (min-height: 300px) and (max-width: 272px) {
+@media (max-height: 280px) {
     body{
-        height: 100%;
-        margin: 0px;
+        height: 280px;
+        overflow-y: hidden;
     }
-    #middleBox{
+}
+@media (max-width: 272px) {
+    body{
+        height: 400px;
+        overflow-y: hidden;
+    }
+    #box{
         flex-direction: column;
-        height: 75% !important;
+        height: 100% !important;
         justify-content: space-evenly;
     }
     #rightBox{
-        order: -1;
         font-size: 8.5vw;
         width: 100% !important;
         padding-right: 0px;
         justify-self: center;
+        height: 55%;
     }
     #leftBox{
         width: 100% !important;   
+        height: 45%;
         flex-direction: column;
         padding-left: 0;
         padding-right: 0;  
@@ -107,13 +118,10 @@ body {
         width: auto;
     }
     .rankImg{
-        width: 53vw !important; 
-        height: 40vh;
-        /* padding-bottom: 2vh; */
+        width: 50vw !important;
     }    
     .SGT{
         width: 75vw !important;
-        height: 27vh;
     }
     
     #moreInfo{
@@ -124,7 +132,7 @@ body {
         font-size: 7vw;
     }
     #progress{
-        width: 90%;
+        width: 70%;
     }
     .space{
         display:none;
