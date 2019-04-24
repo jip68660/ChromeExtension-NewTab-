@@ -21,6 +21,24 @@ $(".coupleImg").click(function() {
         }
     }
 })
+$("#betweenPic1").mouseover(function() {
+    $("#betweenPic1").addClass("animated swing");
+});
+$("#betweenPic1").mouseleave(function() {
+    $("#betweenPic1").removeClass("animated swing");
+});
+$("#betweenPic2").mouseover(function() {
+    $("#betweenPic2").addClass("animated swing");
+});
+$("#betweenPic2").mouseleave(function() {
+    $("#betweenPic2").removeClass("animated swing");
+});
+$("#betweenPic3").mouseover(function() {
+    $("#betweenPic3").addClass("animated swing");
+});
+$("#betweenPic3").mouseleave(function() {
+    $("#betweenPic3").removeClass("animated swing");
+});
 $("#imgUpload1").change(function(e) {
     currFileNum = 1;
     fileUpload(e);
