@@ -61,7 +61,7 @@ function displayWeatherInfo(data) {
     let sunrise = data.sys.sunrise;
     let sunset = data.sys.sunset;
     var time = Math.floor(new Date().getTime() / 1000);
-`
+
     var weatherDesc;
     if (main == "Clear") {
         weatherDesc = "맑음";
