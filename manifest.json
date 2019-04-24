@@ -4,6 +4,8 @@
   "short_name": "짬탭",
   "version": "1.0",
 
+  "default_locale": "ko",
+  "description": "짬탭은 군복무 중인 병사들과 군대에 남자친구를 보낸 곰신들을 위한 전역일계산기 크롬 익스텐션입니다.",
   "icons": {
     "16" : "icons/icon-16x16.png",
     "48" : "icons/icon-48x48.png",
