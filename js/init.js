@@ -301,9 +301,6 @@ function relStartYActive(){
     $("#monthRelStart").css("color", "rgba(77, 77, 77, 0.918)");
     $("#dayRelStart").css("color", "rgba(77, 77, 77, 0.918)");
     $("#relStartYInput").focus();
-
-    $("#relStartDateInRight").show();
-    $("#relStartDateInRight").click(onRelStartDateClick);
 }
 
 function relStartMActive(){
@@ -317,9 +314,6 @@ function relStartMActive(){
     $("#monthRelStart").css("color", "white");
     $("#dayRelStart").css("color", "rgba(77, 77, 77, 0.918)");   
     $("#relStartMInput").focus();    
-
-    $("#relStartDateInRight").show();
-    $("#relStartDateInRight").click(onRelStartDateClick);
 }
 
 function relStartDActive(){
@@ -333,9 +327,6 @@ function relStartDActive(){
     $("#monthRelStart").css("color", "rgba(77, 77, 77, 0.918)"); 
     $("#dayRelStart").css("color", "white");   
     $("#relStartDInput").focus();
-
-    $("#relStartDateInRight").show();
-    $("#relStartDateInRight").click(onRelStartDateClick);
 }
 
 function onRelStartDateClick() {
@@ -343,7 +334,9 @@ function onRelStartDateClick() {
     currRelStartY = relStartYInput.value;
     currRelStartM = relStartMInput.value;
     currRelStartD = relStartDInput.value;
-    if (!isValidDate(currRelStartY, currRelStartM - 1, currRelStartD)){
+
+    //맞는 날짜인지 .. & 미래에서 사귈수는 없으니까
+    if (!isValidDate(currRelStartY, currRelStartM - 1, currRelStartD) || (currDate < new Date(currRelStartY, currRelStartM - 1, currRelStartD))) {
         bootbox.alert("가능한 날짜가 아닙니다. 다시 적어주세요");
     }
     else{                
@@ -473,7 +466,10 @@ function enlistDateCheck() {
     }, 700);
 
     //default
-    enlistYActive();
+    enlistYActive();   
+
+    $("#enlistDateInRight").show();
+    $("#enlistDateInRight").click(onEnlistDateClick);
 
     // year update
     $("#enlistYInput").val(currEnlistY);
@@ -559,9 +555,6 @@ function enlistYActive(){
     $("#monthEnlist").css("color", "rgba(77, 77, 77, 0.918)");
     $("#dayEnlist").css("color", "rgba(77, 77, 77, 0.918)");
     $("#enlistYInput").focus();
-
-    $("#enlistDateInRight").show();
-    $("#enlistDateInRight").click(onEnlistDateClick);
 }
 
 function enlistMActive(){
@@ -575,9 +568,6 @@ function enlistMActive(){
     $("#monthEnlist").css("color", "white");
     $("#dayEnlist").css("color", "rgba(77, 77, 77, 0.918)");   
     $("#enlistMInput").focus();    
-
-    $("#enlistDateInRight").show();
-    $("#enlistDateInRight").click(onEnlistDateClick);
 }
 
 function enlistDActive(){
@@ -591,9 +581,6 @@ function enlistDActive(){
     $("#monthEnlist").css("color", "rgba(77, 77, 77, 0.918)"); 
     $("#dayEnlist").css("color", "white");   
     $("#enlistDInput").focus();
-
-    $("#enlistDateInRight").show();
-    $("#enlistDateInRight").click(onEnlistDateClick);
 }
 
 function onEnlistDateClick() {

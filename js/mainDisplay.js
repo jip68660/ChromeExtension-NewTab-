@@ -6,6 +6,8 @@ var possibleSearchEngine = ["naver", "google", "daum", "youtube", "yahoo", "baid
 var settingsEnterCount = 0;
 var settingsEnterCountSub = 0;
 
+var currDate = new Date();
+
 // starting point
 $(document).ready(checkStorage);
 
@@ -524,11 +526,12 @@ function onSaveSettings(engineArray) {
             return;
         }
 
-        // 생일두개가 사귄날짜보다 빠르진 않는지
+        // 생일두개가 사귄날짜보다 빠르진 않는지 & 미래에서 사귈순 없으니까
         let loverBD = new Date($("#lover-birthday").val());
         let userBD = new Date($("#user-birthday").val());
         let firstDate = new Date($("#first-date").val());
-        if (firstDate - loverBD <= 0 || firstDate - userBD <= 0) {
+
+        if (firstDate - loverBD <= 0 || firstDate - userBD <= 0 || (currDate < firstDate)) {
             bootbox.alert("생일과 사귄날짜를 올바르게 입력해주세요");
             return;
         }

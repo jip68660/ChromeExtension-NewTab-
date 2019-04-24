@@ -162,6 +162,8 @@ function checkAnniversary() {
         relCal365 = [relCal365, i + "주년"];
         anniversaryDateArray.push(relCal365);
     }    
+    //기본제공 4년, 그 이후
+    anniversaryDateArray.push([new Date(relDate.getFullYear() + 100, relDate.getMonth(), relDate.getDate()), "장수커플"]);
 
     //유저가 생일을 다 입력했을떄만 나옴, 아니면 없음
     if (localStorage.loverBD && localStorage.userBD){
@@ -211,6 +213,7 @@ function checkAnniversary() {
     }
     //기념일날 기준으로 sort
     anniversaryDateArray.sort();
+    console.log(anniversaryDateArray);
 
     //오늘기준으로 기념일인지, 전 기념일은 뭔지, 다음 기념일은 뭔지 계산 및 보여주기
     for (var i = 0; i < anniversaryDateArray.length; i++) {
@@ -223,15 +226,22 @@ function checkAnniversary() {
             
             break;
         }
+        //기본제공 4년, 그 이후 (단, 생일 입력 안했을때만 나옴)
+        else if (dateCheck[1] == "장수커플"){
+            $("#anniversaryDate").hide();
+            $("#nextAnni").html("결혼은 언제하세요?");
+        }
         //다음기념일 계산
         else if (dateCheck[0] > todayISO){
             var dateNextAnni = new Date(dateCheck[0].slice(0, 4), dateCheck[0].slice(4,6) - 1, dateCheck[0].slice(6,8));
             var tilNextAnni = Math.floor((dateNextAnni - today) / (1000 * 3600 * 24)) + 1;;
             nextAnniversaryDate = dateCheck[1];    
-    
+            console.log(nextAnniversaryDate);
+            // if (nextAnniversaryDate == null)
             $("#anniversaryDate").hide();
             $("#nextAnni").html(nextAnniversaryDate + " 까지");
             $("#numDaysToNextAnni").html("D-" + tilNextAnni);
+
             break;
         }
     }
