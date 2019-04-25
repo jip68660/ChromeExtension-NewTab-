@@ -126,11 +126,19 @@ function searchUIOpen() {
         searchBar.style.width = "38vw";
       }
       searchBar.style.display = "inline-flex";    
-      setTimeout(function() {
+      if (window.innerWidth > 643) {
+        setTimeout(function() {
+          searchEngine.style.display = "inline-flex";
+          searchIco.style.width="50px";
+          searchIco.style.display = "inline-flex";
+        }, 500);
+      }
+      else {
         searchEngine.style.display = "inline-flex";
         searchIco.style.width="50px";
         searchIco.style.display = "inline-flex";
-      }, 500);
+      }
+      
       isSearchClosed = false;
 
       // 뭔가를 적었을때만 검색되게. 이전에 searchUI 켰다가 닫고 다시 킬때, searchIconImg 눌러지면 바로 검색되가지고, 이렇게 바꿈.

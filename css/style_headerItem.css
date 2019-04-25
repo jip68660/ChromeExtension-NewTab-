@@ -135,8 +135,8 @@
   justify-content: space-around;
 }
 
-@media (max-width: 643px){
+/* @media (max-width: 643px){
   #weatherIconArea {
     visibility: hidden;
   }
-}
+} */
