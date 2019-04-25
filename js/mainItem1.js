@@ -7,6 +7,15 @@ $("#moreInfo").click(function() {
     $("#moreInfo").hide();
 });
 
+$("#dDayDisplay").click(function() {
+    $("#dDayDisplay").hide();
+    $("#dDayDisplayBack").show();
+});
+$("#dDayDisplayBack").click(function() {
+    $("#dDayDisplayBack").hide();
+    $("#dDayDisplay").show();
+});
+
 $(document).ready(function() {
 
     //모든 이미지 오른쪽 마우스 클릭 금지
@@ -104,7 +113,8 @@ $(document).ready(function() {
         var serviceTimeMS = endDateTime - startDateTime;
         var percentage = (serviceTimeMS - (endDateTime - new Date())) / serviceTimeMS * 100;
         $("#percentageDiv").html(percentage.toFixed(7) + "%");
-        window.onload = setInterval(function() {
+        
+        var percentageInterval = setInterval(function() {
             var percentage = (serviceTimeMS - (endDateTime - new Date())) / serviceTimeMS * 100;
             $("#percentageDiv").html(percentage.toFixed(7) + "%");
             //100% 찍으면 멈추기
@@ -113,6 +123,27 @@ $(document).ready(function() {
                 $("#percentageDiv").html(100 + "%");
             }
         }, 70);//퍼센트 0.07초마다 업데이트
+
+        var remainingInterval = setInterval(function() {
+            //전역일 00:00까지 날짜 차이 실시간 업데이트
+            var today = new Date();
+
+            var discharge = new Date(localStorage.endDateYear, localStorage.endDateMonth - 1, localStorage.endDateDate);
+            var remainingDays = Math.floor((discharge - today) / (1000 * 3600 * 24));
+            var remainingHours = Math.floor((discharge - today) / (1000 * 3600));
+            var remainingMinutes = Math.floor((discharge - today) / (1000 * 60));
+            var remainingSeconds = Math.floor((discharge - today) / 1000);
+
+            let remainingHoursDisplay = remainingHours - (remainingDays * 24);
+            let remainingMinutesDisplay = remainingMinutes - (remainingHours * 60);
+            let remainingSecondsDisplay = remainingSeconds - (remainingMinutes * 60);
+
+            $("#timeRemaining").html(remainingDays + "일 " + remainingHoursDisplay + "시간");
+            $("#minute1").html(Math.floor(remainingMinutesDisplay / 10));
+            $("#minute2").html(remainingMinutesDisplay % 10);
+            $("#second1").html(Math.floor(remainingSecondsDisplay / 10));
+            $("#second2").html(remainingSecondsDisplay % 10);
+        }, 500);//남은 시간 실시간 업데이트
 
         let today = new Date();
         if (today.getFullYear() == startDateTime.getFullYear() && today.getMonth() == startDateTime.getMonth() && today.getDate() == startDateTime.getDate()) {//오늘이 입대일

@@ -25,6 +25,14 @@ $("#storageResetButton").click(function() {
 });
 $("#leftPointer").click(clickLeft);
 $("#rightPointer").click(clickRight);
+$("#timeUIFront").click(function() {
+    $("#timeUIFront").hide();
+    $("#timeUIBack").show();
+});
+$("#timeUIBack").click(function() {
+    $("#timeUIBack").hide();
+    $("#timeUIFront").show();
+});
 $("#weatherInfoArea").mousedown(function() {
     if (localStorage.weatherStatus == "weatherFront") {
         $(".weatherFront").hide();
