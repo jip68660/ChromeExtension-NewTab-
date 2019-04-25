@@ -108,7 +108,7 @@ $(document).ready(function() {
         $("#li_todoDays").html(localStorage.todoDays + "일");
 
         // 실시간 업데이트 퍼센트
-        var endDateTime = new Date(localStorage.endDateYear, (localStorage.endDateMonth - 1), localStorage.endDateDate, 8);// 전역일 오전 8시
+        var endDateTime = new Date(localStorage.endDateYear, (localStorage.endDateMonth - 1), localStorage.endDateDate);
         var startDateTime = new Date(localStorage.enlistDate);//입대일 오전 9시
         var serviceTimeMS = endDateTime - startDateTime;
         var percentage = (serviceTimeMS - (endDateTime - new Date())) / serviceTimeMS * 100;
