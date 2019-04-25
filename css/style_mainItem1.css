@@ -56,6 +56,9 @@ body {
 #dDayDisplayBack {
     height: 64%;
 }
+#dDayDisplay:hover, #dDayDisplayBack:hover{
+    cursor: pointer;
+}
 #timeSlotArea {
     width: 100%;
     height: 80%
