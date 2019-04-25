@@ -52,8 +52,33 @@
 	cursor: pointer;
 }
 
-.switch-field input:checked + label {
-  background-color: #007bff;
+/*테마에 따른 switch-field 색깔 변화*/
+.switch-field.mainback1 input:checked + label {
+  background-color: #84638F;
+  color: white;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+.switch-field.mainback2 input:checked + label {
+  background-color: #328ba3;
+  color: white;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+.switch-field.mainback3 input:checked + label {
+  background-color: #001C32;
+  color: white;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+.switch-field.mainback4 input:checked + label {
+  background-color: #30517E;
+  color: white;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+.switch-field.mainback5 input:checked + label {
+  background-color: #5e5e5e;
   color: white;
   -webkit-box-shadow: none;
   box-shadow: none;
@@ -194,10 +219,6 @@
   background-color: #007bff;
   color: white;
 }
-.card-header[aria-expanded = "true"] {
-  background-color: #007bff;
-  color: white;
-}
 .card-body {
   width: 100%;
 }
@@ -217,6 +238,54 @@
   height: 190px;
   border: none;
 }
+
+/*테마에 따른 card-header 색깔변화*/
+.card-header.mainback1:hover {
+  cursor: pointer;
+  background-color: #84638F;
+  color: white;
+}
+.card-header.mainback1[aria-expanded = "true"] {
+  background-color: #84638F;
+  color: white;
+}
+.card-header.mainback2:hover {
+  cursor: pointer;
+  background-color: #328ba3;
+  color: white;
+}
+.card-header.mainback2[aria-expanded = "true"] {
+  background-color: #328ba3;
+  color: white;
+}
+.card-header.mainback3:hover {
+  cursor: pointer;
+  background-color: #001C32;
+  color: white;
+}
+.card-header.mainback3[aria-expanded = "true"] {
+  background-color: #001C32;
+  color: white;
+}
+.card-header.mainback4:hover {
+  cursor: pointer;
+  background-color: #30517E;
+  color: white;
+}
+.card-header.mainback4[aria-expanded = "true"] {
+  background-color: #30517E;
+  color: white;
+}
+.card-header.mainback5:hover {
+  cursor: pointer;
+  background-color: #5e5e5e;
+  color: white;
+}
+.card-header.mainback5[aria-expanded = "true"] {
+  background-color: #5e5e5e;
+  color: white;
+}
+
 .logoArea {
   display: flex;
   width: 45%;

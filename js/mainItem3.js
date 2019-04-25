@@ -111,7 +111,8 @@ $(document).ready(function() {
     displayDates();    
     $("#relationshipInfoBack").hide();
     
-
+    //테마
+    theme();    
 });
 
 function checking() {
@@ -413,5 +414,38 @@ function deleteImg(index) {
             thirdfile = null;
         }
 
+    }
+}
+
+function theme() {
+    if (localStorage.background ==  "img/mainback1.jpg") {
+        $(".modal-header").css("background-color", "#84638F");
+        $(".modal-header").css("border-color", "#84638F");
+        $("#imgSave").css("background-color", "#84638F");
+        $("#imgSave").css("border-color", "#84638F");
+    }
+    else if (localStorage.background ==  "img/mainback2.jpg") {
+        $(".modal-header").css("background-color", "#328ba3");
+        $(".modal-header").css("border-color", "#328ba3");
+        $("#imgSave").css("background-color", "#328ba3");
+        $("#imgSave").css("border-color", "#328ba3");
+    }
+    else if (localStorage.background ==  "img/mainback3.jpg") {
+        $(".modal-header").css("background-color", "#001C32");
+        $(".modal-header").css("border-color", "#001C32");
+        $("#imgSave").css("background-color", "#001C32");
+        $("#imgSave").css("border-color", "#001C32");
+    }
+    else if (localStorage.background ==  "img/mainback4.jpg") {
+        $(".modal-header").css("background-color", "#30517E");
+        $(".modal-header").css("border-color", "#30517E");
+        $("#imgSave").css("background-color", "#30517E");
+        $("#imgSave").css("border-color", "#30517E");
+    }
+    else if (localStorage.background ==  "img/mainback5.jpg") {
+        $(".modal-header").css("background-color", "#5e5e5e");
+        $(".modal-header").css("border-color", "#5e5e5e");
+        $("#imgSave").css("background-color", "#5e5e5e");
+        $("#imgSave").css("border-color", "#5e5e5e");
     }
 }

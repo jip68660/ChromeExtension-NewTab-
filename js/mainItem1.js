@@ -87,17 +87,33 @@ $(document).ready(function() {
         if (localStorage.background ==  "img/mainback1.jpg") {
             $("#progressBar").css("background", "#84638F");            
             $(".font-color").css("color", "#303030");
-            $("#progress").css("border", "2px solid #8e8e8e");
+            $("#progress").css("border", "2px solid #303030");
             $("#toRankSettingsButton").css("background-color", "#84638F");
             $("#toRankSettingsButton").css("border-color", "#84638F");
         } else if (localStorage.background == "img/mainback2.jpg") {
-            $("#progressBar").css("background", "#47d3c3");
+            $("#progressBar").css("background", "#328ba3");            
+            // $(".font-color").css("color", "#303030");
+            // $("#progress").css("border", "2px solid #8e8e8e");
+            $("#toRankSettingsButton").css("background-color", "#328ba3");
+            $("#toRankSettingsButton").css("border-color", "#328ba3");
         } else if (localStorage.background == "img/mainback3.jpg") {
-            $("#progressBar").css("background", "#50dc9b");
+            $("#progressBar").css("background", "#001C32");            
+            // $(".font-color").css("color", "#303030");
+            // $("#progress").css("border", "2px solid #8e8e8e");
+            $("#toRankSettingsButton").css("background-color", "#001C32");
+            $("#toRankSettingsButton").css("border-color", "#001C32");
         } else if (localStorage.background == "img/mainback4.jpg") {
-            $("#progressBar").css("background", "#5c93ad");
+            $("#progressBar").css("background", "#30517E");            
+            // $(".font-color").css("color", "#303030");
+            // $("#progress").css("border", "2px solid #8e8e8e");
+            $("#toRankSettingsButton").css("background-color", "#30517E");
+            $("#toRankSettingsButton").css("border-color", "#30517E");
         } else if (localStorage.background == "img/mainback5.jpg") {
-            $("#progressBar").css("background", "#a5a675");
+            $("#progressBar").css("background", "#5e5e5e");            
+            // $(".font-color").css("color", "#303030");
+            // $("#progress").css("border", "2px solid #8e8e8e");
+            $("#toRankSettingsButton").css("background-color", "#5e5e5e");
+            $("#toRankSettingsButton").css("border-color", "#5e5e5e");
         } 
         progressBarWidth = progressBarWidth + "%";
 
