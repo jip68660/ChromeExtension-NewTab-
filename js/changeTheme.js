@@ -5,7 +5,9 @@ if (localStorage.background == "img/mainback1.jpg") {
     $(".font-color").css("color", "#303030");
     $("#searchUI").css("box-shadow", "0px 0px 5px #505050");
     $(".fitBGborder").css("background-color", "#84638F");
-    $(".fitBGborder").css("border-color", "#84638F"); 
+    $(".fitBGborder").css("border-color", "#84638F");
+    $(".btn-primary").css("background-color", "#84638F");
+    $(".btn-primary").css("border", "1px solid #84638F");
     for (i = 0; i < cardHeader.length; i++) {
         $(cardHeader[i]).addClass("mainback1");
     }
@@ -17,7 +19,9 @@ if (localStorage.background == "img/mainback1.jpg") {
 } else if (localStorage.background == "img/mainback2.jpg") {
     $("#searchUI").css("box-shadow", "0px 0px 5px #328ba3");
     $(".fitBGborder").css("background-color", "#328ba3");
-    $(".fitBGborder").css("border-color", "#328ba3");   
+    $(".fitBGborder").css("border-color", "#328ba3");
+    $(".btn-primary").css("background-color", "#328ba3");
+    $(".btn-primary").css("border", "1px solid #328ba3");
     for (i = 0; i < cardHeader.length; i++) {
         $(cardHeader[i]).addClass("mainback2");
     }
@@ -27,7 +31,9 @@ if (localStorage.background == "img/mainback1.jpg") {
 } else if (localStorage.background == "img/mainback3.jpg") {
     $("#searchUI").css("box-shadow", "0px 0px 5px #001C32");
     $(".fitBGborder").css("background-color", "#001C32");
-    $(".fitBGborder").css("border-color", "#001C32");   
+    $(".fitBGborder").css("border-color", "#001C32"); 
+    $(".btn-primary").css("background-color", "#001C32");
+    $(".btn-primary").css("border", "1px solid #001C32");  
     for (i = 0; i < cardHeader.length; i++) {
         $(cardHeader[i]).addClass("mainback3");
     }
@@ -38,6 +44,8 @@ if (localStorage.background == "img/mainback1.jpg") {
     $("#searchUI").css("box-shadow", "0px 0px 5px #30517E");
     $(".fitBGborder").css("background-color", "#30517E");
     $(".fitBGborder").css("border-color", "#30517E");   
+    $(".btn-primary").css("background-color", "#30517E");
+    $(".btn-primary").css("border", "1px solid #30517E");
     for (i = 0; i < cardHeader.length; i++) {
         $(cardHeader[i]).addClass("mainback4");
     }
@@ -48,6 +56,8 @@ if (localStorage.background == "img/mainback1.jpg") {
     $("#searchUI").css("box-shadow", "0px 0px 5px #5e5e5e");
     $(".fitBGborder").css("background-color", "#5e5e5e");
     $(".fitBGborder").css("border-color", "#5e5e5e"); 
+    $(".btn-primary").css("background-color", "#5e5e5e");
+    $(".btn-primary").css("border", "1px solid #5e5e5e");
     for (i = 0; i < cardHeader.length; i++) {
         $(cardHeader[i]).addClass("mainback5");
     }  
