@@ -73,6 +73,9 @@
 #leftCount{
     font-size: 8vw;
 }
+#leftCount.index10 {
+    font-size: 5vw;
+}
 #rightCount, #title {
     width: 100%;
     font-size: 4vw;
@@ -132,6 +135,9 @@
     }
     #leftCount{
         font-size: 16vw;    
+    }
+    #leftCount.index10{
+        font-size: 14vw;
     }
     #rightCount {
         width: 100%;
