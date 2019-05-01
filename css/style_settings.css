@@ -54,7 +54,7 @@
 
 /*테마에 따른 switch-field 색깔 변화*/
 .switch-field.mainback1 input:checked + label {
-  background-color: #84638F;
+  background-color: rgb(127, 192, 179);
   color: white;
   -webkit-box-shadow: none;
   box-shadow: none;
@@ -78,7 +78,7 @@
   box-shadow: none;
 }
 .switch-field.mainback5 input:checked + label {
-  background-color: #5e5e5e;
+  background-color: #E0B870;
   color: white;
   -webkit-box-shadow: none;
   box-shadow: none;
@@ -242,11 +242,11 @@
 /*테마에 따른 card-header 색깔변화*/
 .card-header.mainback1:hover {
   cursor: pointer;
-  background-color: #84638F;
+  background-color: rgb(127, 192, 179);
   color: white;
 }
 .card-header.mainback1[aria-expanded = "true"] {
-  background-color: #84638F;
+  background-color: rgb(127, 192, 179);
   color: white;
 }
 .card-header.mainback2:hover {
@@ -278,11 +278,11 @@
 }
 .card-header.mainback5:hover {
   cursor: pointer;
-  background-color: #5e5e5e;
+  background-color: #E0B870;
   color: white;
 }
 .card-header.mainback5[aria-expanded = "true"] {
-  background-color: #5e5e5e;
+  background-color: #E0B870;
   color: white;
 }
 

@@ -24,6 +24,9 @@ $(document).ready(function() {
     if (localStorage.background == "img/mainback1.jpg") {
         $(".font-color").css("color", "#303030");
     }
+    else if (localStorage.background == "img/mainback2.jpg") {
+        $(".font-color").css("color", "#303030");
+    }
     $("body").css({
         "text-align": "center"
     });

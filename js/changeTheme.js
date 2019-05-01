@@ -4,10 +4,10 @@ var switchField = document.querySelectorAll("div.switch-field");
 if (localStorage.background == "img/mainback1.jpg") {
     $(".font-color").css("color", "#303030");
     $("#searchUI").css("box-shadow", "0px 0px 5px #505050");
-    $(".fitBGborder").css("background-color", "#84638F");
-    $(".fitBGborder").css("border-color", "#84638F");
-    $(".btn-primary").css("background-color", "#84638F");
-    $(".btn-primary").css("border", "1px solid #84638F");
+    $(".fitBGborder").css("background-color", "rgb(127, 192, 179)");
+    $(".fitBGborder").css("border-color", "rgb(127, 192, 179)");
+    $(".btn-primary").css("background-color", "rgb(127, 192, 179)");
+    $(".btn-primary").css("border", "1px solid rgb(127, 192, 179)");
     for (i = 0; i < cardHeader.length; i++) {
         $(cardHeader[i]).addClass("mainback1");
     }
@@ -17,6 +17,7 @@ if (localStorage.background == "img/mainback1.jpg") {
     
 
 } else if (localStorage.background == "img/mainback2.jpg") {
+    $(".font-color").css("color", "#303030");
     $("#searchUI").css("box-shadow", "0px 0px 5px #328ba3");
     $(".fitBGborder").css("background-color", "#328ba3");
     $(".fitBGborder").css("border-color", "#328ba3");
@@ -53,11 +54,11 @@ if (localStorage.background == "img/mainback1.jpg") {
         $(switchField[i]).addClass("mainback4");
     }
 } else if (localStorage.background == "img/mainback5.jpg") {
-    $("#searchUI").css("box-shadow", "0px 0px 5px #5e5e5e");
-    $(".fitBGborder").css("background-color", "#5e5e5e");
-    $(".fitBGborder").css("border-color", "#5e5e5e"); 
-    $(".btn-primary").css("background-color", "#5e5e5e");
-    $(".btn-primary").css("border", "1px solid #5e5e5e");
+    $("#searchUI").css("box-shadow", "0px 0px 5px #E0B870");
+    $(".fitBGborder").css("background-color", "#E0B870");
+    $(".fitBGborder").css("border-color", "#E0B870"); 
+    $(".btn-primary").css("background-color", "#E0B870");
+    $(".btn-primary").css("border", "1px solid #E0B870");
     for (i = 0; i < cardHeader.length; i++) {
         $(cardHeader[i]).addClass("mainback5");
     }  

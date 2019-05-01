@@ -145,6 +145,9 @@ function checking() {
         if (localStorage.background == "img/mainback1.jpg") {
             $(".font-color").css("color", "#303030");
         }
+        else if (localStorage.background == "img/mainback1.jpg") {
+            $(".font-color").css("color", "#303030");
+        }
     }    
 }
 
@@ -419,10 +422,10 @@ function deleteImg(index) {
 
 function theme() {
     if (localStorage.background ==  "img/mainback1.jpg") {
-        $(".modal-header").css("background-color", "#84638F");
-        $(".modal-header").css("border-color", "#84638F");
-        $("#imgSave").css("background-color", "#84638F");
-        $("#imgSave").css("border-color", "#84638F");
+        $(".modal-header").css("background-color", "rgb(127, 192, 179)");
+        $(".modal-header").css("border-color", "rgb(127, 192, 179)");
+        $("#imgSave").css("background-color", "rgb(127, 192, 179)");
+        $("#imgSave").css("border-color", "rgb(127, 192, 179)");
     }
     else if (localStorage.background ==  "img/mainback2.jpg") {
         $(".modal-header").css("background-color", "#328ba3");
@@ -443,9 +446,9 @@ function theme() {
         $("#imgSave").css("border-color", "#30517E");
     }
     else if (localStorage.background ==  "img/mainback5.jpg") {
-        $(".modal-header").css("background-color", "#5e5e5e");
-        $(".modal-header").css("border-color", "#5e5e5e");
-        $("#imgSave").css("background-color", "#5e5e5e");
-        $("#imgSave").css("border-color", "#5e5e5e");
+        $(".modal-header").css("background-color", "#E0B870");
+        $(".modal-header").css("border-color", "#E0B870");
+        $("#imgSave").css("background-color", "#E0B870");
+        $("#imgSave").css("border-color", "#E0B870");
     }
 }
