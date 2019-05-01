@@ -345,3 +345,19 @@ mainMiddle {
     color: #007bff;
 }
 
+#solo {
+    width: 20vw;
+    outline: none;
+}
+#selectedInput {
+    font-size: 30px;
+    color: gray;
+}
+
+
+/* #couple, #single {
+    filter: brightness(1.2) grayscale(1) opacity(.9);
+}
+#couple:hover, #single:hover{
+    filter: brightness(1.2);
+} */

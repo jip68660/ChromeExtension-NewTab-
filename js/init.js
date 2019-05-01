@@ -16,6 +16,7 @@ $("#enlistY").mousedown(enlistYActive);
 $("#enlistM").mousedown(enlistMActive);
 $("#enlistD").mousedown(enlistDActive);
 
+
 /* NAME */
 function nameCheck() {
     $("#nameIn").show();
@@ -113,18 +114,39 @@ function girlfriendCheck() {
         $("#girlfriendInput").css("visibility", "visible");
         $("#girlfriendInput").addClass("animated fadeInUp");
     }, 700);
+    
+    //default solo
+    $("#solo").css("background-color", "gray");
+    $("#withoutGF").css("color", "white");
+    $("#withoutGF").css("font-size", "40px");
+    $("#withGF").css("color", "gray");
+    $("#withGF").css("font-size", "30px");
 
-    $("#coupleImg").mousedown(function() {
-        $("#girlfriendInRight").show();
-        $(".girlfriend").removeClass("selected");
-        $("#coupleImg").addClass("selected");
-        girlfriendSelected = $("#coupleImg").val();
-    });
-    $("#singleImg").mousedown(function() {
-        $("#girlfriendInRight").show();
-        $(".girlfriend").removeClass("selected");
-        $("#singleImg").addClass("selected");
-        girlfriendSelected = $("#singleImg").val();
+    $("#girlfriendInRight").show();
+    $("#solo").mousedown(function() {
+        //couple   
+        if ($("#solo").val() == "no") {
+            $("#solo").attr("value", "yes");
+            $("#solo").attr("src", "img/couplePic.png");
+            $("#solo").css("background-color", "pink");
+            girlfriendSelected = $("#solo").val();
+            $("#withGF").css("color", "white");
+            $("#withGF").css("font-size", "40px");
+            $("#withoutGF").css("color", "gray");
+            $("#withoutGF").css("font-size", "30px");
+        }
+        //solo
+        else {
+            $("#solo").attr("value", "no");
+            $("#solo").attr("src", "img/soloPic.png");
+            $("#solo").css("background-color", "gray");
+            girlfriendSelected = $("#solo").val();
+            $("#withoutGF").css("color", "white");
+            $("#withoutGF").css("font-size", "40px");
+            $("#withGF").css("color", "gray");
+            $("#withGF").css("font-size", "30px");
+        }
+        
     });
     $("#girlfriendInRight").click(onGirlfriendSelect);
     $("#girlfriendInput").keyup(onGirlfriendSelectKey)
