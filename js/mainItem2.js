@@ -158,7 +158,7 @@ function leftCountCal(randomIndex) {
         }    
     } else if (randomIndex == 10) { //역사?
         leftCountStr = "시대";
-        ratio = ratio * 100;
+        ratio = (1-ratio) * 100;
         $("#leftCount").addClass("index10");
         /* 역사표 (그냥 단순하게 나눔)
             0-10 : 선사시대
