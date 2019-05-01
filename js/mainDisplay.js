@@ -225,7 +225,7 @@ function checkStorage() {
     if (localStorage.length == 0) {
         // 정보 입력을 받았을 때만 timeoutCheck를 1로 바꿔줘서 3초 딜레이
         timeoutCheck = 1;
-        $("#defaultBG").css("background-image","url(../img/mainback1.jpg)");
+        $("#defaultBG").css("background-image","url(../img/mainback3.jpg)");
         loadPage();
     } else {
         if (!localStorage.name || !localStorage.identity|| !localStorage.branch || !localStorage.enlistDate) {            
@@ -233,7 +233,7 @@ function checkStorage() {
 
             timeoutCheck = 1;
             localStorage.clear();       
-            $("#defaultBG").css("background-image","url(../img/mainback1.jpg)");
+            $("#defaultBG").css("background-image","url(../img/mainback3.jpg)");
             nameCheck();
         }
         else{
@@ -302,7 +302,7 @@ function displayAllFunc() {
     }
 
     if (!localStorage.background) {
-        localStorage.setItem("background", "img/mainback1.jpg");
+        localStorage.setItem("background", "img/mainback3.jpg");
     }
 
     if (!localStorage.timeOpt) {
