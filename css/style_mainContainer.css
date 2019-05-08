@@ -345,7 +345,7 @@ mainMiddle {
     color: #007bff;
 }
 
-#solo {
+#solo, #couple {
     width: 20vw;
     outline: none;
 }
@@ -353,7 +353,6 @@ mainMiddle {
     font-size: 30px;
     color: gray;
 }
-
 
 /* #couple, #single {
     filter: brightness(1.2) grayscale(1) opacity(.9);

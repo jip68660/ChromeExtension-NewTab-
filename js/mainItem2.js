@@ -161,7 +161,8 @@ function leftCountCal(randomIndex) {
         }    
     } else if (randomIndex == 10) { //역사?
         leftCountStr = "시대";
-        ratio = (1-ratio) * 100;
+        var history = (1-ratio) * 100;
+        console.log(history);
         $("#leftCount").addClass("index10");
         /* 역사표 (그냥 단순하게 나눔)
             0-10 : 선사시대
@@ -175,30 +176,30 @@ function leftCountCal(randomIndex) {
             81-90 : 대한민국임시정부시대
             91-100 : 대한민국
          */
-        if (ratio <= 10) {
+        if (history <= 10) {
             remainCount = "선사";
-        }else if (ratio <= 20) {
+        }else if (history <= 20) {
             remainCount = "고조선"
         }
-        else if (ratio <= 30) {
+        else if (history <= 30) {
             remainCount = "삼국" 
         }
-        else if (ratio <= 40) {
+        else if (history <= 40) {
             remainCount = "통일신라"
         }
-        else if (ratio <= 50) {
+        else if (history <= 50) {
             remainCount = "후삼국"
         }
-        else if (ratio <= 60) {
+        else if (history <= 60) {
             remainCount = "고려"
         }
-        else if (ratio <= 70) {
+        else if (history <= 70) {
             remainCount = "조선"
         }
-        else if (ratio <= 80) {
+        else if (history <= 80) {
             remainCount = "대한제국"
         }
-        else if (ratio <= 90) {
+        else if (history <= 90) {
             remainCount = "대한민국임시정부"
         }
         else {

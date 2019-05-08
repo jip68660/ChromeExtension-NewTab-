@@ -303,6 +303,17 @@ function displayAllFunc() {
 
     if (!localStorage.background) {
         localStorage.setItem("background", "img/mainback3.jpg");
+        $("#searchUI").css("box-shadow", "0px 0px 5px #001C32");
+        $(".fitBGborder").css("background-color", "#001C32");
+        $(".fitBGborder").css("border-color", "#001C32"); 
+        $(".btn-primary").css("background-color", "#001C32");
+        $(".btn-primary").css("border", "1px solid #001C32");  
+        for (i = 0; i < cardHeader.length; i++) {
+            $(cardHeader[i]).addClass("mainback3");
+        }
+        for (i = 0; i < switchField.length; i++) {
+            $(switchField[i]).addClass("mainback3");
+        }
     }
 
     if (!localStorage.timeOpt) {
