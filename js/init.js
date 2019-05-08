@@ -123,34 +123,7 @@ function girlfriendCheck() {
     $("#withGF").css("font-size", "30px");
 
     $("#girlfriendInRight").show();
-    // $("#solo").mousedown(function() {
-    //     //couple   
-    //     if ($("#solo").val() == "no") {
-    //         console.log("first")
-    //         $("#solo").attr("value", "yes");
-    //         $("#solo").attr("src", "img/couplePic.png");
-    //         $("#solo").css("background-color", "pink");
-    //         girlfriendSelected = $("#solo").val();
-    //         $("#withGF").css("color", "white");
-    //         $("#withGF").css("font-size", "40px");
-    //         $("#withoutGF").css("color", "gray");
-    //         $("#withoutGF").css("font-size", "30px");
-    //     }
-    //     //solo
-    //     else {
-    //         console.log("second")
-    //         $("#solo").attr("value", "no");
-    //         $("#solo").attr("src", "img/soloPic.png");
-    //         $("#solo").css("background-color", "gray");
-    //         girlfriendSelected = $("#solo").val();
-    //         $("#withoutGF").css("color", "white");
-    //         $("#withoutGF").css("font-size", "40px");
-    //         $("#withGF").css("color", "gray");
-    //         $("#withGF").css("font-size", "30px");
-    //     }
-    // });
     $("#solo").click(function() {
-        console.log("solo clicked, change to couple");
         $("#solo").hide();
         $("#couple").show();
         girlfriendSelected = "yes";
@@ -160,7 +133,6 @@ function girlfriendCheck() {
         $("#withoutGF").css("font-size", "30px");
     });
     $("#couple").click(function() {
-        console.log("couple clicked, change to solo");
         $("#couple").hide();
         $("#solo").show();
         girlfriendSelected = "no";
