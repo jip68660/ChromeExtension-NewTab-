@@ -73,9 +73,9 @@ function calculateEndDate() {
 
         // 최고 단축일보다 많이 줄수 없음
         if (endDateObj - maxReduced < 0) {
-            localStorage.setItem("wholeDays",(maxReduced - enterDateObj) / (1000 * 60 * 60 * 24));
-            localStorage.setItem("todoDays",(maxReduced - todayObj) / (1000 * 60 * 60 * 24));
-            localStorage.setItem("reducedDays", (realEndDate - maxReduced) / (1000 * 60 * 60 * 24));
+            localStorage.setItem("wholeDays",Math.floor((maxReduced - enterDateObj) / (1000 * 60 * 60 * 24)));
+            localStorage.setItem("todoDays",Math.floor((maxReduced - todayObj) / (1000 * 60 * 60 * 24)));
+            localStorage.setItem("reducedDays", Math.floor((realEndDate - maxReduced) / (1000 * 60 * 60 * 24)));
 
             localStorage.setItem("endDateYear", maxReduced.getFullYear());
             localStorage.setItem("endDateMonth", maxReduced.getMonth() + 1);
@@ -87,9 +87,8 @@ function calculateEndDate() {
         localStorage.setItem("reducedDays", 0);
     }
 
-    localStorage.setItem("wholeDays",(endDateObj - enterDateObj) / (1000 * 60 * 60 * 24));
-    localStorage.setItem("todoDays",(endDateObj - todayObj) / (1000 * 60 * 60 * 24));
-
+    localStorage.setItem("wholeDays", Math.floor((endDateObj - enterDateObj) / (1000 * 60 * 60 * 24)));
+    localStorage.setItem("todoDays", Math.floor((endDateObj - todayObj) / (1000 * 60 * 60 * 24)));
     localStorage.setItem("endDateYear", endDateObj.getFullYear());
     localStorage.setItem("endDateMonth", endDateObj.getMonth() + 1);
     localStorage.setItem("endDateDate", endDateObj.getDate());

@@ -239,7 +239,6 @@ function checkAnniversary() {
             var dateNextAnni = new Date(dateCheck[0].slice(0, 4), dateCheck[0].slice(4,6) - 1, dateCheck[0].slice(6,8));
             var tilNextAnni = Math.floor((dateNextAnni - today) / (1000 * 3600 * 24)) + 1;;
             nextAnniversaryDate = dateCheck[1];    
-            console.log(nextAnniversaryDate);
             // if (nextAnniversaryDate == null)
             $("#anniversaryDate").hide();
             $("#nextAnni").html(nextAnniversaryDate + " 까지");

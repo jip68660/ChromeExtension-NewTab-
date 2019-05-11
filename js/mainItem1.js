@@ -66,16 +66,18 @@ $(document).ready(function() {
     if (progressBarWidth < 0){        
         $("#progressBar").css("width", "0%");
         var daysUntilEnlist = Math.floor((new Date(localStorage.enlistDate) - new Date()) / (1000 * 3600 * 24)) + 1;
-        var beforeEnlistStr = "에휴...입대까지 " + daysUntilEnlist + "일!";
+        var beforeEnlistStr = "입대까지 " + daysUntilEnlist + "일!";
         $("#dDayDisplay").html(beforeEnlistStr);
+        $("#dDayDisplay").css("line-height", 1);
         $("#percentageDiv").html("0%");
         $("#toRankSettingsButton").hide();
         $("#profPicUser").attr("src", rankImage[0]);
     } else if (progressBarWidth > 100){
         $("#progressBar").css("width", "100%");
         var daysSinceDischarge = Math.floor((new Date() - new Date(localStorage.endDateYear, localStorage.endDateMonth - 1, localStorage.endDateDate)) / (1000 * 3600 * 24));
-        var afterDischargeStr = "전역한지 " + daysSinceDischarge + "일 됐어요... 크흠;";
+        var afterDischargeStr = "전역한지 " + daysSinceDischarge + "일...";
         $("#dDayDisplay").html(afterDischargeStr);
+        $("#dDayDisplay").css("line-height", 1);
         $("#percentageDiv").html("100%");
         $("#toRankSettingsButton").hide();
         $("#profPicUser").attr("src", rankImage[3]);
