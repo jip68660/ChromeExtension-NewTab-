@@ -1,21 +1,3 @@
-$("#profPicUser").click(function() {
-    $("#profPicUser").hide();
-    $("#moreInfo").show();
-});
-$("#moreInfo").click(function() {
-    $("#profPicUser").show();
-    $("#moreInfo").hide();
-});
-
-$("#dDayDisplay").click(function() {
-    $("#dDayDisplay").hide();
-    $("#dDayDisplayBack").show();
-});
-$("#dDayDisplayBack").click(function() {
-    $("#dDayDisplayBack").hide();
-    $("#dDayDisplay").show();
-});
-
 $(document).ready(function() {
 
     //모든 이미지 오른쪽 마우스 클릭 금지
@@ -50,14 +32,13 @@ $(document).ready(function() {
     } else if (localStorage.rank == "병장"){
         $("#toRankSettingsButton").hide();
         $("#profPicUser").attr("src", rankImage[3]);
-        $("#profPicUser").css("width", "38vw"); 
         $("#profPicUser").css("justify-self", "center");
         $("#profPicUser").addClass("SGT");
     }
 
     if(localStorage.identity == "girlfriend"){
         soldierName = localStorage.loverName;
-        $("#nameDisplay").html("남자친구, " + soldierName + "님");
+        $("#nameDisplay").html("남친, " + soldierName + "님");
     } else{
         $("#nameDisplay").html(soldierName + "님");
     }
@@ -65,8 +46,8 @@ $(document).ready(function() {
     if (progressBarWidth < 0){             
         $("#progressBar").css("width", "0%");
         var daysUntilEnlist = Math.floor((new Date(localStorage.enlistDate) - new Date()) / (1000 * 3600 * 24)) + 1;
-        var beforeEnlistStr = "입대까지 " + daysUntilEnlist + "일!";
-        $("#endDateDisplay").hide();
+        $("#endDateDisplay").html("입대까지")
+        var beforeEnlistStr = daysUntilEnlist + "일!";
         $("#dDayDisplay").html(beforeEnlistStr);
         $("#dDayDisplay").css("line-height", 1);
         $("#percentageDiv").html("0%");
@@ -76,8 +57,8 @@ $(document).ready(function() {
     } else if (progressBarWidth > 100){
         $("#progressBar").css("width", "100%");
         var daysSinceDischarge = Math.floor((new Date() - new Date(localStorage.endDateYear, localStorage.endDateMonth - 1, localStorage.endDateDate)) / (1000 * 3600 * 24));
-        var afterDischargeStr = "전역한지 " + daysSinceDischarge + "일...";        
-        $("#endDateDisplay").hide();        
+        $("#endDateDisplay").html("전역한지")
+        var afterDischargeStr = daysSinceDischarge + "일...";    
         $("#dDayDisplay").html(afterDischargeStr);
         $("#dDayDisplay").css("line-height", 1);
         $("#percentageDiv").html("100%");
@@ -86,6 +67,26 @@ $(document).ready(function() {
         $("#profPicUser").attr("src", rankImage[3]);        
         $("#profPicUser").addClass("SGT");
     } else {
+        //toggle action
+        $("#profPicUser").click(function() {
+            $("#profPicUser").hide();
+            $("#moreInfo").show();
+        });
+        $("#moreInfo").click(function() {
+            $("#profPicUser").show();
+            $("#moreInfo").hide();
+        });
+        
+        $("#dDayDisplay").click(function() {
+            $("#dDayDisplay").hide();
+            $("#dDayDisplayBack").show();
+        });
+        $("#dDayDisplayBack").click(function() {
+            $("#dDayDisplayBack").hide();
+            $("#dDayDisplay").show();
+        });
+
+
         $("#nameDisplay").append("의 전역일");
         $("#endDateDisplay").html(endDateStr);
         $("#dDayDisplay").html(dDayCount);

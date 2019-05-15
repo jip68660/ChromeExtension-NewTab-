@@ -41,7 +41,7 @@ body {
 #rightBox {
     width: 45%;
     height: 100%;
-    font-size: 3vw;
+    font-size: 3.5vw;
     padding-right: 10%;
 }
 #rightBox ul {
@@ -80,6 +80,9 @@ body {
 }
 .rankImg {
     width: 26vw;
+}
+.SGT {
+    width: 38vw;
 }
 #bottomBox {
     margin-top: 0.5rem;
