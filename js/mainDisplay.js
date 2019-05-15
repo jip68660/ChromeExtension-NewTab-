@@ -569,6 +569,7 @@ function onSaveSettings(engineArray) {
     localStorage.setItem("branch", $("#user-branch").val());
     localStorage.setItem("rank", $("#user-rank").val());
     localStorage.setItem("enlistDate", $("#user-enlistDate").val());
+    calculateEndDate();
 
     // settingsBG
     localStorage.setItem("background", $("input[name=bgImgRadioSettings]:checked").val())

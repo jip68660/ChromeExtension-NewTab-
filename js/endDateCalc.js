@@ -93,6 +93,11 @@ function calculateEndDate() {
     localStorage.setItem("endDateMonth", endDateObj.getMonth() + 1);
     localStorage.setItem("endDateDate", endDateObj.getDate());
 
+    var progressBarWidth = Math.floor((1 - localStorage.getItem("todoDays") / localStorage.getItem("wholeDays")) * 1000) / 10;
+    if(!isNaN(progressBarWidth)){
+        localStorage.setItem("progressBar", progressBarWidth);
+    }
+
     return endDateObj;
 }
 

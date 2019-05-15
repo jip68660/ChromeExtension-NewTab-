@@ -120,7 +120,8 @@ function girlfriendCheck() {
     $("#withoutGF").css("color", "white");
     $("#withoutGF").css("font-size", "40px");
     $("#withGF").css("color", "gray");
-    $("#withGF").css("font-size", "30px");
+    $("#withGF").css("font-size", "30px");    
+    girlfriendSelected = "no";
 
     $("#girlfriendInRight").show();
     $("#solo").click(function() {
@@ -314,8 +315,8 @@ function relStartYActive(){
     $("#relStartD").children().prop('disabled', true);    
     $("#relStartD").children().children().prop('disabled', true);   
     $("#yearRelStart").css("color", "white");
-    $("#monthRelStart").css("color", "rgba(77, 77, 77, 0.918)");
-    $("#dayRelStart").css("color", "rgba(77, 77, 77, 0.918)");
+    $("#monthRelStart").css("color", "gray");
+    $("#dayRelStart").css("color", "gray");
     $("#relStartYInput").focus();
 }
 
@@ -326,9 +327,9 @@ function relStartMActive(){
     $("#relStartY").children().children().prop('disabled', true);  
     $("#relStartD").children().prop('disabled', true);    
     $("#relStartD").children().children().prop('disabled', true);      
-    $("#yearRelStart").css("color", "rgba(77, 77, 77, 0.918)");
+    $("#yearRelStart").css("color", "gray");
     $("#monthRelStart").css("color", "white");
-    $("#dayRelStart").css("color", "rgba(77, 77, 77, 0.918)");   
+    $("#dayRelStart").css("color", "gray");   
     $("#relStartMInput").focus();    
 }
 
@@ -339,8 +340,8 @@ function relStartDActive(){
     $("#relStartY").children().children().prop('disabled', true);  
     $("#relStartM").children().prop('disabled', true);    
     $("#relStartM").children().children().prop('disabled', true);     
-    $("#yearRelStart").css("color", "rgba(77, 77, 77, 0.918)");
-    $("#monthRelStart").css("color", "rgba(77, 77, 77, 0.918)"); 
+    $("#yearRelStart").css("color", "gray");
+    $("#monthRelStart").css("color", "gray"); 
     $("#dayRelStart").css("color", "white");   
     $("#relStartDInput").focus();
 }
@@ -568,8 +569,8 @@ function enlistYActive(){
     $("#enlistD").children().prop('disabled', true);    
     $("#enlistD").children().children().prop('disabled', true);   
     $("#yearEnlist").css("color", "white");
-    $("#monthEnlist").css("color", "rgba(77, 77, 77, 0.918)");
-    $("#dayEnlist").css("color", "rgba(77, 77, 77, 0.918)");
+    $("#monthEnlist").css("color", "gray");
+    $("#dayEnlist").css("color", "gray");
     $("#enlistYInput").focus();
 }
 
@@ -580,9 +581,9 @@ function enlistMActive(){
     $("#enlistY").children().children().prop('disabled', true);  
     $("#enlistD").children().prop('disabled', true);    
     $("#enlistD").children().children().prop('disabled', true);      
-    $("#yearEnlist").css("color", "rgba(77, 77, 77, 0.918)");
+    $("#yearEnlist").css("color", "gray");
     $("#monthEnlist").css("color", "white");
-    $("#dayEnlist").css("color", "rgba(77, 77, 77, 0.918)");   
+    $("#dayEnlist").css("color", "gray");   
     $("#enlistMInput").focus();    
 }
 
@@ -593,8 +594,8 @@ function enlistDActive(){
     $("#enlistY").children().children().prop('disabled', true);  
     $("#enlistM").children().prop('disabled', true);    
     $("#enlistM").children().children().prop('disabled', true);     
-    $("#yearEnlist").css("color", "rgba(77, 77, 77, 0.918)");
-    $("#monthEnlist").css("color", "rgba(77, 77, 77, 0.918)"); 
+    $("#yearEnlist").css("color", "gray");
+    $("#monthEnlist").css("color", "gray"); 
     $("#dayEnlist").css("color", "white");   
     $("#enlistDInput").focus();
 }

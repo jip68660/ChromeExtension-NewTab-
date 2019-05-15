@@ -29,11 +29,10 @@ $(document).ready(function() {
     var rankImage = ["img/soldier_PV2.png", "img/soldier_PFC.png", "img/soldier_CPL.png", "img/soldier_SGT.png"];
     var soldierName = localStorage.name;
     var endDateStr = localStorage.endDateYear + "년 " + localStorage.endDateMonth + "월 " + localStorage.endDateDate + "일까지"
-    var dDayCount = "D-" + localStorage.todoDays;
-    var progressBarWidth = Math.floor((1 - localStorage.getItem("todoDays") / localStorage.getItem("wholeDays")) * 1000) / 10;
-    if(!isNaN(progressBarWidth)){
-        localStorage.setItem("progressBar", progressBarWidth);
-    }
+    var dDayCount = "D-" + localStorage.todoDays;   
+
+    var progressBarWidth = localStorage.progressBar;
+
     $("#profPicUser").removeClass("SGT");
     if (!localStorage.rank || localStorage.rank == "rankQ"){
         $("#toRankSettingsButton").show();
@@ -58,30 +57,36 @@ $(document).ready(function() {
 
     if(localStorage.identity == "girlfriend"){
         soldierName = localStorage.loverName;
-        $("#nameDisplay").html("남자친구, " + soldierName + "님의 전역일");
+        $("#nameDisplay").html("남자친구, " + soldierName + "님");
     } else{
-        $("#nameDisplay").html(soldierName + "님의 전역일");
+        $("#nameDisplay").html(soldierName + "님");
     }
 
-    if (progressBarWidth < 0){        
+    if (progressBarWidth < 0){             
         $("#progressBar").css("width", "0%");
         var daysUntilEnlist = Math.floor((new Date(localStorage.enlistDate) - new Date()) / (1000 * 3600 * 24)) + 1;
         var beforeEnlistStr = "입대까지 " + daysUntilEnlist + "일!";
+        $("#endDateDisplay").hide();
         $("#dDayDisplay").html(beforeEnlistStr);
         $("#dDayDisplay").css("line-height", 1);
         $("#percentageDiv").html("0%");
         $("#toRankSettingsButton").hide();
+        $('#profPicUser').show();
         $("#profPicUser").attr("src", rankImage[0]);
     } else if (progressBarWidth > 100){
         $("#progressBar").css("width", "100%");
         var daysSinceDischarge = Math.floor((new Date() - new Date(localStorage.endDateYear, localStorage.endDateMonth - 1, localStorage.endDateDate)) / (1000 * 3600 * 24));
-        var afterDischargeStr = "전역한지 " + daysSinceDischarge + "일...";
+        var afterDischargeStr = "전역한지 " + daysSinceDischarge + "일...";        
+        $("#endDateDisplay").hide();        
         $("#dDayDisplay").html(afterDischargeStr);
         $("#dDayDisplay").css("line-height", 1);
         $("#percentageDiv").html("100%");
         $("#toRankSettingsButton").hide();
-        $("#profPicUser").attr("src", rankImage[3]);
+        $('#profPicUser').show();
+        $("#profPicUser").attr("src", rankImage[3]);        
+        $("#profPicUser").addClass("SGT");
     } else {
+        $("#nameDisplay").append("의 전역일");
         $("#endDateDisplay").html(endDateStr);
         $("#dDayDisplay").html(dDayCount);
 
